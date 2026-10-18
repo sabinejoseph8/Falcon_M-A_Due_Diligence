@@ -26,7 +26,7 @@ No coding needed. You type plain-English replies at three checkpoints.
 
 Claude Code may ask your permission before some actions (for example converting the report to HTML and PDF). Read the request and approve it if it makes sense.
 
-Claude Code also asks before anything opens `evaluation/answer-key.md`, `examples/` or `runs/`. During a diligence run, **deny** these requests: the agents must not see the answer key or an earlier run. Approve the answer key request only when you run `/evaluate`.
+Claude Code also asks before anything opens a file in `evaluation/`, `examples/` or `runs/`. During a diligence run, **deny** these requests: the agents must not see the answer key, a scorecard or an earlier run. Approve the answer key request only when you run `/evaluate`.
 
 The sample run in `examples/sample-run/` took 69 minutes from the approved plan to sign-off.
 
@@ -38,7 +38,7 @@ Type `/evaluate` and approve the request to open the answer key. Claude compares
 
 ## Run it again
 
-Type `/reset-memory`. Your previous run is archived in `runs/`, and working memory is cleared.
+Type `/reset-memory`. Your previous run and its scorecard are archived together in a dated folder in `runs/`, and working memory is cleared. To check an archived run later, type `python3 tests/run_all.py --run runs/<folder>`.
 
 ## If you have no PDF tool
 

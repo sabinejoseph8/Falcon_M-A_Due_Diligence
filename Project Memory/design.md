@@ -1,6 +1,6 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.2 (October 18, 2026: portfolio pieces aimed at AI product manager roles).
+**Status:** Agreed, version 1.3 (October 18, 2026: the scorecard moves into the archived run after a reset).
 
 Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
@@ -89,7 +89,7 @@ Project Falcon has no custom app screen. People experience it in three places: *
 | **Risk matrix** | Report | n/a | ID, finding, severity, confidence, verification verdict and recommended action, Critical first. With many findings, it shows the consolidated cross-source findings and the appendix index lists every verified finding. Repeats its header on every page. |
 | **Callout** | Report | Note, allegation | Teal border for notes. Cream background with gold border for allegations and rumors. |
 | **Key metrics table** | Report | n/a | Reported and adjusted figures side by side, with the source finding ID. |
-| **Scorecard** | `evaluation/scorecard.md` | No run, graded | Recall summary first, then one row per planted issue: Found, Partially found or Missed. |
+| **Scorecard** | `evaluation/scorecard.md`, then the archived run in `runs/` | No run, graded, archived | Recall summary first, then one row per planted issue: Found, Partially found or Missed. `/reset-memory` moves it into the archived run, so every run keeps its own grade. |
 | **Finding ID** | Everywhere | n/a | Never breaks across a line ("SEC-01" stays whole). Ranges are written "LIT-01 to LIT-03". |
 | **Findings index** | Report appendix | Verified, partially verified | One table per workstream: ID, finding (with the corrected wording), severity and verdict. Built from the findings register. |
 | **Not-verified list** | Report appendix | Empty, populated | Medium and Low findings that were not checked, each labeled "not verified", so nothing found is dropped silently. If empty: "Every finding was verified." |

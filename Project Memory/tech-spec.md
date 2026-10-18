@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.1 (October 18, 2026: updated after the first test run; changes are in the Decisions table).
+**Status:** Agreed, version 1.2 (October 18, 2026: scorecards archived with each run and all of `evaluation/` guarded; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -19,7 +19,7 @@ Project Falcon runs inside Claude Code on the operator's computer. There is no s
 | **Report pipeline** | Markdown report, converted to a styled web page and a PDF | `output/`, `templates/report-style.css` |
 | **Evaluation** | Answer key of planted issues and a grading command | `evaluation/`, `/evaluate` |
 | **Automated checks** | Tests for each build phase, plus a run checker | `tests/`, `/run-tests` |
-| **Archive** | Past runs, moved aside by `/reset-memory` | `runs/` |
+| **Archive** | Past runs and their scorecards, moved aside by `/reset-memory` | `runs/` |
 | **Portfolio** | README, diagram, run guide, sample run, case study, planning files | `README.md`, `docs/`, `examples/`, `Project Memory/` |
 
 ```
@@ -73,6 +73,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | Lead agent | Verifier | A list of findings: ID, claim, cited sources, severity |
 | Verifier | Lead agent | One report per batch: a verdict for each finding, what was checked and any correction. The lead rewrites each Partially verified row with that wording before Checkpoint 3 |
 | `/evaluate` | Answer key | Read only after the operator approves the permission prompt |
+| `/reset-memory` | Archive | Moves `memory/`, `output/` and `evaluation/scorecard.md` into a dated `runs/` folder, then restores the blank templates |
 | Report pipeline | Files | Markdown, then HTML with the stylesheet embedded, then PDF |
 
 ## System patterns (secure and extensible)
@@ -86,14 +87,14 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 - **Bounded loops.** At most three iterations, with stop conditions and a logged reason for every extra loop.
 - **Evidence-carrying claims.** No finding without a citation. The verifier and the checks enforce it.
 - **Append-only audit trail.** The run log only grows, each analyst's unedited report is kept, and old runs are archived rather than deleted.
-- **Blind evaluation.** The answer key needs operator approval to open, and its checksum is tested so any change is visible. Earlier runs (`examples/`, `runs/`) need approval too, so a new run cannot read past answers.
+- **Blind evaluation.** Everything in `evaluation/` (the answer key and the latest scorecard) needs operator approval to open, and the answer key's checksum is tested so any change is visible. `/reset-memory` moves each scorecard into its archived run, and earlier runs (`examples/`, `runs/`) need approval too, so a new run cannot read past answers.
 - **Nothing found is dropped silently.** Findings that were not verified still appear in the report appendix, labeled "not verified".
 - **Template-driven output.** The report structure lives in `CLAUDE.md` and the look lives in one stylesheet.
 
 ## Security
 
 - **Authentication:** the operator's own Claude Code sign-in. Nothing else to sign in to, and no passwords or keys in the project.
-- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to `data/` and the answer key denied; reading the answer key or an earlier run needs approval) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
+- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to `data/` and the answer key denied; reading anything in `evaluation/` or an earlier run needs approval) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
 - **Secrets:** none in v1. Future connectors must use admin-approved credentials stored outside the project. Never commit keys.
 - **Input validation:** source documents are untrusted input. The prompt-injection rule, read-only tools, no web access and human checkpoints limit what a malicious document could do. Data files are checked against a checksum manifest.
 - **Rate and cost limits:** 3-iteration cap, narrow follow-up tasks, small sources. The full sample run used about 1.95 million subagent tokens across 10 subagent runs (4 analysts, 2 follow-ups, 4 verifiers) and took 69 minutes from the approved plan to sign-off. Iteration 1 alone used about 0.76 million tokens and 26 minutes.
@@ -109,7 +110,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 ## Testing approach
 
 - **Automated checks** (`python3 tests/run_all.py`, or `/run-tests`), grouped by build phase:
-  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read the answer key or an earlier run), checkpoints and loop cap in `CLAUDE.md`.
+  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read `evaluation/` or an earlier run, and `/reset-memory` archiving the scorecard), checkpoints and loop cap in `CLAUDE.md`.
   - Phase 2 (`test_phase2_data.py`): financial statements tie out, documents labeled fictional, docket files present, answer key complete, source data unchanged (checksums).
   - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, and the report has every section, cites only known findings and excludes rejected ones.
   - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
@@ -135,7 +136,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 9 | **Missing tools on the operator's computer** (no Python, no PDF tool). | Checks or PDFs would fail. | Standard-library-only checks, the HTML fallback for PDFs, and manual verification steps for every phase. |
 | 10 | **Simulated data is easier than reality**, and agents could be tuned to the planted issues. | The score could overstate real-world performance. | Distractors in the data, a blind answer key, and (future) a second fictional target that the instructions were never tuned on. The first test run was only partly blind (the lead agent ran in the session that built the data), so the next run happens in a fresh session. |
 | 11 | **Real client data** if the project is adapted for a live deal. | Confidentiality and data retention obligations. | Out of scope for v1. Enterprise plan, zero data retention request, read-only connectors and compliance sign-off required first. |
-| 12 | **Saved runs leak answers.** The sample run and its scorecard sit inside the project. | A new run that read them could score well without finding anything itself. | Claude Code asks before any agent opens `examples/` or `runs/`, the lead agent's guardrails forbid it, and a Phase 1 check confirms the rule. |
+| 12 | **Saved runs leak answers.** The sample run and its scorecard sit inside the project, and each new grading writes a scorecard to `evaluation/`. | A new run that read them could score well without finding anything itself, and the next grading would overwrite the last scorecard. | Claude Code asks before any agent opens `evaluation/`, `examples/` or `runs/`; `/reset-memory` moves each scorecard into its archived run; the lead agent's guardrails forbid reading them; and Phase 1 checks confirm both rules. |
 
 ## Decisions
 
@@ -153,6 +154,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Earlier runs (`examples/`, `runs/`) need operator approval to open, like the answer key, with an automated check. |
 | 2026-10-18 | Three instruction fixes from the first scorecard: list unverified findings in the report appendix, combine trend findings into one cross-source finding, and apply every verifier correction before Checkpoint 3. |
 | 2026-10-18 | The project is hosted in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`; `.gitignore` keeps `interview-notes.md` out. |
+| 2026-10-18 | `/reset-memory` moves `evaluation/scorecard.md` into the archived run, and the approval rule covers all of `evaluation/` instead of only the answer key, with an automated check. Found while preparing the blind run: a scorecard left in `evaluation/` was unguarded, and the next grading would have overwritten it. |
 
 ## Open questions (with recommended defaults)
 

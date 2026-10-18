@@ -55,12 +55,16 @@ class TestGuardrails(unittest.TestCase):
         for rule in ("Edit(/data/**)", "Edit(./data/**)", "Edit(/evaluation/answer-key.md)", "Edit(./evaluation/answer-key.md)"):
             self.assertIn(rule, self.permissions["deny"])
 
-    def test_reading_the_answer_key_needs_approval(self):
-        self.assertIn("Read(/evaluation/answer-key.md)", self.permissions.get("ask", []))
+    def test_reading_anything_in_evaluation_needs_approval(self):
+        for rule in ("Read(/evaluation/**)", "Read(./evaluation/**)"):
+            self.assertIn(rule, self.permissions.get("ask", []))
 
-    def test_reading_earlier_runs_needs_approval(self):
+    def test_earlier_runs_and_their_scorecards_need_approval(self):
         for rule in ("Read(/examples/**)", "Read(/runs/**)"):
             self.assertIn(rule, self.permissions.get("ask", []))
+        reset = read(ROOT / ".claude" / "commands" / "reset-memory.md")
+        moves_scorecard = any("evaluation/scorecard.md" in line and "runs/" in line for line in reset.splitlines())
+        self.assertTrue(moves_scorecard, "/reset-memory must move evaluation/scorecard.md into the archived run in runs/")
 
 
 class TestLeadAgent(unittest.TestCase):

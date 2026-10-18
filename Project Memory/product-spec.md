@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.3 (October 18, 2026: target role agreed; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.4 (October 18, 2026: each run's scorecard is archived with it; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -82,7 +82,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 **Status, grading and reset**
 - **R17.** A status command shows the current step, loops used, findings by severity and status, and the top open questions. With no run, it says so (empty state).
 - **R18.** A grading command scores the latest run: recall overall and for Critical and High issues, severity accuracy, unsupported findings and distractors rated too high. It asks permission before opening the answer key. With no run, it tells the operator to run a diligence first (empty state).
-- **R19.** A reset command archives the current run with a date and time, and restores blank working memory. It never changes the sources, the answer key or the setup.
+- **R19.** A reset command archives the current run and its scorecard with a date and time, and restores blank working memory. It never changes the sources, the answer key or the setup.
 
 **Safety and quality**
 - **R20.** The agents cannot use the web and cannot change source files.
@@ -91,7 +91,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R23.** If a specialist fails or returns findings without sources, the lead agent asks again once. If that fails, the gap is recorded as an open question (error state).
 - **R24.** If a source file is missing or empty, the specialist reports it under "Files reviewed" and as a gap (error state).
 - **R25.** All outputs use plain English, US$ millions with one decimal place, and no em dashes.
-- **R29.** The agents cannot open the answer key or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
+- **R29.** The agents cannot open anything in `evaluation/` (the answer key and the latest scorecard) or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
 
 **Portfolio**
 - **R26.** The project includes a README with the problem, the architecture diagram, how a run works, sample results and how to run it.
@@ -152,6 +152,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |
 | 2026-10-18 | Time target for a full run raised from 45 to 90 minutes (success criterion 1): the first test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Faster runs are a later improvement. |
 | 2026-10-18 | The portfolio is aimed at AI product manager roles. The README, case study and interview story lead with product skills: framing the problem, specs and a phased plan, evaluation, safety and iteration. The M&A depth is the proof of domain judgment. |
+| 2026-10-18 | Each run's scorecard is archived with the run, and everything in `evaluation/` needs approval to open, so one run's grade cannot leak into the next run or be overwritten by the next grading (R19, R29). |
 
 ## Open questions (with recommended defaults)
 

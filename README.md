@@ -96,7 +96,7 @@ CLAUDE.md                  Lead agent: the Plan -> Act -> Observe loop, checkpoi
 .claude/
   agents/                  5 subagents (4 source specialists + citation verifier)
   commands/                /diligence, /diligence-status, /evaluate, /reset-memory, /run-tests
-  settings.json            Guardrails: no web access, sources read-only, approval to open the answer key or earlier runs
+  settings.json            Guardrails: no web access, sources read-only, approval to open evaluation/ or earlier runs
 data/                      Simulated sources (fictional): filings, news, dockets, financials, deal brief
 memory/                    Working memory (blank, ready for your run)
 templates/                 Blank memory files and the report stylesheet
@@ -112,7 +112,7 @@ docs/                      Architecture diagram, run guide, one-page case study
 
 Open the folder in Claude Code and type `/diligence`. Reply at the three checkpoints. Full guide: [docs/how-to-run.md](docs/how-to-run.md).
 
-For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key or the sample run.
+For a truly blind test, start a fresh Claude Code session in the folder, run `/diligence`, then `/evaluate` and compare your scorecard with the sample run. Claude Code asks before any agent can open the answer key, a scorecard or an earlier run.
 
 ## From demo to a real deal
 

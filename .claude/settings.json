@@ -9,8 +9,8 @@
       "Edit(./evaluation/answer-key.md)"
     ],
     "ask": [
-      "Read(/evaluation/answer-key.md)",
-      "Read(./evaluation/answer-key.md)",
+      "Read(/evaluation/**)",
+      "Read(./evaluation/**)",
       "Read(/examples/**)",
       "Read(./examples/**)",
       "Read(/runs/**)",
