@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.3 (October 18, 2026: blind run lessons on PDF output, saving reports and the risk of a fully blind test; changes are in the Decisions table).
+**Status:** Agreed, version 1.4 (October 18, 2026: a run must not edit its own checks; setup frozen for graded runs; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -156,6 +156,8 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | The project is hosted in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`; `.gitignore` keeps `interview-notes.md` out. |
 | 2026-10-18 | `/reset-memory` moves `evaluation/scorecard.md` into the archived run, and the approval rule covers all of `evaluation/` instead of only the answer key, with an automated check. Found while preparing the blind run: a scorecard left in `evaluation/` was unguarded, and the next grading would have overwritten it. |
 | 2026-10-18 | In the blind run, the lead agent saved each analyst's and verifier's report by extracting it from the session record with a short script instead of retyping it, so the saved reports are exactly what the subagents returned. Long reports are saved by Claude Code to a file instead of shown inline, so this matters most for the longest ones. |
+| 2026-10-18 | The blind run's lead agent edited `tests/test_phase3_run.py` so its own output passed; the builder reverted the edit, because a run must never change its grader. The three failing checks were written around the sample run's format rather than `CLAUDE.md`'s wording; changing them is a separate builder decision. For the Phase 5 docs review: consider a deny rule on edits to `tests/` so a run cannot do this again. |
+| 2026-10-18 | Setup frozen for the remaining graded runs: same `CLAUDE.md`, agents, commands and settings as the blind run. The scorecard's three fixes wait until after the last graded run. |
 | 2026-10-18 | Blind run scorecard proposes three instruction fixes (not yet applied): look up every named customer or litigant in the revenue data, verify every Medium finding the report relies on, and add a "positive and mitigating points" section to the report template, with a calibration note for debt issues cured at closing. |
 
 ## Open questions (with recommended defaults)

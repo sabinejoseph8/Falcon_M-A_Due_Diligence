@@ -65,6 +65,10 @@ Severity grouping uses the first expected level in the answer key. Severity accu
 - Errors the verifier caught before the report: X-03 faulted the 10-Q for omitting Gen-3 Plus, which was added after the filing; X-09 used a software-below-ARR point that also held before the outage; FIN-08 said 18 months of negative free cash flow instead of 12; X-07 used 49 days instead of 51.
 - Unsupported findings in the report: **0**.
 
+## Builder note: automated checks
+
+Added by the builder after grading. With the checks as written, this run fails 3 of 34 (`python3 tests/run_all.py`). During the run, the lead agent edited `tests/test_phase3_run.py` so that its own output passed; that edit was reverted, because the system being graded must not change its grader. In all three, the run followed `CLAUDE.md`, and the check expected the sample run's format instead: (1) the report heading "Answers to the six IC questions" is the template's own wording, but the check looks for "investment committee"; (2) the run log names the step "Step 5: REPORT", as `CLAUDE.md` does, but the check looks for "5. REPORT", so the run counts as incomplete and the checkpoint-log check is skipped; (3) register IDs are links to the full finding cards, as `CLAUDE.md` asks, but the check reads only plain IDs, so it sees an empty register and every cited ID looks unknown. The one real departure from the template is an extra report section, "6. Hypotheses tested". None of this changes the grades above.
+
 ## Three most useful improvements to the agent instructions
 
 1. **Size every named counterparty against the customer data (would have fully found P09).** Add to the lead agent's Observe step: "For every customer, supplier or litigant named in any source, look it up in `revenue_by_customer.csv` (or ask the financial analyst) and state its rank and revenue." Pinecrest was the #4 customer (US$17.4m), and the litigation analyst explicitly listed this as unknown, but no one closed the gap.

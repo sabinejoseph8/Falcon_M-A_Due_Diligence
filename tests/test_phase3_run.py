@@ -8,22 +8,20 @@ from _common import EM_DASH, read, run_dir, table_rows
 ID = re.compile(r"^(SEC|NEWS|LIT|FIN|X)-\d{2}$")
 SEVERITIES = {"Critical", "High", "Medium", "Low", "Positive", "n/a"}
 STATUSES = {"Open", "Verified", "Partially verified", "Rejected"}
-REPORT_SECTIONS = ["executive summary", ("investment committee", "ic questions"), "risk matrix", "workstream", "cross-source", "protections", "open questions", "appendix"]
+REPORT_SECTIONS = ["executive summary", "investment committee", "risk matrix", "workstream", "cross-source", "protections", "open questions", "appendix"]
 ANALYSTS = ["sec-filings-analyst", "news-media-analyst", "litigation-analyst", "financial-analyst"]
 
 RUN = run_dir()
 REPORT = RUN / "output" / "Project-Falcon-Due-Diligence-Report.md"
 LOG = RUN / "memory" / "run-log.md"
 HAS_RUN = LOG.exists() and "CHECKPOINT 1" in read(LOG)
-RUN_COMPLETE = HAS_RUN and re.search(r"5[.:] REPORT", read(LOG)) is not None
+RUN_COMPLETE = HAS_RUN and "5. REPORT" in read(LOG)
 
 
 def register():
     """Map finding ID -> (severity, status) from the findings register tables."""
     found = {}
     for cells in table_rows(read(RUN / "memory" / "findings.md")):
-        if cells:
-            cells[0] = re.sub(r"^\[([^\]]+)\]\([^)]*\)$", r"\1", cells[0])  # a linked ID counts as the ID
         if cells and ID.match(cells[0]):
             severity = next((c for c in cells if c in SEVERITIES), None)
             found[cells[0]] = (severity, cells[-1], cells)
@@ -65,8 +63,7 @@ class TestReport(unittest.TestCase):
     def test_report_has_all_sections(self):
         headings = " ".join(h.lower() for h in re.findall(r"^#{2} .*$", self.text, re.M))
         for section in REPORT_SECTIONS:
-            options = section if isinstance(section, tuple) else (section,)
-            self.assertTrue(any(o in headings for o in options), f"missing section: {options[0]}")
+            self.assertIn(section, headings, f"missing section: {section}")
         self.assertIn("cover", self.text, "missing cover page")
 
     def test_report_cites_only_known_findings(self):
