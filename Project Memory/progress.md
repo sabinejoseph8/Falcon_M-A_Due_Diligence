@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.6 (October 18, 2026: three graded runs done, with the average and range recorded; run checks fixed).
+**Status:** Agreed, version 1.7 (October 18, 2026: Phase 4 done; instruction fixes applied and a fixed grading rule added).
 
 ## Summary
 
-- **Current phase:** Phase 4, Grade and tune (blind run done and graded; three new instruction fixes proposed in its scorecard).
+- **Current phase:** Phase 5, Hardening (Phase 4 is done: three graded runs, the fixes they pointed to, and a fixed grading rule).
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. Runs 1 and 2 are archived in `runs/`; run 3 is in `memory/`, `output/` and `evaluation/scorecard.md`. The sample run and all three graded runs pass all 34 checks with none skipped. The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** apply the three instruction fixes from the blind run's scorecard, and give `/evaluate` one fixed grading rule so scores are counted the same way every time. Then Phase 5 (the prompt-injection test and the docs review). Before sharing the project, make the repository public and share the website (Phase 6).
+- **Next action:** Phase 5: the prompt-injection test on a copy of the project, and the docs review of the configuration. A graded run with the new fixes would show whether they work. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
 
@@ -116,14 +116,14 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 ## Phase 4: Grade and tune
 
 **Goal:** measure the run against the answer key and improve the instructions where it falls short.
-**Status:** In progress
+**Status:** Done
 
 - [x] Run `/evaluate` on the sample run and save the scorecard
 - [x] Fix the three most useful gaps in the agent instructions
 - [x] Re-run and compare scores (target: at least 80% recall on Critical and High issues, zero unsupported findings in the report, zero distractors rated Medium or above)
 - [x] Grade three runs and record the average and range
-- [ ] Apply the blind run's three instruction fixes (the graded runs are done, so this can go ahead)
-- [ ] Give `/evaluate` one fixed grading rule: group issues by the answer key's first-listed severity, and always use its 13 Critical and High issues
+- [x] Apply the three instruction fixes from the graded runs (they take effect from the next run and have not been measured yet)
+- [x] Give `/evaluate` one fixed grading rule: group issues by the answer key's first-listed severity, list the Critical and High group by ID, and show every recall figure as numerator / denominator
 
 **Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
 

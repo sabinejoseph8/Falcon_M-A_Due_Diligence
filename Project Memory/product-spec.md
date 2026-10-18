@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.6 (October 18, 2026: three graded runs measured against the success criteria; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.7 (October 18, 2026: fixes from the graded runs and a fixed grading rule; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -70,18 +70,18 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R6.** Every finding has an ID, a severity (Critical, High, Medium, Low), a confidence level (High, Medium, Low), a source file and section or row, and a status (Open, Verified, Partially verified, Rejected).
 - **R7.** Findings are never deleted. Only their status changes.
 - **R8.** Each specialist's full report is saved unedited before it is summarized.
-- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding.
+- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding. Every customer, supplier or litigant named in a source is sized against the customer revenue data.
 - **R10.** The research loop runs at most 3 times. Every extra loop is logged with its reason.
 - **R11.** Checkpoint 2: the run stops and shows a table of Critical and High findings, the main conflicts and what is still open. It waits for "proceed" or "dig deeper on <topic>".
-- **R12.** An independent checker verifies every Critical and High finding and at least three Medium findings, and gives each a verdict. Every correction for a Partially verified finding is applied to the register before Checkpoint 3.
+- **R12.** An independent checker verifies every Critical and High finding and every Medium finding that an IC answer cites or a cross-source finding is built from (at least three Medium findings in all), and gives each a verdict. Every correction for a Partially verified finding is applied to the register before Checkpoint 3.
 - **R13.** Findings judged Not supported are kept in the register but left out of the report.
 - **R14.** Checkpoint 3: the run stops and shows the verification results and the draft recommendation. It waits for approval.
-- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix. The appendix includes an index of verified findings and a list of the findings that were not verified, each labeled "not verified".
+- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix. The executive summary includes the main positive and mitigating points. The appendix includes an index of verified findings and a list of the findings that were not verified, each labeled "not verified".
 - **R16.** The report is saved as Markdown, as a web page and, when the computer has a PDF tool, as a PDF. Without a PDF tool, the operator is told how to save the web page as a PDF (error state).
 
 **Status, grading and reset**
 - **R17.** A status command shows the current step, loops used, findings by severity and status, and the top open questions. With no run, it says so (empty state).
-- **R18.** A grading command scores the latest run: recall overall and for Critical and High issues, severity accuracy, unsupported findings and distractors rated too high. It asks permission before opening the answer key. With no run, it tells the operator to run a diligence first (empty state).
+- **R18.** A grading command scores the latest run: recall overall and for Critical and High issues, severity accuracy, unsupported findings and distractors rated too high, using one fixed grading rule so every run is scored the same way. It asks permission before opening the answer key. With no run, it tells the operator to run a diligence first (empty state).
 - **R19.** A reset command archives the current run and its scorecard with a date and time, and restores blank working memory. It never changes the sources, the answer key or the setup.
 
 **Safety and quality**
@@ -155,6 +155,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Each run's scorecard is archived with the run, and everything in `evaluation/` needs approval to open, so one run's grade cannot leak into the next run or be overwritten by the next grading (R19, R29). |
 | 2026-10-18 | Fully blind run graded. It meets success criteria 2 to 5: all three checkpoints held (an early "approve" was logged but not treated as sign-off), all nine report parts, 96.2% recall on Critical and High issues, 0 unsupported findings, 0 distractors too high, no source file changed. Criterion 1 (under 90 minutes) was not measured fairly: elapsed time was about 7 hours, mostly gaps between operator replies and one stalled turn, so timing needs a cleaner measurement next run. |
 | 2026-10-18 | Three blind graded runs with a frozen setup meet success criterion 4 every time: Critical and High recall 96.2%, 96.2% and 100% (average 97.4%), 0 unsupported findings and 0 distractors too high in each. |
+| 2026-10-18 | Fixes from the graded runs (R9, R12, R15): size every named counterparty against the customer data, verify the Medium findings the report relies on, put positives and mitigating points in the executive summary, and calibrate debt severity. `/evaluate` gets one fixed grading rule (R18). They take effect from the next run and have not been measured yet. |
 
 ## Open questions (with recommended defaults)
 

@@ -9,11 +9,12 @@ You are grading this system's latest diligence run. This is the only command all
    - **Found:** the main point is in the verified findings, with a correct citation.
    - **Partially found:** some of it was found, or it was found but with the wrong severity, a missing cross-source link or a weak citation.
    - **Missed:** not found.
+   Use the fixed grading rules below for every number.
 3. For each distractor in the answer key, check whether the run wrongly rated it Medium or above.
 4. Check for false findings: any finding in the report that the sources do not support (use the verifier results in memory).
 5. Write `evaluation/scorecard.md` with:
-   - recall overall and by severity (Found counts as 1, Partially found as 0.5);
-   - severity accuracy (share of found issues rated within one level of the answer key);
+   - recall overall, for the Critical and High group, and for each severity group, with the IDs in each group listed;
+   - severity accuracy;
    - unsupported findings that reached the report (target: zero);
    - distractors rated too high;
    - a table of every planted issue with its result and the matching finding IDs;
@@ -21,3 +22,16 @@ You are grading this system's latest diligence run. This is the only command all
 6. Show the user a short summary.
 
 Do not change the answer key or the data.
+
+## Fixed grading rules
+
+Apply these exactly, so every run is graded the same way:
+
+- **Severity group:** each planted issue belongs to the first severity listed in its expected severity in the answer key. For example, "Critical or High" counts as Critical and "Medium (High ok)" counts as Medium.
+- **Critical and High group:** every issue whose first-listed severity is Critical or High. Count it from the answer key each time, and list its IDs in the scorecard.
+- **Scoring:** Found = 1, Partially found = 0.5, Missed = 0. Write every recall figure as numerator / denominator = percentage, with one decimal place, and check that each denominator equals the number of IDs listed for that group.
+- **Severity accuracy:** a Found or Partially found issue counts if the highest severity among its matching verified findings is within one level of a severity the answer key accepts for it. Missed issues are left out.
+- **Distractors:** too high means rated Medium or above anywhere in the register or the report.
+- **Unsupported findings:** a finding in the report that the verifier marked Not supported, or that you cannot match to its cited source.
+- **Positives:** say whether the planted positives appear in the report, but leave them out of recall.
+- Grade from this run's files only. Do not open earlier scorecards or runs.

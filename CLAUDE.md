@@ -75,7 +75,8 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
    - disclosure gaps: events in court records or news that the company's filings omit or describe differently, including timing (was a filing made after an event it does not mention?);
    - numbers that only make sense when combined (for example a one-off revenue amount from a filing applied to quarterly data);
    - stale assumptions in the deal brief;
-   - trends: when three or more findings describe the same trend (for example revenue, margins, backlog and retention all weakening), combine them into one `X-` finding that states the headline numbers, so the trend gets one severity and one place in the report.
+   - trends: when three or more findings describe the same trend (for example revenue, margins, backlog and retention all weakening), combine them into one `X-` finding that states the headline numbers, so the trend gets one severity and one place in the report;
+   - named parties: for every customer, supplier or litigant named in any source, look it up in `data/financials/revenue_by_customer.csv` (or ask the financial analyst) and state its revenue rank and amount, or that it is not a listed customer.
    Record each insight as an `X-` finding with all sources cited.
 4. Update `memory/open-questions.md`.
 5. Decide whether to loop again. Loop only if a Critical or High question can still be answered from the available data. Write the reason in the run log. Respect the 3-iteration budget.
@@ -92,7 +93,7 @@ Ask: *"Reply 'dig deeper on <topic>' to run another iteration, or 'proceed' to s
 
 ### Step 4: VERIFY
 
-1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus at least three Medium findings. Give the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
+1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus every Medium finding that an IC answer cites or that an `X-` finding is built from (at least three Medium findings in all). Give the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
 2. Update each finding's status. For every Partially verified finding, rewrite its register row with the verifier's corrected wording. Then re-read the verifier reports once and confirm that no correction was missed. Rejected findings stay in the register but are left out of the report.
 3. Log the verification statistics.
 
@@ -112,7 +113,7 @@ Write the report to `output/` using the template below:
 ## Report template
 
 1. **Cover:** "Project Falcon: Comprehensive Due Diligence Report", "Draft for Investment Committee discussion", the date, "Fictional case study", and "Prepared by an AI multi-agent diligence system with human review".
-2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, and the valuation implications.
+2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, the main positive and mitigating points (with finding IDs), and the valuation implications.
 3. **Answers to the six IC questions:** one short section each, citing finding IDs.
 4. **Risk matrix:** every verified finding: ID, finding, workstream, severity, confidence, deal impact, recommended action (price, structure, condition, indemnity or further diligence).
 5. **Workstream detail:** SEC filings, News and media, Litigation, Financial analysis (with a key metrics table).
@@ -129,6 +130,8 @@ Write the report to `output/` using the template below:
 - **High:** material impact on price or terms, or needs a specific protection (indemnity, escrow, closing condition).
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
+
+**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
 
 **Confidence**
 

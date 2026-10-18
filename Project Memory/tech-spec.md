@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.5 (October 18, 2026: three graded runs measured; run checks accept the wording `CLAUDE.md` asks for; changes are in the Decisions table).
+**Status:** Agreed, version 1.6 (October 18, 2026: instruction fixes from the graded runs and a fixed grading rule; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -161,6 +161,8 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Blind run scorecard proposes three instruction fixes (not yet applied): look up every named customer or litigant in the revenue data, verify every Medium finding the report relies on, and add a "positive and mitigating points" section to the report template, with a calibration note for debt issues cured at closing. |
 | 2026-10-18 | The Phase 3 run checks accept the wording `CLAUDE.md` asks for: checkpoint names in any letter case, "Step 5: REPORT", "ACT, iteration 1", the "IC questions" heading and register IDs written as links. A builder change made after the graded runs, in its own commit. Non-standard IDs such as `LIT-F01` are still not accepted. |
 | 2026-10-18 | The graders were not consistent: run 1 counted 4 Critical issues, runs 2 and 3 counted 3, and run 2 divided by 14 Critical and High issues instead of 13. Reported results are recomputed on the answer key's 13 Critical and High issues, and a fixed grading rule for `/evaluate` is a Phase 4 task. |
+| 2026-10-18 | Instruction fixes from the graded runs: the lead agent sizes every named customer, supplier or litigant against `revenue_by_customer.csv`; the verifier also gets every Medium finding an IC answer cites or an `X-` finding is built from; the executive summary lists positive and mitigating points; the financial analyst compares the last goodwill test with share price moves; and a calibration rule rates debt problems cured at closing as High unless they cause a default or liquidity problem first. They take effect from the next run and have not been measured yet. |
+| 2026-10-18 | `/evaluate` follows fixed grading rules: severity group = the answer key's first-listed severity, the Critical and High group listed by ID, every recall figure shown as numerator / denominator, and positives kept out of recall. The rules name no issue IDs or counts, because the lead agent can read the command file. |
 
 ## Open questions (with recommended defaults)
 
