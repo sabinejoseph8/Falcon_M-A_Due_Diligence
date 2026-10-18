@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.3 (October 18, 2026: scorecard archiving and a wider approval rule added before the blind run).
+**Status:** Agreed, version 1.4 (October 18, 2026: the fully blind run is done and graded; Phase 4 re-run ticked).
 
 ## Summary
 
-- **Current phase:** Phase 4, Grade and tune (first grading done; the three fixes are in `CLAUDE.md`).
-- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** run `/diligence` in a fresh Claude Code session (a fully blind run), then `/evaluate` and compare with the sample run's scorecard. Before sharing the project, make the repository public and share the website (Phase 6).
+- **Current phase:** Phase 4, Grade and tune (blind run done and graded; three new instruction fixes proposed in its scorecard).
+- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). The fully blind run in a fresh session scored 94.4% recall overall, 96.2% on Critical and High issues (all 4 Critical found), 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high. Its report and memory are in `output/` and `memory/`, and its scorecard is in `evaluation/scorecard.md`; none of it is committed yet. The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
+- **Next action:** decide whether to commit the blind run, apply its scorecard's three instruction fixes (size every named customer or litigant against the revenue data, verify every Medium finding the report relies on, add a mitigating-points section to the report), then `/reset-memory` and run a third graded run. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
 
@@ -120,8 +120,11 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 
 - [x] Run `/evaluate` on the sample run and save the scorecard
 - [x] Fix the three most useful gaps in the agent instructions
-- [ ] Re-run and compare scores (target: at least 80% recall on Critical and High issues, zero unsupported findings in the report, zero distractors rated Medium or above)
-- [ ] Grade three runs and record the average and range
+- [x] Re-run and compare scores (target: at least 80% recall on Critical and High issues, zero unsupported findings in the report, zero distractors rated Medium or above)
+- [ ] Grade three runs and record the average and range (2 of 3 done)
+- [ ] Apply the blind run's three instruction fixes
+
+**Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
 
 **Automated tests** (`python3 tests/run_all.py --run examples/sample-run --phase 4`):
 1. The scorecard reports recall, severity accuracy, unsupported findings and distractors.

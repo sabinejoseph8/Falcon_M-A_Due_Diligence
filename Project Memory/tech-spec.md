@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.2 (October 18, 2026: scorecards archived with each run and all of `evaluation/` guarded; changes are in the Decisions table).
+**Status:** Agreed, version 1.3 (October 18, 2026: blind run lessons on PDF output, saving reports and the risk of a fully blind test; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -41,7 +41,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | CSV for financial data | Opens in Excel, easy to check by hand |
 | JSON for permission settings | The format Claude Code requires |
 | Python 3, standard library only, for automated checks | Nothing to install on Mac or Linux; deterministic results |
-| Pandoc and a headless browser for the PDF (optional) | Best-looking output when available; the web page plus "Print, then Save as PDF" works everywhere |
+| Pandoc and a headless browser for the PDF (optional) | Best-looking output when available; the web page plus "Print, then Save as PDF" works everywhere. On the builder's Mac, headless Google Chrome (`--headless=new --print-to-pdf`) made the PDF with nothing installed |
 | SVG for the architecture diagram, exported to PNG and PDF | Sharp at any size and easy to edit |
 | Git and GitHub | Version history and the public portfolio |
 
@@ -134,7 +134,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 7 | **Arithmetic without code.** The financial analyst is read-only and calculates by hand. | A math slip could change a conclusion. | Show-your-work rule, independent recomputation by the verifier, automated tie-out checks on the data, key numbers kept in one dataset. |
 | 8 | **Cost and time.** Four large-context analysts per iteration. | Long or expensive runs discourage use. | Small sources, narrow follow-ups, 3-loop cap. Measured on the sample run: about 1.95 million subagent tokens and 69 minutes from plan to sign-off (iteration 1: 0.76 million tokens, 26 minutes). |
 | 9 | **Missing tools on the operator's computer** (no Python, no PDF tool). | Checks or PDFs would fail. | Standard-library-only checks, the HTML fallback for PDFs, and manual verification steps for every phase. |
-| 10 | **Simulated data is easier than reality**, and agents could be tuned to the planted issues. | The score could overstate real-world performance. | Distractors in the data, a blind answer key, and (future) a second fictional target that the instructions were never tuned on. The first test run was only partly blind (the lead agent ran in the session that built the data), so the next run happens in a fresh session. |
+| 10 | **Simulated data is easier than reality**, and agents could be tuned to the planted issues. | The score could overstate real-world performance. | Distractors in the data, a blind answer key, and (future) a second fictional target that the instructions were never tuned on. The first test run was only partly blind (the lead agent ran in the session that built the data). The fully blind run in a fresh session scored 96.2% recall on Critical and High issues and 94.4% overall, close to the sample run, which suggests the first score was not inflated. A second fictional target is still needed to test generalization. |
 | 11 | **Real client data** if the project is adapted for a live deal. | Confidentiality and data retention obligations. | Out of scope for v1. Enterprise plan, zero data retention request, read-only connectors and compliance sign-off required first. |
 | 12 | **Saved runs leak answers.** The sample run and its scorecard sit inside the project, and each new grading writes a scorecard to `evaluation/`. | A new run that read them could score well without finding anything itself, and the next grading would overwrite the last scorecard. | Claude Code asks before any agent opens `evaluation/`, `examples/` or `runs/`; `/reset-memory` moves each scorecard into its archived run; the lead agent's guardrails forbid reading them; and Phase 1 checks confirm both rules. |
 
@@ -155,6 +155,8 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Three instruction fixes from the first scorecard: list unverified findings in the report appendix, combine trend findings into one cross-source finding, and apply every verifier correction before Checkpoint 3. |
 | 2026-10-18 | The project is hosted in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`; `.gitignore` keeps `interview-notes.md` out. |
 | 2026-10-18 | `/reset-memory` moves `evaluation/scorecard.md` into the archived run, and the approval rule covers all of `evaluation/` instead of only the answer key, with an automated check. Found while preparing the blind run: a scorecard left in `evaluation/` was unguarded, and the next grading would have overwritten it. |
+| 2026-10-18 | In the blind run, the lead agent saved each analyst's and verifier's report by extracting it from the session record with a short script instead of retyping it, so the saved reports are exactly what the subagents returned. Long reports are saved by Claude Code to a file instead of shown inline, so this matters most for the longest ones. |
+| 2026-10-18 | Blind run scorecard proposes three instruction fixes (not yet applied): look up every named customer or litigant in the revenue data, verify every Medium finding the report relies on, and add a "positive and mitigating points" section to the report template, with a calibration note for debt issues cured at closing. |
 
 ## Open questions (with recommended defaults)
 

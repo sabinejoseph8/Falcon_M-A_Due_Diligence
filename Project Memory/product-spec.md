@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.4 (October 18, 2026: each run's scorecard is archived with it; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.5 (October 18, 2026: blind run graded against the success criteria; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -153,6 +153,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Time target for a full run raised from 45 to 90 minutes (success criterion 1): the first test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Faster runs are a later improvement. |
 | 2026-10-18 | The portfolio is aimed at AI product manager roles. The README, case study and interview story lead with product skills: framing the problem, specs and a phased plan, evaluation, safety and iteration. The M&A depth is the proof of domain judgment. |
 | 2026-10-18 | Each run's scorecard is archived with the run, and everything in `evaluation/` needs approval to open, so one run's grade cannot leak into the next run or be overwritten by the next grading (R19, R29). |
+| 2026-10-18 | Fully blind run graded. It meets success criteria 2 to 5: all three checkpoints held (an early "approve" was logged but not treated as sign-off), all nine report parts, 96.2% recall on Critical and High issues, 0 unsupported findings, 0 distractors too high, no source file changed. Criterion 1 (under 90 minutes) was not measured fairly: elapsed time was about 7 hours, mostly gaps between operator replies and one stalled turn, so timing needs a cleaner measurement next run. |
 
 ## Open questions (with recommended defaults)
 
