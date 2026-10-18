@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Falcon Case Study</title>
+<style>
+  @page { size: Letter; margin: 0.38in 0.5in; }
+  :root { --navy: #0B1F5C; --teal: #00B3C8; --ember: #B5491F; --gold: #E5B53C; --cream: #FFF8E6; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --mist: #F3F5F8; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0 auto; max-width: 7.5in; background: #FFFFFF; color: var(--ink); font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; font-size: 8.6pt; line-height: 1.34; }
+  h1, h2, h3 { color: var(--navy); margin: 0; line-height: 1.15; }
+  .head { border-left: 7px solid var(--navy); padding: 1pt 0 1pt 12pt; margin-bottom: 8pt; }
+  .eyebrow { font-size: 7.4pt; font-weight: 700; letter-spacing: 0.9px; text-transform: uppercase; color: var(--ember); margin-bottom: 3pt; }
+  h1 { font-size: 21pt; }
+  .sub { font-size: 11.5pt; font-weight: 600; color: var(--navy); margin: 2pt 0 5pt; }
+  .lede { font-size: 9pt; color: var(--ink); margin: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6pt; margin: 0 0 9pt; }
+  .kpi { background: var(--mist); border-top: 3px solid var(--teal); border-radius: 3px; padding: 5pt 7pt; }
+  .kpi b { display: block; font-size: 15pt; color: var(--navy); line-height: 1.05; }
+  .kpi span { display: block; font-size: 7.6pt; color: var(--muted); margin-top: 2pt; line-height: 1.25; }
+  .cols { display: grid; grid-template-columns: 1.08fr 1fr; gap: 14pt; }
+  h2 { font-size: 10.2pt; padding-bottom: 2pt; border-bottom: 1.5px solid var(--navy); margin: 0 0 4pt; }
+  section { margin-bottom: 7pt; }
+  p { margin: 0 0 4pt; }
+  ul, ol { margin: 0; padding-left: 13pt; }
+  li { margin: 0 0 2pt; }
+  strong { color: var(--navy); }
+  .figure { border: 1px solid var(--line); border-radius: 3px; padding: 4pt; margin-bottom: 7pt; }
+  .figure img { display: block; width: 100%; height: auto; }
+  .figure .cap { font-size: 7.2pt; color: var(--muted); margin-top: 2pt; }
+  .verdict { background: var(--navy); color: #FFFFFF; border-radius: 3px; padding: 6pt 8pt; margin-bottom: 5pt; font-size: 9.2pt; }
+  .verdict strong { color: #FFFFFF; }
+  .learn li::marker { color: var(--teal); }
+  .note { background: var(--cream); border-left: 3px solid var(--gold); padding: 5pt 8pt; font-size: 7.9pt; color: var(--ink); margin: 2pt 0 6pt; }
+  .foot { border-top: 1px solid var(--line); padding-top: 5pt; font-size: 7.6pt; color: var(--muted); display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+  .foot strong { color: var(--ink); }
+  code { font-family: Menlo, Consolas, monospace; font-size: 7.6pt; background: var(--mist); padding: 0 2px; border-radius: 2px; }
+  @media screen and (max-width: 700px) {
+    body { padding: 16px; font-size: 11pt; }
+    .kpis { grid-template-columns: repeat(2, 1fr); }
+    .cols, .foot { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header class="head">
+    <div class="eyebrow">Portfolio case study &middot; Fictional target &middot; October 2026</div>
+    <h1>Project Falcon</h1>
+    <div class="sub">Multi-agent M&amp;A due diligence, built in Claude Code without application code</div>
+    <p class="lede">An AI diligence team that researches an acquisition target across SEC filings, news, court records and financials, connects what no single source shows, and drafts an Investment Committee report, with people approving each stage.</p>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi"><b>13 of 13</b><span>Critical and High planted issues found</span></div>
+    <div class="kpi"><b>97%</b><span>recall on all 18 planted issues</span></div>
+    <div class="kpi"><b>0</b><span>unsupported findings in the final report</span></div>
+    <div class="kpi"><b>61</b><span>findings re-checked by an independent verifier</span></div>
+    <div class="kpi"><b>69 min</b><span>from approved plan to sign-off</span></div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <section>
+        <h2>The problem</h2>
+        <p>Diligence takes teams of associates weeks of reading filings, news, dockets and data-room financials, and the worst issues hide between sources. Autonomous agents could help, but they are the hardest AI pattern to control, so high-stakes work needs human checkpoints.</p>
+      </section>
+      <section>
+        <h2>What I built</h2>
+        <ul>
+          <li><strong>Agent Core:</strong> a lead agent (<code>CLAUDE.md</code>) running a bounded Plan, Act, Observe loop (at most three iterations).</li>
+          <li><strong>Four specialists in parallel:</strong> SEC filings, news, litigation and financials. One source each, read-only.</li>
+          <li><strong>Independent citation verifier:</strong> re-opens every cited source and recomputes the numbers behind each Critical and High finding.</li>
+          <li><strong>Working memory as plain files:</strong> plan, findings register, conflicts, run log and every unedited agent report. Fully auditable.</li>
+          <li><strong>Three human checkpoints:</strong> approve the plan, review the red flags, sign off.</li>
+          <li><strong>Testable guardrails:</strong> no web access, protected sources, a prompt-injection rule, approval to open the answer key, 34 automated checks.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Key decisions</h2>
+        <ul>
+          <li><strong>Specialists by source, not topic,</strong> so connecting sources is the lead agent's job. The Critical issues only appear there.</li>
+          <li><strong>Separation of duties:</strong> analysts cannot change anything; a separate verifier checks them, like a deal-team reviewer.</li>
+          <li><strong>Measured, not assumed:</strong> 18 planted issues, 4 distractors and an answer key the analysts and verifiers never see.</li>
+          <li><strong>Planned like a product:</strong> specs and a phased plan with tests for each phase, agreed before building.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div>
+      <div class="figure">
+        <img src="architecture.png" alt="Architecture: the Agent Core loop coordinating four specialist tools, working memory, a citation verifier and three human checkpoints, ending in the due diligence report">
+        <div class="cap">Architecture: Agent Core, four specialists, working memory, verifier and human checkpoints.</div>
+      </div>
+      <section>
+        <h2>What the system concluded</h2>
+        <div class="verdict"><strong>Proposed: do not proceed at $24.00 per share.</strong> The committee decides.</div>
+        <ol>
+          <li>The valuation used guidance the target had already replaced. At the model's own multiple, value is $12.60 to $14.50 per share.</li>
+          <li>A patent case turned against the target in July, with an injunction sought on robots behind about 42% of revenue. The next quarterly filing left the ruling out.</li>
+          <li>A customer worth 31% of revenue can leave after a change of control, and is building its own robots.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>What I learned</h2>
+        <ul class="learn">
+          <li>The verifier earned its place: 17 of 61 findings needed corrected wording before the report (one claimed 18 months of negative free cash flow; it was 12).</li>
+          <li>The scorecard pointed to three instruction fixes: low-severity findings dropping out, a trend spread over five findings, and corrections applied late. I applied all three.</li>
+          <li>The agents caught a real mistake in my own test data: a deal brief dated before the share price it quoted.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="note"><strong>How blind was the test?</strong> The analysts and verifiers never saw the answer key. The lead agent ran in the session that built the data, and I approved the checkpoints myself. Next: a blind run in a fresh session, and a second fictional target.</div>
+
+  <footer class="foot">
+    <div><strong>In the repository:</strong> README, <code>examples/sample-run/</code> (15-page report, findings register, run log, scorecard) and <code>Project Memory/</code> (specs and plan).</div>
+    <div><strong>Skills:</strong> M&amp;A diligence and AI workflow design: orchestration, human-in-the-loop controls, guardrails and evaluation. All companies, people and figures are fictional; not investment advice.</div>
+  </footer>
+</body>
+</html>

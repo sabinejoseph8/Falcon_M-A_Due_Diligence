@@ -1,0 +1,100 @@
+# Design: Project Falcon
+
+**Status:** Agreed, version 1.0 (October 18, 2026: you asked to proceed to the tech spec and progress plan).
+
+Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study). This file sets one design language for all three.
+
+## Design principles
+
+- **Evidence first.** Every claim shows where it came from: file and section, or docket date.
+- **Humans decide.** The system recommends. A person approves at every checkpoint.
+- **Bounded autonomy.** Clear stops, clear limits (3 loops), nothing hidden.
+- **Plain English.** A busy committee member understands each page in one read.
+- **Severity is not certainty.** Every finding carries both how much it matters and how sure we are.
+- **Show your work.** Calculations appear with their inputs.
+- **Audit trail by default.** Decisions live in files anyone can open, not only in chat history.
+- **One look everywhere.** The same colors, labels and terms in the diagram, report and docs.
+- **Print first.** Documents look right on paper and in black and white.
+
+## Visual design language
+
+### Color palette
+
+| Name | Hex | Used for |
+|---|---|---|
+| Falcon Navy | `#0B1F5C` | Headings, header bands, table headers, Agent Core block, bottom-line box, text on light accent colors |
+| Memory Teal | `#00B3C8` | Working Memory block, loop circles, callout borders |
+| Report Orange | `#E07B4F` | Final report block and accent fills. Text on it is always Falcon Navy (5.2:1) |
+| Ember | `#B5491F` | Orange text on white (agent names, cover subtitle, High severity). 5.3:1 on white |
+| Checkpoint Gold | `#F6C344` | Human checkpoint pills. Text on it is Falcon Navy |
+| Checkpoint Border | `#E5B53C` | Checkpoint panel border, allegation callout border |
+| Checkpoint Cream | `#FFF8E6` | Checkpoint panel and allegation callout background |
+| Ink | `#1F2430` | Body text |
+| Slate | `#4A5060` | Secondary text in the diagram |
+| Muted | `#5B6170` | Captions, small print, Low severity |
+| Line | `#D9DDE5` | Table borders and dividers |
+| Mist | `#F3F5F8` | Zebra table rows, soft panels |
+| Panel | `#EEF0F3` | Problem strip and verifier block in the diagram |
+| Haze | `#C9D3F0` | Subtitles on Falcon Navy |
+| White | `#FFFFFF` | Page background |
+
+**Severity colors** (text labels in reports; always paired with the word, never color alone):
+
+| Severity | Hex | Contrast on white |
+|---|---|---|
+| Critical | `#B42318` | 6.6:1 |
+| High | `#B5491F` (Ember) | 5.3:1 |
+| Medium | `#8A5A00` | 5.9:1 |
+| Low | `#5B6170` (Muted) | 6.2:1 |
+
+**Contrast rule:** all text meets at least 4.5:1. Never put white text on Report Orange, and never use Report Orange for text on white.
+
+### Typography
+
+- **Typeface:** Helvetica Neue, then Helvetica, then Arial, then Liberation Sans on Linux (built into every computer, prints cleanly).
+- **Monospace:** Menlo, then Consolas, for agent names, commands and file paths.
+
+| Style | Report (pt) | Diagram (px at 1400 wide) |
+|---|---|---|
+| Cover title | 28, bold | n/a |
+| Title / H1 | 20, bold | 30, bold |
+| Section / H2 | 14.5, bold, navy rule underneath | 18 to 24, bold |
+| Sub-section / H3 | 11.5, bold | 15 to 16, bold |
+| Body | 10.5, line height 1.45 | 13 to 14 |
+| Tables | 8.8 | n/a |
+| Small print, captions | 8.5 | 11 to 12.5 |
+| Code and paths | 9, monospace | 14, monospace |
+
+### Spacing, shape and depth
+
+- **Spacing:** report uses steps of 4, 7, 10, 14 and 20 pt. Page margins 0.65 in (top) and 0.7 in (sides and bottom). The diagram uses a 20 px gutter between blocks.
+- **Corner radius:** 3 px (inline code), 4 px (callouts, bottom-line box), 6 to 8 px (diagram blocks), fully rounded (checkpoint pills).
+- **Shadows:** none. Flat design prints well and stays calm.
+- **Motion:** none. Documents are static. Progress in the terminal is shown with short text updates.
+
+## Main UI components
+
+| Component | Where | States | How it behaves |
+|---|---|---|---|
+| **Command** (`/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`) | Claude Code | Ready, running, waiting for permission, error | One word starts each job. Errors say what to do next (for example "No run yet. Type /diligence first."). |
+| **Checkpoint message** | Claude Code | Waiting, approved, changes requested, skipped | Opens with "Checkpoint N of 3: name", gives a short summary and at most one table, and ends with the exact replies to type. Changes requested: the plan or draft is revised and shown again. Skipped only if the user says so, and logged. |
+| **Progress update** (loading state) | Claude Code | Working, partly reported, all reported, analyst failed | Names the specialists that are running. Reports each one as it finishes with its finding count and number of Critical items. A failed analyst is retried once, then recorded as a gap. |
+| **Red-flag table** | Checkpoint 2, report | Populated, empty | Columns: ID, Finding, Severity, Confidence. Critical first. If empty: "No Critical or High findings." |
+| **Finding card** | Analyst reports | Open, Verified, Partially verified, Rejected | Fixed field order: Finding, Evidence, Source, Severity, Confidence, Deal impact, Cross-check. Never deleted. |
+| **Findings register** | `memory/findings.md` | Empty, growing, final | One row per finding with status. Cross-source findings have their own section. |
+| **Labels** | Everywhere | n/a | Severity: Critical, High, Medium, Low (colored word). Confidence: High, Medium, Low (plain word). Claim type: Fact, Allegation, Rumor. |
+| **Cover page** | Report | n/a | Title, "Draft for Investment Committee discussion", date, "Fictional case study", preparer line. Navy bar on the left. |
+| **Bottom-line box** | Report, executive summary | n/a | Navy box with white text. One recommendation and one sentence of reasoning. |
+| **Risk matrix** | Report | n/a | ID, finding, severity, confidence, deal impact, recommended action. Repeats its header on every page. |
+| **Callout** | Report | Note, allegation | Teal border for notes. Cream background with gold border for allegations and rumors. |
+| **Key metrics table** | Report | n/a | Reported and adjusted figures side by side, with the source finding ID. |
+| **Scorecard** | `evaluation/scorecard.md` | No run, graded | Recall summary first, then one row per planted issue: Found, Partially found or Missed. |
+| **Diagram blocks** | Architecture diagram | n/a | Agent Core (navy), Working Memory (teal), Specialist card (white, navy border, Ember agent name), Verifier card (panel gray), Report block (orange, navy text), Checkpoint pill (gold), Controls band (navy). |
+
+## Screens and layouts
+
+1. **The run in Claude Code** (one scrolling conversation):
+   `/diligence` -> plan summary -> **Checkpoint 1** -> progress updates while four specialists work -> red-flag table and conflicts -> **Checkpoint 2** -> verification results and draft recommendation -> **Checkpoint 3** -> "Report saved" with file locations.
+2. **The report** (US Letter, portrait): page 1 cover; page 2 executive summary (bottom-line box, top five red flags, valuation implications); then the answers to the six committee questions, the risk matrix, workstream detail, cross-source insights, deal protections, open questions and appendix.
+3. **The architecture diagram** (`docs/architecture.png`): follows the layout of your original architecture slide. Agent Core and Working Memory on the left, the four specialist tools in the middle, the verifier and report on the right, the checkpoint lane below, and the controls band at the bottom.
+4. **The README** (GitHub, desktop and phone): one-paragraph summary, diagram, "at a glance" bullets, then detail sections. The most important information is in the first screen.

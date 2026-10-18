@@ -1,0 +1,42 @@
+/* Print-friendly style for the due diligence report. Used when converting the report to HTML and PDF. */
+@page { size: Letter; margin: 0.65in 0.7in 0.7in 0.7in; }
+:root { --navy: #0B1F5C; --teal: #00B3C8; --orange: #E07B4F; --ember: #B5491F; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --soft: #F3F5F8; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45; max-width: 7.2in; margin: 0 auto; background: #FFFFFF; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; break-after: avoid; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 14.5pt; margin: 20pt 0 6pt; padding-bottom: 4pt; border-bottom: 2px solid var(--navy); }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; }
+p { margin: 4pt 0 7pt; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+a { color: var(--navy); }
+code { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--soft); padding: 0 3px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 8.8pt; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #FFFFFF; text-align: left; font-weight: 600; padding: 4pt 5pt; }
+td { border-bottom: 1px solid var(--line); padding: 3.5pt 5pt; vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--soft); }
+blockquote { margin: 8pt 0; padding: 7pt 10pt; background: #FFF8E6; border-left: 4px solid #E5B53C; }
+blockquote p { margin: 2pt 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 14pt 0; }
+.cover { min-height: 8.6in; display: flex; flex-direction: column; justify-content: center; break-after: page; border-left: 10px solid var(--navy); padding-left: 24pt; }
+.cover h1 { font-size: 28pt; margin-bottom: 4pt; border: 0; }
+.cover .sub, .cover .sub p { font-size: 14pt; color: var(--ember); font-weight: 600; margin-bottom: 18pt; }
+.cover p { color: var(--muted); margin: 2pt 0; }
+.cover .flag, .cover .flag p { margin-top: 24pt; color: var(--navy); font-weight: 600; }
+.callout { background: var(--soft); border-left: 4px solid var(--teal); padding: 7pt 10pt; margin: 8pt 0; }
+.bottom-line { background: var(--navy); color: #FFFFFF; padding: 9pt 12pt; border-radius: 4px; margin: 8pt 0 10pt; }
+.bottom-line p, .bottom-line strong { color: #FFFFFF; }
+.page-break { break-before: page; }
+.id { white-space: nowrap; }
+table.keep { break-inside: avoid; }
+.small { font-size: 8.5pt; color: var(--muted); }
+.sev-critical { color: #B42318; font-weight: 700; }
+.sev-high { color: #B5491F; font-weight: 700; }
+.sev-medium { color: #8A5A00; font-weight: 600; }
+.sev-low { color: #5B6170; font-weight: 600; }
+.claim { font-size: 8pt; font-weight: 700; letter-spacing: 0.3px; color: var(--navy); background: #FFF8E6; border: 1px solid #E5B53C; border-radius: 3px; padding: 0 3px; }
+@media screen and (max-width: 700px) { body { font-size: 11pt; padding: 0 16px; } table { display: block; overflow-x: auto; } .cover { min-height: auto; padding: 24px 0 24px 16px; } }
