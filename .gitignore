@@ -4,3 +4,8 @@ interview-notes.md
 # Python and system files
 __pycache__/
 .DS_Store
+
+# Codex copies of this project: kept on this computer, not on GitHub
+AGENTS.md
+.agents/
+.codex/
