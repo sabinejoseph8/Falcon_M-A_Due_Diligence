@@ -1,274 +1,290 @@
+<!-- Iteration 1, saved unedited by the lead agent on 2026-10-18. -->
+
 ## News and media analyst: findings
 
-All 13 articles are fictional and were read in full. None of them contains text that tries to instruct the agents, so there is no prompt-injection finding. Where I did a calculation myself (not stated in an article), it is marked "analyst calculation".
+I read all 13 articles in `data/news/` in full, plus `data/deal-brief.md` for context. No article contains text that tries to instruct the reader or an AI (task 7). All outlets, people and figures are fictional. Paragraph numbers ("para") count body paragraphs below each article's header block.
 
 ### Files reviewed
 
-All paths are under `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/`.
+| # | File | Outlet | Date | Source reliability |
+|---|---|---|---|---|
+| 1 | `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/news/2025-11-18_capital-markets-wire_auditor-switch.md` | Capital Markets Wire | 2025-11-18 | High (it reports what a regulatory filing says) |
+| 2 | `.../data/news/2026-01-23_columbus-business-ledger_cfo-exit.md` | Columbus Business Ledger | 2026-01-23 | Medium (filing facts are High; the reason for the exit comes from 2 anonymous sources) |
+| 3 | `.../data/news/2026-02-10_warehouse-tech-review_fieldos-5-launch.md` | Warehouse Tech Review | 2026-02-10 | Medium (trade press, mostly company statements) |
+| 4 | `.../data/news/2026-03-10_capital-markets-wire_record-q4.md` | Capital Markets Wire | 2026-03-10 | High (reported results and guidance) |
+| 5 | `.../data/news/2026-03-28_columbus-business-ledger_scholarship.md` | Columbus Business Ledger | 2026-03-28 | Medium (community news) |
+| 6 | `.../data/news/2026-04-14_supply-chain-dispatch_fieldos-outage.md` | Supply Chain Dispatch | 2026-04-14 | Medium (on-record customer and company quotes; the ransomware claim is unverified) |
+| 7 | `.../data/news/2026-05-12_capital-markets-wire_short-seller-report.md` | Capital Markets Wire | 2026-05-12 | Medium (accurate reporting of the claims, but they come from an interested short seller) |
+| 8 | `.../data/news/2026-06-24_roboeconomy-weekly_norvale-buys-kinetic-aisle.md` | RoboEconomy Weekly | 2026-06-24 | Medium (on-record statements by a Norvale executive) |
+| 9 | `.../data/news/2026-07-30_columbus-business-ledger_layoffs.md` | Columbus Business Ledger | 2026-07-30 | Medium-High (based on a state notice) |
+| 10 | `.../data/news/2026-08-07_capital-markets-wire_guidance-cut.md` | Capital Markets Wire | 2026-08-07 | High (reported results, earnings call) |
+| 11 | `.../data/news/2026-08-20_warehouse-tech-review_market-report.md` | Warehouse Tech Review | 2026-08-20 | Medium (summary of a third-party research report) |
+| 12 | `.../data/news/2026-09-15_supply-chain-dispatch_lidar-tariffs.md` | Supply Chain Dispatch | 2026-09-15 | Medium (a proposal, plus one unnamed analyst's estimate) |
+| 13 | `.../data/news/2026-10-02_capital-markets-wire_sale-exploration.md` | Capital Markets Wire | 2026-10-02 | Medium-Low (anonymous "people familiar") |
 
-1. `data/news/2025-11-18_capital-markets-wire_auditor-switch.md`
-2. `data/news/2026-01-23_columbus-business-ledger_cfo-exit.md`
-3. `data/news/2026-02-10_warehouse-tech-review_fieldos-5-launch.md`
-4. `data/news/2026-03-10_capital-markets-wire_record-q4.md`
-5. `data/news/2026-03-28_columbus-business-ledger_scholarship.md`
-6. `data/news/2026-04-14_supply-chain-dispatch_fieldos-outage.md`
-7. `data/news/2026-05-12_capital-markets-wire_short-seller-report.md`
-8. `data/news/2026-06-24_roboeconomy-weekly_norvale-buys-kinetic-aisle.md`
-9. `data/news/2026-07-30_columbus-business-ledger_layoffs.md`
-10. `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`
-11. `data/news/2026-08-20_warehouse-tech-review_market-report.md`
-12. `data/news/2026-09-15_supply-chain-dispatch_lidar-tariffs.md`
-13. `data/news/2026-10-02_capital-markets-wire_sale-exploration.md`
-14. Context only: `data/deal-brief.md`
-
-**How reliable each source is:**
-- **Capital Markets Wire (5 articles):** financial wire. Earnings and filing facts are High. The October 2 sale story uses anonymous sources, so it is Low to Medium.
-- **Columbus Business Ledger (3):** local business paper. The CFO story uses anonymous sources (Low). The facts it takes from filings and state notices are High.
-- **Warehouse Tech Review (2):** trade press. Product facts are Medium to High. The market figures come from a third-party research firm (Calder Insights), so they are Medium.
-- **Supply Chain Dispatch (2):** trade press. The outlage facts are partly on record (customer COO, company spokesperson), so Medium to High. The ransomware data-theft claim was not verified by the outlet (Low). The tariff margin impact comes from one unnamed analyst (Low to Medium).
-- **RoboEconomy Weekly (1):** trade press. It quotes an on-record Norvale executive, so High for the acquisition fact.
+(All `...` paths are under `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence`.)
 
 ### Timeline
 
 | Date | Event | Outlet | Fact / Allegation / Rumor |
 |---|---|---|---|
-| Q3 2025 | The outgoing auditor flagged a material weakness in controls over certain hardware contracts | Capital Markets Wire (Nov 18, 2025) | Fact (from a filing) |
-| Nov 14, 2025 (Fri) | Filing: Talonfield replaces Hartwell & Pryce (its auditor since 2016) with Linden Barr LLP. "No disagreements." The outgoing auditor had warned of expanded Q4 audit work | Capital Markets Wire | Fact |
-| Nov 17, 2025 (Mon) | Shares close down 2.1% | Capital Markets Wire | Fact |
-| Jan 21, 2026 (Wed) | Filing: CFO Daniel Okafor resigns with a $900,000 separation payment. Controller Rachel Simmons becomes interim CFO | Columbus Business Ledger (Jan 23) | Fact |
-| Jan 23, 2026 | Two anonymous sources say the CFO left after a clash with CEO Marcus Hale over when to recognize revenue on Q4 hardware orders | Columbus Business Ledger | Rumor |
-| Feb 10, 2026 | FieldOS 5 launched. Three enterprise deals, including Harbor & Vine Grocers expanding to 12 more distribution centers. CEO targets software at more than a third of revenue | Warehouse Tech Review | Fact (management targets are claims) |
-| Mar 10, 2026 | Q4 2025 revenue $154.4m (+32%) against roughly $128m consensus. FY2025 revenue $502.3m (+19%). FY2026 guidance: revenue $555m to $565m, Adjusted EBITDA $114m to $122m. Adverse auditor opinion on internal controls. Shares +9% to $31.20 | Capital Markets Wire | Fact |
-| Mar 2026 | Investor day repeats the guidance. 52-week high of $31.75 | Capital Markets Wire (Mar 10, May 12) | Fact |
-| Mar 27, 2026 (Fri) | Five-year scholarship program worth about $1.5m. About 1,450 employees | Columbus Business Ledger (Mar 28) | Fact |
-| About Apr 11 to 14, 2026 | FieldOS cloud partly taken offline after "unauthorized activity". Robots stopped at 40 or more sites for up to 3 days | Supply Chain Dispatch (Apr 14) | Fact (company and customer on record) |
-| Apr 12, 2026 (Sun) | A ransomware group claims it took fleet configuration and customer site data | Supply Chain Dispatch | Rumor (not verified) |
-| Apr 14, 2026 | Systems restored. No Form 8-K under Item 1.05. Company says the incident is "not material" | Supply Chain Dispatch | Fact |
-| May 12, 2026 | Greyfin Research short report, "Holding the Bag", alleges bill-and-hold abuse. Shares -18% to $19.85 | Capital Markets Wire | Allegation (the price move is fact) |
-| Jun 24, 2026 | Norvale (Talonfield's largest customer) acquires Kinetic Aisle and plans pilots at 5 distribution centers in 2027. Shares -6% | RoboEconomy Weekly | Fact |
-| Jul 30, 2026 | State notice of about 60 job cuts (4%). This is the 4th restructuring since 2022 | Columbus Business Ledger | Fact |
-| Aug 7, 2026 | Q2 revenue -4% to $112.9m, including a $9.4m credit for returned bill-and-hold robots and $2.3m of outage credits. FY2026 guidance cut to revenue $470m to $490m and Adjusted EBITDA $70m to $78m. Two downgrades. Shares -14% to $16.40 | Capital Markets Wire | Fact |
-| Aug 20, 2026 | Calder Insights: North American warehouse AMR market to grow about 15% a year through 2030. Talonfield is #3 with about 11% share | Warehouse Tech Review | Fact (third-party estimate) |
-| Sep 15, 2026 | Proposal to raise the tariff on Chinese LiDAR modules from 7.5% to 25%, with a decision expected in Q1 2027. Talonfield uses a single Chinese supplier | Supply Chain Dispatch | Fact (the proposal). Margin impact is one analyst's estimate |
-| Oct 2, 2026 | Anonymous sources say Talonfield has hired advisers to explore a sale, with Arbelion and two private equity firms interested. Shares +12% to $17.20. Company declined to comment | Capital Markets Wire | Rumor |
-| Oct 16, 2026 | Close of $17.85, the reference price for the $24.00 offer | Deal brief | Fact |
+| Nov 2025 (week before Nov 18; filed "Friday") | Auditor Hartwell & Pryce (auditor since 2016) replaced by Linden Barr LLP. The filing says there were no disagreements. The outgoing auditor had flagged a Q3 material weakness and planned expanded Q4 work. | Capital Markets Wire | Fact (from the filing) |
+| 2025-11-17 (Monday) | Shares close down 2.1% | Capital Markets Wire | Fact |
+| Jan 2026 (filing on Wednesday before Jan 23) | CFO Daniel Okafor resigns. The filing says "not the result of any disagreement". He receives a $900,000 separation payment. Controller Rachel Simmons becomes interim CFO. | Columbus Business Ledger | Fact |
+| 2026-01-23 | Report that the exit followed a clash with CEO Marcus Hale over the timing of revenue on Q4 hardware orders | Columbus Business Ledger | Rumor (2 anonymous sources) |
+| 2026-02-10 | FieldOS 5 launched. Harbor & Vine Grocers expands to 12 more DCs; 2 other unnamed customers sign. New features need Gen-3 or newer robots. | Warehouse Tech Review | Fact (company statements) |
+| 2026-03-10 | Q4 2025 revenue $154.4m (+32%, consensus about $128m). FY2025 revenue $502.3m (+19%). FY2026 guidance: revenue $555m to $565m, Adj. EBITDA $114m to $122m, repeated at investor day. Shares +9% to $31.20. New auditor gives an adverse opinion on internal controls. | Capital Markets Wire | Fact |
+| 2026-03-10 | An analyst says receivables jumped and FY2025 operating cash flow was under $10m | Capital Markets Wire | Fact as reported (unnamed analyst; check against the 10-K) |
+| March 2026 | 52-week high of $31.75 | Capital Markets Wire (May 12) | Fact |
+| 2026-03-28 | $1.5m scholarship program; about 1,450 employees | Columbus Business Ledger | Fact |
+| About Apr 11 to 14, 2026 | FieldOS cloud partly taken offline after "unauthorized activity". At least 40 customer sites down for up to 3 days. Restored by Apr 14. | Supply Chain Dispatch | Fact (company and customer statements) |
+| Sunday before Apr 14 | Ransomware group claims it took "fleet configuration and customer site data" | Supply Chain Dispatch | Rumor (unverified) |
+| As of Apr 14, 2026 | No Form 8-K under Item 1.05. Company says the incident is "not material". | Supply Chain Dispatch | Fact |
+| 2026-05-12 | Greyfin Research short report, "Holding the Bag", on bill-and-hold sales. Shares -18% to $19.85. | Capital Markets Wire | Allegation (price move is Fact) |
+| 2026-06-24 | Norvale Retail Group (Talonfield's largest customer) buys robot startup Kinetic Aisle and plans a 2027 pilot at 5 DCs. Shares -6%. | RoboEconomy Weekly | Fact |
+| 2026-07-30 | About 60 jobs cut (4%), the 4th restructuring since 2022. Costs excluded from Adj. EBITDA each year. | Columbus Business Ledger | Fact (state notice) |
+| 2026-08-07 | FY2026 guidance cut to revenue $470m to $490m and Adj. EBITDA $70m to $78m. Q2 revenue $112.9m (-4%), including a $9.4m bill-and-hold return credit and $2.3m of outage credits. Two brokers downgrade. Shares -14% to $16.40. | Capital Markets Wire | Fact |
+| 2026-08-20 | Calder Insights: NA warehouse AMR market growing about 15% a year to 2030. Talonfield is #3 with about 11% share, behind Vantor Robotics and one other. Retailers are moving in-house. | Warehouse Tech Review | Fact (third-party research) |
+| 2026-09-15 | Proposed LiDAR tariff rise from 7.5% to 25% on Chinese imports, decision expected Q1 2027. Talonfield uses a single Chinese supplier. Analyst estimates a 2 to 3 point hit to hardware gross margin. | Supply Chain Dispatch | Fact (the proposal); analyst estimate (not confirmed) |
+| 2026-10-02 | Talonfield hires advisers to explore a sale. Arbelion and 2 PE firms are interested. Shares +12% to $17.20. Company declines to comment. | Capital Markets Wire | Rumor (anonymous sources) |
 
 ### Findings
 
-#### NEWS-01: The March 2026 management case in the deal model is out of date
-- **Finding:** On August 7, 2026 the company cut FY2026 guidance to revenue of $470m to $490m (midpoint $480.0m) and Adjusted EBITDA of $70m to $78m (midpoint $74.0m). The deal model still uses $560.0m and $118.0m. Analyst calculation: revenue is 14.3% below the model and Adjusted EBITDA is 37.3% below. At the revenue midpoint, FY2026 would also be 4.4% below FY2025 revenue of $502.3m.
-- **Evidence:** "cut its 2026 revenue outlook to $470 million to $490 million, from $555 million to $565 million" and "2026 is a reset year," said interim CFO Rachel Simmons.
-- **Source:** `data/news/2026-08-07_capital-markets-wire_guidance-cut.md` (Capital Markets Wire, Aug 7, 2026), paragraphs 1 and 3. The original guidance is in `data/news/2026-03-10_capital-markets-wire_record-q4.md`, paragraph 2.
-- **Claim type:** Fact (company guidance, on the record)
-- **Severity:** Critical. Analyst calculation: if the 11.5x multiple implied in the deal model (EV of about $1,357.0m on $118.0m) is applied to the new guidance midpoint, the effective multiple becomes about 18.3x.
-- **Confidence:** High. These are the company's own guidance figures and the interim CFO's on-record quote.
-- **Deal impact:** Valuation. The deal model must be rebuilt.
-- **Cross-check:** The Q2 2026 10-Q and the earnings release 8-K (Item 2.02) should show the guidance and Q2 revenue of $112.9m. Financial data should show the H1 2026 run rate and the bridge from the old guidance to the new.
+#### NEWS-001: The deal model's management case is out of date: FY2026 guidance was cut by about 14% (revenue) and 37% (EBITDA)
+- **Finding:** On Aug 7, 2026 Talonfield cut FY2026 guidance to revenue of $470.0m to $490.0m (from $555.0m to $565.0m) and Adj. EBITDA to $70.0m to $78.0m (from $114.0m to $122.0m). The deal model (v3, Sept 2026) still uses the March investor day case of $560.0m and $118.0m.
+- **What the numbers mean (my calculations):**
+  - The new revenue midpoint of $480.0m is 14.3% below $560.0m.
+  - The new EBITDA midpoint of $74.0m is 37.3% below $118.0m.
+  - The new revenue range is 2.4% to 6.4% below FY2025 actual revenue of $502.3m, so revenue is now expected to fall.
+  - The brief's "about 11.5x" on $118.0m implies an EV of about $1,357.0m. That EV on $74.0m is about 18.3x (approximate, because 11.5x is rounded).
+- **Evidence:** "cut its 2026 revenue outlook to $470 million to $490 million, from $555 million to $565 million"; interim CFO: "2026 is a reset year."
+- **Source:** `data/news/2026-08-07_capital-markets-wire_guidance-cut.md` para 1 and 3; original guidance in `data/news/2026-03-10_capital-markets-wire_record-q4.md` para 2
+- **Claim type:** Fact
+- **Severity:** Critical (changes value by more than 10%)
+- **Confidence:** High. These are reported company results and guidance. Reliability is High.
+- **Deal impact:** Valuation (the price basis is stale), and the IC answer to Q1.
+- **Cross-check:** Q2 2026 10-Q and the 8-K earnings release for the new guidance. Financial data for H1 2026 actuals and the run-rate. Confirm whether the deal model was ever updated after Aug 7.
 
-#### NEWS-02: Bill-and-hold revenue: the short seller's allegations are now partly confirmed by a customer return
-- **Finding:** Greyfin, which is short the stock, alleged that Q4 2025 revenue was inflated through bill-and-hold sales. Talonfield rejected the report. Three months later, the company itself booked a $9.4m credit because a customer returned robots sold under a bill-and-hold arrangement in late 2025. That partly confirms the core allegation.
-- **Evidence:** The Greyfin allegations (labeled as allegations): "'Hundreds' of robots booked as fourth-quarter sales were still sitting in Talonfield's Columbus warehouse in February 2026". The largest customer "did not ask for the bill-and-hold arrangement". Without these sales Talonfield "would have missed the revenue target in its executive bonus plan." Company response: "misleading and inaccurate" and its accounting "complies with GAAP and was reviewed by our independent auditor." Later fact: "a $9.4 million credit after a customer returned robots that had been sold under a bill-and-hold arrangement in late 2025."
-- **Source:** `data/news/2026-05-12_capital-markets-wire_short-seller-report.md` (Capital Markets Wire, May 12, 2026), bullets 1 to 3 and paragraph 3. `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`, paragraph 2.
-- **Claim type:**
-  - Greyfin's three claims are Allegations.
-  - The $9.4m return is Fact.
-  - Whether the returning customer was Norvale is not found in news coverage.
-- **Severity:** Critical. This touches FY2025 revenue quality, possible restatement, bonus-driven incentives and securities litigation risk.
-- **Confidence:**
-  - Medium that bill-and-hold sales were material and at least partly reversed (company-confirmed return).
-  - Low for the specific claims: "hundreds" of units, that the customer did not request the arrangement, and the bonus-target link.
-- **Deal impact:** Valuation (the FY2025 base), closing risk (restatement or an SEC inquiry), post-closing (litigation), and reputation.
+#### NEWS-002: Short seller Greyfin alleges bill-and-hold sales were used to hit 2025 revenue and bonus targets
+- **Finding:** Greyfin Research, which is short the stock, makes three allegations:
+  1. "Hundreds" of robots booked as Q4 2025 sales were still in Talonfield's Columbus warehouse in Feb 2026 (based on photos and 2 former warehouse staff).
+  2. The largest customer did not ask for the bill-and-hold arrangement (based on 1 former sales employee).
+  3. Without these sales, Talonfield would have missed its executive bonus revenue target.
+  Talonfield denies the claims.
+- **Evidence:** alleged "that the company used bill-and-hold arrangements to meet its 2025 revenue targets". Company response: "misleading and inaccurate"; revenue recognition "complies with GAAP and was reviewed by our independent auditor."
+- **Source:** `data/news/2026-05-12_capital-markets-wire_short-seller-report.md` para 1 to 3
+- **Claim type:** Allegation (from an interested short seller)
+- **Severity:** Critical (if true, it means 2025 revenue may need restating, the growth base is inflated, there may be securities claims, and management integrity is in question)
+- **Confidence:** Medium. It is an allegation, but several other facts in the news corroborate it in part:
+  - The Aug 7 article confirms a $9.4m credit "after a customer returned robots that had been sold under a bill-and-hold arrangement in late 2025" (Fact). This confirms that bill-and-hold sales existed and at least one was reversed.
+  - The Q4 2025 revenue beat was large: $154.4m against about $128m expected. Receivables "jumped" and FY2025 operating cash flow was "under $10 million" (NEWS-004).
+  - The outgoing auditor's material weakness was in "certain hardware contracts", and it planned expanded work on "fourth-quarter deals with unusual delivery terms" (NEWS-003).
+  - The CFO exit was reportedly over the timing of revenue on Q4 hardware orders (NEWS-005, Rumor).
+  - Not corroborated in the news: the photos, the claim that the customer did not ask for the arrangement, and the bonus-plan claim. Nothing in the news contradicts them except the company's denial.
+- **Deal impact:** Valuation, reputation, post-closing (restatement, SEC inquiry, shareholder litigation), and possibly closing risk.
 - **Cross-check:**
-  - 10-K revenue recognition note: bill-and-hold criteria and the amount recognized in Q4 2025.
-  - 10-Q for Q2 2026: the return or credit, and whether any restatement is being considered.
-  - Proxy: the bonus plan revenue target compared with actual FY2025 revenue of $502.3m.
-  - Financial data: Q4 receivables, inventory held for customers, and Q4 revenue by customer.
+  - 10-K: revenue recognition policy, any bill-and-hold disclosure, the Q4 2025 receivables and inventory movement, and the material weakness description.
+  - Proxy statement: the 2025 bonus plan revenue target compared with actual revenue of $502.3m.
+  - 10-Q for Q2 2026: the $9.4m return and which customer made it.
   - Court records: any securities class action filed after May 12.
+  - Financial data: customer-level Q4 2025 revenue and AR aging.
 
-#### NEWS-03: Auditor switch timed around a material weakness and expanded Q4 audit work
-- **Finding:** Six weeks before year-end, Talonfield replaced its auditor of almost ten years with a small regional firm. This came after the outgoing auditor flagged a material weakness over hardware contracts and warned it would expand its testing of Q4 deals with unusual delivery terms. The new auditor later gave an adverse opinion on internal controls.
-- **Evidence:** The outgoing auditor "had warned that it would need to expand its audit work on fourth-quarter deals with unusual delivery terms." The company's response: "a routine review to find the best fit for a growing company." The new auditor "issued an adverse opinion on internal controls."
-- **Source:** `data/news/2025-11-18_capital-markets-wire_auditor-switch.md` (Capital Markets Wire, Nov 18, 2025), paragraphs 2 and 4. `data/news/2026-03-10_capital-markets-wire_record-q4.md`, paragraph 5.
-- **Claim type:**
-  - Fact: the switch, the material weakness, the warning about expanded work, and the adverse opinion (all reported from filings).
-  - Commentary: the reason the company avoided the expanded procedures is a professor's inference.
-- **Severity:** High
-- **Confidence:** High. These facts come from regulatory filings as reported.
-- **Deal impact:** Closing risk (quality of financial statements), post-closing (fixing the controls), and the need for a reps-and-warranties and indemnity package.
+#### NEWS-003: Auditor switched in mid-November 2025 after the old auditor flagged a material weakness; the new auditor issued an adverse ICFR opinion
+- **Finding:** Talonfield replaced Hartwell & Pryce (auditor since 2016) with Linden Barr LLP, a small Cleveland firm with fewer than 10 public audit clients. The switch came just after the outgoing auditor flagged a Q3 2025 material weakness over hardware contracts and warned of expanded Q4 procedures. Linden Barr later issued an adverse opinion on internal controls.
+- **Evidence:** the outgoing auditor "had flagged a 'material weakness' in controls over certain hardware contracts". An accounting professor said: "Investors will want to know why the company did not want the expanded procedures." Company: "a routine review to find the best fit for a growing company."
+- **Source:** `data/news/2025-11-18_capital-markets-wire_auditor-switch.md` para 1 to 4; `data/news/2026-03-10_capital-markets-wire_record-q4.md` para 5
+- **Claim type:** Fact (the switch, the weakness, the adverse opinion); the professor's comment is opinion
+- **Severity:** High (governance and internal control concern that needs specific protections, and it supports NEWS-002)
+- **Confidence:** High. Reported from regulatory filings.
+- **Deal impact:** Valuation and post-closing (control remediation cost, reliability of the financials), and the IC answer to Q5.
 - **Cross-check:**
-  - The 8-K Item 4.01 and the outgoing auditor's Exhibit 16 letter.
-  - The 10-K Item 9A and the auditor's ICFR report.
-  - Whether the Q3 2025 10-Q disclosed the weakness.
-  - The fact that the "unusual delivery terms" the auditor flagged are what Greyfin alleged (NEWS-02) should be checked against the 10-K revenue note.
+  - 8-K Item 4.01 and the auditor's response letter (Exhibit 16).
+  - 10-K Item 9A and the ICFR report.
+  - Whether the material weakness has been remediated in the 2026 10-Qs.
+  - Audit fees in the proxy statement.
 
-#### NEWS-04: CFO exit reportedly linked to a revenue timing dispute, plus an unusual $900,000 payment
-- **Finding:** Two anonymous sources say CFO Daniel Okafor resigned after disagreeing with CEO Marcus Hale over recognizing Q4 hardware revenue before delivery. The company's filing says there was no disagreement. A $900,000 separation payment on a voluntary resignation is unusual. The interim CFO is the former controller and was still interim as of August 7.
-- **Evidence:** Okafor argued that revenue "should not be recognized until the robots were delivered to customer sites in 2026." The second source said the dispute was "about timing, not about whether the orders were real." The company says the departure "was not the result of any disagreement with the Company."
-- **Source:** `data/news/2026-01-23_columbus-business-ledger_cfo-exit.md` (Columbus Business Ledger, Jan 23, 2026), paragraphs 1 to 4. Interim status as of August: `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`, paragraph 3.
-- **Claim type:**
-  - Rumor: the reason for the exit.
-  - Fact: the resignation, the $900,000 payment, the interim appointment, and the company's denial.
-- **Severity:** High. If true, it points to management override on revenue recognition. It is consistent with NEWS-02 and NEWS-03.
-- **Confidence:** Low for the cause, because the sources are anonymous and the company denies it. However, the pattern is consistent with three separate on-record facts: the auditor's warning, the adverse opinion, and the returned bill-and-hold robots. High for the payment and the interim appointment.
-- **Deal impact:** Closing risk, governance, post-closing (finance leadership gap), and reputation.
-- **Cross-check:**
-  - The 8-K Item 5.02 and the separation agreement exhibit (terms, release of claims, non-disparagement or cooperation clauses).
-  - Audit committee minutes.
-  - Any whistleblower or SEC inquiry disclosure in the 10-Q or 10-K.
-  - Court records: any claim involving Okafor.
-
-#### NEWS-05: Largest customer Norvale is moving to build its own robots
-- **Finding:** Norvale Retail Group, named as Talonfield's largest customer, bought robotics startup Kinetic Aisle explicitly to cut its dependence on outside vendors. It plans pilots at five distribution centers in 2027. Its comment on future Talonfield purchases did not commit to anything. The industry research firm says large retailers increasingly build robots in-house.
-- **Evidence:** "We want to own more of our automation stack and reduce our dependence on any single vendor." Norvale will "continue to work with existing partners while we evaluate the right long-term mix."
-- **Source:**
-  - `data/news/2026-06-24_roboeconomy-weekly_norvale-buys-kinetic-aisle.md` (RoboEconomy Weekly, Jun 24, 2026), paragraphs 2 and 3.
-  - `data/news/2026-08-20_warehouse-tech-review_market-report.md`, paragraph 2.
-- **Claim type:** Fact (on-record Norvale executive). The revenue impact is inference.
-- **Severity:** High. It could become Critical depending on Norvale's share of revenue, which is not found in news coverage.
-- **Confidence:** High for the acquisition and its stated intent. Medium for the impact on Talonfield revenue, which is likely from 2027 but not quantified.
-- **Deal impact:** Valuation (outer-year revenue), post-closing (customer retention), and possibly a closing condition or earn-out tied to the Norvale contract.
-- **Cross-check:**
-  - 10-K concentration disclosure (Norvale's percentage of revenue and receivables).
-  - Material contracts: Norvale agreement term, renewal date, exclusivity, minimum commitments, change-of-control clauses.
-  - Financial data: Norvale revenue and backlog trend in 2026.
-  - Whether the August 7 guidance cut cites Norvale.
-
-#### NEWS-06: FieldOS ransomware incident with no Item 1.05 8-K and customer credits
-- **Finding:** Robots at 40 or more customer sites stopped for up to three days. A ransomware group claimed data theft, which the company denies. Talonfield decided the incident was not material and filed no Item 1.05 8-K. Q2 then included $2.3m of outage credits to customers, and a named customer is "reviewing our options".
-- **Evidence:**
-  - The company described the incident as "unauthorized activity."
-  - The ransomware group claimed it had taken "fleet configuration and customer site data" (not verified).
-  - Pinecrest's COO: "We are reviewing our options."
-  - The company "determined that the incident is not material." It also "had found no evidence that customer data was taken."
-- **Source:**
-  - `data/news/2026-04-14_supply-chain-dispatch_fieldos-outage.md` (Supply Chain Dispatch, Apr 14, 2026), paragraphs 1 to 5.
-  - The credits: `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`, paragraph 2.
-- **Claim type:**
-  - Fact: the outage, its scope, the restoration, the absence of an 8-K, and the credits.
-  - Rumor: the data theft (unverified claim by the attacker).
-  - Allegation risk: the Pinecrest dispute.
-- **Severity:** High. The risks are a disclosure-compliance question (an SEC cyber rule exposure), possible customer claims, a data-breach liability if the theft claim is true, and damage to FieldOS's reputation as the "differentiator".
-- **Confidence:** High for the operational facts. Low for the data theft.
-- **Deal impact:** Post-closing (cyber remediation, customer claims), indemnity, and reputation.
-- **Cross-check:**
-  - 8-K filings around April 2026 (Items 1.05, 8.01 or 7.01).
-  - 10-Q risk factors and Item 1C cybersecurity disclosure.
-  - Court records: a Pinecrest suit or other customer claims, and any data-breach class action.
-  - Financial data: the $2.3m of credits, any further credits, and churn among FieldOS subscribers.
-  - Forensic report and cyber insurance claim (management request).
-
-#### NEWS-07: The quality of the Q4 2025 "record" quarter was questioned when it was reported
-- **Finding:** Q4 2025 revenue of $154.4m beat consensus by about $26m. Yet receivables jumped and full-year operating cash flow was below $10m. Analyst calculation: Q4 is about 30.7% of FY2025 revenue, and revenue for Q1 to Q3 2025 was about $347.9m in total. Q2 2026 revenue of $112.9m is 26.9% below Q4 2025.
+#### NEWS-004: Q4 2025 "record" quarter came with weak cash conversion
+- **Finding:** Q4 2025 revenue of $154.4m was 30.7% of FY2025 revenue ($502.3m) and beat expectations by about $26.4m. One analyst flagged that receivables "jumped" and FY2025 operating cash flow was under $10m.
+- **My calculations from reported growth rates (approximate):**
+  - Q4 2024 was about $117.0m, so Q4 2025 added about $37.4m year on year.
+  - FY2024 was about $422.1m.
+  - Q1 to Q3 2025 grew only about 14.0% ($347.9m against about $305.1m).
 - **Evidence:** "Receivables jumped and operating cash flow fell to under $10 million for the year."
-- **Source:** `data/news/2026-03-10_capital-markets-wire_record-q4.md` (Capital Markets Wire, Mar 10, 2026), paragraphs 1 and 4. `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`, paragraph 2.
-- **Claim type:**
-  - Fact: the revenue figures.
-  - Analyst commentary: the receivables and cash flow observation. It is consistent with the bill-and-hold pattern but not yet confirmed.
+- **Source:** `data/news/2026-03-10_capital-markets-wire_record-q4.md` para 1 and 4
+- **Claim type:** Fact (results); the cash flow and receivables points are from an unnamed analyst note
 - **Severity:** High
-- **Confidence:** Medium. It comes from one anonymous analyst note and needs the cash flow statement to confirm it.
-- **Deal impact:** Valuation (sustainable revenue base and working capital adjustment).
-- **Cross-check:**
-  - 10-K cash flow statement and receivables, including days sales outstanding (DSO).
-  - Financial data: quarterly revenue, Q4 receivables by customer, and how much of Q4 receivables was collected in H1 2026.
+- **Confidence:** Medium. The headline results are reported facts. The cash flow and receivables points come from a single unnamed analyst.
+- **Deal impact:** Valuation (quality of earnings), and the IC answer to Q1.
+- **Cross-check:** 10-K cash flow statement and balance sheet (AR, DSO, contract assets, inventory); the quarterly revenue split in the financial data.
 
-#### NEWS-08: Recurring "one-off" restructuring flatters Adjusted EBITDA
-- **Finding:** The July 2026 cuts of about 60 jobs (4%) are the fourth restructuring since 2022. Each time, the costs were excluded from Adjusted EBITDA. The spokesperson's wording ("near-term demand") also points to weaker demand.
-- **Evidence:** "It is the company's fourth restructuring program since 2022. Each year the company has excluded restructuring costs from its Adjusted EBITDA as 'not part of ongoing operations.'"
-- **Source:** `data/news/2026-07-30_columbus-business-ledger_layoffs.md` (Columbus Business Ledger, Jul 30, 2026), paragraphs 1 to 3.
-- **Claim type:** Fact. The cuts come from a state notice and the historical pattern is reported.
-- **Severity:** Medium. Adjusted EBITDA should be normalized for recurring restructuring costs. The amounts are not found in news coverage.
-- **Confidence:** High for the facts. The dollar amounts are not reported.
-- **Deal impact:** Valuation (quality of EBITDA, the multiple applied).
+#### NEWS-005: CFO resigned with a $900,000 payment; anonymous sources tie the exit to a dispute over revenue timing
+- **Finding:** CFO Daniel Okafor resigned in January 2026. The filing says there was no disagreement, but he received a $900,000 separation payment, which consultants said is uncommon for a voluntary resignation. Two anonymous sources say he clashed with CEO Marcus Hale over recognizing Q4 hardware revenue before delivery. Controller Rachel Simmons is interim CFO and was still interim as of Aug 7, 2026.
+- **Evidence:** Okafor "had argued that revenue on some orders should not be recognized until the robots were delivered to customer sites in 2026". Company filing: departure "was not the result of any disagreement with the Company."
+- **Source:** `data/news/2026-01-23_columbus-business-ledger_cfo-exit.md` para 1 to 4; `data/news/2026-08-07_capital-markets-wire_guidance-cut.md` para 3
+- **Claim type:** Fact (resignation, payment, interim CFO, company statement); Rumor (the reason for the dispute)
+- **Severity:** High
+- **Confidence:**
+  - High for the facts.
+  - Low for the reason, which comes from anonymous sources. It is consistent with NEWS-002 and NEWS-003 but not confirmed by them.
+- **Deal impact:** Reputation, post-closing (finance leadership gap), and closing risk if a restatement follows.
 - **Cross-check:**
-  - 10-K and 10-Q non-GAAP reconciliations from 2022 to 2026 (restructuring add-backs by year).
-  - Financial data: restructuring cash costs.
-  - State WARN notice details.
+  - 8-K Item 5.02 and the separation agreement exhibit (release terms, any non-disparagement or cooperation clauses).
+  - Whether the separation payment was contractual.
+  - Court records for any whistleblower or employment claim by Okafor.
+  - The proxy statement.
 
-#### NEWS-09: Proposed LiDAR tariff, with all LiDAR from a single Chinese supplier
-- **Finding:** The proposed increase from 7.5% to 25% would be decided in Q1 2027, which is likely after closing. Talonfield buys all of its LiDAR from one Chinese supplier. Qualifying a new supplier takes 12 to 18 months. One analyst estimates a hardware gross margin hit of 2 to 3 percentage points.
-- **Evidence:** "buys all of its LiDAR sensors from a single supplier in China, could see its hardware gross margin fall by two to three percentage points."
-- **Source:** `data/news/2026-09-15_supply-chain-dispatch_lidar-tariffs.md` (Supply Chain Dispatch, Sep 15, 2026), paragraphs 1 to 3.
-- **Claim type:**
-  - Fact: the proposal.
-  - Analyst estimate (single source): the margin impact.
-  - Reported, not confirmed by the company: the single-supplier dependence.
+#### NEWS-006: Cyber incident and FieldOS outage hit at least 40 customer sites; no 8-K Item 1.05 was filed
+- **Finding:** After "unauthorized activity", Talonfield took parts of FieldOS offline. Robots at at least 40 customer sites stopped for up to 3 days. A ransomware group claimed it stole data (unverified). Talonfield says no customer data was taken and the incident was "not material", so it filed no 8-K Item 1.05. However, Q2 2026 revenue then included $2.3m of outage credits to customers.
+- **Evidence:** customer Pinecrest Distribution: "We had to go back to manual picking for three days... We are reviewing our options." Company: management "determined that the incident is not material."
+- **Source:** `data/news/2026-04-14_supply-chain-dispatch_fieldos-outage.md` para 1 to 5; `data/news/2026-08-07_capital-markets-wire_guidance-cut.md` para 2
+- **Claim type:** Fact (outage, site count, credits, no 8-K as of Apr 14); Rumor (data theft claim by the ransomware group)
+- **Severity:** High. Possible disclosure gap, customer churn risk, cyber liability, and risk that the platform at the core of the software growth story is not robust.
+- **Confidence:** Medium. The outage and the credits are confirmed by two outlets. The data theft is unverified.
+- **Deal impact:** Post-closing (cyber remediation, customer claims), reputation, and possible SEC disclosure exposure.
+- **Cross-check:**
+  - Any later 8-K Item 1.05 or 10-Q risk factor and cyber disclosure.
+  - 10-K Item 1C.
+  - Court records for customer suits (Pinecrest) or data breach claims.
+  - Financial data on Pinecrest revenue and churn.
+  - Cyber insurance coverage.
+
+#### NEWS-007: Largest customer Norvale is building its own robots in-house
+- **Finding:** Norvale Retail Group, described as Talonfield's largest customer, bought warehouse robot startup Kinetic Aisle. It plans to pilot those robots at 5 distribution centers in 2027 and wants to reduce its "dependence on any single vendor". Shares fell 6%. Calder Insights (NEWS-011) separately warns that large retailers are increasingly building robots in-house.
+- **Evidence:** Norvale SVP: "We want to own more of our automation stack and reduce our dependence on any single vendor"; it would "continue to work with existing partners while we evaluate the right long-term mix."
+- **Source:** `data/news/2026-06-24_roboeconomy-weekly_norvale-buys-kinetic-aisle.md` para 1 to 4; `data/news/2026-08-20_warehouse-tech-review_market-report.md` para 2
+- **Claim type:** Fact (on-record statement by a Norvale executive)
+- **Severity:** High (possibly Critical, depending on Norvale's share of revenue)
+- **Confidence:** High for the acquisition and the stated intent. Medium for the effect on Talonfield revenue, which is not quantified in the news.
+- **Deal impact:** Valuation (revenue at risk from 2027) and the IC answer to Q3. Ties to NEWS-002, because Greyfin's claim about the "largest customer" may refer to Norvale. The news does not say which customer returned the $9.4m of robots.
+- **Cross-check:**
+  - `revenue_by_customer.csv`: Norvale's rank and revenue amount, and whether Norvale's Q4 2025 revenue spiked.
+  - 10-K concentration disclosure (customers over 10% of revenue).
+  - Norvale contract terms (term, minimum volumes, termination rights, change-of-control clauses).
+
+#### NEWS-008: Repeated restructurings excluded from Adjusted EBITDA
+- **Finding:** The July 2026 cut of about 60 jobs (4% of the workforce, mostly hardware assembly and field services) is the 4th restructuring since 2022. Restructuring costs are excluded from Adj. EBITDA every year. This means Adj. EBITDA may overstate recurring profit. The cut is consistent with about 1,450 employees.
+- **Evidence:** costs excluded "as 'not part of ongoing operations.'" Company: cuts "align our cost base with near-term demand."
+- **Source:** `data/news/2026-07-30_columbus-business-ledger_layoffs.md` para 1 to 3; headcount from `data/news/2026-03-28_columbus-business-ledger_scholarship.md` para 2
+- **Claim type:** Fact
 - **Severity:** Medium
-- **Confidence:** Medium. One trade outlet, an unnamed analyst, and no company comment.
-- **Deal impact:** Valuation (hardware margins) and post-closing (supply chain resilience plan).
-- **Cross-check:**
-  - 10-K risk factors and supplier concentration disclosure.
-  - Financial data: LiDAR cost per unit, hardware revenue and gross margin, so the 2 to 3 point estimate can be recomputed.
-  - Supply contract terms (management request).
+- **Confidence:** High (based on a state WARN-type notice)
+- **Deal impact:** Valuation (EBITDA quality and the multiple), and synergy planning (the $35.0m synergy case may overlap with cuts Talonfield has already made).
+- **Cross-check:** The non-GAAP reconciliation in the 10-K and 10-Qs (restructuring add-backs by year); the financial data's Adj. EBITDA bridge.
 
-#### NEWS-10: Talonfield is shrinking while its market grows about 15% a year
-- **Finding:** Calder Insights expects the North American warehouse AMR market to grow about 15% a year through 2030, with Talonfield #3 at about 11% share. Talonfield's own FY2026 guidance implies a decline of about 4.4% at the midpoint (analyst calculation). That points to share loss or company-specific problems rather than a weak market. FY2025 growth of 19% was only modestly above the market, and it depended on the disputed Q4.
-- **Evidence:** The market will "grow about 15% a year through 2030." FieldOS "remains a differentiator," but "large retailers are increasingly developing robots in-house."
-- **Source:** `data/news/2026-08-20_warehouse-tech-review_market-report.md` (Warehouse Tech Review, Aug 20, 2026), paragraphs 1 and 2. `data/news/2026-08-07_capital-markets-wire_guidance-cut.md`, paragraph 1.
-- **Claim type:** Fact (a third-party research estimate)
-- **Severity:** Medium. It supports IC question 1 (revenue growth is not keeping pace with the market).
-- **Confidence:** Medium. Single research firm. The methodology is not reported.
-- **Deal impact:** Valuation (growth assumptions) and the strategic rationale.
-- **Cross-check:** Financial data on revenue by segment. The 10-K competition section. Market share claims in the March 2026 investor day materials.
-
-#### NEWS-11: The quoted 34% premium is measured against a price already lifted by sale rumors
-- **Finding:** The share price rose 12% to $17.20 on the October 2 sale rumor that named Arbelion. Analyst calculation: the price before the rumor was about $15.36, so $24.00 is about a 56% premium to the undisturbed price. It is also 24.4% below the March high of $31.75. A leak naming the buyer is also a confidentiality concern.
-- **Evidence:** "Arbelion Industries and two private equity firms are among the parties that have expressed interest" and "shares rose 12% to $17.20 on the report."
-- **Source:** `data/news/2026-10-02_capital-markets-wire_sale-exploration.md` (Capital Markets Wire, Oct 2, 2026), paragraphs 1 and 2. The 52-week high is in `data/news/2026-05-12_capital-markets-wire_short-seller-report.md`, paragraph 4.
-- **Claim type:** Rumor (anonymous sources, the company declined to comment). The price move is Fact.
+#### NEWS-009: Single-source Chinese LiDAR supplier exposed to a proposed tariff increase
+- **Finding:** A proposal would raise tariffs on Chinese LiDAR modules from 7.5% to 25%, with a decision expected in Q1 2027. Talonfield buys all of its LiDAR from one supplier in China. Qualifying a new supplier takes 12 to 18 months.
+- **Evidence:** one analyst estimated hardware gross margin "fall by two to three percentage points if the increase takes effect."
+- **Source:** `data/news/2026-09-15_supply-chain-dispatch_lidar-tariffs.md` para 1 to 3
+- **Claim type:** Fact (the proposal and single sourcing as reported); the margin estimate is one analyst's view
 - **Severity:** Medium
-- **Confidence:** Medium. The price data is factual. The sale process details are unconfirmed in the news but match the deal brief.
-- **Deal impact:** Valuation (choosing the premium reference) and closing risk (competing private equity bidders, leak management).
-- **Cross-check:** Market data for the October 1 close. Whether there was a Schedule 13D or other filing. The company's sale process letter and the exclusivity terms in the deal brief.
+- **Confidence:** Medium. Single outlet. The supplier is not named.
+- **Deal impact:** Valuation (hardware margin) and post-closing (supply chain resilience).
+- **Cross-check:** 10-K risk factors and supplier concentration disclosure; purchase commitments; COGS breakdown in the financial data.
 
-#### NEWS-12: The FieldOS 5 value proposition depends on Gen-3 or newer robots
-- **Finding:** The AI route-planning features need Talon Gen-3 robots or newer. The CEO's target of software at "more than a third of revenue" within three years therefore depends on customers upgrading their hardware, and so on customer capex.
-- **Evidence:** "the new features require Talon Gen-3 robots or newer." Hale said software would grow to "more than a third of revenue."
-- **Source:** `data/news/2026-02-10_warehouse-tech-review_fieldos-5-launch.md` (Warehouse Tech Review, Feb 10, 2026), paragraphs 3 and 4.
-- **Claim type:**
-  - Fact: the hardware requirement, as noted by analysts at the event.
-  - Management claim: the software target.
+#### NEWS-010: Sale process leaked and the buyer group is competitive
+- **Finding:** Anonymous sources say Talonfield hired advisers and that Arbelion plus two PE firms have expressed interest. Shares rose 12% to $17.20. The brief's reference price of $17.85 (Oct 16) is therefore already partly inflated by takeover speculation, which flatters the 34% premium compared with the undisturbed price.
+- **Evidence:** "Arbelion Industries and two private equity firms are among the parties that have expressed interest."
+- **Source:** `data/news/2026-10-02_capital-markets-wire_sale-exploration.md` para 1 and 2
+- **Claim type:** Rumor (the company declined to comment)
+- **Severity:** Medium
+- **Confidence:** Low. Anonymous sources, not confirmed.
+- **Deal impact:** Valuation (the undisturbed price was about $15.36 if the 12% jump is reversed, my calculation) and deal dynamics.
+- **Cross-check:** Any 8-K or 13D filings, and the exclusivity terms in the deal documents.
+
+#### NEWS-011: Market is growing, but Talonfield is #3 and the gap between market growth and its guidance is widening
+- **Finding:** Calder Insights expects the North American warehouse AMR market to grow about 15% a year through 2030. Talonfield ranks #3 with about 11% share, behind Vantor Robotics and one unnamed rival. FieldOS "remains a differentiator". Against this market growth, 2026 guidance implies Talonfield revenue will decline (NEWS-001), which suggests it may be losing share.
+- **Evidence:** Calder "warned that large retailers are increasingly developing robots in-house."
+- **Source:** `data/news/2026-08-20_warehouse-tech-review_market-report.md` para 1 and 2
+- **Claim type:** Fact (third-party research as reported)
+- **Severity:** Medium
+- **Confidence:** Medium. Single secondary source.
+- **Deal impact:** Valuation (long-term growth assumptions) and strategic rationale.
+- **Cross-check:** 10-K competition section; the financial data's revenue trend compared with 15% market growth.
+
+#### NEWS-012: FieldOS 5 features need newer hardware; software mix target is aspirational
+- **Finding:** FieldOS 5's AI route planning needs Gen-3 or newer robots. That could force customers to upgrade or limit how many existing customers adopt it. The CEO targets software at "more than a third of revenue" within three years. Harbor & Vine Grocers expanded to 12 more DCs.
+- **Evidence:** "the new features require Talon Gen-3 robots or newer."
+- **Source:** `data/news/2026-02-10_warehouse-tech-review_fieldos-5-launch.md` para 1 to 4
+- **Claim type:** Fact (company statements); the software target is a forward-looking claim
 - **Severity:** Low
-- **Confidence:** Medium. Trade press.
-- **Deal impact:** Valuation (software mix and the multiple).
-- **Cross-check:** Financial data: software share of revenue, and the installed base by robot generation. 10-K segment disclosure.
+- **Confidence:** Medium
+- **Deal impact:** Valuation (software mix assumptions)
+- **Cross-check:** The financial data's revenue split by segment (hardware, FieldOS, services); Harbor & Vine Grocers revenue in the customer file.
 
-#### NEWS-13: Scholarship program: no related-party or conflict angle found
-- **Finding:** The article describes a five-year, roughly $1.5m scholarship program at three Ohio community colleges. It reports no link to directors, officers or their families. A related-party or conflict angle is not found in news coverage.
-- **Evidence:** "fund 30 scholarships a year ... The five-year program is worth about $1.5 million."
-- **Source:** `data/news/2026-03-28_columbus-business-ledger_scholarship.md` (Columbus Business Ledger, Mar 28, 2026), paragraphs 1 and 2.
+#### NEWS-013: Share price fell sharply on specific news events
+- **Finding:** The stock fell from a 52-week high of $31.75 (March 2026) to $16.40 (Aug 7), a drop of 48.3% (my calculation). It then recovered to $17.20 (Oct 2). The brief gives $17.85 on Oct 16.
+
+| Date | Event | Move |
+|---|---|---|
+| Nov 17, 2025 | Auditor switch | -2.1% |
+| Mar 10, 2026 | Q4 results | +9% to $31.20 |
+| May 12, 2026 | Greyfin short report | -18% to $19.85 |
+| Jun 24, 2026 | Norvale buys Kinetic Aisle | -6% |
+| Aug 7, 2026 | Guidance cut | -14% to $16.40 |
+| Oct 2, 2026 | Sale report | +12% to $17.20 |
+
+- **Evidence:** "Shares fell 14% to $16.40."
+- **Source:** the files named in the timeline above
+- **Claim type:** Fact
+- **Severity:** Medium (context for the size of the premium and for stock-drop securities litigation)
+- **Confidence:** High
+- **Deal impact:** Valuation and litigation exposure. The May 12 and Aug 7 drops are typical class-action trigger dates.
+- **Cross-check:** Court records for securities class actions with class periods covering Nov 2025 to Aug 2026.
+
+#### NEWS-014: No prompt injection found in the news files
+- **Finding:** None of the 13 articles contains text that tries to instruct the reader or an AI agent.
+- **Source:** all files in `data/news/`
 - **Claim type:** Fact
 - **Severity:** Low
-- **Confidence:** High for what the article says. This analysis cannot rule out a connection.
-- **Deal impact:** None identified from news.
-- **Cross-check:** Proxy statement related-party transactions section and director biographies (for example, college board roles). Charitable commitments in the contracts schedule.
+- **Confidence:** High
+- **Deal impact:** None
+- **Cross-check:** Not applicable
+
+### Named parties (for the lead agent to check against `revenue_by_customer.csv`)
+
+| Party | Role in the news | File |
+|---|---|---|
+| Norvale Retail Group | Largest customer; acquired Kinetic Aisle | 2026-06-24 |
+| Kinetic Aisle | Robot startup bought by Norvale (now a potential competitor) | 2026-06-24 |
+| Pinecrest Distribution | Customer affected by the outage, "reviewing our options" | 2026-04-14 |
+| Harbor & Vine Grocers | Customer expanding to 12 more DCs | 2026-02-10 |
+| Two unnamed new enterprise customers | New customers (Feb 2026) | 2026-02-10 |
+| Unnamed customer that returned bill-and-hold robots ($9.4m credit) | Customer | 2026-08-07 |
+| "Largest customer" in the Greyfin allegation (likely Norvale; not stated) | Customer | 2026-05-12 |
+| Vantor Robotics | Competitor (ranked above Talonfield) | 2026-08-20 |
+| One unnamed larger rival | Competitor | 2026-08-20 |
+| Unnamed single Chinese LiDAR supplier | Supplier | 2026-09-15 |
+| Hartwell & Pryce (former auditor) | Auditor | 2025-11-18 |
+| Linden Barr LLP (current auditor) | Auditor | 2025-11-18 |
+| Greyfin Research | Short seller | 2026-05-12 |
+| Calder Insights | Research firm | 2026-08-20 |
+| Two unnamed PE firms | Bidders | 2026-10-02 |
+| Arbelion Industries | Bidder | 2026-10-02 |
+| Ransomware group (unnamed) | Threat actor | 2026-04-14 |
+| Daniel Okafor | Former CFO | 2026-01-23 |
+| Marcus Hale | CEO | 2026-01-23 |
+| Rachel Simmons | Interim CFO | 2026-01-23 |
+| Priya Raman | COO | 2026-03-28 |
 
 ### Positive or mitigating points
-
-- FieldOS is described by a third party as "a differentiator", and customer feedback on FieldOS 5 was positive (`2026-08-20_...market-report.md`, `2026-02-10_...fieldos-5-launch.md`).
-- Harbor & Vine Grocers expanded to 12 more distribution centers, and two other enterprise deals were announced in February 2026. This is some customer diversification away from Norvale.
-- The underlying market is growing about 15% a year, and Talonfield holds a top-three position with about 11% share.
-- One anonymous CFO source said the dispute was "about timing, not about whether the orders were real". That suggests a recognition-timing problem rather than fictitious sales.
-- Systems were restored by April 14. The cost of credits disclosed so far is limited to $2.3m.
-- Norvale said it will "continue to work with existing partners" for now, and its pilots do not start until 2027.
-- The Q1 2027 tariff decision is still only a proposal.
-- The current share price ($17.85) and the deal model can now be re-based on the reduced guidance, which already reflects much of the bad news.
+- The market is growing about 15% a year, and FieldOS is called "a differentiator" by a third party (NEWS-011).
+- FieldOS 5 customer feedback was positive, and Harbor & Vine Grocers expanded (NEWS-012).
+- Norvale said it would "continue to work with existing partners" (NEWS-007).
+- One CFO-exit source said the dispute was "about timing, not about whether the orders were real". This suggests a timing issue, not fictitious sales (NEWS-005, Rumor).
+- Talonfield says all systems were restored by April 14 and it found no evidence that data was taken (NEWS-006).
+- The tariff increase is only a proposal, with a decision expected in Q1 2027 (NEWS-009).
 
 ### Articles reviewed with no diligence relevance
-
-- `data/news/2026-03-28_columbus-business-ledger_scholarship.md` is mostly community relations. Its only use is the headcount (about 1,450), which confirms that the 60 July cuts are about 4%. It is kept as NEWS-13 at Low severity because the task asked about it.
-- Every other article has diligence relevance.
+- `data/news/2026-03-28_columbus-business-ledger_scholarship.md`: a $1.5m five-year scholarship program. This is noise, apart from the headcount (about 1,450 employees, mostly in Ohio), which is useful for context.
 
 ### Gaps and questions for management
-
-1. Which customer returned the $9.4m of bill-and-hold robots? Was it Norvale? What is the total of bill-and-hold revenue recognized in Q4 2025, and how much of it has since been delivered, returned or credited?
-2. Is the company considering a restatement of FY2025? Has it received any SEC, Nasdaq or other regulatory inquiry since the Greyfin report?
-3. What was the executive bonus plan revenue target for FY2025, and was it met without the bill-and-hold sales?
-4. Why was the auditor changed in November 2025? Please provide the Hartwell & Pryce Exhibit 16 letter, audit committee minutes, and the material weakness remediation plan and status.
-5. What are the terms of Daniel Okafor's separation agreement, and why was $900,000 paid? Did he raise any concerns with the audit committee? When will a permanent CFO be appointed?
-6. What is Norvale's share of revenue, receivables and backlog? What are the contract term, renewal date, minimum volumes and change-of-control clauses? Has Norvale's 2026 to 2027 order outlook changed?
-7. For the FieldOS incident: the forensic report, whether data was taken, the materiality analysis behind not filing an Item 1.05 8-K, any cyber insurance recovery, all customer credits and claims (including Pinecrest Distribution), and FieldOS churn since April.
-8. What were the restructuring charges each year from 2022 to 2026, and why should they be treated as non-recurring?
-9. Is there a LiDAR second-source qualification plan? What is the tariff exposure per robot, and do supply contracts allow cost pass-through?
-10. What drove the August guidance cut? Please provide a bridge from $560.0m to $480.0m by cause: bill-and-hold reversal, outage credits, Norvale, demand, and other.
-11. What is the market share trend compared with Calder's 11%, and how much revenue was lost to in-house builds by retailers?
-12. Not found in news coverage: Norvale's revenue share, the restructuring cost amounts, any securities class action after the 18% drop, the identities of the two unnamed February 2026 enterprise customers, and any related party linked to the scholarship program.
+1. Which customer returned the bill-and-hold robots behind the $9.4m credit? How much FY2025 revenue in total was booked under bill-and-hold, by customer? How much of it has shipped, been paid for, or been returned?
+2. Is Norvale the "largest customer" in Greyfin's allegation? What is Norvale's share of revenue, its contract term, and its 2027 volume commitment?
+3. Why was the auditor changed in November 2025? Provide the Hartwell & Pryce Exhibit 16 letter. What is the status of remediating the material weakness?
+4. What are the terms of Okafor's $900,000 separation, and was it contractual? Has the board or audit committee investigated the revenue timing issue? Is a permanent CFO search underway?
+5. Did the April 2026 incident involve data exfiltration? Provide the forensic report, the materiality analysis behind not filing an 8-K Item 1.05, customer claims (including Pinecrest), and insurance recoveries.
+6. Provide a bridge from the March guidance of $560.0m and $118.0m to the August guidance of $470.0m to $490.0m and $70.0m to $78.0m. What is the latest outlook?
+7. What were restructuring add-backs by year since 2022? Is the July 2026 program finished?
+8. What is the LiDAR supplier's identity, the contract terms, and the plan to qualify a second source?
+9. What was the 2025 bonus plan revenue target, and what bonuses were paid?
+10. Not found in news coverage: any securities class action, SEC inquiry, or restatement; Norvale's revenue share; a named LiDAR supplier; Talonfield's debt or covenant position.

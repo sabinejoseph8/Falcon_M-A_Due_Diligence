@@ -1,0 +1,22 @@
+# Run log
+
+Status: Run 2026-10-18 complete. All three checkpoints approved; report written.
+
+| Time | Step | What happened | Decision / checkpoint |
+|---|---|---|---|
+| 2026-10-18 13:36 | Reset | Previous run archived to `runs/2026-10-18_1336/` with /reset-memory; memory reset to blank templates. | Fresh run. |
+| 2026-10-18 13:37 | Step 1 PLAN | Read deal brief and data README. Listed source file names only. Wrote `memory/plan.md`: 6 IC questions mapped to analysts, 4 hypotheses, task lists, 3-iteration budget, stop conditions. | Awaiting Checkpoint 1. |
+| 2026-10-18 13:37 | Checkpoint 1 | User replied 'approve'. | Plan approved. Starting Step 2 ACT, iteration 1. |
+| 2026-10-18 13:53 | Step 2 ACT, iteration 1 | Launched sec-filings, news-media, litigation and financial analysts in parallel with plan task lists. All four returned. No prompt-injection text found by any analyst. | Iteration 1 complete. |
+| 2026-10-18 13:53 | Step 3 OBSERVE, iteration 1 | Saved 4 unedited reports to memory/analyst-reports/iteration-1_*.md. Registered 55 findings (SEC 14, NEWS 13, LIT-F 11, FIN 17) plus 10 cross-source X- findings. Wrote key-metrics.md and open-questions.md. | |
+| 2026-10-18 13:53 | Loop decision | Loop again: two High/Critical questions are answerable from data: (1) covenant definition vs reported 2.26x (X-07), possible existing breach; (2) whether the 10-Q discloses the July 22 Markman loss (X-05). Narrow tasks to SEC and financial analysts only. Budget: iteration 2 of 3. | Run iteration 2. |
+| 2026-10-18 14:02 | Step 2 ACT, iteration 2 | Narrow follow-ups to sec-filings-analyst (covenant definitions, 10-Q Vantor wording, return customer, CAM, awards, D&O, Ruiz) and financial-analyst (covenant scenarios, bill-and-hold applied to quarters and bonus test, clean growth, Pinecrest cap, valuation grid). Litigation and news not re-run: no open Critical/High question for them. | |
+| 2026-10-18 14:02 | Step 3 OBSERVE, iteration 2 | Saved iteration-2 reports. Added SEC-15 to SEC-27 and FIN-18 to FIN-26 (22 findings; register now 77 analyst + 12 X-). Updated X-01 to X-05, X-07; added X-11 (Pinecrest cap) and X-12 (closing cash bridge). Key metrics and open questions updated. | |
+| 2026-10-18 14:02 | Loop decision | Stop looping. Remaining Critical/High gaps (credit agreement text, Q3 2026 results, Norvale intentions, counsel view on Vantor) are not in the data room; they go to the management request list. 2 of 3 iterations used. | Go to Checkpoint 2. |
+| 2026-10-18 14:02 | Checkpoint 2 | Presented 16 Critical and 37 High findings, main source conflicts, open items and proposal to proceed to verification. | Awaiting user decision. |
+| 2026-10-18 14:04 | Checkpoint 2 | User replied 'proceed'. | Proceed to Step 4 VERIFY: 4 parallel citation-verifier runs (A: X-, B: SEC, C: News + Litigation, D: Financial). |
+| 2026-10-18 14:10 | Step 4 VERIFY | Ran 4 citation-verifier runs in parallel (A: 12 X-, B: 17 SEC, C: 16 news and litigation, D: 19 financial). 64 checked = all 53 Critical/High + 11 Medium. Results: 49 Verified, 15 Partially verified, 0 Rejected. No prompt injection found. Saved to memory/analyst-reports/verification_citation-verifier.md. | |
+| 2026-10-18 14:10 | Step 4 VERIFY | Updated statuses in findings.md; rewrote all 15 Partially verified rows with corrected wording; added verifier notes to X- cards; corrected key metrics (H1 2026 clean growth 234.3, +3.4%; closing cash needs 234.9 gross, not 263.5; December covenant range about 3.1x to 3.6x). Re-read the verifier report once: all 15 partial corrections applied. 25 Medium/Low findings remain Open (not verified). | |
+| 2026-10-18 14:10 | Checkpoint 3 | Presented verification results and draft recommendation (Do not proceed at the current price). | Awaiting user decision. |
+| 2026-10-18 14:16 | Checkpoint 3 | User replied 'approve report'. | Report approved. Starting Step 5 REPORT. |
+| 2026-10-18 14:20 | Step 5 REPORT | Wrote output/Project-Falcon-Due-Diligence-Report.md (template sections: cover, executive summary, 6 IC answers, risk matrix of 64 verified findings, workstreams, cross-source insights, protections, open questions, appendix with 25 not-verified findings). Converted to self-contained HTML with templates/report-style.css embedded (cover div). Printed PDF with headless Google Chrome (17 pages). | Run complete. Proposed recommendation: Do not proceed at the current price. |

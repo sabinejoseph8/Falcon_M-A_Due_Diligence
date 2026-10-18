@@ -1,147 +1,107 @@
-# Key metrics
+# Key metrics (US$ millions unless stated)
 
-US$ millions unless stated. LTM = twelve months to June 30, 2026. Sources in brackets. Updated after iteration 2 (2026-10-18).
+Sources: `data/financials/*.csv` (financial analyst, iteration 1), SEC filings (SEC analyst), deal brief. "Computed" = analyst or lead agent calculation.
 
-## Deal and valuation
+## Deal
 
 | Metric | Value | Source |
 |---|---|---|
-| Offer price per share | $24.00 | deal brief |
-| Diluted shares | 48.3m | deal brief; income_statement.csv |
-| Equity value | 1,159.2 | FIN-01 |
-| Net debt, June 30, 2026 (45.0 revolver + 182.5 term loan - 33.9 cash) | 193.6 | FIN-01; balance_sheet.csv |
-| Enterprise value at $24.00 | 1,352.8 | FIN-01 |
-| EV / March 2026 management case Adj. EBITDA (118.0) | 11.5x | FIN-01 |
-| EV / FY2026 guidance midpoint Adj. EBITDA (74.0, August 6, 2026) | 18.3x | SEC-01; X-01 |
-| EV / FY2025 Adj. EBITDA (98.8) | 13.7x | FIN-01 |
-| EV / LTM Adj. EBITDA (89.7) | 15.1x | FIN-01 |
-| EV / LTM diligence-adjusted EBITDA A (72.6) | 18.6x | FIN-01, FIN-04 |
-| EV / LTM EBITDA (48.2) | 28.1x | FIN-01 |
-| Value per share at 11.5x LTM Adj. EBITDA | $17.35 | FIN-01 |
-| Value per share at 11.5x guidance midpoint (74.0): (851.0 - 193.6) / 48.3 | $13.61 | lead calculation, X-01 |
-| Value per share at 11.5x diligence-adjusted LTM EBITDA A | $13.28 | FIN-01 |
-| Unaffected price October 16 / pre-rumor price about | $17.85 / $15.36 | deal brief; NEWS-11 |
-| Change-in-control payments (of which single-trigger equity) | 28.6 (17.6) | SEC-10 |
+| Offer price / diluted shares | $24.00 / 48.3m | deal brief |
+| Equity value | 1,159.2 | computed |
+| Net debt Jun 30, 2026 | 193.6 (revolver 45.0 + term loan 182.5 - cash 33.9) | balance_sheet.csv Q2_2026 |
+| Enterprise value | 1,352.8 | computed |
+| EV / mgmt FY2026E Adj. EBITDA 118.0 | 11.46x | computed |
+| EV / Aug guidance midpoint 74.0 | 18.3x | computed |
+| EV / LTM Adj. EBITDA 89.7 | 15.1x | computed |
+| EV / diligence-adjusted LTM EBITDA 72.6 | 18.6x | computed |
+| Price at 11.46x on 74.0 | about $13.55 | computed |
+| Price at 11.46x on LTM Adj. 89.7 | $17.28 | FIN-001 |
+| Undisturbed price (before Oct 2 leak, RUMOR-based) | about $15.36 | NEWS-010 |
+
+## Income statement
+
+| Metric | FY2023 | FY2024 | FY2025 | H1 2025 | H1 2026 | LTM Q2 2026 |
+|---|---|---|---|---|---|---|
+| Revenue | 368.9 | 421.7 | 502.3 | 226.5 | 222.6 | 498.4 |
+| Growth | 18.1% | 14.3% | 19.1% | | -1.7% | |
+| Gross margin | 40.1% | 40.8% | 41.1% | 40.8% | 38.0% | |
+| EBITDA (reported) | 42.2 | 52.3 | 64.1 | 26.3 | 10.4 | 48.2 |
+| Adjusted EBITDA (company) | 60.4 | 74.8 | 98.8 | 39.0 | 29.9 | 89.7 |
+| Diligence-adjusted EBITDA | 55.8 | 68.8 | 84.7 | | 22.5 | 72.6 |
+| Net income | 11.5 | 15.2 | 18.6 | | -8.9 | |
+
+Segments: FY2025 hardware 301.4, software 128.6, services 72.3. H1 2025 134.2 / 58.9 / 33.4. H1 2026 116.9 / 67.5 / 38.2.
+
+## Quarterly revenue
+
+| Q4 24 | Q1 25 | Q2 25 | Q3 25 | Q4 25 | Q1 26 | Q2 26 |
+|---|---|---|---|---|---|---|
+| 116.6 | 108.9 | 117.6 | 121.4 | 154.4 | 109.7 | 112.9 |
+
+Q4 2025 bill-and-hold 31.8 (20.6% of Q4); Q4 ex bill-and-hold 122.6 (+5.1% YoY). FY2025 ex bill-and-hold 470.5 (+11.6%). Bill-and-hold returned in Q2 2026: 9.4.
 
 ## Guidance
 
-| Item | March 9, 2026 | August 6, 2026 | Change at midpoint |
+| | Revenue | Adj. EBITDA |
+|---|---|---|
+| March 9, 2026 (deal model) | 555-565 (560.0) | 114-122 (118.0) |
+| Aug 6, 2026 | 470-490 (480.0) | 70-78 (74.0) |
+
+## Customers (FY2025)
+
+| Rank | Customer | Revenue | Share |
 |---|---|---|---|
-| FY2026 revenue | 555 to 565 | 470 to 490 | 560.0 to 480.0, -14.3% |
-| FY2026 Adj. EBITDA | 114 to 122 | 70 to 78 | 118.0 to 74.0, -37.3% |
-| Implied H2 2026 Adj. EBITDA (guidance less H1 29.9) | n/a | 40.1 to 48.1 | vs H2 2025 59.8 |
+| 1 | Norvale Retail Group | 156.2 | 31.1% |
+| 2 | Quillon Logistics | 41.2 | 8.2% |
+| 3 | Ardent Parcel Co. | 28.9 | 5.8% |
+| 4 | Pinecrest Distribution | 17.4 | 3.5% |
+| 5 | Harbor & Vine Grocers | 15.1 | 3.0% |
+| 6-10 | Meridale, Cobalt, Westfork, Sunreach, Tidewell | 12.6 / 11.0 / 9.8 / 8.7 / 7.9 | |
+| | Top 10 | 308.8 | 61.5% |
 
-## Revenue and growth
+Norvale 38% of gross AR (about 46.2). Norvale bill-and-hold 24.6.
 
-| Metric | FY2023 | FY2024 | FY2025 | H1 2026 | LTM |
-|---|---|---|---|---|---|
-| Revenue | 368.9 | 421.7 | 502.3 | 222.6 | 498.4 |
-| Growth | 18.1% | 14.3% | 19.1% | -1.7% | 11.0% |
-| Hardware | 236.0 | 261.9 | 301.4 | 116.9 (-12.9%) | |
-| Software (FieldOS) | 80.4 | 101.2 | 128.6 | 67.5 (+14.6%) | |
-| Services | 52.5 | 58.6 | 72.3 | 38.2 (+14.4%) | |
+## Balance sheet, cash and KPIs
 
-Quarterly revenue growth: Q1 2025 +13.2%, Q2 +14.4%, Q3 +14.4%, Q4 +32.4% (154.4), Q1 2026 +0.7% (109.7), Q2 2026 -4.0% (112.9). [revenue_quarterly.csv]
-
-Bill-and-hold (10-K Note 2; 10-Q):
-
-| Item | Value |
-|---|---|
-| Q4 2025 bill-and-hold hardware revenue | 31.8 (20.6% of Q4) |
-| of which largest customer (Norvale) | 24.6 |
-| Returned and credited, May 2026 (Q2 2026) | 9.4 |
-| Delivered by June 30, 2026 | 22.4 |
-| Q4 2025 revenue ex bill-and-hold (vs Q4 2024 116.6) | 122.6, +5.1% |
-| FY2025 revenue ex bill-and-hold (vs FY2024 421.7) | 470.5, +11.6% |
-| FY2025 bonus revenue threshold / target / max | 470.0 / 490.0 / 510.0 |
-| Q2 2026 revenue adding back 9.4 credit and 2.3 outage credits | 124.6, +6.0% |
-
-## Earnings quality
-
-| Metric | FY2023 | FY2024 | FY2025 | H1 2026 | LTM |
-|---|---|---|---|---|---|
-| EBITDA | 42.2 | 52.3 | 64.1 | 10.4 | 48.2 |
-| Adj. EBITDA (company) | 60.4 | 74.8 | 98.8 | 29.9 | 89.7 |
-| Add-backs % of Adj. EBITDA | 30.1% | 30.1% | 35.1% | 65.2% | 46.3% |
-| Diligence-adjusted EBITDA A | 55.8 | 68.8 | 84.7 | 22.5 | 72.6 |
-| Diligence-adjusted EBITDA B (less SBC) | 44.2 | 54.9 | 67.5 | 13.6 | 54.8 |
-| Gross margin | 40.1% | 40.8% | 41.1% | 38.0% | 39.8% |
-| Restructuring add-back | 4.6 | 5.2 | 7.9 | 4.4 | 9.7 |
-| SBC | 11.6 | 13.9 | 17.2 | 8.9 | 17.8 |
-
-## Cash, working capital, debt
-
-| Metric | FY2023 | FY2024 | FY2025 | H1 2026 / June 2026 | LTM |
-|---|---|---|---|---|---|
-| Operating cash flow | 30.8 | 40.8 | 9.7 | -4.2 | -6.9 |
-| Free cash flow | 16.2 | 24.6 | -10.1 | -13.0 | -26.4 |
-| DSO (net AR) | 60.4 | 63.5 | 86.4 | 85.4 | 76.3 |
-| Gross AR | 63.5 | 76.3 | 121.5 | 107.6 | |
-| Norvale share of gross AR | | 29% (22.1) | 38% (46.2) | | |
-| Allowance / gross AR | 3.9% | 3.8% | 2.1% | 3.2% | |
-| Contract assets | 8.1 | 10.2 | 24.7 | 19.5 | |
-| Inventory | 55.2 | 63.9 | 71.3 | 84.0 | |
-| Cash | 54.8 | 48.3 | 41.6 | 33.9 | |
-| Revolver drawn | | | | 45.0 (25.8 available after 4.2 LCs) | |
-| Term loan | | | | 182.5 | |
-| Net debt | 65.2 | 151.7 | 178.4 | 193.6 | |
-| Net debt / LTM Adj. EBITDA | | | | 2.16x | |
-| Net debt / LTM EBITDA | | | | 4.02x | |
-| Company-reported Total Net Leverage Ratio (covenant max 3.50x, 3.00x from Q3 2026) | | | | 2.26x | |
-
-## Customers and KPIs
-
-| Metric | FY2024 | FY2025 | H1 2026 |
+| Metric | FY2024 | FY2025 | Jun 2026 |
 |---|---|---|---|
-| Norvale revenue (share) | 118.1 (28.0%) | 156.2 (31.1%) | not provided |
-| Norvale ex bill-and-hold | | 131.6 (+11.4%) | |
-| Top 10 share | 59.2% | 61.5% | |
+| Cash | 48.3 | 41.6 | 33.9 |
+| Total debt | 200.0 | 220.0 | 227.5 |
+| Net debt | 151.7 | 178.4 | 193.6 |
+| DSO (days) | 63.5 | 86.4 | 85.4 |
+| Allowance / gross AR | 3.8% | 2.1% | 3.2% |
+| Inventory days | 93.4 | 87.9 | 111.1 |
+| Operating cash flow | 40.8 | 9.7 | -4.2 (H1) |
+| Free cash flow | 24.6 | -10.1 | -13.0 (H1); LTM -26.4 |
+| Hardware backlog | 168.0 | 131.0 | 118.0 |
 | FieldOS ARR | 109.5 | 139.2 | 146.8 |
 | NRR | 119% | 118% | 111% |
-| Hardware backlog | 168.0 | 131.0 | 118.0 |
-| Robots shipped | 3,300 | 4,300 | 1,640 |
-| Gen-3 share of hardware revenue (10-K) | | about 70% (about 211.0, 42% of total revenue) | |
 
-## Legal exposure (plaintiff and company figures, not predictions)
+## Covenant
 
-| Matter | Low | High | Notes |
-|---|---|---|---|
-| Vantor (patent) | 96.4 (Vantor expert, through trial) | 140.0+ (complaint) | plus enhanced damages and injunction on Gen-3 and Gen-3 Plus; no accrual |
-| Pinecrest | 1.4 (cap) | 12.0 | hearing November 5, 2026 |
-| Ruiz | 3.2 | 3.2 | accrued |
-| Securities class action | not quantified | | |
-| Stated total | 101.0 | 155.2 | 8.7% to 13.4% of equity value |
-
-## Covenant (10-K Note 9; FIN-18, FIN-19, SEC-16)
-
-Covenant net debt = 227.5 - 25.0 (cash netting cap) = 202.5. Limit 3.50x to June 30, 2026; 3.00x from September 30, 2026. Revolver commitment 75.0, matures August 2029.
-
-| Reading | June 30, 2026 | Sept 30, 2026 (low / mid / high guidance, flat debt) | Dec 31, 2026 (low / mid / high, flat debt) |
-|---|---|---|---|
-| (a) Company method, uncapped Adj. EBITDA | 2.26x (matches 10-Q) | 2.43x / 2.37x / 2.32x | 2.89x / 2.74x / 2.60x (3.00x at low end with debt trend) |
-| (c) SBC in base, other add-backs capped at 15% | 2.67x (2.65x on 48.6 base) | 2.89x / 2.80x / 2.71x | 3.61x / 3.34x / 3.10x (above 3.00x; possible breach) |
-| (b) All add-backs capped at 15% | 3.65x (3.62x on 48.6 base; above 3.50x) | 4.08x / 3.90x / 3.73x | 5.68x / 5.03x / 4.52x |
-
-## Valuation grid (FIN-25; net debt 193.6; 48.3m shares)
-
-| EBITDA basis | 10.0x | 11.5x | 13.0x |
-|---|---|---|---|
-| LTM company Adj. EBITDA 89.7 | $14.56 | $17.35 | $20.13 |
-| FY2026 guidance midpoint 74.0 | $11.31 | $13.61 | $15.91 |
-| Diligence-adjusted LTM 72.6 | $11.02 | $13.28 | $15.53 |
-
-Less about $0.66 per share for debt-like items (Ruiz 3.2 plus change-in-control payments 28.6).
-
-## Cash needed at closing (FIN-26, X-12, verifier-corrected)
-
-Debt 227.5 + LCs 4.2 (replace or collateralize) + Ruiz 3.2 = 234.9 gross; 201.0 net of cash 33.9. Contingent: up to 11.0 double-trigger severance and benefits; Pinecrest 1.4 to 12.0. The 17.6 single-trigger equity acceleration is settled through merger consideration (check against 48.3m diluted shares). Original analyst figure 263.5 overstated.
-
-## Clean growth (FIN-20, FIN-23)
-
-| Item | Reported | Adjusted |
+| Item | Value | Source |
 |---|---|---|
-| FY2025 growth | 19.1% | 11.6% (ex 31.8 bill-and-hold) |
-| FY2025 hardware growth | 15.1% | 2.9% |
-| FY2025 Adj. EBITDA | 98.8 | about 85.7 (31.8 at 41.1% margin removed) |
-| H1 2026 growth | -1.7% | +3.4% (234.3, adding back 9.4 and 2.3 credits; verifier-corrected) |
-| Q2 2026 growth | -4.0% | +6.0% |
+| Max Total Net Leverage | 3.50x to Jun 30, 2026; 3.00x from Sep 30, 2026 | 10-K Note 9 |
+| Reported ratio Jun 30, 2026 | 2.26x | 10-Q |
+| Cash netting cap | 25.0 | 10-K Note 9 |
+| Permitted add-back cap | 15% of Consolidated EBITDA before add-backs | 10-K Note 9 |
+| Revolver commitment / available | 75.0 / 25.8 | 10-Q |
+| Covenant net debt Jun 30, 2026 | 202.5 (227.5 - 25.0 cap) | FIN-015 |
+| EBITDA that reproduces 2.26x | 89.6 (= uncapped Adj. EBITDA 89.7) | FIN-015 |
+| Covenant EBITDA as defined (LTM) / SBC / other add-backs | 48.6 / 17.8 / 23.7 | FIN-016 |
+| Jun 30 ratio: Reading A (SBC outside cap) / Reading B (inside) | 2.65x / 3.62x (limit 3.50x) | FIN-016 |
+| Sep 30 ratio Reading A (guidance proxy / run-rate) | 2.84x / 3.35x (limit 3.00x) | FIN-017 |
+| Dec 31 ratio Reading A (guidance high / mid / low) | 3.06x / 3.29x / 3.56x (limit 3.00x) | FIN-018 |
+| Dec 31 ratio Reading B (guidance mid) | 4.97x | FIN-018 |
+| FY2025 hardware growth reported / ex bill-and-hold | 15.1% / 2.9% | FIN-020 |
+| Implied price at 11.46x on guidance 70.0 / 74.0 / 78.0 | $12.60 / $13.55 / $14.50 | FIN-021 |
+
+## Change of control and exposures
+
+| Item | Value | Source |
+|---|---|---|
+| Executive CoC payments | 28.6 (17.6 single-trigger equity) | DEF 14A |
+| Debt repayable on CoC | about 227.5 | 10-K Note 9; balance_sheet.csv |
+| Vantor damages (Vantor expert / complaint floor) | 96.4 / at least 140.0 | LIT-001 |
+| Gen-3 revenue at risk | about 211.0 (42.0%) | 10-K, computed |
+| Pinecrest claim / contractual cap (company estimate) | 12.0 / about 1.4 | LIT-004 |

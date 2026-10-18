@@ -1,235 +1,139 @@
-## SEC filings analyst: findings (iteration 2 follow-up, SEC-15 onward)
+<!-- Iteration 2, saved unedited by the lead agent on 2026-10-18. -->
+
+## SEC filings analyst: findings (iteration 2, narrow follow-up)
 
 ### Files reviewed
-I read all five files in full, plus the deal brief for context:
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_10-K_FY2025_excerpts.md (filed March 9, 2026)
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md (filed August 6, 2026)
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_DEF14A_2026_excerpts.md (filed April 24, 2026)
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_8-K_2025-11-14_auditor-change.md
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_8-K_2026-01-21_cfo-departure.md
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md
 
-One caveat applies to every "not found" below. Each file is labeled "EXCERPTS", so a missing item could have been left out of the excerpt rather than out of the actual filing. None of the files contains text that tries to instruct the agents.
+I read all five files in full, plus the deal brief for context.
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_10-K_FY2025_excerpts.md` (filed March 9, 2026)
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md` (filed August 6, 2026)
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_DEF14A_2026_excerpts.md` (filed April 24, 2026)
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_8-K_2025-11-14_auditor-change.md`
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/sec-filings/TLFS_8-K_2026-01-21_cfo-departure.md`
+- `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md` (context only)
+
+None of these files contains text that tries to instruct the agents.
+
+**Short answers to the six tasks**
+1. The full Vantor text in the Q2 2026 10-Q is three sentences, quoted in SEC-024. No SEC filing mentions the July 22, 2026 claim construction order or a loss estimate or range. The only accrual statement is "we have not recorded an accrual." The 10-Q drops the 10-K's ASC 450 wording. None of the filings uses the phrase "reasonably possible."
+2. Quoted in SEC-027 and SEC-028. The 10-K describes the criteria in general terms only. It never says who asked for the Q4 2025 arrangements, what the reason was, or that the criteria were met.
+3. Not found in SEC filings: Q3 2025 results, their release dates, Q3 or Q4 2025 quarterly EBITDA, any waiver, and any forward-looking statement about the September 30, 2026 test beyond the step-down itself (SEC-031, SEC-032).
+4. The 10-K excerpt has no Item 1C. The only cyber text is a risk factor written as a hypothetical. It describes no controls, so I cannot show a direct contradiction (SEC-033).
+5. The only text on who requested bill-and-hold is a general phrase in Note 2. The bonus table is quoted in SEC-030.
+6. No. March 10, 2025 does not match any filing date in the SEC files (SEC-034).
 
 ### Findings
 
-#### SEC-15: Covenant definitions. Stock-based compensation is most likely in the uncapped base, but the 10-K wording leaves room for doubt
-- **Finding:** The only covenant definitions are in 10-K Note 9, and they are labeled "summarized from the credit agreement". The 10-Q repeats none of them. On the most natural reading, net income, interest, taxes, D&A and non-cash stock-based compensation form the uncapped base. Only "restructuring, integration and other non-recurring charges" are Permitted Add-backs, capped at 15% of EBITDA before those add-backs. The label "("Permitted Add-backs")" comes right after the restructuring list, but the sentence is one run-on, so a lender could argue that stock-based compensation also falls under the cap.
-- **Evidence (verbatim, 10-K Note 9):**
-  - Total Net Leverage Ratio: "(Total Debt minus unrestricted cash, with cash netting capped at $25.0 million) divided by Consolidated EBITDA."
-  - Consolidated EBITDA: "net income plus interest, taxes, depreciation and amortization, plus non-cash stock-based compensation, plus restructuring, integration and other non-recurring charges ("Permitted Add-backs")."
-  - The cap: "Permitted Add-backs may not exceed 15% of Consolidated EBITDA calculated before including those Permitted Add-backs."
-  - The test: "no more than 3.50 to 1.00 for each fiscal quarter ending on or before June 30, 2026, and no more than 3.00 to 1.00 for each fiscal quarter ending on or after September 30, 2026." It is "tested quarterly on a trailing twelve-month basis."
-  - Not found in SEC filings: a definition of Total Debt (including whether the $4.2m of letters of credit count), equity cure rights, waiver or amendment history, any further step-downs after 3.00x, and the full credit agreement text.
-- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, section "Note 9. Debt"
+#### SEC-024: The Q2 2026 10-Q does not mention the adverse claim construction order issued 15 days before filing
+- **Finding:** The 10-Q's entire Vantor disclosure is three sentences. It does not mention the July 22, 2026 Markman order, which according to the docket the lead agent supplied adopted Vantor's construction for three of four terms. The 10-Q says only that the case "is in discovery."
+- **Evidence:** The complete text reads: "*Vantor Robotics, Inc. v. Talonfield Systems, Inc.* The case is in discovery. Trial is currently scheduled for March 2027. We continue to believe the claims are without merit, and we have not recorded an accrual." The 10-Q was filed August 6, 2026, which is 15 days after July 22, 2026. The 10-Q also says "There have been no material changes to the risk factors in our 2025 Form 10-K, except for" the new securities litigation risk factor. So the patent risk factor was not updated.
+- **Source:** `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, sections "Part II, Item 1. Legal Proceedings" and "Part II, Item 1A. Risk Factors"
+- **Severity:** High. This is a disclosure gap. The underlying exposure may be Critical (see SEC-026).
+- **Confidence:** High for what the filing says and leaves out, which comes from the primary source. Confirming the order's date and content depends on the LIT-001 docket.
+- **Deal impact:** Disclosure, valuation and closing risk. The gap may also support the securities class action theory or extend its class period.
+- **Cross-check:** Check in the litigation docket that the Markman order was entered on the public docket before August 6, 2026. Check news for any Talonfield 8-K or press release about the order. Ask whether the Audit Committee or disclosure committee discussed it before the 10-Q was certified.
+
+#### SEC-025: The 10-Q drops the 10-K's ASC 450 wording, and no filing gives a loss range
+- **Finding:** The 10-K said a loss was not probable and could not be estimated. The 10-Q keeps only "we have not recorded an accrual." It drops both the probability statement and the "cannot reasonably estimate" statement. It gives no "reasonably possible" assessment and no range. No SEC filing mentions the $96.4 million damages figure (September 4, 2026), the addition of Gen-3 Plus (August 14, 2026) or the injunction request. All three came after the 10-Q, and the SEC folder holds no later filing.
+- **Evidence:** 10-K: "We have not recorded an accrual because we do not believe a loss is probable, and we cannot reasonably estimate a possible loss or range of loss." 10-Q: "we have not recorded an accrual." The phrase "reasonably possible" does not appear in any SEC file.
+- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Item 3. Legal Proceedings"; `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Part II, Item 1. Legal Proceedings"
 - **Severity:** High
-- **Confidence:** Medium. The text is primary, but it is a summary and the label could attach either way.
-- **Deal impact:** Valuation and closing risk, because the covenant result depends on how the definition is read.
-- **Cross-check:** Get the credit agreement itself (it is usually a 10-K exhibit) and any amendments. Ask the financial analyst which of the $23.7m of non-stock add-backs are restructuring, integration or non-recurring items, and which (if any) fit none of the permitted categories.
+- **Confidence:** High. This is a direct text comparison of two primary sources.
+- **Deal impact:** Disclosure and valuation. After the Markman order, a "reasonably possible" assessment with a range would be expected. The Q3 2026 10-Q (due about early November, near the November 6 IC meeting) may show a large change in tone.
+- **Cross-check:** Ask management and auditor Linden Barr for the current ASC 450 assessment and any range estimate. Compare it with the $96.4 million expert figure in LIT-001.
 
-#### SEC-16: The reported 2.26x only reconciles if the 15% add-back cap is ignored
-- **Finding:** The 10-Q gives the ratio but not the Consolidated EBITDA behind it. Backing it out shows the company used capped cash netting but full, uncapped Adjusted EBITDA. Applying the cap as the 10-K describes it gives about 2.67x. If stock-based compensation is also inside the cap, the ratio is about 3.65x, which would breach the 3.50x maximum at June 30, 2026.
-- **Evidence (verbatim, 10-Q MD&A "Covenant compliance"):** "Our Total Net Leverage Ratio was 2.26 to 1.00 at June 30, 2026, compared with a maximum of 3.50 to 1.00, and we were in compliance." The 10-Q does not show its calculation.
-- **My math** (balances and EBITDA figures come from the financial data the lead supplied):
-  - Total debt: 182.5 term loan + 45.0 revolver = 227.5.
-  - Net debt: cash of 33.9 is above the 25.0 netting cap, so 227.5 - 25.0 = 202.5.
-  - Back-solve: 202.5 / 89.7 (company Adjusted EBITDA) = 2.2575, which rounds to 2.26x and matches exactly.
-  - Other combinations do not match. Uncapped cash gives 193.6 / 89.7 = 2.16x. Adding the letters of credit gives 206.7 / 89.7 = 2.30x. So the company appears to have used capped cash and full add-backs, with letters of credit excluded.
-  - Reading A (stock-based compensation in the base):
-    - Base: 48.2 + 17.8 = 66.0.
-    - Other add-backs: 41.5 - 17.8 = 23.7.
-    - Cap: 15% x 66.0 = 9.9.
-    - Consolidated EBITDA: 66.0 + 9.9 = 75.9.
-    - Ratio: 202.5 / 75.9 = 2.67x. This passes 3.50x.
-    - Add-backs disallowed: 13.8. The company's other add-backs equal 23.7 / 66.0 = 35.9% of the base, against a 15% cap.
-  - Reading B (stock-based compensation also capped):
-    - Cap: 15% x 48.2 = 7.2.
-    - Consolidated EBITDA: 55.4.
-    - Ratio: 202.5 / 55.4 = 3.65x. This breaches 3.50x.
-  - The LTM Adjusted EBITDA of 89.7 ties to the SEC data: FY2025 98.8 - H1 2025 39.0 + H1 2026 29.9 = 89.7.
-- **Interpretation, not stated in the filing:** The 2.26x looks like it was computed on Adjusted EBITDA, not on covenant Consolidated EBITDA. Another possibility is that the actual credit agreement differs from the 10-K summary.
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part I, Item 2. MD&A, Covenant compliance"; `TLFS_10-K_FY2025_excerpts.md`, section "Note 9. Debt"
-- **Severity:** High. It becomes Critical if Reading B is confirmed, because that would mean a June 30 breach that was not disclosed.
-- **Confidence:** Medium. The back-solve is exact, but the covenant definition is only a summary and the inputs come from the financial data.
-- **Deal impact:** Closing risk (a default before closing, lender leverage, liquidity) and disclosure risk (the compliance statement adds exposure in the securities suit).
-- **Cross-check:** Lender compliance certificates for Q4 2025 through Q2 2026. The credit agreement's add-back categories. Any waiver or amendment, which might show up in news or 8-Ks not in this set.
+#### SEC-026: The product line at risk from the injunction is about 42% of 2025 revenue
+- **Finding:** The 10-K says Gen-3 was about 70% of hardware revenue. That implies about $211.0 million, or about 42% of 2025 total revenue, is tied to the product Vantor wants to enjoin. The 10-K already warns the company could have to "stop selling Talon Gen-3 robots."
+- **Evidence:** "Talon Gen-3 ... represented approximately 70% of hardware revenue in 2025." 0.70 x 301.4 = 211.0; 211.0 / 502.3 = 42.0% of revenue. The damages claim (from LIT-001, as given) of 96.4 / 1,159 = 8.3% of implied equity value, and 96.4 / 33.9 = 2.8x June 30, 2026 cash.
+- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Item 1. Business" and "Item 1A. Risk Factors"; `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Liquidity and capital resources"
+- **Severity:** Critical. An injunction on a product line worth about 42% of revenue, together with damages of about 8.3% of equity value, could change value by more than 10%.
+- **Confidence:** Medium. The revenue share is from a primary source, and "approximately 70%" is an approximation. The outcome of the injunction request is uncertain.
+- **Deal impact:** Valuation, closing risk (possible condition or special indemnity or escrow) and post-closing (redesign cost).
+- **Cross-check:** Ask the financial analyst for Gen-3 and Gen-3 Plus revenue by quarter. Ask the litigation analyst for the injunction briefing schedule and any design-around status.
 
-#### SEC-17: The September 30, 2026 step-down to 3.00x leaves thin or no headroom
-- **Finding:** The 10-Q notes the step-down but says nothing about expected headroom. Under Reading A, June 30 Consolidated EBITDA is only 11% above the 3.00x threshold. If the cut guidance is accurate, the December 31, 2026 test looks likely to fail under Reading A, even with net debt flat.
-- **Evidence (verbatim, 10-Q MD&A):**
-  - "Beginning with the quarter ending September 30, 2026, the maximum ratio decreases to 3.00 to 1.00."
-  - Guidance: "Adjusted EBITDA of $70 million to $78 million." The March outlook was "$114 million to $122 million".
-- **My math:**
-  - Minimum Consolidated EBITDA at 3.00x: 202.5 / 3.00 = 67.5. The Reading A cushion is 75.9 - 67.5 = 8.4, or 11.1%.
-  - Guidance implies H2 2026 Adjusted EBITDA of 70.0 to 78.0 minus H1 29.9, which is 40.1 to 48.1. H2 2025 was 98.8 - 39.0 = 59.8.
-  - Illustration only. It assumes add-backs stay at 41.5 and net debt stays at 202.5. LTM Adjusted EBITDA falls by 11.7 to 19.7. The Reading A base becomes 46.3 to 54.3, and adding the 15% cap gives 53.2 to 62.4. The ratio is 3.24x to 3.80x at December 31, 2026, which is a breach. Even the company's own uncapped method gives 202.5 / 70.0 = 2.89x at the low end of guidance.
-  - The Q3 2025 quarterly EBITDA needed for an exact September 30 test was not found in SEC filings.
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, sections "Covenant compliance" and "Updated 2026 outlook"
+#### SEC-027: The 10-K lists the bill-and-hold criteria but never says who asked, why, or that the criteria were met
+- **Finding:** Note 2 describes the arrangements in general terms ("a customer asks us"). It lists criteria (a) to (d) as a policy. It does not say who requested the Q4 2025 arrangements, what the substantive reason was, or that each criterion was met. No filing in the folder answers these points.
+- **Evidence:** "In some cases a customer asks us to hold finished products at our facilities until the customer's site is ready." Criteria: "(a) the reason for the arrangement is substantive, (b) the products are separately identified as belonging to the customer, (c) the products are ready for physical transfer, and (d) we cannot use the products or direct them to another customer." Amounts: "$31.8 million ... Of this amount, $24.6 million related to our largest customer ... these products remained in our warehouses." 31.8 / 154.4 = 20.6% of Q4 2025 revenue; 24.6 / 31.8 = 77.4% from the largest customer (Norvale, per Item 1).
+- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Note 2. Revenue Recognition (excerpt)" and "Item 1. Business"
 - **Severity:** High
-- **Confidence:** Medium. The inputs come from primary sources, but the forward test rests on my assumptions.
-- **Deal impact:** Closing risk and interim operating covenants. The company may need a waiver before closing, which gives lenders leverage.
-- **Cross-check:** The Q3 2026 10-Q or earnings release (not in these files). Quarterly EBITDA from the financial data. News about lender talks or waivers.
+- **Confidence:** High. The text comes from the primary source. The absence of any statement about the requester or the reason is confirmed across all five files.
+- **Deal impact:** Valuation (quality of FY2025 revenue) and disclosure (restatement risk).
+- **Cross-check:** Request the signed customer bill-and-hold request letters, the warehouse segregation records, and the Linden Barr audit workpapers or a summary. Check news for former-employee accounts of who started the arrangements.
 
-#### SEC-18: No cure rights, waivers or updated covenant risk factor were disclosed
-- **Finding:** No filing mentions an equity cure, a waiver, an amendment or a lender discussion. The 10-Q says the risk factors are unchanged apart from the securities litigation one. It does this despite the step-down, the guidance cut and negative operating cash flow.
-- **Evidence (verbatim):**
-  - 10-Q Item 1A: "There have been no material changes to the risk factors in our 2025 Form 10-K, except for the following addition" (securities litigation).
-  - 10-K risk factor: "A breach could allow our lenders to accelerate repayment of our debt."
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part II, Item 1A"; `TLFS_10-K_FY2025_excerpts.md`, section "Item 1A"
-- **Severity:** Medium
-- **Confidence:** Medium. The finding rests on what is absent, and the files are excerpts.
-- **Deal impact:** Disclosure.
-- **Cross-check:** Ask management directly whether any waiver, amendment or lender discussion has taken place. Check news for any lender talks.
-
-#### SEC-19: Debt terms. A change of control is an event of default, so all debt must be refinanced at closing
-- **Finding:**
-  - Both the term loan and the revolver mature in August 2029.
-  - Pricing is SOFR plus 3.25% to 3.75%.
-  - The revolver commitment is $75.0m, with $45.0m drawn, $4.2m used by letters of credit and $25.8m available.
-  - The term loan amortizes about $5.0m a year: 190.0 to 185.0 to 182.5.
-  - Closing the deal would itself trigger a default.
-- **Evidence (verbatim):**
-  - 10-K Note 9: "Term loan (matures August 2029)". "Revolving credit facility ($75.0 million commitment, matures August 2029)". "A change of control of Talonfield is an event of default, which allows the lenders to demand immediate repayment".
-  - 10-Q: "After $4.2 million of outstanding letters of credit, $25.8 million was available under the facility." Check: 75.0 - 45.0 - 4.2 = 25.8.
-- **Source:** `TLFS_10-K_FY2025_excerpts.md`, section "Note 9. Debt"; `TLFS_10-Q_Q2-2026_excerpts.md`, section "Liquidity and capital resources"
-- **Severity:** Medium
-- **Confidence:** High. It is stated directly and I recomputed the numbers.
-- **Deal impact:** Price and structure. Arbelion's financing must cover at least $227.5m of payoff, plus replacement of the $4.2m of letters of credit, plus breakage fees.
-- **Cross-check:** Payoff letters. The prepayment terms in the credit agreement (not found in SEC filings).
-
-#### SEC-20: The 10-Q filed August 6, 2026 does not mention the July 22, 2026 Markman order
-- **Finding:** The 10-Q was filed 15 days after the court adopted Vantor's construction on three of four disputed terms. It does not mention the claim construction order or its outcome. It calls the case "in discovery" and repeats "without merit". It has no subsequent events disclosure. No 8-K after January 21, 2026 is in the files, so the September 4, 2026 expert report and the August 14, 2026 Gen-3 Plus amendment are not disclosed in any SEC filing I have.
-- **Evidence (the full 10-Q text):** "*Vantor Robotics, Inc. v. Talonfield Systems, Inc.* The case is in discovery. Trial is currently scheduled for March 2027. We continue to believe the claims are without merit, and we have not recorded an accrual."
-- **Context math:**
-  - Gen-3 was "approximately 70% of hardware revenue in 2025". That is 0.70 x 301.4 = about 211.0, or 42.0% of total 2025 revenue of 502.3.
-  - The $96.4m damages claim (from court records) is 96.4 / 1,159 = 8.3% of the implied equity value.
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part II, Item 1. Legal Proceedings"; `TLFS_10-K_FY2025_excerpts.md`, section "Item 1. Business"
-- **Severity:** Critical. A possible injunction covers products behind about 42% of revenue, and the disclosure gap adds securities-suit exposure.
-- **Confidence:** High that the excerpt does not mention the order. Medium that the full filing also omits it.
-- **Deal impact:** Valuation, closing risk and disclosure.
-- **Cross-check:** The full 10-Q on EDGAR. The litigation docket for the order date. News coverage of the Markman ruling and how the stock reacted.
-
-#### SEC-21: Between the 10-K and the 10-Q, the "not probable" and "cannot estimate" wording disappeared
-- **Finding:** The 10-K gave the standard reasons for not accruing. The 10-Q keeps "without merit" and "no accrual" but drops both reasons and any statement about a range of loss. Management stopped saying that a loss is not probable and cannot be estimated.
-- **Evidence (verbatim):**
-  - 10-K Item 3: "We have not recorded an accrual because we do not believe a loss is probable, and we cannot reasonably estimate a possible loss or range of loss." The 10-K also says Vantor seeks "damages and an injunction" on "three of its patents".
-  - 10-Q: "we have not recorded an accrual." No reason is given.
-  - The 10-Q is silent on accruals for the securities class action and for Pinecrest ($12.0m sought). It says only "defend ourselves vigorously" and "meritorious defenses".
-- **Source:** `TLFS_10-K_FY2025_excerpts.md`, section "Item 3. Legal Proceedings"; `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part II, Item 1"
-- **Severity:** Medium
-- **Confidence:** Medium. The quotes are exact, but the shorter wording could simply be how the text was excerpted.
-- **Deal impact:** Disclosure, and possibly an accrual that should exist but does not.
-- **Cross-check:** The full 10-Q legal contingencies note. Ask management for their current view of the reasonably possible range of loss after the Markman order.
-
-#### SEC-22: The bill-and-hold return customer is "our largest customer", never named, but by inference Norvale
-- **Finding:** No filing names the customer in the bill-and-hold disclosures. The 10-K names Norvale as the largest customer elsewhere. Both the bill-and-hold note and the 10-Q say "our largest customer". The products came "returned to our inventory" from goods that, per the 10-K, never left Talonfield's warehouses. The reversal was booked as a Q2 2026 revenue reduction, not as a correction of Q4 2025.
-- **Evidence (verbatim):**
-  - 10-K Note 2: "Of this amount, $24.6 million related to our largest customer. At December 31, 2025, these products remained in our warehouses."
-  - 10-Q: "products with a sales value of $9.4 million ... were returned to our inventory, and we issued a credit for the same amount."
-  - 10-K Item 1: "Our largest customer, Norvale Retail Group, Inc."
-- **My math:**
-  - Q4 2025 bill-and-hold: 31.8 / 154.4 = 20.6% of Q4 revenue.
-  - Largest customer's share of bill-and-hold: 24.6 / 31.8 = 77.4%.
-  - Returned: 9.4 / 24.6 = 38.2% of that customer's bill-and-hold, and 9.4 / 31.8 = 29.6% of all bill-and-hold.
-  - Delivered: 31.8 - 9.4 = 22.4, which matches the 10-Q.
-  - The reversal is 9.4 / 112.9 = 8.3% of Q2 2026 revenue.
-- **Interpretation:** Goods sitting in Talonfield's own warehouse that were later "returned" raise the question of whether criterion (a), a "substantive" reason, was met in Q4 2025. If it was not, this is an error correction rather than a current-period amendment.
-- **Source:** `TLFS_10-K_FY2025_excerpts.md`, sections "Note 2" and "Item 1"; `TLFS_10-Q_Q2-2026_excerpts.md`, section "Bill-and-hold amendment"
+#### SEC-028: The $9.4 million return was booked as a Q2 2026 revenue reduction, not a correction of 2025
+- **Finding:** Goods recognized as revenue in Q4 2025 were returned to Talonfield's inventory under a May 2026 amendment. The company booked the credit as Q2 2026 revenue reduction and did not revise 2025. Returning goods to inventory is hard to reconcile with criterion (d) ("we cannot use the products or direct them to another customer") and raises the question of whether the original reason was substantive. That is my interpretation, not the company's.
+- **Evidence:** "products with a sales value of $9.4 million that we had recognized as revenue under a bill-and-hold arrangement in the fourth quarter of 2025 were returned to our inventory, and we issued a credit for the same amount. We recorded the credit as a reduction of revenue in the second quarter of 2026." Also: "The remaining $22.4 million ... had been delivered to customers as of June 30, 2026." Check: 31.8 - 9.4 = 22.4. Also 9.4 / 24.6 = 38.2% of the largest customer's bill-and-hold amount. The 10-Q does not say whether the $9.4 million was part of the $24.6 million, but it involved the same "largest customer."
+- **Source:** `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Part I, Item 2", "Bill-and-hold amendment" and "Revenue"
 - **Severity:** High
-- **Confidence:** High on the numbers. Medium that the customer is Norvale (an inference, which assumes Norvale was still the largest customer in May 2026).
-- **Deal impact:** Valuation (quality of earnings), disclosure, and the Norvale relationship.
-- **Cross-check:** Norvale purchase orders and amendments. News on Norvale's ordering. The securities complaint's allegations about Q4 2025.
+- **Confidence:** High for the facts. Medium for the interpretation about criterion (d).
+- **Deal impact:** Valuation and disclosure. FY2025 revenue may be overstated, and Q2 2026 is understated by the same amount.
+- **Cross-check:** Ask whether the auditor considered an error correction under ASC 250. Ask for the amendment's terms and why Norvale returned the goods. Check news and the class action complaint (LIT-003) for how they describe this event.
 
-#### SEC-23: Critical audit matter not found. The auditor change was tied to Q4 bill-and-hold procedures
-- **Finding:** The auditor's report is not in the files, so no critical audit matter on bill-and-hold or revenue was found in SEC filings. The filings do show three things:
-  - Linden Barr issued an adverse opinion on internal control over financial reporting (ICFR).
-  - Hartwell & Pryce had warned that it would need to expand procedures for exactly these Q4 2025 arrangements, and was dismissed shortly afterwards.
-  - The material weakness was still not remediated at June 30, 2026.
-- **Evidence (verbatim):**
-  - 8-K: "additional audit procedures would be required for revenue arrangements with these terms expected in the fourth quarter of 2025, which would expand the scope of its audit."
-  - Hartwell & Pryce was dismissed November 10, 2025, and Linden Barr was engaged November 12, 2025.
-  - 10-K 9A: "Linden Barr LLP issued an adverse opinion on the effectiveness of our internal control over financial reporting."
-  - 10-Q Item 4: "The material weakness described in our 2025 Form 10-K has not yet been remediated."
-- **Source:** `TLFS_8-K_2025-11-14_auditor-change.md`, section "Reportable event"; `TLFS_10-K_FY2025_excerpts.md`, section "Item 9A"; `TLFS_10-Q_Q2-2026_excerpts.md`, section "Item 4"
+#### SEC-029: The 10-K described "deliveries" of products that were still in Talonfield's warehouses; the 10-Q later admits a pull-forward
+- **Finding:** The 10-K MD&A credits record Q4 revenue to "strong hardware deliveries." Note 2 says the bill-and-hold products, 20.6% of Q4 revenue, had not left Talonfield's warehouses. The 10-Q adds new language that customers "pulled forward" orders into Q4 2025.
+- **Evidence:** 10-K: "Record fourth-quarter revenue of $154.4 million, up 32.4% year over year, driven by strong hardware deliveries to enterprise customers." 10-K Note 2: "these products remained in our warehouses." 10-Q: "orders that customers pulled forward into the fourth quarter of 2025." My calculation: Q4 2024 = 154.4 / 1.324 = 116.6; Q4 2025 excluding bill-and-hold = 154.4 - 31.8 = 122.6, which is growth of 5.1% instead of 32.4%. FY2025 excluding bill-and-hold = 470.5, which is growth of 11.6% instead of 19.1%.
+- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Item 7" and "Note 2"; `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Revenue"
 - **Severity:** High
-- **Confidence:** High on the quoted facts. The critical audit matter itself was not found.
-- **Deal impact:** Disclosure and valuation. The same weakness affects how reliable the covenant calculations are.
-- **Cross-check:** The full 10-K auditor's report (critical audit matters). Exhibit 16.1. Audit committee minutes.
+- **Confidence:** High. The quotes come from primary sources and the numbers are recomputed.
+- **Deal impact:** Valuation (underlying growth) and disclosure (supports the class action theory).
+- **Cross-check:** Compare with the financial analyst's quarterly revenue data and with the LIT-003 complaint's alleged misstatements.
 
-#### SEC-24: Option, RSU and PSU counts and exercise prices not found
-- **Finding:** No filing gives counts of options, RSUs or PSUs, or exercise prices, so a fully diluted share count cannot be built from the SEC set.
-- **Available data points:**
-  - Basic shares: 46,912,408 at February 27, 2026.
-  - Hale owns 6,690,000 shares (14.2%), which implies about 6.69 / 0.142 = 47.1m shares at the proxy date.
-  - 2025 diluted EPS gives 18.6 / 0.39 = about 47.7m weighted diluted shares.
-  - The deal brief uses 48.3m. That is 1.39m (3.0%) above basic, and each 1.0m shares equals $24.0m at $24.00.
-  - Single-trigger equity acceleration for the five executives was $17.6m at December 31, 2025 values.
-- **Evidence (verbatim, proxy):** "all unvested equity awards held by executive officers vest in full immediately upon a change in control ("single-trigger")".
-- **Source:** `TLFS_10-K_FY2025_excerpts.md`, cover; `TLFS_DEF14A_2026_excerpts.md`, sections "Security ownership" and "Potential payments upon a change in control"
+#### SEC-030: Revenue excluding bill-and-hold is $0.5 million above the bonus threshold; executives were paid at 142%
+- **Finding:** The proxy shows 2025 revenue of $502.3 million against a $490.0 million target. Without the $31.8 million of Q4 bill-and-hold revenue, revenue would have been $470.5 million, only $0.5 million above the $470.0 million threshold. Without only the $9.4 million later returned, revenue would have been $492.9 million, still above target. The proxy was filed April 24, 2026, before the May 2026 amendment. It mentions no clawback. Neither the 10-K nor the proxy says who requested the bill-and-hold arrangements, beyond Note 2's "a customer asks us."
+- **Evidence:** Proxy table: "Revenue ($ millions) | 470.0 | 490.0 | 510.0 | 502.3" and "Adjusted EBITDA ($ millions) | 88.0 | 95.0 | 102.0 | 98.8". "each weighted 50%". "the Compensation Committee approved bonus payouts at 142% of target for all executive officers." 502.3 - 31.8 = 470.5. The proxy does not disclose payout percentages at threshold or maximum, so I cannot recompute the 142%. The EBITDA effect of bill-and-hold is not disclosed.
+- **Source:** `data/sec-filings/TLFS_DEF14A_2026_excerpts.md`, "2025 annual incentive plan"; `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Note 2"
+- **Severity:** High. This is a governance and incentive issue, and the facts are relevant to the class action.
+- **Confidence:** High for the numbers. The incentive link is my interpretation.
+- **Deal impact:** Governance, disclosure and post-closing (clawback policy and management retention terms).
+- **Cross-check:** Ask for the clawback policy (Rule 10D-1) and the payout curve. Check news for any shareholder or proxy-adviser criticism and the LIT-003 complaint for scienter allegations tied to bonuses.
+
+#### SEC-031: Not found in SEC filings: Q3 2025 results, their dates and quarterly EBITDA for H2 2025
+- **Finding:** No file gives Q3 2025 results, an earnings release date, or Q3 or Q4 2025 EBITDA. The only quarterly data is in the 10-Q. From it I derive Q1 figures and H2 2025 Adjusted EBITDA.
+- **Evidence:** 10-Q table: Adjusted EBITDA Q2 2026 13.8; Q2 2025 20.6; H1 2026 29.9; H1 2025 39.0. Derived: Q1 2026 = 29.9 - 13.8 = 16.1; Q1 2025 = 39.0 - 20.6 = 18.4; H2 2025 = 98.8 - 39.0 = 59.8. Trailing twelve months (TTM) Adjusted EBITDA at June 30, 2026 = 98.8 - 39.0 + 29.9 = 89.7. The 8-K places the material weakness in Q3 2025 ("During the third quarter of 2025, Hartwell & Pryce advised the Audit Committee"), but gives no results.
+- **Source:** `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Results summary"; `data/sec-filings/TLFS_8-K_2025-11-14_auditor-change.md`, "Reportable event"
 - **Severity:** Medium
-- **Confidence:** High on the data points. The award detail was not found in SEC filings.
-- **Deal impact:** Valuation (equity value bridge).
-- **Cross-check:** The 10-K stock compensation note (not excerpted). A cap table from management. The financial data.
+- **Confidence:** High for the derived figures. The absence of the other data is confirmed.
+- **Deal impact:** Valuation and debt analysis.
+- **Cross-check:** The financial analyst should supply quarterly EBITDA for Q3 and Q4 2025 so the September 30 and December 31, 2026 covenant tests can be modeled.
 
-#### SEC-25: D&O insurance, officer indemnification and clawback policy not found, while the CEO and former CFO are defendants
-- **Finding:** None of these appears in the SEC files. The securities class action names the CEO and the former CFO. The 142% bonus for 2025 rested on revenue that included the bill-and-hold amounts.
-- **Evidence (verbatim):**
-  - 10-Q: the suit is "against Talonfield, our Chief Executive Officer and our former Chief Financial Officer".
-  - Proxy: "bonus payouts at 142% of target".
-  - 8-K: Okafor's separation includes "a cash payment of $900,000 and a general release of claims".
-- **My math:** Bonus revenue was 502.3 against a target of 490.0 and a threshold of 470.0. Removing the 9.4 return gives 492.9, still above target. Removing all 31.8 of bill-and-hold gives 470.5, just 0.5 above threshold.
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part II, Item 1"; `TLFS_DEF14A_2026_excerpts.md`, section "2025 annual incentive plan"; `TLFS_8-K_2026-01-21_cfo-departure.md`
+#### SEC-032: The September 30, 2026 step-down to 3.00x is disclosed, but no waiver or forward assessment is
+- **Finding:** The 10-Q reports 2.26x at June 30 and notes the step-down. It says nothing about expected compliance, a waiver or an amendment. My rough estimate, below, suggests headroom is thin under the cut guidance.
+- **Evidence:** "Our Total Net Leverage Ratio was 2.26 to 1.00 at June 30, 2026 ... Beginning with the quarter ending September 30, 2026, the maximum ratio decreases to 3.00 to 1.00." The 10-K says cash netting is "capped at $25.0 million." Add-backs "may not exceed 15%." The 10-K also says "A change of control ... is an event of default." Headroom at constant net debt: 1 - 2.26 / 3.00 = 24.7% fall in Consolidated EBITDA. Estimate (the June 30 term loan balance is not disclosed; I assume about $185.0 million): debt about 185.0 + 45.0 = 230.0, less 25.0 of capped cash = 205.0 net debt. That implies Consolidated EBITDA of about 205.0 / 2.26 = 90.7, which matches TTM Adjusted EBITDA of 89.7. At FY2026 guidance of $70 million to $78 million, the December 31, 2026 ratio would be about 205.0 / 78 = 2.63x to 205.0 / 70 = 2.93x. If Adjusted EBITDA is used as a stand-in for Consolidated EBITDA, H2 2026 implied by guidance is 40.1 to 48.1, against H2 2025 of 59.8. Revolver availability is $25.8 million. The word "waiver" does not appear in any SEC file.
+- **Source:** `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "Covenant compliance", "Liquidity and capital resources" and "Updated 2026 outlook"; `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Note 9. Debt"
+- **Severity:** High. The debt is cured by refinancing at closing, since change of control is an event of default. It would become Critical if a breach occurs at September 30 or December 31, 2026, before closing.
+- **Confidence:** Medium. The covenant terms come from the primary source, but the net debt and EBITDA path are my estimates.
+- **Deal impact:** Closing risk and liquidity before closing. The deal needs a payoff letter and refinancing at closing.
+- **Cross-check:** Ask for the Q3 2026 compliance certificate, the June 30 term loan balance and any lender communications. Check news for reports of an amendment or waiver.
+
+#### SEC-033: The 10-K cyber disclosure is hypothetical, has no Item 1C in the excerpts, and was not updated after the April incident
+- **Finding:** The 10-K excerpts contain no Item 1C. The only cyber text is a risk factor written as something that "could" happen. It describes no controls, so a direct contradiction of described controls cannot be shown from the SEC files. The 10-Q concluded the incident "was not material," filed no 8-K Item 1.05 (none is in the folder), and stated "no material changes" to risk factors other than securities litigation. The disclosed costs plus the Pinecrest claim total $16.1 million.
+- **Evidence:** 10-K: "An outage or attack could stop customers' robot fleets, expose us to service level credits and claims, and damage our reputation." 10-Q: "interrupted fleet operations for some customers for up to three days" and "we concluded that the incident was not material." Costs: 1.8 response + 2.3 credits + 12.0 Pinecrest claim = 16.1. The 10-Q's "some customers" compares with the news report (as given) of "at least 40 customer sites."
+- **Source:** `data/sec-filings/TLFS_10-K_FY2025_excerpts.md`, "Item 1A. Risk Factors"; `data/sec-filings/TLFS_10-Q_Q2-2026_excerpts.md`, "April 2026 service disruption", "Part II, Item 1" and "Part II, Item 1A"
 - **Severity:** Medium
-- **Confidence:** High on the math. The policies were not found in SEC filings.
-- **Deal impact:** Post-closing (indemnification obligations and D&O tail cost) and governance.
-- **Cross-check:** The D&O policy, its limits and retention. The charter and bylaws on indemnification. The Rule 10D-1 clawback policy (usually a 10-K exhibit). Whether Okafor's release covers the securities claims.
+- **Confidence:** High that Item 1C is missing from the excerpts, which do not include it. Medium on the materiality question.
+- **Deal impact:** Disclosure (possible SEC cyber disclosure scrutiny) and post-closing (FieldOS security remediation).
+- **Cross-check:** Request the full 10-K Item 1C and the incident forensic report. Compare the number of sites in the news with the 10-Q. Check for other customer claims beyond Pinecrest.
 
-#### SEC-26: Ruiz accrual location not found
-- **Finding:** The 10-K says the $3.2m was accrued at December 31, 2025, but does not name the balance sheet line. The 10-Q reports preliminary approval but says nothing about the accrual balance or payment.
-- **Evidence (verbatim):**
-  - 10-K: "agreed in principle to settle for $3.2 million, which we accrued at December 31, 2025."
-  - 10-Q: "On May 20, 2026, the court granted preliminary approval of the $3.2 million settlement."
-- **Source:** `TLFS_10-K_FY2025_excerpts.md`, section "Item 3"; `TLFS_10-Q_Q2-2026_excerpts.md`, section "Part II, Item 1"
-- **Severity:** Low
-- **Confidence:** High
-- **Deal impact:** Valuation (treat it as a debt-like item if unpaid).
-- **Cross-check:** The accrued liabilities breakdown in the financial data. The court docket for final approval.
-
-#### SEC-27: Other covenant and liquidity pressure points
-- **Finding:** Several disclosed items make a near-term covenant problem more likely:
-  - Operating cash flow was negative in H1 2026.
-  - The revolver was drawn further.
-  - Cash above $25.0m gets no covenant credit. At June 30, that is 33.9 - 25.0 = 8.9.
-  - The material weakness continues, and disclosure controls were not effective.
-  - The $1.8m of incident costs are "other non-recurring items", which fall in the capped add-back bucket.
-  - Norvale holds 38% of gross receivables, which, applied to the 10-K figure, is 0.38 x 121.5 = about 46.2, and the MSA allows termination on 90 days' notice after a change of control.
-- **Evidence (verbatim):**
-  - 10-Q: "Operating cash flow for the first half of 2026 was negative $4.2 million. We borrowed an additional $10.0 million under our revolving credit facility".
-  - 10-Q: "$1.8 million of incident response costs, which are included in "other non-recurring items"".
-  - 10-K: "terminate the agreement on 90 days' notice if Talonfield undergoes a change of control."
-- **Source:** `TLFS_10-Q_Q2-2026_excerpts.md`, sections "Liquidity and capital resources" and "April 2026 service disruption"; `TLFS_10-K_FY2025_excerpts.md`, sections "Item 1A" and "Note 13"
+#### SEC-034: The class period start date (March 10, 2025) does not match any filing in the SEC folder
+- **Finding:** No SEC file is dated March 10, 2025. The nearest is the FY2025 10-K, filed March 9, 2026, exactly one year and one day later. The FY2024 10-K, which might match, is not in the folder. The class period end, May 12, 2026, also matches no file here. The Q1 2026 10-Q and any May 2026 release are not in the folder.
+- **Evidence:** 10-K: "Filed: March 9, 2026." Other filing dates: 8-K November 14, 2025; 8-K January 21, 2026; proxy April 24, 2026; 10-Q August 6, 2026.
+- **Source:** All five files, header sections
 - **Severity:** Medium
-- **Confidence:** High
-- **Deal impact:** Closing risk and liquidity in the period before closing.
-- **Cross-check:** Weekly cash and revolver usage in the financial data. Collections from Norvale.
+- **Confidence:** High that no file matches. Low for any explanation, for example that the date anchors to a FY2024 10-K or press release, or that one source has a year error.
+- **Deal impact:** Disclosure and litigation exposure. The class period determines potential damages.
+- **Cross-check:** The litigation analyst should check what statement the complaint ties to March 10, 2025 and to May 12, 2026. The news analyst should check what Talonfield announced on May 12, 2026, possibly Q1 results or the bill-and-hold amendment.
 
 ### Positive or mitigating points
-- Under Reading A, which I think is the most natural reading, the June 30, 2026 test passes at about 2.67x against 3.50x.
-- Both facilities mature in August 2029, so there is no near-term maturity wall, and $25.8m of revolver capacity remained.
-- $22.4m of the Q4 2025 bill-and-hold goods had been delivered by June 30, 2026.
-- The Ruiz settlement is accrued and has preliminary court approval.
-- The CFO 8-K states there was no disagreement. The auditor 8-K reports no disagreements, and Hartwell & Pryce agreed with the disclosure.
-- Cash severance in the change-in-control agreements is double-trigger.
-- No text in the source files tries to instruct the agents.
+- The 10-Q discloses the $9.4 million return, the pull-forward and the cut in guidance openly, and says the remaining $22.4 million was delivered by June 30, 2026 (10-Q, "Bill-and-hold amendment").
+- The covenant ratio of 2.26x at June 30 is well under 3.50x, and the ratio estimated from TTM figures matches the reported one (SEC-032).
+- Q2 2026 revenue excluding the two one-off items is 112.9 + 9.4 + 2.3 = 124.6, up 6.0% on 117.6. This is my calculation, and it assumes the items are truly one-off.
+- The Ruiz settlement ($3.2 million) was accrued and received preliminary approval on May 20, 2026.
 
 ### Gaps and questions for management
-1. Please provide the full credit agreement and all amendments. Does the "Permitted Add-backs" cap cover non-cash stock-based compensation? Which line items made up Consolidated EBITDA for the 2.26x, and what was the dollar amount? Please also provide the compliance certificates.
-2. How does the credit agreement define Total Debt? Are letters of credit included?
-3. Are there equity cure rights? Have there been any waivers, amendments or lender talks? What is your forecast for the September 30 and December 31, 2026 tests at 3.00x?
-4. Why did the August 6, 2026 10-Q leave out the July 22 Markman order? What is your current probable or estimable assessment, and has anything been accrued after the $96.4m expert report? Is an 8-K planned?
-5. Was the $9.4m return from Norvale? What was the "substantive" reason for the bill-and-hold at Q4 2025? Did the audit committee or the auditor consider restating?
-6. Please provide the auditor's report, including any critical audit matters, and the remediation timeline for the material weakness.
-7. Please provide the full equity award table: options with strike prices, RSUs, and PSUs with performance conditions.
-8. Please provide the D&O insurance terms, the indemnification agreements, the clawback policy, and whether Okafor's release covers the securities claims.
-9. Where does the Ruiz $3.2m sit on the balance sheet, and is it still unpaid?
-10. Note that the Q3 2026 10-Q and any 8-K filed after January 21, 2026 are not in the SEC file set.
+1. Why did the Q2 10-Q not mention the July 22, 2026 Markman order? What is the current ASC 450 assessment, and is a loss reasonably possible? If so, what is the range?
+2. For each Q4 2025 bill-and-hold arrangement, who requested it, what was the substantive reason, and what documents support criteria (a) to (d)?
+3. Why was the $9.4 million returned to inventory, and why was it not treated as a correction of FY2025?
+4. Please provide Q3 and Q4 2025 quarterly results, Consolidated EBITDA and the add-back calculation, the June 30, 2026 term loan balance, and the Q3 2026 compliance certificate. Have lenders been approached about a waiver or amendment?
+5. Please provide the full 10-K Item 1C, the incident report, and the number of customers and sites affected. What was the basis for concluding the incident was not material?
+6. Is there a clawback policy, and has the Compensation Committee reviewed the 2025 bonus in light of the $9.4 million return?
+7. What did Talonfield file or announce on or around March 10, 2025 and May 12, 2026? Not found in SEC filings.
