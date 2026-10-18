@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.2 (October 18, 2026: time target agreed; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.3 (October 18, 2026: target role agreed; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -14,7 +14,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 2. Catch the red flags that only appear when sources are combined, such as an event a company left out of its filings.
 3. Keep a human in control of every important step, with a clear audit trail.
 4. Prove quality with a score, not a claim, by testing against planted red flags.
-5. Give hiring managers a project they can understand in two minutes and inspect in depth.
+5. Give hiring managers for AI product manager roles a project they can understand in two minutes and inspect in depth.
 
 ## Users
 
@@ -22,7 +22,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 |---|---|---|
 | **Operator** (deal team analyst or associate; you, for the portfolio) | Starts a run, answers the three checkpoints, reads the report, grades the run | Uses their own Claude Code account. No other sign-in. |
 | **Decision maker** (Investment Committee member, deal lead) | Reads the report and decides | None. Receives the PDF. |
-| **Portfolio reviewer** (recruiter, hiring manager, interviewer) | Reads the README, diagram, sample report and case study | None. Views the public project or the PDF. |
+| **Portfolio reviewer** (recruiter, hiring manager or interviewer for AI product manager roles) | Reads the README, diagram, sample report and case study | None. Views the public project or the PDF. |
 
 ## User stories
 
@@ -151,7 +151,8 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | After the first grading: the report appendix lists findings that were not verified, trend findings are combined, and verifier corrections are applied before Checkpoint 3 (R9, R12, R15). |
 | 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |
 | 2026-10-18 | Time target for a full run raised from 45 to 90 minutes (success criterion 1): the first test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Faster runs are a later improvement. |
+| 2026-10-18 | The portfolio is aimed at AI product manager roles. The README, case study and interview story lead with product skills: framing the problem, specs and a phased plan, evaluation, safety and iteration. The M&A depth is the proof of domain judgment. |
 
 ## Open questions (with recommended defaults)
 
-1. **Which roles is it aimed at?** Recommended default: both AI product roles and M&A or finance roles, with the README leading on the problem and the results.
+None right now.
