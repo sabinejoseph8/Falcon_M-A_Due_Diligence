@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.1 (October 18, 2026: updated after the first test run; changes are in the Decisions table).
+**Status:** Agreed, version 1.2 (October 18, 2026: time target agreed; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -127,7 +127,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 ## Success criteria (checkable by using it)
 
-1. An operator can finish a full run with three replies (approve, proceed, approve report) in under 45 minutes.
+1. An operator can finish a full run with three replies (approve, proceed, approve report) in under 90 minutes.
 2. Every run stops at all three checkpoints and does nothing until the operator replies.
 3. The report contains all nine parts, and every finding in it names a source.
 4. Grading the sample run shows: at least 80% recall on Critical and High issues, zero unsupported findings in the report, and zero distractors rated Medium or above. (Default targets.)
@@ -150,8 +150,8 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Show results with their limits up front: the scorecard and README say how blind the first test run was. |
 | 2026-10-18 | After the first grading: the report appendix lists findings that were not verified, trend findings are combined, and verifier corrections are applied before Checkpoint 3 (R9, R12, R15). |
 | 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |
+| 2026-10-18 | Time target for a full run raised from 45 to 90 minutes (success criterion 1): the first test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Faster runs are a later improvement. |
 
 ## Open questions (with recommended defaults)
 
 1. **Which roles is it aimed at?** Recommended default: both AI product roles and M&A or finance roles, with the README leading on the problem and the results.
-2. **Is 45 minutes the right time target (success criterion 1)?** The first full test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Recommended default: change the target to under 90 minutes, and treat faster runs as a later improvement.

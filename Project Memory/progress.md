@@ -94,7 +94,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Report written as Markdown, HTML and PDF
 - [x] Run saved to `examples/sample-run/`
 
-**Result:** 89 findings; 61 checked by the verifier (44 verified, 17 corrected, 0 rejected); a 15-page report; 69 minutes from the approved plan to sign-off. That misses the 45-minute target in the product spec (see its open questions).
+**Result:** 89 findings; 61 checked by the verifier (44 verified, 17 corrected, 0 rejected); a 15-page report; 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. That is within the product spec's 90-minute target (raised from 45 minutes after this run).
 
 **Automated tests** (`python3 tests/run_all.py --run examples/sample-run --phase 3`):
 1. Every finding in the register has a valid ID, severity, status and source.
