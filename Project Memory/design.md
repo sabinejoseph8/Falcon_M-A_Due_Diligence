@@ -1,6 +1,6 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.1 (October 18, 2026: updated with the report and portfolio pieces built since version 1.0).
+**Status:** Agreed, version 1.2 (October 18, 2026: portfolio pieces aimed at AI product manager roles).
 
 Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
@@ -103,6 +103,6 @@ Project Falcon has no custom app screen. People experience it in three places: *
    `/diligence` -> plan summary -> **Checkpoint 1** -> progress updates while four specialists work -> red-flag table and conflicts -> **Checkpoint 2** -> verification results and draft recommendation -> **Checkpoint 3** -> "Report saved" with file locations.
 2. **The report** (US Letter, portrait): page 1 cover; page 2 executive summary (bottom-line box, top five red flags, valuation implications); then the answers to the six committee questions, the risk matrix, workstream detail, cross-source insights, deal protections, open questions and appendix (methodology, checkpoint log, verification statistics, findings index, sources, limitations). The sample report runs to 15 pages.
 3. **The architecture diagram** (`docs/architecture.png`): follows the layout of your original architecture slide. Agent Core and Working Memory on the left, the four specialist tools in the middle, the verifier and report on the right, the checkpoint lane below, and the controls band at the bottom.
-4. **The README** (GitHub, desktop and phone): one-paragraph summary, diagram, "at a glance" bullets, then detail sections. The most important information is in the first screen.
-5. **The one-page case study** (`docs/case-study.pdf`, US Letter): header band, five KPI tiles, two columns (problem, what was built and key decisions on the left; diagram, conclusion and lessons on the right), a caveat note and a footer.
+4. **The README** (GitHub, desktop and phone): one-paragraph summary, diagram, "at a glance" bullets, then detail sections. The most important information is in the first screen, and the skills list leads with AI product management.
+5. **The one-page case study** (`docs/case-study.pdf`, US Letter), titled as an AI product management case study: header band, five KPI tiles, two columns (problem, what was built and key decisions on the left; diagram, conclusion and lessons on the right), a caveat note and a footer.
 6. **The Project Memory website** (claude.ai page, desktop and phone): one tab per planning file (Product Spec, Design Spec, Tech Spec, Plan) with color swatches, diagrams and a plan whose finished tasks are ticked live. Private until shared.

@@ -1,11 +1,11 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.1 (October 18, 2026: updated after publishing to GitHub).
+**Status:** Agreed, version 1.2 (October 18, 2026: updated after aiming the portfolio at AI product manager roles).
 
 ## Summary
 
 - **Current phase:** Phase 4, Grade and tune (first grading done; the three fixes are in `CLAUDE.md`).
-- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private.
+- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
 - **Next action:** run `/diligence` in a fresh Claude Code session (a fully blind run), then `/evaluate` and compare with the sample run's scorecard. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
@@ -34,7 +34,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Lead agent instructions with the Plan, Act, Observe loop and three checkpoints (`CLAUDE.md`)
 - [x] Four source specialists and the citation verifier (`.claude/agents/`)
 - [x] Commands: `/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`, `/run-tests`
-- [x] Permission rules: no web, no edits to sources or the answer key, approval to read the answer key
+- [x] Permission rules: no web, no edits to sources or the answer key, approval to read the answer key or an earlier run
 - [x] Blank working-memory templates (`templates/memory/`)
 - [x] Configuration reviewed against the current Claude Code docs; fixes applied (renamed `/status`, removed shell access from the financial analyst)
 
@@ -168,6 +168,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Push the project to GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), keeping `interview-notes.md` private
 - [x] Project Memory website with live plan ticks
 - [ ] Make the repository public and share the Project Memory website
+- [x] README, case study and interview notes aimed at AI product manager roles
 
 **Automated tests** (`python3 tests/run_all.py --phase style`):
 1. No em dashes in any project file.
@@ -177,6 +178,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 1. Open the README on GitHub on a computer and on a phone. **Expected:** the diagram loads and every link works.
 2. Ask someone unfamiliar with the project to read the README for two minutes and explain it back. **Expected:** they can name the problem, the agents, the checkpoints and the result.
 3. Open the case study PDF. **Expected:** one page, readable, no em dashes.
+4. Ask someone who works in AI product management to read the case study for two minutes. **Expected:** they can say how quality was defined, measured and improved (planted issues, the scorecard, the three fixes).
 
 ---
 
