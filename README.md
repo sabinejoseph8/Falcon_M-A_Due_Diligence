@@ -13,7 +13,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Sample results:** in a test run the system found all 13 Critical and High planted issues (97% of all 18), put no unsupported finding in the report and rated every distractor Low. See the [scorecard](examples/sample-run/evaluation/scorecard.md), including how blind the test was.
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
 
 ## The problem
 
@@ -85,7 +85,19 @@ A complete test run from October 18, 2026 is saved in [`examples/sample-run/`](e
 
 **What the evaluation changed.** The one partial miss (goodwill impairment risk) was found by three agents but never reached the report, because only higher-severity findings were verified. That, a trend spread across five findings and verifier corrections applied late became three fixes to `CLAUDE.md`, applied after this run.
 
-**How blind was it?** The analysts and verifiers never saw the answer key. The lead agent ran in the same Claude Code session that built the data, and the checkpoints were approved by the builder. The real blind test is a fresh session (see below).
+**How blind was it?** The analysts and verifiers never saw the answer key. The lead agent ran in the same Claude Code session that built the data, and the checkpoints were approved by the builder. The three graded runs below fix that: each ran in a fresh session.
+
+**Three blind graded runs.** After the three fixes, I ran the system three more times, each in a fresh Claude Code session that never saw the answer key or an earlier run. The setup was frozen across the three, so the scores measure how much results vary from run to run.
+
+| Metric | Run 1 | Run 2 | Run 3 | Average | Range |
+|---|---|---|---|---|---|
+| Recall, the 13 Critical and High planted issues | 96.2% | 96.2% | 100% | 97.4% | 96.2% to 100% |
+| Recall, all 18 planted issues | 94.4% | 91.7% | 94.4% | 93.5% | 91.7% to 94.4% |
+| Severity within one level of the answer key | 100% | 100% | 100% | 100% | |
+| Unsupported findings in the report | 0 | 0 | 0 | 0 | |
+| Distractors rated Medium or above | 0 of 4 | 0 of 4 | 0 of 4 | 0 | |
+
+The same gaps showed up more than once: goodwill impairment risk was only partly found in all three runs, the planted positives were thin in every report, and a lawsuit by the #4 customer was not linked to that customer's revenue in two of the three. Those are the next instruction fixes. Run 2's own scorecard reports 96.4% because it counted 14 Critical and High issues; the table recomputes every run on the answer key's 13. Scorecards: [run 1](runs/2026-10-18_0921/evaluation/scorecard.md), [run 2](runs/2026-10-18_1336/evaluation/scorecard.md); run 3's is in `evaluation/scorecard.md`.
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 

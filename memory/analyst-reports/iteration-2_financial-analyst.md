@@ -1,365 +1,347 @@
-# Iteration 2: financial-analyst report (unedited)
-
-- Saved by the lead agent: 2026-10-18 03:54 EST
-- Task: Financial follow-ups, iteration 2
-- Subagent ID: ab183365bc5af614e
-- The report below is the subagent's final message exactly as returned. Only the harness's hand-back line and its two-space line indent were removed.
-
----
-
-## Financial analyst: findings (iteration 2)
+## Financial analyst: findings (iteration 2, narrow follow-up)
 
 ### Files reviewed
+- `data/deal-brief.md` (context only)
+- `data/financials/README.md`
+- `data/financials/income_statement.csv`
+- `data/financials/revenue_quarterly.csv`
+- `data/financials/balance_sheet.csv`
+- `data/financials/cash_flow.csv`
+- `data/financials/adjusted_ebitda_reconciliation.csv`
+- `data/financials/revenue_by_customer.csv`
+- `data/financials/kpis.csv`
 
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md (context)
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/financials/README.md
-- .../data/financials/income_statement.csv
-- .../data/financials/revenue_quarterly.csv
-- .../data/financials/balance_sheet.csv
-- .../data/financials/cash_flow.csv
-- .../data/financials/adjusted_ebitda_reconciliation.csv
-- .../data/financials/revenue_by_customer.csv
-- .../memory/analyst-reports/iteration-1_financial-analyst.md (my iteration 1 report, for consistency)
+Facts supplied by the lead agent are labeled "[lead: 10-K Note 9]", "[lead: 10-Q Q2 2026]", "[lead: 10-K Note 2]", "[lead: DEF 14A]" and "[lead: court records]". I did not read those source files myself.
 
-I did not open the SEC, news or litigation files. Every fact from those sources was given to me by the lead agent, and I label each one "(lead agent, from <file>)". None of the financial files contain instruction-like text.
+None of the financial files contained text that tried to instruct the agents. There is no prompt-injection finding.
 
----
+### Key metrics table
 
-### Answers to follow-up questions
+Reported figures are as the company presents them. Rows marked "adj" are my diligence adjustments.
 
-#### 1. Covenant test (Total Net Leverage Ratio)
-
-**Inputs** (lead agent, from 10-K Note 9 and the Q2 2026 10-Q):
-- Maximum ratio: 3.50x through June 30, 2026, then 3.00x from September 30, 2026.
-- Unrestricted cash is netted only up to 25.0.
-- Permitted Add-backs are capped at 15% of Consolidated EBITDA before those add-backs.
-
-**Covenant net debt** = total debt less min(cash, 25.0). Source: `balance_sheet.csv`, lines 2, 16 and 17.
-- Dec 31, 2025: (35.0 + 185.0) - min(41.6, 25.0) = 220.0 - 25.0 = **195.0**
-- Jun 30, 2026: (45.0 + 182.5) - min(33.9, 25.0) = 227.5 - 25.0 = **202.5**
-- Including the 4.2 of letters of credit (LCs) at June 30, 2026: 206.7. The Dec 31, 2025 LC balance is not in the pack.
-- **Letters of credit:** I exclude them in the base case. The back-solve below shows the company also excludes them.
-
-**EBITDA components.** Source: `adjusted_ebitda_reconciliation.csv`, lines 7 to 11.
-
-| | FY2025 | LTM Q2 2026 |
-|---|---|---|
-| EBITDA | 64.1 | 48.2 |
-| SBC | 17.2 | 17.8 |
-| Restructuring + other non-recurring | 7.9 + 9.6 = 17.5 | 9.7 + 14.0 = 23.7 |
-| Company Adjusted EBITDA | 98.8 | 89.7 |
-
-**Covenant EBITDA in each case:**
-- **(a) Full company Adjusted EBITDA, no cap:** 98.8 and 89.7.
-- **(b) Cap applies, SBC is in the base:**
-  - FY2025: base 64.1 + 17.2 = 81.3. Cap 15% x 81.3 = 12.2, which is below the actual 17.5, so the cap binds. Covenant EBITDA = 81.3 + 12.2 = **93.5**.
-  - LTM: base 48.2 + 17.8 = 66.0. Cap 9.9, below the actual 23.7. Covenant EBITDA = **75.9**.
-- **(c) Cap applies, SBC is itself a Permitted Add-back:**
-  - FY2025: base 64.1. Cap 9.6, below the actual 34.7. Covenant EBITDA = **73.7**.
-  - LTM: base 48.2. Cap 7.2, below the actual 41.5. Covenant EBITDA = **55.4**.
-
-| Ratio | Dec 31, 2025 (limit 3.50x) | Jun 30, 2026 (limit 3.50x) | Jun 30, 2026 incl. LCs |
-|---|---|---|---|
-| (a) | 195.0 / 98.8 = **1.97x** | 202.5 / 89.7 = **2.26x** | 206.7 / 89.7 = 2.30x |
-| (b) | 195.0 / 93.5 = **2.09x** | 202.5 / 75.9 = **2.67x** | 206.7 / 75.9 = 2.72x |
-| (c) | 195.0 / 73.7 = **2.65x** | 202.5 / 55.4 = **3.65x, a breach** | 206.7 / 55.4 = 3.73x |
-
-Under (c), compliance at June 30 needed EBITDA of 202.5 / 3.50 = 57.9. That is 2.4 more than 55.4. Put the other way, the maximum net debt was 3.50 x 55.4 = 194.0, against 202.5 actual.
-
-**Back-solve of the reported 2.26x:**
-- Implied EBITDA = 202.5 / 2.26 = **89.6**. The rounding band (2.255x to 2.265x) gives 89.4 to 89.8.
-- This matches **case (a)** only: full company Adjusted EBITDA of 89.7, cash capped at 25.0, LCs excluded.
-- Other combinations do not match:
-  - Including LCs: 206.7 / 89.7 = 2.30x.
-  - Netting all cash: 193.6 / 89.7 = 2.16x.
-  - Case (b) gives 2.67x and case (c) gives 3.65x.
-- **Conclusion:** the reported 2.26x appears to apply no 15% cap at all. Restructuring and other add-backs of 23.7 are more than double the largest possible cap of 9.9.
-
-**Projection assumptions** (all mine):
-- Company Adjusted EBITDA in H2 2026:
-  - (i) guidance midpoint: 74.0 - 29.9 = 44.1
-  - (ii) guidance low end: 70.0 - 29.9 = 40.1
-  - (iii) H2 equal to H1: 29.9
-- H2 2026 add-backs equal H1 2026: SBC 8.9; restructuring + other 4.4 + 6.2 = 10.6. So H2 EBITDA is 24.6, 20.6 and 10.4.
-- Q3 2026 is half of H2 2026. If the guidance is weighted to Q4, September looks worse than shown.
-- Q3 2025 is taken as H2 2025 times the Q3 revenue share, 121.4 / 275.8 = 44.0%:
-  - H2 2025 = FY2025 - H1 2025: EBITDA 37.8, SBC 8.9, other add-backs 13.1, Adjusted EBITDA 59.8.
-  - Q3 2025: EBITDA 16.6, SBC 3.9, other 5.8, Adjusted EBITDA 26.3.
-- Guidance Adjusted EBITDA is assumed to use the company definition.
-- **Net debt:** H2 2026 burn repeats H1, a reported net debt increase of 15.2 (7.6 a quarter). Term loan amortization is 1.25 a quarter.
-  - Sep 30: cash 33.9 - 7.6 - 1.25 = 25.05 and debt 226.25. Covenant net debt = **201.2**.
-  - Dec 31: cash would fall to 16.2, so a revolver draw of 8.8 restores it to 25.0. Revolver 53.8, total debt 233.8, covenant net debt = **208.8**. Revolver availability falls from 25.8 to 17.0.
-- EBITDA needed at 3.00x: Sep 30, 201.2 / 3 = **67.1**. Dec 31, 208.8 / 3 = **69.6**.
-
-**September 30, 2026** (LTM = LTM Q2 2026 - Q3 2025 + Q3 2026):
-
-| Scenario | (a) EBITDA / ratio / headroom | (b) EBITDA / ratio / headroom | (c) EBITDA / ratio / headroom |
-|---|---|---|---|
-| (i) midpoint | 85.4 / 2.36x / +18.4 | (43.9 + 18.3) x 1.15 = 71.5 / 2.81x / +4.5 | 43.9 x 1.15 = 50.4 / 3.99x / -16.6 |
-| (ii) low end | 83.4 / 2.41x / +16.4 | 60.2 x 1.15 = 69.2 / 2.91x / +2.2 | 41.9 x 1.15 = 48.1 / 4.18x / -18.9 |
-| (iii) H2 = H1 | 78.3 / 2.57x / +11.3 | 55.1 x 1.15 = 63.4 / 3.18x / **-3.7** | 36.8 x 1.15 = 42.3 / 4.76x / -24.8 |
-
-How the LTM inputs are built, scenario (i):
-- Company Adjusted EBITDA = 89.7 - 26.3 + 22.1 = 85.4
-- EBITDA = 48.2 - 16.6 + 12.3 = 43.9
-- SBC = 17.8 - 3.9 + 4.45 = 18.3
-
-**December 31, 2026** (FY2026; full-year add-backs SBC 17.8 and other 21.2):
-
-| Scenario | (a) EBITDA / ratio / headroom | (b) EBITDA / ratio / headroom | (c) EBITDA / ratio / headroom |
-|---|---|---|---|
-| (i) midpoint | 74.0 / 2.82x / +4.4 | (35.0 + 17.8) x 1.15 = 60.7 / 3.44x / -8.9 | 35.0 x 1.15 = 40.3 / 5.19x / -29.4 |
-| (ii) low end | 70.0 / 2.98x / +0.4 | 48.8 x 1.15 = 56.1 / 3.72x / -13.5 | 31.0 x 1.15 = 35.7 / 5.86x / -34.0 |
-| (iii) H2 = H1 | 59.8 / **3.49x** / -9.8 | 38.6 x 1.15 = 44.4 / 4.70x / -25.2 | 20.8 x 1.15 = 23.9 / 8.73x / -45.7 |
-
-**Sensitivity:** if net debt stays flat at 202.5, the EBITDA needed at Dec 31 is 67.5. The headroom becomes:
-- (a)(ii) +2.5
-- (a)(iii) -7.7
-- (b)(i) -6.8
-- (b)(ii) -11.4
-
-So the conclusion does not depend on the burn assumption.
-
-**Bottom line:**
-- On the company's own uncapped basis, the Dec 31, 2026 headroom is 4.4 at the guidance midpoint, 0.4 at the low end, and a breach if H2 repeats H1.
-- With the 15% cap, every guidance case breaches 3.00x at Dec 31, 2026.
-- Case (c) is already in breach at June 30, 2026.
-- The September 30, 2026 compliance result will probably be reported around the IC date. Confirm when the Q3 10-Q is filed.
-
-#### 2. Restated revenue (bill-and-hold removed)
-
-Inputs: 31.8 recognized in Q4 2025, 22.4 delivered by June 30, 2026, and 9.4 returned and booked as a Q2 2026 reduction (lead agent, from 10-K Note 2 and the Q2 2026 10-Q). Check: 22.4 + 9.4 = 31.8.
-
-| | Reported | Restated | Underlying (bill-and-hold excluded entirely) |
-|---|---|---|---|
-| Q4 2025 | 154.4 (+32.4%) | 154.4 - 31.8 = **122.6** (122.6 / 116.6 = **+5.1%**) | 122.6 |
-| FY2025 | 502.3 (+19.1%) | **470.5** (470.5 / 421.7 = **+11.6%**) | 470.5 |
-| FY2025 hardware | 301.4 (+15.1%) | 269.6 (269.6 / 261.9 = **+2.9%**) | 269.6 |
-| H1 2026 | 222.6 (-1.7%) | 222.6 + 22.4 + 9.4 = **254.4** (+12.3%, timing only) | 222.6 + 9.4 = 232.0 (**+2.4%**) |
-| H1 2026 hardware | 116.9 (-12.9%) | 148.7 (+10.8%) | 126.3 (-5.9%) |
-| LTM Q2 2026 | 498.4 (+11.0% vs 449.2) | 121.4 + 122.6 + 254.4 = **498.4** (+11.0%) | 498.4 - 22.4 = 476.0 (**+6.0%**) |
-
-- **LTM is unchanged.** The net effect is -31.8 + 22.4 + 9.4 = 0. Reported LTM already contains the 22.4 net.
-- **Quarterly growth without bill-and-hold:** Q1 2025 13.2%; Q2 2025 14.4%; Q3 2025 14.4%; **Q4 2025 5.1%**; Q1 2026 0.7%; **Q2 2026 4.0%** (112.9 + 9.4 = 122.3, against 117.6).
-- The pack does not show which quarter the 22.4 was delivered in, so I left it out of the quarterly rates.
-- **Q4 to Q3 uplift:** 122.6 / 121.4 - 1 = +1.0% in 2025, against +9.9% in 2024.
-- **Q2 2026 without the 9.4 return and the 2.3 service credits:** 112.9 + 9.4 + 2.3 = **124.6**, up 124.6 / 117.6 - 1 = **6.0%**.
-  - H1 2026 on the same basis: 234.3, up 3.4%.
-  - This assumes the 2.3 of credits was booked as a revenue reduction (lead agent, from the Q2 2026 10-Q).
-- **Against consensus** (lead agent, from the March 10, 2026 Capital Markets Wire article):
-  - Restated Q4 2025 of 122.6 vs 128.0 consensus is a **miss of 5.4, or 4.2%**.
-  - Reported 154.4 was a beat of 26.4, or 20.6%.
-- **Norvale:**
-  - FY2025 revenue without its 24.6: 156.2 - 24.6 = **131.6**.
-  - Share: 131.6 / 470.5 = **28.0%**, against 31.1% reported and 28.0% in FY2024.
-  - Growth: 131.6 / 118.1 - 1 = **11.4%**, against 32.3% reported.
-  - Norvale delivered 13.5 / 48.8 = 27.7% of restated growth.
-  - Revenue excluding Norvale: 470.5 - 131.6 = 338.9, up 338.9 / 303.6 - 1 = 11.6%. The other 7.2 of bill-and-hold (31.8 - 24.6) came from non-Norvale customers.
-  - Restated top 10 share: 58.9% to 60.4%. The range depends on whether that 7.2 sat with a top 10 customer: (308.8 - 24.6 - 7.2) / 470.5, or (308.8 - 24.6) / 470.5.
-
-#### 3. Bonus test (2025 plan; lead agent, from DEF 14A)
-
-- **Margin assumption:** the bill-and-hold units earned the FY2025 company gross margin of 206.3 / 502.3 = 41.1%. I assume no offsetting variable operating costs.
-- Gross profit removed = 31.8 x 41.07% = **13.1**.
-- Restated Adjusted EBITDA = 98.8 - 13.1 = **85.7**.
-
-| Metric | Threshold / Target | Reported | vs threshold / target | Restated | vs threshold / target |
-|---|---|---|---|---|---|
-| Revenue | 470.0 / 490.0 | 502.3 | +32.3 / +12.3 | 470.5 | **+0.5 / -19.5** |
-| Adjusted EBITDA | 88.0 / 95.0 | 98.8 | +10.8 / +3.8 | 85.7 | **-2.3 / -9.3** |
-
-- **Break-even margin:** EBITDA still clears the threshold only if the bill-and-hold margin was below (98.8 - 88.0) / 31.8 = **34.0%**.
-- Hardware gross margin is not disclosed, and hardware is likely below the 41.1% blended margin. So the EBITDA miss is likely but not certain.
-- If the 4.1 "customer implementation delays" add-back is also removed, restated EBITDA is 81.6.
-- **Conclusion:** bill-and-hold moved revenue from barely at threshold to above target. At the blended margin, it also moved EBITDA from below threshold to above target. The plan paid 142% of target.
-- The bonus pool size and payout curve are not in the pack, so I cannot quantify the excess payout.
-
-#### 4. EV bridge and value range
-
-| Item | US$ m | Status |
-|---|---|---|
-| Equity value (24.00 x 48.3) | 1,159.2 | |
-| + Total debt, Jun 30, 2026 | 227.5 | balance_sheet.csv, lines 16 and 17 |
-| - Cash | (33.9) | |
-| **= Brief EV** | **1,352.8** | |
-| + Change-of-control cash severance (double trigger, assumed all paid) | 9.6 | DEF 14A via lead agent |
-| + Change-of-control other | 1.4 | DEF 14A via lead agent |
-| + Ruiz settlement, if unpaid at closing | 3.2 | 10-K via lead agent; payment status unknown |
-| + Letters of credit (contingent, included conservatively) | 4.2 | Q2 10-Q via lead agent |
-| **= Adjusted EV, known items** | **1,371.2** | |
-| Possible: single-trigger equity acceleration, if not already in the 48.3 | +17.6 | |
-| Possible: Pinecrest (contract cap to claim) | +1.4 to +12.0 | litigation via lead agent |
-| Possible: Vantor (expert to claim) | +96.4 to +140.0 | litigation via lead agent |
-| Possible: cash burn to Dec 31, 2026 | +15.2 | my FIN-09 projection |
-
-- **Unknown items:**
-  - finance lease balance (0.7 paid in H1 2026)
-  - restructuring accrual
-  - transaction fees
-  - accrued 2026 bonuses
-  - debt breakage or refinancing fees (change of control is an event of default)
-  - tax exposures
-  - any working capital shortfall against the peg
-- **Offer multiples on the adjusted EV of 1,371.2:**
-  - Guidance midpoint (74.0): 1,371.2 / 74.0 = **18.5x**
-  - Low end (70.0): 19.6x
-  - LTM company Adjusted EBITDA (89.7): 15.3x
-  - LTM analyst-adjusted EBITDA (72.6): 18.9x
-- To justify US$24.00 at 11.5x, EBITDA would need to be 1,371.2 / 11.5 = **119.2**.
-
-**Value per share.** Formula: (multiple x EBITDA - 212.0) / 48.3, where 212.0 = net debt 193.6 + known debt-like items 18.4.
-
-| EBITDA base | 10.0x | 11.5x | 13.0x |
-|---|---|---|---|
-| (i) Guidance midpoint, 74.0 | (740.0 - 212.0) / 48.3 = **US$10.93** | 639.0 / 48.3 = **US$13.23** | 750.0 / 48.3 = **US$15.53** |
-| (ii) LTM company Adjusted EBITDA, 89.7 | 685.0 / 48.3 = **US$14.18** | 819.6 / 48.3 = **US$16.97** | 954.1 / 48.3 = **US$19.75** |
-| (iii) LTM analyst-adjusted EBITDA, 72.6 | 514.0 / 48.3 = **US$10.64** | 622.9 / 48.3 = **US$12.90** | 731.8 / 48.3 = **US$15.15** |
-
-No cell reaches US$24.00. The highest, US$19.75, is 17.7% below the offer.
-
-**Losing Norvale** (base: restated FY2025 revenue of 131.6):
-
-| Margin assumption | Lost EBITDA | At 10.0x | At 11.5x | At 13.0x |
+| Metric | FY2023 | FY2024 | FY2025 | H1 2026 / LTM Q2 2026 |
 |---|---|---|---|---|
-| FY2025 gross margin 41.1% (no cost savings) | 131.6 x 41.07% = 54.1 | -US$11.20 | -US$12.88 | -US$14.56 |
-| FY2025 Adjusted EBITDA margin 19.7% (costs flex with volume) | 131.6 x 19.67% = 25.9 | -US$5.36 | -US$6.17 | -US$6.97 |
+| Total revenue (reported) | 368.9 | 421.7 | 502.3 | H1 222.6 / LTM 498.4 |
+| Revenue growth (reported) | 18.1% | 14.3% | 19.1% | H1 -1.7% |
+| Revenue excl. $31.8m bill-and-hold (adj) | n/a | n/a | 470.5 | n/a |
+| Revenue growth excl. bill-and-hold (adj) | n/a | n/a | 11.6% | n/a |
+| Gross margin | 40.1% | 40.8% | 41.1% | H1 38.0% |
+| EBITDA | 42.2 | 52.3 | 64.1 | LTM 48.2 |
+| Adjusted EBITDA (company) | 60.4 | 74.8 | 98.8 | LTM 89.7 |
+| Adj EBITDA excl. bill-and-hold at 41.1% margin (adj) | n/a | n/a | 85.7 | n/a |
+| Add-backs as % of Adj EBITDA | 30.1% | 30.1% | 35.1% | LTM 46.3% |
+| Net debt (full cash) | 65.2 | 151.7 | 178.4 | 193.6 |
+| Net debt / Adj EBITDA | 1.08x | 2.03x | 1.81x | 2.16x |
+| Net debt / EBITDA | 1.55x | 2.90x | 2.78x | 4.02x |
+| Covenant ratio, reading (a) / (b) / (c) (adj) | n/a | n/a | n/a | 2.26x / 3.65x / 2.67x |
+| Operating cash flow | 30.8 | 40.8 | 9.7 | H1 -4.2 |
+| Free cash flow | 16.2 | 24.6 | -10.1 | H1 -13.0 |
+| Hardware backlog (period end) | 142.0 | 168.0 | 131.0 | 118.0 |
 
-- At 11.5x on the guidance midpoint, the gross margin case leaves about US$13.23 - US$12.88 = US$0.35 per share.
-- The pack has no H1 2026 Norvale revenue.
-
-**Vantor payment:**
-- 96.4 / 48.3 = **-US$2.00 per share** (8.3% of the offer).
-- 140.0 / 48.3 = **-US$2.90 per share** (12.1% of the offer).
-- These are pre-tax, before any tax deduction, and before any running royalty.
-
-#### 5. Vantor royalty base (Gen-3 at about 70% of hardware; lead agent, from 10-K Item 1)
-
-| Period | Hardware revenue | Gen-3 estimate (x 70%) |
-|---|---|---|
-| FY2025 reported | 301.4 | **211.0** |
-| FY2025 restated (bill-and-hold removed) | 269.6 | 188.7 |
-| H1 2026 reported | 116.9 | **81.8** |
-| H1 2026 restated (with 22.4 delivered and 9.4 credit removed) | 148.7 | 104.1 |
-| LTM Q2 2026 (301.4 - 134.2 + 116.9) | 284.1 | **198.9** (same on both bases) |
-
-- Applying the FY2025 mix of 70% to H1 2026 is my assumption.
-- **Royalty cost per point of rate:** each 1% royalty on LTM Gen-3 costs 2.0 of EBITDA a year. At 11.5x that is 23.0 of EV, or US$0.47 per share.
-- **Size of the expert figure:** 96.4 equals 48.5% of one year's Gen-3 revenue, and 32.9% of FY2025 plus H1 2026 Gen-3 revenue (211.0 + 81.8 = 292.8). That points to a long damages period, a base wider than Gen-3, or a high rate. The litigation workstream should confirm which.
-
----
+**Workings for the table**
+- Growth: FY2023 = 368.9/312.4 - 1 = 18.1%. FY2024 = 421.7/368.9 - 1 = 14.3%. FY2025 = 502.3/421.7 - 1 = 19.1%. H1 2026 = 222.6/226.5 - 1 = -1.7%.
+- LTM revenue = 121.4 + 154.4 + 109.7 + 112.9 = 498.4. Cross-check: 502.3 + 222.6 - 226.5 = 498.4.
+- Gross margin: 147.9/368.9 = 40.1%; 172.1/421.7 = 40.8%; 206.3/502.3 = 41.1%; 84.6/222.6 = 38.0%.
+- Add-backs (SBC + restructuring + other):
+  - FY2023: (11.6 + 4.6 + 2.0) = 18.2, and 18.2/60.4 = 30.1%.
+  - FY2024: 22.5/74.8 = 30.1%.
+  - FY2025: 34.7/98.8 = 35.1%.
+  - LTM: (17.8 + 9.7 + 14.0) = 41.5, and 41.5/89.7 = 46.3%.
+- Net debt (term loan + revolver - cash):
+  - FY2023: 120.0 - 54.8 = 65.2.
+  - FY2024: 200.0 - 48.3 = 151.7.
+  - FY2025: 220.0 - 41.6 = 178.4.
+  - June 2026: 227.5 - 33.9 = 193.6.
+- Net debt / EBITDA at June 2026 = 193.6/48.2 = 4.02x.
+- I checked each LTM line in the reconciliation as FY2025 + H1 2026 - H1 2025:
+  - EBITDA: 64.1 + 10.4 - 26.3 = 48.2.
+  - SBC: 17.2 + 8.9 - 8.3 = 17.8.
+  - Restructuring: 7.9 + 4.4 - 2.6 = 9.7.
+  - Other: 9.6 + 6.2 - 1.8 = 14.0.
+  - Adj EBITDA: 98.8 + 29.9 - 39.0 = 89.7.
+  - All match the file.
 
 ### Findings
 
-#### FIN-17: The reported 2.26x leverage ratio appears to ignore the 15% add-back cap. On a capped basis, a covenant breach is likely by December 31, 2026 and possible already
-- **Finding:** The reported 2.26x can only be reproduced with full company Adjusted EBITDA of 89.7 and no cap. With the cap, the June 30, 2026 ratio is 2.67x, or 3.65x if SBC is a Permitted Add-back. The 3.65x is above the 3.50x limit. At December 31, 2026 the capped ratio exceeds 3.00x in every guidance case. Even uncapped, the low-end case has only 0.4 of headroom.
-- **Evidence:** See Answer 1. Back-solve: 202.5 / 2.26 = 89.6, against 89.7. Capped EBITDA is 75.9 or 55.4. Actual add-backs of 23.7 (or 41.5 with SBC) against a cap of 9.9 (or 7.2). Dec 31, 2026 ratios at the guidance midpoint: (a) 2.82x, (b) 3.44x, (c) 5.19x.
+#### FIN-18: The reported 2.26x covenant ratio only works if every add-back is allowed in full, which seems to ignore the 15% cap
+- **Finding:** The company's 2.26x is reproduced exactly only by reading (a): full company Adjusted EBITDA, with no cap on add-backs. If the 15% cap applies to all add-backs (reading b), the ratio at June 30, 2026 is 3.65x. That is a breach of today's 3.50x limit. If SBC is uncapped and other add-backs are capped (reading c), the ratio is 2.67x.
+- **Evidence:**
+  - Covenant net debt:
+    - Gross debt = revolver 45.0 + term loan 182.5 = 227.5.
+    - Cash 33.9, but netting is capped at 25.0.
+    - Covenant net debt = 227.5 - 25.0 = 202.5.
+    - For comparison, net debt with all cash netted = 193.6.
+  - LTM inputs: EBITDA 48.2, SBC 17.8, restructuring 9.7, other non-recurring 14.0. Total add-backs 41.5.
+  - (a) Full company Adjusted EBITDA: 202.5 / 89.7 = **2.26x**. This matches the 10-Q. With all cash netted it would be 193.6/89.7 = 2.16x, so the company does apply the cash cap.
+  - (b) All add-backs capped:
+    - Cap = 15% x 48.2 = 7.23. Covenant EBITDA = 48.2 + 7.23 = 55.43.
+    - Ratio = 202.5 / 55.43 = **3.65x**, above the 3.50x limit.
+    - To comply, covenant EBITDA would need to be 202.5/3.50 = 57.86.
+  - (c) SBC uncapped, other add-backs capped:
+    - Base = 48.2 + 17.8 = 66.0. Cap = 15% x 66.0 = 9.90, which is below the 23.7 of other add-backs, so the cap binds.
+    - Covenant EBITDA = 75.9. Ratio = 202.5 / 75.9 = **2.67x**.
+  - Under reading (a), add-backs are 41.5/48.2 = 86.1% of EBITDA, against a 15% cap.
+- **Implication:** Reading (a) only works if base Consolidated EBITDA already includes SBC, restructuring and the "other non-recurring" items, so that the 15% cap never applies to them. That would make the cap almost meaningless. Otherwise the company is overstating covenant EBITDA. Under reading (b), the company may already be in default and its 10-Q compliance statement would be wrong.
 - **Source:**
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7 to 11
-  - `data/financials/balance_sheet.csv`, lines 2, 16 and 17
-  - Covenant terms, reported ratio and guidance (lead agent, from `data/sec-filings/TLFS_10-K_FY2025_excerpts.md` Note 9 and `TLFS_10-Q_Q2-2026_excerpts.md`)
-- **Severity:** Critical. A pre-closing default would give lenders acceleration rights, with only 25.8 of revolver availability. It may also mean misstated compliance disclosure.
-- **Confidence:** High for the June 30 math and the back-solve. Medium for the conclusion, because the cap wording is summarized second-hand, SBC treatment is pending, and the projections rest on my assumptions.
-- **Deal impact:** Closing risk (default or waiver before closing, MAE arguments), financing (the facility must be refinanced at closing anyway because change of control is a default), disclosure and governance.
-- **Cross-check:**
-  - The full credit agreement definitions of Consolidated EBITDA, Permitted Add-backs and Indebtedness (whether LCs count).
-  - The compliance certificates.
-  - Any amendment or waiver 8-K (Items 1.01 and 2.04).
-  - The Q3 2026 10-Q covenant disclosure.
-  - News on lender talks.
+  - `data/financials/balance_sheet.csv`, rows "Cash and cash equivalents", "Revolving credit facility" and "Term loan", column Q2_2026.
+  - `data/financials/adjusted_ebitda_reconciliation.csv`, rows "EBITDA" and "Add:" lines (8 to 11), column LTM_Q2_2026.
+  - [lead: 10-K Note 9]; [lead: 10-Q Q2 2026].
+- **Severity:** High. It becomes Critical if the credit agreement confirms reading (b): that would mean a current default and a misstated 10-Q.
+- **Confidence:** Medium. The arithmetic is High confidence, but the definition of base Consolidated EBITDA is still unconfirmed.
+- **Deal impact:** Closing risk (default before signing or closing, lender consent), financing, and disclosure or controls.
+- **Cross-check:** Obtain the full credit agreement definition of "Consolidated EBITDA" and "Permitted Add-backs" (10-K exhibit 10.x). Obtain the compliance certificate for Q2 2026. Look for any 8-K amendment or waiver, and news of lender talks.
 
-#### FIN-18: Without bill-and-hold, FY2025 growth was 11.6%, hardware grew 2.9%, and Q4 2025 missed consensus
-- **Finding:** Removing the 31.8 cuts FY2025 growth from 19.1% to 11.6% and Q4 2025 growth from 32.4% to 5.1%. Q4 2025 would have missed consensus by 5.4. Hardware growth falls from 15.1% to 2.9%. Underlying LTM growth, excluding the bill-and-hold units entirely, is 6.0%.
-- **Evidence:** See Answer 2. 470.5 / 421.7 = 1.116; 122.6 / 116.6 = 1.051; 122.6 vs 128.0; 269.6 / 261.9 = 1.029; 476.0 / 449.2 = 1.060.
-- **Source:**
-  - `data/financials/revenue_quarterly.csv`, lines 2 to 11
-  - `data/financials/income_statement.csv`, lines 2 and 5
-  - Bill-and-hold amounts (lead agent, from the 10-K Note 2 and Q2 2026 10-Q)
-  - Consensus (lead agent, from the news file)
-- **Severity:** High. It feeds Critical findings FIN-01 and FIN-14.
-- **Confidence:** High for the arithmetic. I assume FY2024 and H1 2025 contained no bill-and-hold revenue. That is unverified.
-- **Deal impact:** Valuation (growth base), closing risk (revenue recognition, restatement) and post-closing.
-- **Cross-check:**
-  - Whether bill-and-hold also occurred in FY2024.
-  - Whether the bill-and-hold criteria were met (customer request, fixed delivery schedule, units segregated).
-  - Auditor critical audit matters.
-  - Any SEC comment letter or securities suit about the Q4 2025 beat.
-- **Changes earlier findings:**
-  - **FIN-01:** the actual one-off was 31.8, not my estimated 21.4. Normalized FY2025 growth is 11.6%, not 14.0%. FIN-01 stays Critical with these revised numbers.
-  - **FIN-11:** Norvale's underlying growth was 11.4% and its share 28.0%. All of the rise in concentration came from bill-and-hold. The level of concentration is still High.
-  - **FIN-06:** if the bill-and-hold amount sat in receivables, FY2025 DSO excluding it is (118.9 - 31.8) / 470.5 x 365 = 67.6 days, against 86.4. This is illustrative, because the split between receivables and contract assets is unknown.
-  - **FIN-07:** the 9.4 return probably came back into inventory at about 9.4 x (1 - 41.1%) = 5.5. That may explain part of the 12.7 H1 2026 inventory build.
-
-#### FIN-19: Bill-and-hold lifted 2025 results over the bonus thresholds and targets
-- **Finding:** Without bill-and-hold, FY2025 revenue of 470.5 only just clears the 470.0 threshold. Adjusted EBITDA of 85.7 misses the 88.0 threshold. The plan paid 142% of target.
-- **Evidence:** See Answer 3. 98.8 - 31.8 x 41.07% = 85.7. The EBITDA threshold is cleared only if the bill-and-hold margin was below 34.0%.
-- **Source:**
-  - `data/financials/income_statement.csv`, lines 5 and 7
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, line 11
-  - Bonus metrics (lead agent, from `data/sec-filings/TLFS_DEF14A_2026_excerpts.md`)
-- **Severity:** High. Governance and incentive integrity (IC question 5). It may require a clawback review and specific representations.
-- **Confidence:** Medium. It depends on the margin assumption and on the plan's exact EBITDA definition.
-- **Deal impact:** Governance, indemnity and R&W scope, retention and change-of-control design for management.
-- **Cross-check:**
-  - The plan's metric definitions and payout curve.
-  - The compensation committee minutes.
-  - The clawback policy (Dodd-Frank Rule 10D-1 applies if there is a restatement).
-  - Form 4 insider sales after the Q4 2025 results.
-
-#### FIN-20: On current earnings, fair value is US$10.64 to US$19.75 per share against a US$24.00 offer
-- **Finding:** Adjusted EV including known debt-like items is 1,371.2. That is 18.5x the revised guidance midpoint and needs 119.2 of EBITDA to justify 11.5x. The 3 x 3 value grid gives US$10.64 to US$19.75. Losing Norvale would cost US$6.17 to US$12.88 per share at 11.5x.
-- **Evidence:** See Answer 4.
-- **Source:**
-  - `data/deal-brief.md`
-  - `data/financials/balance_sheet.csv`, lines 2, 16 and 17
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, line 11
-  - `data/financials/revenue_by_customer.csv`, line 2
-  - Debt-like items and guidance from the lead agent, as cited in Answer 4
-- **Severity:** Critical. The value gap is more than 10% in every case.
-- **Confidence:** High for the math. Medium for the scenarios.
-- **Deal impact:** Valuation and price, and the IC decision.
-- **Cross-check:**
-  - Q3 2026 results.
-  - Current analyst consensus.
-  - Fully diluted shares at US$24.00, including the single-trigger 17.6.
-  - Ruiz payment status.
-  - The finance lease balance.
-- **Changes FIN-14:**
-  - The management case is now officially withdrawn. The brief's EV of 1,352.8 is 18.3x the guidance midpoint (1,352.8 / 74.0), not 11.5x.
-  - FIN-14's US$17.35 per share (11.5x LTM) becomes US$16.97 once the debt-like items are included.
-
-#### FIN-21: A Vantor payment would exceed Talonfield's available liquidity
+#### FIN-19: The 3.00x step-down is at risk from September 30, 2026, and reading (c) breaches at December 31 even at the top of guidance
 - **Finding:**
-  - A payment of 96.4 to 140.0 compares with June 30, 2026 liquidity of 33.9 cash + 25.8 revolver availability = 59.7. The shortfall would be 36.7 to 80.3.
-  - The payment is worth US$2.00 to US$2.90 per share.
-  - Each 1% running royalty on Gen-3 would cost about 2.0 of EBITDA a year, or US$0.47 per share at 11.5x.
-- **Evidence:** See Answers 4 and 5. 96.4 / 48.3 = 2.00; 140.0 / 48.3 = 2.90; 198.9 x 1% = 2.0.
+  - Under reading (a), the company stays in compliance through December 31, 2026. However, the low end of guidance combined with the H1 debt trend lands exactly on 3.00x.
+  - Under reading (c), the ratio is 2.71x to 2.94x at September 30. It is then 3.10x to 3.74x at December 31, a breach at every guidance point.
+  - Under reading (b), the company is in breach throughout.
+- **Assumptions:**
+  - H2 2026 Adj EBITDA = guidance minus H1 2026 (29.9), so 40.1 / 44.1 / 48.1 at the low / mid / high points. Q3 2026 = half of H2.
+  - Q3 2025 Adj EBITDA is H2 2025 (98.8 - 39.0 = 59.8) allocated by revenue: 121.4/275.8 = 44.0%, giving 26.3.
+  - Add-backs in each 2026 quarter run at the H1 2026 rate: SBC 4.45 and other 5.30 per quarter, so FY2026 add-backs are 39.0. Q3 2025 add-backs are half of H2 2025: SBC 4.45 and other 6.55.
+  - "Flat" debt case: covenant net debt stays at 202.5.
+  - "Trend" case: H1 2026 continues (revolver +10.0 and term loan -2.5 per half), so covenant net debt is 206.25 at September 30 and 210.0 at December 31. Cash runs from 33.9 down to about 26.2 (H1 change -7.7), so the 25.0 netting cap still binds.
+- **Evidence (low / mid / high guidance):**
+  - **Sept 30 LTM inputs:**
+    - Adj EBITDA = 89.7 - 26.3 + (20.05 / 22.05 / 24.05) = 83.45 / 85.45 / 87.45.
+    - EBITDA = 48.2 - 15.3 + (10.3 / 12.3 / 14.3) = 43.2 / 45.2 / 47.2. Here Q3 2025 EBITDA = 26.3 - 11.0 = 15.3, and Q3 2026 EBITDA = Q3 Adj - 9.75.
+    - SBC = 17.8. Other add-backs = 23.7 - 6.55 + 5.30 = 22.45.
+  - **Sept 30 (a):** flat 202.5/83.45 = 2.43x, /85.45 = 2.37x, /87.45 = 2.32x. Trend 206.25 gives 2.47x / 2.41x / 2.36x.
+  - **Sept 30 (b):** covenant EBITDA = 1.15 x EBITDA = 49.68 / 51.98 / 54.28. Flat gives 4.08x / 3.90x / 3.73x. Trend gives 4.15x / 3.97x / 3.80x. **Breach.**
+  - **Sept 30 (c):** covenant EBITDA = 1.15 x (EBITDA + SBC) = 1.15 x (61.0 / 63.0 / 65.0) = 70.15 / 72.45 / 74.75. Flat gives 2.89x / 2.80x / 2.71x. Trend gives 2.94x / 2.85x / 2.76x.
+  - **Dec 31 inputs (LTM = FY2026):** Adj EBITDA 70.0 / 74.0 / 78.0. EBITDA = Adj - 39.0 = 31.0 / 35.0 / 39.0.
+  - **Dec 31 (a):** flat 2.89x / 2.74x / 2.60x. Trend 3.00x / 2.84x / 2.69x.
+  - **Dec 31 (b):** covenant EBITDA 35.65 / 40.25 / 44.85. Flat 5.68x / 5.03x / 4.52x. Trend 5.89x / 5.22x / 4.68x. **Breach.**
+  - **Dec 31 (c):** covenant EBITDA = 1.15 x (48.8 / 52.8 / 56.8) = 56.12 / 60.72 / 65.32. Flat 3.61x / 3.34x / 3.10x. Trend 3.74x / 3.46x / 3.22x. **Breach.**
+  - **Breach thresholds (3.00x requires covenant EBITDA of at least 202.5/3.00 = 67.5 with flat debt):**
+    - (a) Dec 31: breach if FY2026 Adj EBITDA is below 67.5. That is 6.5 (8.8%) below the 74.0 midpoint and 2.5 below the low end. Debt headroom at the midpoint = 3.00 x 74.0 - 202.5 = 19.5. In the trend case, the low end of 70.0 gives exactly 3.00x.
+    - (a) Sept 30 midpoint: an Adj EBITDA cushion of 85.45 - 67.5 = 17.95 (21.0%). Debt headroom = 53.9.
+    - (c) Sept 30 midpoint: covenant cushion 72.45 - 67.5 = 4.95, which is an EBITDA decline of only 4.95/1.15 = 4.3. Debt headroom = 3.00 x 72.45 - 202.5 = 14.9.
+    - (c) Dec 31: compliance needs EBITDA + SBC of 67.5/1.15 = 58.7. That means EBITDA of 40.9, or Adj EBITDA of about 79.9, which is above the top of guidance. Alternatively, covenant net debt would have to fall by 202.5 - 3.00 x 60.72 = 20.3 at the midpoint.
+  - **Liquidity:**
+    - Cash 33.9 + revolver availability 25.8 = 59.7 [lead: 10-Q].
+    - Implied facility size = 45.0 + 25.8 + 4.2 = 75.0.
+    - H1 2026 free cash flow was -13.0. In the trend case, a further 10.0 draw leaves about 15.8 of availability.
 - **Source:**
-  - `data/financials/balance_sheet.csv`, line 2
-  - `data/financials/income_statement.csv`, line 2
-  - Claim amounts (lead agent, from `data/litigation/`)
-  - Revolver availability and Gen-3 share (lead agent, from the SEC filings)
-- **Severity:** High. It needs a specific indemnity, escrow or price adjustment.
-- **Confidence:** High for the arithmetic. Medium for the royalty base, because it assumes Gen-3 was 70% of hardware in H1 2026.
-- **Deal impact:** Valuation, financing and post-closing.
+  - `adjusted_ebitda_reconciliation.csv`, all rows, columns FY2025, H1_2025, H1_2026 and LTM_Q2_2026.
+  - `revenue_quarterly.csv`, Q3 2025 and Q4 2025.
+  - `cash_flow.csv`, rows 15, 16, 22 and 24, column H1_2026.
+  - `balance_sheet.csv`, column Q2_2026.
+  - [lead: 10-K Note 9; 10-Q guidance].
+- **Severity:** High
+- **Confidence:** Medium. The quarterly EBITDA split and the add-back run-rate are my estimates. The December 31 case uses guidance directly.
+- **Deal impact:** Closing risk and financing. A breach between signing and closing would need a lender waiver or amendment, and may count as a material adverse effect or breach interim operating covenants. The change of control is itself an event of default, so the full 227.5 plus 4.2 of letters of credit must be refinanced at closing in any case.
+- **Cross-check:** Obtain the Q3 2026 10-Q (due around early November, before the IC meeting) and its compliance certificate. Check for any credit agreement amendment 8-K. Check news of revolver draws.
+
+#### FIN-20: The $31.8m bill-and-hold accounts for 39.5% of FY2025 growth and nearly all of Q4 2025's growth spike
+- **Finding:**
+  - Without the bill-and-hold, FY2025 revenue growth falls from 19.1% to 11.6%.
+  - Q4 2025 year-over-year growth falls from 32.4% to 5.1%, breaking the 13% to 14% trend of Q1 to Q3 2025 on the downside.
+  - Hardware growth falls from 15.1% to 2.9%.
+- **Evidence:**
+  - Q4 2025 adjusted revenue = 154.4 - 31.8 = 122.6.
+    - Reported year-over-year: 154.4/116.6 - 1 = 32.4%. Adjusted: 122.6/116.6 - 1 = 5.1%.
+    - Quarter-over-quarter, reported Q4 2025 was 154.4/121.4 - 1 = +27.2%, against +9.9% in Q4 2024 (116.6/106.1).
+  - Other 2025 quarters, year-over-year: Q1 108.9/96.2 = +13.2%; Q2 117.6/102.8 = +14.4%; Q3 121.4/106.1 = +14.4%.
+  - FY2025:
+    - Adjusted revenue = 502.3 - 31.8 = 470.5, and 470.5/421.7 - 1 = 11.6%.
+    - Bill-and-hold share of growth = 31.8/(502.3 - 421.7 = 80.6) = 39.5%.
+  - Hardware: (301.4 - 31.8) = 269.6, and 269.6/261.9 - 1 = 2.9%. Reported: 301.4/261.9 - 1 = 15.1%.
+  - EBITDA effect:
+    - No segment gross margin is disclosed, so I use the FY2025 total gross margin: 206.3/502.3 = 41.1%. Hardware margin is probably below the blended rate because software is higher-margin, so this may overstate the hit.
+    - Removed = 31.8 x 41.1% = 13.1. Adjusted FY2025 Adj EBITDA = 98.8 - 13.1 = 85.7, a margin of 85.7/470.5 = 18.2%.
+    - Sensitivity: at 30% the removed amount is 9.5 (Adj EBITDA 89.3); at 50% it is 15.9 (Adj EBITDA 82.9).
+  - In the LTM to June 2026, the 31.8 recognized in Q4 2025 is offset by the 9.4 reversal in Q2 2026, and the 22.4 was delivered inside the window. So LTM revenue is not overstated by the timing itself. The risk is the comparison: Q4 2026 has to be measured against 154.4.
+  - Backlog fell from 168.0 to 131.0 (-22.0%) in FY2025 and to 118.0 at June 2026. This fits demand being pulled forward.
+- **Source:**
+  - `revenue_quarterly.csv`, all rows.
+  - `income_statement.csv`, rows "Revenue: Hardware", "Total revenue" and "Gross profit".
+  - `adjusted_ebitda_reconciliation.csv`, row "Adjusted EBITDA".
+  - `kpis.csv`, row "Hardware order backlog".
+  - [lead: 10-K Note 2].
+- **Severity:** Critical. The growth story underpins a deal model that assumes $560m of FY2026 revenue.
+- **Confidence:** High for revenue. Medium for EBITDA, because of the margin assumption.
+- **Deal impact:** Valuation and post-closing (revenue recognition and audit risk).
+- **Cross-check:** Review the 10-K revenue recognition policy and whether the bill-and-hold criteria were met (customer request, separately identified goods, ready for transfer). Check auditor communications, given the auditor transition costs. Check any SEC comment letters.
+
+#### FIN-21: Without the bill-and-hold, the FY2025 Adjusted EBITDA bonus metric misses threshold, yet bonuses were paid at 142% of target
+- **Finding:**
+  - Excluding the $31.8m, revenue is 470.5, just 0.5 above the 470.0 threshold.
+  - Adjusted EBITDA is 85.7, below the 88.0 threshold.
+  - Even removing only the $9.4m later returned takes Adjusted EBITDA to 94.9, below the 95.0 target.
+- **Evidence:**
+  - Reported: revenue 502.3 (between target 490.0 and max 510.0) and Adj EBITDA 98.8 (between target 95.0 and max 102.0).
+  - Full adjustment: revenue 470.5 and Adj EBITDA 98.8 - 13.1 = 85.7, below the 88.0 threshold.
+  - Break-even flow-through margin for the threshold: (98.8 - 88.0)/31.8 = 34.0%. Any margin above 34.0% fails the EBITDA threshold.
+  - Returned goods only: revenue 502.3 - 9.4 = 492.9, still above target. Adj EBITDA 98.8 - 9.4 x 41.1% (3.9) = 94.9, below the 95.0 target.
+  - Separately, the "Customer implementation delays" add-back of 4.1 looks like an operating cost. Without it, Adj EBITDA is 98.8 - 4.1 = 94.7, below target.
+- **Source:**
+  - `income_statement.csv`, rows "Total revenue" and "Gross profit", column FY2025.
+  - `adjusted_ebitda_reconciliation.csv`, rows "Adjusted EBITDA" and "Detail: Customer implementation delays", column FY2025.
+  - [lead: DEF 14A]; [lead: 10-K Note 2].
+- **Severity:** High
+- **Confidence:** Medium. The margin is assumed. The payout curve is not available, so I cannot compute the dollar overpayment.
+- **Deal impact:** Post-closing, governance and possible clawback. The timing incentive behind the Q4 bill-and-hold also bears on the credibility of management's forecasts.
 - **Cross-check:**
-  - The Vantor docket: damages period, royalty base and rate, injunction request and trial date.
-  - Any ASC 450 accrual or disclosure in the 10-Q.
+  - Check whether the proxy's bonus definition of Adjusted EBITDA matches the reconciliation.
+  - Review the clawback policy (Dodd-Frank Rule 10D-1). A revenue restatement would trigger a mandatory recovery analysis.
+  - Look for whistleblower or short-seller news about the Q4 2025 shipments.
 
----
+#### FIN-22: Norvale's FY2025 growth falls from 32.3% to 11.4% without its $24.6m of bill-and-hold revenue
+- **Finding:** Norvale's reported FY2025 growth depends heavily on bill-and-hold. Excluding it, Norvale grew 11.4% and its share falls from 31.1% to 28.0%. Norvale alone was 47.3% of the company's reported FY2025 revenue growth.
+- **Evidence:**
+  - Reported: 156.2/118.1 - 1 = 32.3%.
+  - Adjusted: (156.2 - 24.6) = 131.6, and 131.6/118.1 - 1 = 11.4%.
+  - Bill-and-hold share of Norvale growth = 24.6/(156.2 - 118.1 = 38.1) = 64.6%.
+  - Adjusted share = 131.6/470.5 = 28.0%.
+  - Norvale share of company growth = 38.1/80.6 = 47.3%.
+  - Non-Norvale bill-and-hold = 31.8 - 24.6 = 7.2. The customers are not identified.
+- **Source:** `revenue_by_customer.csv`, row 1 (Norvale) and the Total row, FY2024 and FY2025 revenue columns. [lead: 10-K Note 2].
+- **Severity:** High
+- **Confidence:** High
+- **Deal impact:** Valuation (customer concentration and quality of growth) and post-closing retention risk.
+- **Cross-check:** Ask whether the $9.4m returned in Q2 2026 was Norvale's. Check news on Norvale's capex plans or a vendor review. Check whether the Norvale contract has change-of-control or termination-for-convenience clauses (10-K material contracts).
 
-**Debt-like items and the Norvale sensitivity** are covered in FIN-20 and Answer 4 rather than as separate cards.
+#### FIN-23: On a clean basis, H1 2026 is low single-digit to mid single-digit growth, not the decline reported or the double digits that delivery timing suggests
+- **Finding:**
+  - Reported growth: Q1 2026 +0.7%, Q2 2026 -4.0%.
+  - Adding back the $9.4m return reversal and the $2.3m outage credits gives Q2 2026 growth of +6.0%.
+  - On a physical delivery basis (adding the $22.4m delivered in H1 2026), H1 grows 13.3%. But that is already-booked Q4 2025 demand, not new orders, and backlog keeps falling.
+- **Evidence:**
+  - Reported:
+    - Q1: 109.7/108.9 - 1 = +0.7%.
+    - Q2: 112.9/117.6 - 1 = -4.0%.
+    - H1: 222.6/226.5 - 1 = -1.7%.
+  - One-off normalized:
+    - Q2 = 112.9 + 9.4 + 2.3 = 124.6, and 124.6/117.6 - 1 = +6.0%.
+    - H1 = 233.9, and 233.9/226.5 - 1 = +3.3%.
+    - This assumes the $9.4m credit reduced Q2 2026 revenue rather than a refund liability set up earlier. Please confirm.
+  - Delivery basis:
+    - H1 = 222.6 + 9.4 + 2.3 + 22.4 = 256.7, and 256.7/226.5 - 1 = +13.3%.
+    - The quarterly split of the 22.4 is unknown. With an illustrative even split of 11.2 per quarter: Q1 120.9 (+11.0% against 108.9) and Q2 135.8 (+15.5% against 117.6).
+    - The comparable Q4 2025 on this basis is 122.6 (+5.1%).
+  - By segment, H1 2026 against H1 2025:
+    - Hardware reported: 116.9/134.2 = -12.9%. Adding back 9.4: -5.9%. Delivery basis (+22.4 + 9.4 = 148.7): +10.8%.
+    - Software reported: 67.5/58.9 = +14.6%. Adding back 2.3: +18.5%.
+    - Services: 38.2/33.4 = +14.4%.
+  - Contradicting KPIs:
+    - Backlog fell from 131.0 to 118.0.
+    - Net revenue retention fell from 118% to 111%.
+    - Headcount fell from 1,452 to 1,405.
+    - Robots shipped in H1 2026 were 1,640, against 4,300 for FY2025. That is an annualized 3,280, which is -23.7%.
+- **Source:**
+  - `revenue_quarterly.csv`.
+  - `income_statement.csv`, segment revenue rows, columns H1_2025 and H1_2026.
+  - `kpis.csv`, all rows.
+  - [lead: 10-K Note 2].
+- **Severity:** High. A clean growth rate of about 3% to 6% is far below the deal model's FY2026E of $560m, which is +11.5% on FY2025 reported (560/502.3).
+- **Confidence:** Medium. It depends on how the $9.4m was booked and how the $22.4m is phased.
+- **Deal impact:** Valuation.
+- **Cross-check:** Check the 10-Q Q2 2026 revenue footnote (contract liabilities, refund liabilities) and the FieldOS outage disclosure. Check news about the outage and any customer churn.
 
-**Positive or mitigating:**
-- LTM revenue is unchanged by the restatement (498.4).
-- H1 2026 company Adjusted EBITDA excluding the 9.4 return and the 2.3 credits would be 29.9 + 9.4 x 41.07% + 2.3 = 36.1. That assumes the return reversed revenue at the blended margin.
+#### FIN-24: Litigation reserves are not visible in the financial data, and the $1.4m Pinecrest cap looks low against Pinecrest's revenue
+- **Finding:**
+  - There is no litigation reserve line in the balance sheet, and Ruiz does not appear in the Adjusted EBITDA add-backs. The $3.2m Ruiz accrual, if it was booked, must sit inside accrued liabilities (30.5) or other liabilities (6.5). I cannot confirm it from these files.
+  - Pinecrest's $12.0m claim is 69.0% of its FY2025 revenue.
+  - The $1.4m cap (12 months of subscription fees) implies only 8.0% of Pinecrest revenue is subscription, against a 25.6% software mix company-wide.
+- **Evidence:**
+  - Accrued liabilities fell from 38.5 to 30.5 between December 2025 and June 2026, so a 3.2 accrual is not obvious.
+  - G&A rose in H1 2026, from 16.2 to 19.8 (+3.6). Restructuring and other charges rose from 2.6 to 4.4. The only litigation add-back is Vantor (H1 2026: 3.0).
+  - If the Ruiz charge sits in "Restructuring and other charges", it is being added back to Adjusted EBITDA.
+  - Pinecrest:
+    - Revenue was 17.4 in FY2025 and 16.2 in FY2024 (3.5% of total).
+    - 12.0/17.4 = 69.0%. 1.4/17.4 = 8.0%.
+    - At the company software mix (128.6/502.3 = 25.6%), Pinecrest subscription would be 17.4 x 25.6% = 4.5. So a 12-month cap would be about 4.5, not 1.4. This is an estimate, because the customer-level segment split is not provided.
+    - Average FieldOS ARR per customer is 139.2/276 = 0.50, so 1.4 is about 2.8x the average.
+  - Exposure range for Pinecrest is 1.4 to 12.0. The high end equals 13.4% of LTM Adj EBITDA (12.0/89.7).
+- **Source:**
+  - `balance_sheet.csv`, rows "Accrued liabilities" and "Other liabilities".
+  - `income_statement.csv`, rows "General and administrative" and "Restructuring and other charges".
+  - `adjusted_ebitda_reconciliation.csv`, rows 9 and 16.
+  - `revenue_by_customer.csv`, row 4.
+  - `kpis.csv`, rows "FieldOS ARR" and "Active customers".
+  - [lead: court records].
+- **Severity:** Medium
+- **Confidence:** Low to Medium. Pinecrest's revenue split by segment is not available.
+- **Deal impact:** Valuation (debt-like items) and indemnity.
+- **Cross-check:**
+  - Check the 10-Q commitments and contingencies note for the Ruiz accrual location and any Pinecrest accrual or "reasonably possible" range (ASC 450).
+  - Get the Pinecrest contract to confirm the cap wording and whether it is 12 months of subscription fees only or all fees.
+  - Check court filings for any claim that the cap is void (gross negligence or wilful misconduct carve-outs).
 
-**New questions for management:**
-- The quarterly split of the 22.4 delivered in H1 2026.
-- Whether any FY2024 revenue was bill-and-hold.
-- Gross margin on the bill-and-hold units.
-- The covenant compliance certificates for Q4 2025 to Q2 2026, and the add-back calculation behind 2.26x.
-- The Q3 2026 covenant result.
-- The finance lease balance and the Ruiz payment status.
-- Whether the 48.3 diluted shares include the single-trigger awards.
-- H1 2026 Norvale revenue.
-- The Gen-3 launch date and Gen-3 revenue by period.
+#### FIN-25: The $24.00 offer implies 18.3x FY2026 guidance EBITDA. At the deal model's 11.5x, value on current trading is $12.62 to $16.69 per share
+- **Finding:**
+  - The deal model's 11.5x was built on $118m of FY2026E Adjusted EBITDA. Current guidance is $70m to $78m.
+  - At $24.00, EV of 1,352.8 is 15.1x LTM company Adjusted EBITDA, 18.3x the guidance midpoint, and 18.6x diligence-adjusted LTM.
+  - No case in my grid, even 13x LTM company Adjusted EBITDA, reaches $24.00.
+- **Evidence:**
+  - **Offer:**
+    - Equity value = 24.00 x 48.3 = 1,159.2. EV = 1,159.2 + 193.6 = 1,352.8.
+    - On $118m: 1,352.8/118.0 = 11.46x, which matches the deal brief.
+    - On current figures: 1,352.8/89.7 = 15.08x; /74.0 = 18.28x; /70.0 = 19.33x; /78.0 = 17.34x; /72.6 = 18.63x.
+    - EBITDA needed at 11.5x = 1,352.8/11.5 = 117.6.
+  - **Market:**
+    - Market equity = 17.85 x 48.3 = 862.2. Market EV = 1,055.8.
+    - That is 11.77x LTM Adj EBITDA and 14.27x the guidance midpoint.
+  - **Diligence-adjusted LTM EBITDA:** 89.7 less customer implementation delays 3.3 (an operating cost), less restructuring 9.7 (recurs every year from FY2022 to H1 2026: 3.1, 4.6, 5.2, 7.9, 4.4), less Vantor litigation 4.1 (recurs from FY2024 and is ongoing), giving **72.6**. SBC is kept as an add-back. Without the SBC add-back it would be 72.6 - 17.8 = 54.8.
+  - **Debt-like items:**
+    - Ruiz 3.2 (accrued, a cash outflow) plus change-in-control payments 28.6 (proxy) = 31.8. That is 31.8/48.3 = $0.66 per share.
+    - Not deducted, shown for sensitivity: Pinecrest 1.4 to 12.0 (contingent), letters of credit 4.2 (contingent), and any lender waiver or refinancing costs.
+
+| Basis (EBITDA) | Multiple | EV | Equity (EV - 193.6) | Per share | Per share after 31.8 debt-like |
+|---|---|---|---|---|---|
+| (i) LTM company Adj 89.7 | 10.0x | 897.0 | 703.4 | 14.56 | 13.90 |
+| | 11.5x | 1,031.6 | 838.0 | 17.35 | 16.69 |
+| | 13.0x | 1,166.1 | 972.5 | 20.13 | 19.48 |
+| (ii) FY2026 guide mid 74.0 | 10.0x | 740.0 | 546.4 | 11.31 | 10.65 |
+| | 11.5x | 851.0 | 657.4 | 13.61 | 12.95 |
+| | 13.0x | 962.0 | 768.4 | 15.91 | 15.25 |
+| (iii) Diligence-adj LTM 72.6 | 10.0x | 726.0 | 532.4 | 11.02 | 10.36 |
+| | 11.5x | 834.9 | 641.3 | 13.28 | 12.62 |
+| | 13.0x | 943.8 | 750.2 | 15.53 | 14.87 |
+
+  - Per share is equity divided by 48.3. For example, 657.4/48.3 = 13.61. The gap to the offer on the guidance midpoint at 11.5x is (24.00 - 13.61)/24.00 = 43.3%, or 46.0% after debt-like items.
+  - Note: the 193.6 uses all cash. If roughly 25 of minimum operating cash is treated as trapped, net debt is effectively about 202.5 and each per-share value falls by about $0.18 ((202.5 - 193.6)/48.3).
+- **Source:**
+  - `adjusted_ebitda_reconciliation.csv`, column LTM_Q2_2026, rows 7 to 11, 16 and 17, plus the restructuring row across all years.
+  - `balance_sheet.csv`, column Q2_2026.
+  - `data/deal-brief.md`, sections "The deal" and "Valuation basis".
+  - [lead: 10-Q guidance; DEF 14A; 10-Q Ruiz accrual].
+- **Severity:** Critical
+- **Confidence:** High for the arithmetic. Medium for the adjusted EBITDA base, which reflects my judgment on the add-backs.
+- **Deal impact:** Valuation (price) and structure.
+- **Cross-check:** Confirm the guidance date and figures in the August 6, 2026 8-K. Ask the deal team to rebase model v3. Check sell-side consensus in news. Get the proxy table of change-in-control payments (single or double trigger, cash or equity).
+
+#### FIN-26: Debt-like items and cash needed at closing go well beyond the 193.6 of net debt
+- **Finding:** At closing the buyer must repay or refinance 227.5 of gross debt, because a change of control is an event of default. It must also backstop 4.2 of letters of credit and fund 28.6 of change-in-control payments and the 3.2 Ruiz settlement. Total cash-like claims are about 263.5 before Pinecrest, against 33.9 of cash.
+- **Evidence:**
+  - 227.5 + 4.2 + 28.6 + 3.2 = 263.5. Net of cash: 263.5 - 33.9 = 229.6.
+  - Adding the Pinecrest range gives 231.0 to 241.6.
+  - H1 2026 free cash flow of -13.0 means cash is falling about 2.2 a month (13.0/6) until closing.
+- **Source:** `balance_sheet.csv`, column Q2_2026; `cash_flow.csv`, row 24, column H1_2026; [lead: 10-K Note 9; 10-Q; DEF 14A; court records].
+- **Severity:** High
+- **Confidence:** High. The items are as given, but the change-in-control trigger terms are unconfirmed.
+- **Deal impact:** Financing and valuation (the equity bridge).
+- **Cross-check:** Check credit agreement prepayment terms (any make-whole or breakage). Get the proxy's golden parachute table. Check for 8-Ks on new executive agreements entered after the deal approach.
+
+### Positive or mitigating points
+- The company's stated 2.26x is arithmetically consistent with its own figures. It does apply the 25.0 cash cap: 202.5/89.7 = 2.26x.
+- In the LTM to June 2026, the bill-and-hold nets out, because 9.4 was reversed and 22.4 delivered inside the window. LTM revenue of 498.4 is therefore not inflated by timing.
+- Software and services grew about 14% to 15% in H1 2026: software 67.5 against 58.9, services 38.2 against 33.4. FieldOS ARR rose from 139.2 to 146.8.
+- Receivables came down: AR net fell from 118.9 to 104.2 and contract assets from 24.7 to 19.5. This fits the bill-and-hold deliveries being collected (working capital inflow of +14.7 + 5.2).
+- Because a change of control triggers default, the covenant question is mainly a risk before closing, or if the deal fails. The buyer refinances at closing anyway.
+
+### Gaps and questions for management
+1. Provide the full credit agreement definition of Consolidated EBITDA and Permitted Add-backs, plus the Q2 2026 compliance certificate showing the 2.26x build.
+2. Provide quarterly EBITDA and add-backs for Q3 2025 through Q2 2026, and the Q3 2026 covenant forecast.
+3. Explain how the $9.4m return was booked (revenue reversal in Q2 2026 or a refund liability) and which customer it relates to. Show how the $22.4m of deliveries split between Q1 and Q2 2026.
+4. Provide the gross margin on the $31.8m bill-and-hold and hardware segment gross margin by year.
+5. Provide the FY2025 bonus payout curve, the bonus definitions of revenue and Adjusted EBITDA, and the clawback policy.
+6. State where the Ruiz $3.2m accrual is booked (balance sheet line and P&L line), whether it is in any add-back, and whether any Pinecrest accrual exists.
+7. Provide Pinecrest revenue by segment (hardware, FieldOS subscription, services) and the contract's limitation-of-liability clause.
+8. Provide the change-in-control payments by person: trigger type, cash or equity, and whether any are already in diluted shares.
+9. Explain the restructuring charges that recur every year and the "customer implementation delays" add-back.
+10. Confirm minimum operating cash, and whether there is any revolver draw after June 30, 2026.
+
+Relevant files: `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/financials/` (all CSVs listed above) and `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md`.

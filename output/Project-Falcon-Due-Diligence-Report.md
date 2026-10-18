@@ -2,461 +2,397 @@
 
 # Project Falcon: Comprehensive Due Diligence Report
 
-<div class="sub">Draft for Investment Committee discussion</div>
+<div class="sub">
 
-October 18, 2026
-
-Proposed acquisition of Talonfield Systems, Inc. (NASDAQ: TLFS) by Arbelion Industries, Inc.
-
-Fictional case study
-
-<div class="flag">Prepared by an AI multi-agent diligence system with human review</div>
+Draft for Investment Committee discussion
 
 </div>
 
-> This report is a draft for human decision-makers. It is not investment, legal or accounting advice. All companies, people and figures are fictional. Figures are US$ millions unless stated. "Calculated" means the diligence team combined figures from the cited sources. Allegations and rumors are labeled as such.
+Arbelion Industries, Inc. proposed acquisition of Talonfield Systems, Inc. (NASDAQ: TLFS)
+
+October 18, 2026
+
+Fictional case study
+
+<div class="flag">
+
+Prepared by an AI multi-agent diligence system with human review
+
+</div>
+
+</div>
+
+> This report is a draft for human decision-makers. It is not investment, legal or accounting advice. All companies, people and figures are fictional. Amounts are in US$ millions unless stated.
 
 ## 1. Executive summary
 
 <div class="bottom-line">
 
-**Proposed recommendation: Pause. Do not proceed at the current price of US$24.00 per share.** The Investment Committee makes the decision. Re-engage only at a price rebuilt on current results, with the conditions in Section 7.
+**Proposed recommendation: Do not proceed at the current price of $24.00 per share.** The Investment Committee makes the decision. If the deal team wants to stay engaged, it should re-price against current earnings and make the deal conditional on the protections in Section 6.
 
 </div>
 
-The deal model values Talonfield on a management case the company withdrew on August 6, 2026. On current numbers, US$24.00 is about 18.3x the company's new FY2026 EBITDA guidance and 15.1x LTM Adjusted EBITDA, not the 11.5x in the model. The revenue growth that supports the price was inflated by bill-and-hold sales. The largest customer can walk away because of this deal, and a patent case threatens the main product line. None of these issues is fatal on its own, but together they mean the current price does not hold.
+**Why.** The $24.00 offer rests on a management case that Talonfield itself withdrew on August 6, 2026. At $24.00 the enterprise value is $1,352.8m. That is 11.5x the old $118.0m EBITDA forecast, but 18.3x the company's current guidance midpoint ($74.0m) and 15.1x trailing Adjusted EBITDA ($89.7m). At the deal model's own 11.5x multiple, illustrative value is $13.28 to $17.35 per share (X-01, FIN-25). On top of the price gap sit four serious risks: revenue quality and controls, the largest customer's exit right, a patent case that threatens the core robot, and a lending covenant that may already be misreported.
 
-**Top five red flags**
+### Top five red flags
 
-1. **FY2025 growth was inflated by bill-and-hold sales (X-01, Critical).** US$31.8 million of Q4 2025 hardware revenue was booked for robots still in Talonfield's warehouses. Without it, FY2025 growth was about 11.6% (reported 19.1%), Q4 grew about 5.1% (reported 32.4%), and the "record" Q4 missed consensus by about US$5.4 million. US$9.4 million has since been returned. These sales sit under an unremediated material weakness and are the subject of a securities class action (allegations).
-2. **The largest customer is at risk (X-02, Critical).** Norvale is 31.1% of revenue. It can terminate on 90 days' notice if Talonfield is acquired and has no minimum volume. The 10-Q says the largest customer (Norvale per the 10-K) returned US$9.4 million of robots in May 2026. In June 2026 Norvale bought a robot maker to build its own robots.
-3. **The Vantor patent case threatens Gen-3 (X-03, Critical).** Vantor claims at least US$140.0 million (12.1% of equity value) and will seek an injunction against Gen-3 robots, about 42% of revenue. The court adopted Vantor's position on three of four disputed terms on July 22, 2026. The 10-Q filed 15 days later does not mention that ruling and records no accrual. Trial is set for March 8, 2027.
-4. **The valuation basis is stale (X-04, Critical).** Guidance was cut to revenue of US$470.0 to 490.0 million and Adjusted EBITDA of US$70.0 to 78.0 million, from US$560.0 million and US$118.0 million in the deal model. The 34% premium is also measured against a price already lifted 12% by the October 2 sale leak.
-5. **Covenant compliance appears overstated (X-05, Critical, borderline).** The reported 2.26x leverage can only be reproduced without the credit agreement's 15% cap on add-backs. Capped, it is about 2.65x to 2.67x. On analyst projections, every guidance case breaches the 3.00x limit by December 31, 2026, which is likely before closing.
+| # | Red flag | IDs | Severity |
+|---|---|---|---|
+| 1 | **Stale valuation basis.** The deal model (v3, September 2026) uses the March 2026 case of $560.0m revenue and $118.0m Adjusted EBITDA. The August 6 10-Q replaced it with $470m to $490m and $70m to $78m. | X-01, SEC-01, NEWS-01, FIN-01, FIN-25 | Critical |
+| 2 | **Revenue quality and control failures.** $31.8m of Q4 2025 revenue was bill-and-hold (robots still in Talonfield's warehouse). Without it, FY2025 growth was 11.6%, not 19.1%, and Q4 grew 5.1%, not 32.4%. The prior auditor warned of expanded Q4 procedures and was dismissed; the material weakness is unremediated; $9.4m was later returned. A short seller and a class action allege abuse (allegations). | X-02, X-03, SEC-02, SEC-03, SEC-04, FIN-20 | Critical |
+| 3 | **Norvale can walk because of this deal.** Norvale is 31.1% of revenue. It may terminate on 90 days' notice after a change of control, has no minimum volume, and is building its own robots through Kinetic Aisle. | X-04, SEC-06, NEWS-05, FIN-08 | Critical |
+| 4 | **Vantor patent case and a disclosure gap.** Talonfield lost claim construction on July 22, 2026. The 10-Q filed 15 days later does not mention it and still says the claims are "without merit". Vantor's expert claims $96.4m (plaintiff figure) and Vantor will seek an injunction on Gen-3, about 42% of revenue (estimate). | X-05, LIT-F01, LIT-F02, SEC-20 | Critical |
+| 5 | **Covenant may be misreported and is likely to tighten.** The reported 2.26x leverage ratio appears to ignore a 15% cap on add-backs. On the most natural reading it is 2.67x today and about 3.1x to 3.6x at December 31, 2026, above the 3.00x limit. On a strict reading it is 3.65x, already above the 3.50x limit. | X-07, SEC-16, FIN-18, FIN-19 | High |
 
-**Valuation implications**
+### Valuation implications
 
-| Measure | Value |
-|---|---|
-| Equity value at US$24.00 | 1,159.2 |
-| Enterprise value (net debt 193.6 at June 30, 2026) | 1,352.8 |
-| EV / stale FY2026E Adjusted EBITDA (118.0) | 11.5x |
-| EV / revised FY2026 guidance midpoint (74.0) | 18.3x |
-| EV / LTM company Adjusted EBITDA (89.7) | 15.1x |
-| EV / LTM analyst-adjusted EBITDA (72.6) | 18.6x |
-| Illustrative value per share at assumed 10.0x to 13.0x (after known debt-like items) | US$10.64 to US$19.75 |
-| Value at the model's own 11.5x on guidance midpoint / LTM | US$13.61 / US$17.35 |
-| Per-share effect of losing Norvale at 11.5x | -US$6.17 to -US$12.88 |
-| Per-share effect of Vantor payment at 96.4 / 140.0 | -US$2.00 / -US$2.90 |
+| EBITDA basis | 10.0x | 11.5x | 13.0x |
+|---|---|---|---|
+| Trailing (LTM June 2026) company Adjusted EBITDA $89.7m | $14.56 | $17.35 | $20.13 |
+| FY2026 guidance midpoint $74.0m | $11.31 | $13.61 | $15.91 |
+| Diligence-adjusted LTM EBITDA $72.6m (analyst judgment) | $11.02 | $13.28 | $15.53 |
 
-No case in the analysis reaches US$24.00. The highest illustrative value (US$19.75) is 17.7% below the offer. The US$35.0 million synergy target equals 39.0% of LTM Adjusted EBITDA, so the current price already pays away most of it.
+Per share, using June 30, 2026 net debt of $193.6m and 48.3m diluted shares. Illustrative only. Even 13x trailing Adjusted EBITDA gives $20.13, 16% below the offer. Crediting the full $35.0m of run-rate synergies still leaves the price at 12.6x diligence-adjusted EBITDA (FIN-01). The 34% premium is measured against a price already lifted 12% by the October 2 sale rumor; against the pre-rumor price of about $15.36 it is about 56% (X-10, not verified on the rumor itself). Unquantified exposures (Vantor injunction, possible restatement, Norvale exit) are not in these figures.
 
 ## 2. Answers to the six IC questions
 
 ### Q1. Is Talonfield's revenue growth real and sustainable?
 
-**Partly real, not sustainable at the reported rate.** Reported FY2025 growth of 19.1% includes US$31.8 million of Q4 bill-and-hold revenue. Without it, growth was about 11.6% and hardware grew only 2.9% (X-01, SEC-02, FIN-18). Underlying growth slowed from about 14% in Q1 to Q3 2025 to about 5% in Q4, then to 0.7% and -4.0% in Q1 and Q2 2026 (FIN-01). LTM revenue (US$498.4 million) is a cleaner base, because the bill-and-hold amount and its partial reversal both fall inside it.
-
-Leading indicators confirm the slowdown (X-11, FIN-12). Backlog fell from US$168.0 million to US$118.0 million. Hardware book-to-bill has been below 1.0x since FY2025. Net revenue retention fell from 118% to 111%. The company cut FY2026 guidance to a 4.4% revenue decline at the midpoint (SEC-01, NEWS-01), while the market is forecast to grow about 15% a year (NEWS-14). Software is still growing (ARR US$146.8 million, up 5.5% in H1 2026), which is the main positive.
+**Partly real, but overstated and slowing.** Reported FY2025 growth of 19.1% included $31.8m of Q4 bill-and-hold revenue. Without it, growth was 11.6% and Q4 grew only 5.1%, against 13% to 14% in Q1 to Q3 2025 (X-02, FIN-20). Most of that revenue was a timing pull-forward: $22.4m was delivered by June 30, 2026 and $9.4m was returned (SEC-02). In 2026 the business is shrinking on a reported basis: H1 revenue -1.7%, Q2 -4.0%, hardware -12.9% (FIN-03). Adding back the one-off credits, H1 2026 grew about 3.4% (FIN-23). Hardware backlog fell 29.8% since December 2024 and software retention (NRR) fell from 118% to 111% (X-06). Software and services still grew about 14% in H1 2026. Calder forecasts market growth of about 15% a year, so the slowdown is company-specific (X-06). The $560.0m FY2026 case required H2 revenue up 22.3% year over year and is no longer credible (FIN-01).
 
 ### Q2. Are there legal exposures that could reduce value or block closing?
 
-**Yes. Vantor is the largest; no case can block the merger by itself.**
-
-- **Vantor patent case (X-03, LIT-01 to LIT-03, LIT-11):** at least US$140.0 million claimed; Vantor's expert puts damages at US$96.4 million through trial, before any enhanced damages for alleged willfulness (LIT-12). A permanent injunction on Gen-3 is sought. Its scope over Gen-3 Plus, installed robots and FieldOS updates is undefined. News describes Vantor as one of two larger rivals, which may make an injunction more plausible; its royalty-only damages theory may cut the other way. A payment at the claimed amounts would exceed Talonfield's US$59.7 million of liquidity (FIN-21). Trial is March 8, 2027.
-- **Securities class action (X-13, LIT-05, LIT-13, SEC-11):** filed June 3, 2026 against the company, the CEO and the former CFO. It alleges improper bill-and-hold revenue, "including sales the customer had not requested", and hidden control weaknesses (allegations). Class period March 10, 2025 to May 12, 2026. No damages figure. The amended complaint is due November 9, 2026, three days after the IC meeting.
-- **Pinecrest (LIT-07, SEC-14):** a customer claims US$12.0 million over the April 2026 outage. Talonfield says a contract cap limits it to about US$1.4 million. Hearing November 5, 2026.
-- **Ruiz wage and hour case:** settled for US$3.2 million and accrued; final approval hearing November 13, 2026 (not verified, Low).
-- **Timing (X-12, LIT-04):** nine litigation events fall between November 5, 2026 and March 8, 2027.
+**Yes.** The Vantor patent case is the largest. The court adopted Vantor's construction on three of four terms (LIT-F01). Vantor's expert puts damages at $96.4m through trial, the complaint asks for at least $140.0m plus enhanced damages, and Vantor will seek a permanent injunction on Gen-3 (LIT-F02). These are plaintiff figures, not outcomes. Gen-3 Plus is now also accused (LIT-F03), the stay was denied and the PTAB review cannot dispose of the key patents (LIT-F04). Mediation is in December, after the IC meeting; trial is March 8, 2027 (LIT-F05). No accrual is recorded (SEC-07). A securities class action alleges bill-and-hold abuse (allegation) and stays with Talonfield after closing (LIT-F06). Pinecrest claims $12.0m for the April outage against a contract cap the company estimates at $1.4m; the hearing is November 5, 2026 (LIT-F08, X-11). None of these is likely to block closing by itself, but an injunction on Gen-3 before closing would change the deal.
 
 ### Q3. How dependent is Talonfield on key customers, and are those relationships at risk?
 
-**Highly dependent, and the top relationship is at risk.** Norvale was 31.1% of FY2025 revenue (US$156.2 million) and 38% of receivables. The top 10 customers were 61.5% (FIN-11). All of Norvale's share gain in FY2025 came from bill-and-hold; without it, Norvale's share was flat at 28.0% (FIN-18).
-
-Norvale can terminate on 90 days' notice on a change of control, has no minimum volume, and its contract ends September 30, 2027 (SEC-03). The largest customer returned US$9.4 million of robots in May 2026 (SEC-02). In June 2026 Norvale bought Kinetic Aisle to "reduce our dependence on any single vendor" and plans an in-house pilot in 2027 (NEWS-09). The available 10-Q excerpts do not mention this move (SEC-27). Losing Norvale would cost US$6.17 to US$12.88 per share at 11.5x (FIN-20).
+**Highly dependent, and the top relationship is at risk.** Norvale was 31.1% of FY2025 revenue ($156.2m) and 47% of FY2025 growth; the top 10 customers were 61.5% (FIN-08). Norvale may terminate on 90 days' notice after a change of control and has no minimum volume; its MSA ends September 30, 2027 (SEC-06). It bought Kinetic Aisle to "reduce our dependence on any single vendor", with pilots in 2027, although it said it will "continue to work with existing partners" for now (NEWS-05). $24.6m of the bill-and-hold revenue was with the largest customer, and the $9.4m return was also from "our largest customer", which is Norvale by inference (SEC-22). Without bill-and-hold, Norvale grew 11.4%, not 32.3% (FIN-22). Norvale also held 38% of gross receivables at December 31, 2025 (X-04).
 
 ### Q4. Are there balance sheet, debt or liquidity issues we would inherit at closing?
 
-**Yes.** Cash generation has collapsed. Operating cash flow fell from US$40.8 million in FY2024 to US$9.7 million in FY2025 and was negative US$4.2 million in H1 2026 (FIN-08). The revolver now funds the business: US$45.0 million drawn, US$25.8 million available, US$33.9 million of cash (X-10). Net debt is US$193.6 million, 4.0x LTM EBITDA (FIN-09).
-
-A change of control is an event of default that allows lenders to demand repayment of the US$227.5 million of loans, so Arbelion should plan to repay or refinance at closing (X-10). The reported covenant ratio appears to skip the 15% add-back cap; capped, a breach of the 3.00x limit is projected by December 31, 2026 in every guidance case (X-05, FIN-17, SEC-25). That would be an event of default between signing and closing. Known debt-like items add about US$18.4 million to EV (FIN-20).
+**Yes, mostly before closing.** Net debt was $193.6m at June 30, 2026; leverage is 2.16x trailing Adjusted EBITDA but 4.02x trailing EBITDA (FIN-07). Cash conversion collapsed: operating cash flow was 15% of EBITDA in FY2025 and negative in H1 2026; trailing free cash flow is -$26.4m (FIN-06). Receivables days rose from 63.5 to 86.4 while the credit-loss allowance was cut (FIN-05). The covenant question is in X-07: the reported 2.26x appears to use uncapped add-backs, and a breach of the 3.00x step-down is possible by December 31, 2026. A change of control is an event of default, so Arbelion must refinance at closing: about $234.9m gross (debt $227.5m, letters of credit $4.2m, Ruiz $3.2m), or $201.0m net of cash, plus up to $11.0m of contingent severance (X-12). The main risk is a default or waiver negotiation between signing and closing.
 
 ### Q5. Are there management, governance or internal control concerns?
 
-**Yes, and they cluster around the FY2025 revenue (X-07).** The outgoing auditor flagged a material weakness in Q3 2025 and planned extra work on Q4 deals; it was dismissed on November 10, 2025 (SEC-04). The CFO gave notice on January 20, 2026 and received US$0.9 million for a release (SEC-08); anonymous sources describe tension with the CEO over booking Q4 orders (rumor, NEWS-06). The new auditor gave an adverse controls opinion, and the weakness was still open at June 30, 2026 (SEC-05, NEWS-07). 2025 revenue cleared its bonus target only with bill-and-hold included, and bonuses paid at 142% of target (SEC-15, FIN-19).
-
-Company statements and filings have repeatedly lagged adverse facts (X-08). Examples are the short report denial in the same month as the return, "strong hardware deliveries" against goods held in the warehouse (SEC-07), the "not material" cyber incident (X-09), and the 10-Q's silence on the Vantor ruling and Norvale's move. None has been shown to be false. Governance points: the CEO is also Chairman with no lead independent director; all executive equity vests on a change in control (US$17.6 million); the CEO's family landlord can reset headquarters rent on a change in control (not verified, Medium and Low).
+**Yes, serious ones.** The facts: the prior auditor advised the Audit Committee of a material weakness and said Q4 2025 non-standard arrangements needed expanded procedures; it was dismissed on November 10, 2025, with no disagreements reported (SEC-03, SEC-23). The new auditor issued an adverse opinion on internal control, and the weakness was still unremediated with disclosure controls not effective at June 30, 2026 (SEC-04). The 2025 bonus paid at 142% of target. Without bill-and-hold, revenue clears the threshold by only $0.5m and Adjusted EBITDA (about $85.7m, margin assumed) misses the $88.0m threshold (FIN-21). The CFO gave notice on January 20, 2026 and received $900,000 (SEC-10). Anonymous sources link his exit to a revenue timing dispute; this is a rumor and the company denies it (NEWS-04). The 10-Q omitted the Markman loss (SEC-20). The CEO is also Chair, there is no lead independent director, and his family entity owns the HQ with a rent reset right on a change of control (SEC-12). Executive equity vests single-trigger (SEC-10). Intent has not been established.
 
 ### Q6. What price adjustments or deal protections should we ask for?
 
-**Reprice, then protect.** At US$24.00 the deal does not hold on current numbers (X-04, FIN-20). The illustrative range is US$10.64 to US$19.75 per share, before any Norvale or Vantor downside. The specific protections are set out in Section 7. The most important are a Norvale waiver, a Vantor mechanism (license, settlement or contingent value right), a forensic review of Q4 2025, a lender plan for the covenant, a cyber indemnity, and signing only after the November events.
+**Re-price first, then protect.** Rebase the price to trailing or guidance EBITDA (FIN-25). Then: a Norvale waiver or consent as a closing condition, or a contingent value right tied to Norvale revenue; a special indemnity or escrow for Vantor with buyer consent over any settlement; an exclusivity extension past the December mediation; a no-restatement closing condition and a quality of earnings report; review of the Q3 2026 10-Q and lender compliance certificate before signing; a related-party lease amendment; double-trigger vesting; clawback and D&O tail arrangements. Section 6 sets these out.
 
-## 3. Risk matrix
+## 3. Risk matrix (verified findings)
 
-Every verified finding (Verified or Partially verified, with corrected wording). Sorted by severity. Action types: Price, Structure, Condition, Indemnity, Further diligence.
+All 64 findings below were checked by the citation verifier. "Partially verified" findings use the verifier's corrected wording. Allegations and rumors are labeled.
 
 | ID | Finding | Workstream | Severity | Confidence | Deal impact | Recommended action |
 |---|---|---|---|---|---|---|
-| X-01 | Q4 2025 bill-and-hold sales (US$31.8 million) inflated FY2025 growth: underlying growth was about 11.6%, not 19.1%, and Q4 grew about 5.1%, not 32.4%. Without them Q4 missed consensus | Cross-source | Critical | High | Valuation; restatement and closing risk | Price on LTM and forward figures; forensic review of Q4 2025 contracts before signing; financial statement reps and a restatement termination right (Price, Condition, Further diligence) |
-| X-02 | Norvale (31.1% of revenue) can terminate on 90 days' notice on a change of control and has no minimum volume. The 10-Q says the largest customer (Norvale per the 10-K; not named in the 10-Q) returned US$9.4 million of bill-and-hold robots in May 2026. On or before June 24, 2026 Norvale bought Kinetic Aisle to build its own robots. The available 10-Q excerpts do not mention this, and Part II Item 1A adds no customer risk factor | Cross-source | Critical | High (facts) / Medium (intent) | Valuation; closing risk; post-closing revenue | Norvale waiver of the change-of-control right, ideally with an MSA extension, as a signing or closing condition; customer call; price a loss case (Condition, Price) |
-| X-03 | Vantor patent case: at least US$140.0 million claimed (a demand) and US$96.4 million in Vantor's expert report; an injunction is sought against Gen-3 (about 42% of revenue; analysts say FieldOS 5 features need Gen-3 or newer). News calls Vantor a larger rival, which may make an injunction more plausible. The August 6, 2026 10-Q omits the adverse July 22 claim construction ruling and records no accrual | Cross-source | Critical | High (facts) / Low (outcome) | Valuation; closing risk; product roadmap; disclosure | Price the exposure or use a contingent value right; pre-signing license or settlement; no-injunction closing condition; buyer consent over settlement (Price, Structure, Condition) |
-| X-04 | Deal model uses guidance withdrawn on August 6, 2026. At US$24.00 the price is 18.3x the new guidance midpoint and 15.1x LTM Adjusted EBITDA, not 11.5x. The 34% premium is measured on a leak-inflated price | Cross-source | Critical | High (math) / Medium (scenarios) | Valuation and price | Rebuild the model on revised guidance, LTM and Q3 2026 actuals; reprice; measure premium against an unaffected price (Price) |
-| X-05 | Reported covenant leverage of 2.26x matches uncapped Adjusted EBITDA. On the literal credit agreement definition it is 2.67x (3.65x if stock-based compensation is capped), and every guidance case breaches the 3.00x maximum by December 31, 2026, likely before closing | Cross-source | Critical | High (back-solve) / Medium (definition, projections) | Interim default risk; liquidity; disclosure | Obtain the credit agreement and compliance certificates; lender waiver or refinancing plan at signing; no-default bring-down (Condition, Further diligence) |
-| SEC-01 | 2026 guidance cut by 14.3% (revenue) and 37.3% (Adjusted EBITDA); the deal model still uses the withdrawn case | SEC filings | Critical | High | Valuation | Rebase the model on revised guidance (Price) |
-| SEC-02 | Q4 2025 bill-and-hold revenue (US$31.8 million) drove much of reported growth; 29.6% has since been reversed. Note: Norvale is inferred from "largest customer"; 22.4 was later delivered, so most is timing | SEC filings | Critical | High | Valuation; restatement risk | Forensic review of bill-and-hold contracts (Further diligence, Price) |
-| SEC-03 | Largest customer (31.1% of revenue) can terminate on 90 days' notice if Talonfield is acquired | SEC filings | Critical | High | Closing risk; valuation | Norvale waiver as a condition (Condition) |
-| NEWS-01 | 2026 guidance cut leaves the deal model on an outdated management case | News and media | Critical | High | Valuation | Rebase the model (Price) |
-| NEWS-02 | News items converge on how Q4 2025 hardware revenue was recognized | News and media | Critical | Medium | Revenue quality | See X-01 (Further diligence) |
-| NEWS-03 | Greyfin short report alleges bill-and-hold sales were used to hit 2025 revenue and bonus targets (allegation by an interested party) | News and media | Critical | Low (specific claims) / Medium (core point) | Revenue quality; reputation (allegation) | Test each Greyfin claim in diligence (Further diligence) |
-| NEWS-09 | Largest customer Norvale bought a robot startup to build its own robots | News and media | Critical | High | Customer revenue at risk | See X-02 (Condition, Price) |
-| LIT-01 | The Vantor patent case has turned against Talonfield since the July 22, 2026 claim construction order | Litigation | Critical | High (rulings) / Medium (trend) | Valuation; closing risk | See X-03 (Price, Condition) |
-| LIT-02 | Vantor's damages claim could exceed 10% of the equity value | Litigation | Critical | High (in the record) / Low (what is owed) | Valuation | See X-03 (Price, Structure) |
-| LIT-03 | Vantor will seek a permanent injunction against sales of Talon Gen-3 robots | Litigation | Critical | High (sought) / Low (granted) | Product and revenue risk | No-injunction condition; design-around plan (Condition) |
-| LIT-11 | Vantor seeks a permanent injunction against Gen-3 sales; whether it would cover Gen-3 Plus, installed robots, service or FieldOS updates is undefined. Gen-3 is about 42% of FY2025 revenue, and analysts say FieldOS 5 features need Gen-3 or newer | Litigation | Critical | Medium | Product and software risk | Clarify injunction scope with counsel (Further diligence, Condition) |
-| FIN-01 | Q4 2025 revenue rose 32.4% and delivered 46.9% of FY2025 growth. Q4 included US$31.8 million of bill-and-hold revenue (9.4 later reversed). Without it, FY2025 growth was 11.6%, not 19.1%. Revenue fell 1.7% in H1 2026, which includes the 9.4 credit and 2.3 of service credits | Financial | Critical | High (math) / Medium (one-off reading) | Valuation base | See X-01 (Price) |
-| FIN-11 | Norvale is 31.1% of revenue and explains 47.3% of FY2025 growth. Refined by FIN-18: without bill-and-hold, Norvale grew 11.4% and its share was flat at 28.0% | Financial | Critical | High (math) / Medium (Q4 link) | Customer concentration | See X-02 (Condition, Price) |
-| FIN-14 | The deal model's management case is stale. On current results the offer is 15.1x LTM Adjusted EBITDA, not 11.5x. Refined by FIN-20: US$17.35 becomes US$16.97 after debt-like items | Financial | Critical | High (math) / Medium (scenarios) | Valuation | See X-04 (Price) |
-| FIN-17 | The reported 2.26x can only be reproduced with uncapped Adjusted EBITDA, so it appears not to apply the 15% add-back cap summarized in 10-K Note 9. Capped, June 30, 2026 leverage is about 2.65x to 2.67x (3.62x to 3.65x on the less natural reading that SBC is capped). On analyst projections, the capped ratio exceeds 3.00x at December 31, 2026 in every guidance case. The full credit agreement is needed to confirm | Financial | Critical | High (math) / Medium (projections) | Interim default risk | See X-05 (Condition) |
-| FIN-20 | At assumed multiples of 10.0x to 13.0x, illustrative value is US$10.64 to US$19.75 per share against the US$24.00 offer. Adjusted EV of 1,371.2 assumes all double-trigger severance is paid and includes contingent letters of credit (1,356.0 with Ruiz only) | Financial | Critical | High (math) / Medium (scenarios) | Valuation | See X-04 (Price) |
-| X-06 | Add-backs rose from 30.1% to 65.2% of Adjusted EBITDA; restructuring (four programs since 2022) and Vantor costs recur. Analyst-adjusted LTM EBITDA is US$72.6 million, 19.1% below the company's US$89.7 million | Cross-source | High | Medium (judgment) / High (math) | Valuation basis | Value on analyst-adjusted EBITDA; commission a quality of earnings report (Price, Further diligence) |
-| X-07 | Weak controls and governance cluster around FY2025 revenue: material weakness flagged in Q3 2025; auditor dismissed November 10, 2025 (51 days before year-end) after planning extra Q4 procedures; CFO notice January 20, 2026 with a US$0.9 million payment for a release (two anonymous sources describe tension over booking Q4 orders, a rumor); adverse controls opinion; weakness still open at June 30, 2026; 2025 revenue cleared its bonus target only with bill-and-hold included | Cross-source | High | High (dated facts) / Low (CFO dispute rumor) | Reliance on financials; management retention | Forensic review; Audit Committee minutes and auditor letter; enhanced reps; retention plan not tied to single-trigger equity (Further diligence, Structure) |
-| X-08 | In five or six episodes, later disclosures or events raised questions about company statements (short report denial, Q4 "deliveries", "routine" auditor change, "not material" outage, the 10-Q's omission of the Markman ruling and Norvale's move). None has been shown to be false; the guidance cut is a forecast miss, not a contradicted statement | Cross-source | High | Medium | Reliance on management statements | Independent base case; updated disclosure schedules; full bring-down of reps (Structure, Further diligence) |
-| X-09 | The April 2026 FieldOS incident stopped robots at at least 40 customer sites for up to three days, led to a US$12.0 million suit alleging a failure to patch a known vulnerability (which Pinecrest argues removes the contract cap), and drew an unverified data-theft claim. The company judged it "not material"; no Item 1.05 8-K had been filed as of April 14, 2026, and none appears in the filings provided | Cross-source | High | High (facts) / Low (data theft) | Post-closing liability; FieldOS retention | Forensic report, cyber insurance review, specific cyber indemnity or price adjustment (Indemnity, Price) |
-| X-10 | The revolver funds the cash burn (US$45.0 million drawn, US$25.8 million available). A change of control is an event of default that allows lenders to demand repayment of US$227.5 million of loans, so Arbelion should plan to repay or refinance at closing; US$4.2 million of letters of credit would likely need replacing (not stated in the filings) | Cross-source | High | High | Financing size; interim liquidity | Interim covenants (no buybacks, no new debt); payoff letters; size financing for about US$232 million plus costs (Structure, Condition) |
-| X-11 | Since Q4 2025, revenue (H1 2026 -1.7%), margins, backlog (-29.8% from peak), net revenue retention (118% to 111%), new ARR and headcount have all weakened, while the market is forecast to grow about 15% a year | Cross-source | High | High | Valuation; integration plan | Downside case; Q3 2026 results and bookings before the IC (Price, Further diligence) |
-| X-12 | Pinecrest hearing, Q3 results and the first 3.00x covenant test, the amended securities complaint, the PTAB decision and the Vantor discovery cut-off all fall between November 5 and November 20, 2026 | Cross-source | High | High (court dates) / Medium (expected dates) | Timing of signing; conditions | Sign only after Q3 results, the Pinecrest ruling and the patent office decision; consider extending exclusivity (Structure, Condition) |
-| X-13 | The company's own later disclosures (US$9.4 million return first disclosed August 6, "pulled forward" orders, unremediated weakness, guidance cut) fit the securities class action's theory; the bonus figures could be cited as a motive (inference). Exposure is unquantified and insurance cover is unknown | Cross-source | High | High (record) / Medium (assessment) | Unquantified liability | D&O policy review; counsel view; treat expected exposure as debt-like or in price (Price, Further diligence) |
-| SEC-04 | Auditor dismissed weeks after it flagged a material weakness and asked for extra procedures on expected Q4 2025 contracts | SEC filings | High | High (facts) | Reliance on FY2025 audit | Obtain auditor letter and Audit Committee minutes (Further diligence) |
-| SEC-05 | The material weakness over the same contracts was still unremediated at June 30, 2026 | SEC filings | High | High | Post-closing remediation | Remediation plan and controls reps (Structure) |
-| SEC-06 | The US$9.4 million return was booked as a Q2 2026 revenue reduction, not as a correction of FY2025 | SEC filings | High | High (recording) / Medium (restatement risk) | Restatement risk | Accounting review of the Q2 2026 treatment (Further diligence) |
-| SEC-07 | The company described Q4 2025 three different ways | SEC filings | High | High | Disclosure liability | Counsel review alongside the securities case (Further diligence) |
-| SEC-09 | Covenant maximum steps down to 3.00x from September 30, 2026. On uncapped Adjusted EBITDA and June 30 net debt of 202.5, FY2026 guidance implies 2.60x to 2.89x, with a breach (3.39x) if H2 repeats H1. On the capped reading (SEC-25) headroom is much tighter | SEC filings | High | High (terms) / Medium (forecast) | Interim covenant risk | Covenant headroom analysis and lender plan (Condition) |
-| SEC-10 | Cash conversion collapsed in 2025 while receivables jumped 59.2% and the allowance fell | SEC filings | High | High (ratios) / Medium (Norvale link) | Quality of earnings; working capital | Receivables aging; working capital peg (Further diligence) |
-| SEC-11 | Securities class action alleges misleading statements on revenue and internal controls (allegations) | SEC filings | High | High (case exists) / Low (claims) | Unquantified liability | D&O review; litigation counsel (Further diligence) |
-| SEC-12 | Vantor patent case threatens Talon Gen-3 (about 42% of 2025 revenue); no accrual | SEC filings | High | High | Valuation; product risk | See X-03 (Price, Structure) |
-| SEC-13 | April 2026 FieldOS cyber incident judged "not material" despite credits, costs and a US$12.0 million suit | SEC filings | High | High (facts) / Medium (view) | Cyber liability; disclosure | Forensic report; cyber reps (Indemnity) |
-| SEC-25 | The 2.26x leverage ratio appears to ignore the 15% add-back cap; capped ratios are 2.67x or 3.65x | SEC filings | High | Medium | Interim default risk; disclosure | See X-05 (Condition) |
-| SEC-26 | The Q2 10-Q's Vantor disclosure is stale and leaves out the July 22 adverse claim construction ruling ("in discovery" is not false; the issue is omission) | SEC filings | High | High | Disclosure liability; Vantor exposure | See X-03 (Further diligence) |
-| SEC-27 | The 10-Q is silent on Norvale's move to build its own robots; customer risk factor unchanged | SEC filings | High | High | Customer risk; disclosure | See X-02 (Condition) |
-| NEWS-04 | Company disclosed a US$9.4 million credit for robots returned from a late-2025 bill-and-hold sale | News and media | High | High | Revenue quality | See X-01 (Further diligence) |
-| NEWS-05 | Auditor replaced weeks before year-end after warning of a material weakness and extra work on Q4 deals | News and media | High | High | Governance | See X-07 (Further diligence) |
-| NEWS-06 | CFO resigned (notice January 20, effective February 15, 2026) with a US$0.9 million payment; two anonymous sources describe tension with the CEO over booking Q4 orders (rumor). The interim CFO had served about 5.7 months by August 7, 2026 | News and media | High | High (filing facts) / Low (dispute) | Governance (rumor) | Interview former CFO if possible (Further diligence) |
-| NEWS-07 | New auditor gave an adverse opinion on internal controls | News and media | High | High | Controls | Controls reps and remediation covenant (Structure) |
-| NEWS-08 | Record Q4 2025 beat came with a jump in receivables and weak operating cash flow | News and media | High | Medium | Revenue quality; cash | See X-01 (Further diligence) |
-| NEWS-10 | FieldOS cyber incident stopped robots at 40-plus customer sites; no Item 1.05 Form 8-K as of April 14, 2026; US$2.3 million of credits followed | News and media | High | High (facts) / Low (data theft) | Cyber liability | See X-09 (Indemnity) |
-| NEWS-11 | In five episodes, later disclosures or events raised questions about management's public statements. None has been shown to be false, and the CFO episode rests on anonymous sources | News and media | High | Medium | Reliance on management | See X-08 (Structure) |
-| LIT-04 | Nine litigation events fall between November 5, 2026 and March 8, 2027. The March 8, 2027 Vantor trial may fall before closing, depending on the deal timetable (not stated in the deal brief) | Litigation | High | High | Timing | See X-12 (Structure) |
-| LIT-05 | Securities class action alleges 2025 revenue was inflated by improper bill-and-hold sales (allegations in a pleading) | Litigation | High | High (procedure) / Low (allegations) | Unquantified liability (allegation) | See X-13 (Further diligence) |
-| LIT-12 | Willfulness alleged, with enhanced damages sought, but no supporting facts in the docket summary available (allegation) | Litigation | High | Low | Upside to damages (allegation) | Size any protection above US$96.4m (Structure) |
-| LIT-13 | Securities complaint's "customer had not requested" allegation, with amended complaint due after the IC meeting | Litigation | High | Low | Unquantified liability (allegation) | Review the amended complaint before signing (Further diligence) |
-| FIN-03 | Margins compressed sharply in H1 2026 and the company swung to a loss | Financial | High | High | Valuation | Margin bridge from management (Further diligence) |
-| FIN-04 | Add-backs reached 65.2% of H1 2026 Adjusted EBITDA, and several "non-recurring" items recur | Financial | High | Medium (judgment) / High (math) | Valuation basis | See X-06 (Price) |
-| FIN-05 | Add-back labels show an auditor change, a CFO change, a cyber incident and growing patent litigation | Financial | High | Medium | Controls; governance | See X-07 (Further diligence) |
-| FIN-06 | Receivables and contract assets ballooned at FY2025 year end, while the credit reserve ratio was cut | Financial | High | High (math) / Medium (interpretation) | Revenue quality; working capital | Receivables aging; peg (Further diligence) |
-| FIN-08 | Cash conversion collapsed (OCF/EBITDA 78.0% to 15.1%) and free cash flow has been negative for the last 12 months reported (H2 2025 -13.4, H1 2026 -13.0); LTM -26.4 | Financial | High | High | Cash; financing | 13-week cash forecast (Further diligence) |
-| FIN-09 | Leverage is 4.0x to 4.7x on reported EBITDA, interest cover is thin, and the revolver is funding the cash burn | Financial | High | High (ratios) / Medium (runway) | Financing | See X-10 (Structure) |
-| FIN-12 | Leading indicators contradict the reported growth: backlog, retention, new ARR, customers and headcount all weakened | Financial | High | High | Forecast credibility | See X-11 (Price) |
-| FIN-18 | Without bill-and-hold, FY2025 growth was 11.6%, hardware grew 2.9%, and Q4 2025 missed consensus | Financial | High | High | Valuation base | See X-01 (Price) |
-| FIN-19 | Without bill-and-hold, FY2025 revenue (470.5) only just clears the 470.0 bonus threshold (target 490.0). At the blended 41.1% gross margin, Adjusted EBITDA would be about 85.7, below the 88.0 threshold; that holds only if the bill-and-hold margin exceeded 34.0%. The plan paid 142% of target | Financial | High | Medium | Governance | Clawback review (Structure) |
-| FIN-21 | If Talonfield had to pay Vantor's claimed amounts (96.4 per Vantor's expert; at least 140.0 per the complaint, which is not a ceiling), the payment would exceed June 30, 2026 liquidity of 59.7 by 36.7 to 80.3. These are disputed plaintiff figures with no accrual | Financial | High | High (math) / Medium (royalty base) | Liquidity if Vantor loses | See X-03 (Structure) |
-| SEC-08 | CFO Daniel Okafor gave notice January 20, 2026, effective February 15, 2026, and received a US$0.9 million payment under a separation agreement with a general release. The 8-K says there was no disagreement. The role was still interim on August 6, 2026 | SEC filings | Medium | High (facts) / Medium (link) | Finance leadership | Interview on the departure; permanent CFO plan (Further diligence) |
-| SEC-14 | Pinecrest suit seeks US$12.0 million over the outage; no accrual stated | SEC filings | Medium | High | Contingent liability | Track the November 5 hearing (Further diligence) |
-| SEC-15 | 2025 revenue cleared its 490.0 bonus target only with Q4 2025 bill-and-hold included; without it revenue was 470.5, just above the 470.0 threshold (removing only the reversed 9.4 leaves it above target). The EBITDA effect depends on the undisclosed hardware margin. Bonuses paid at 142% of target | SEC filings | Medium | High (plan figures) / Medium (EBITDA test) | Governance; incentive integrity | Clawback review; pay design (Structure) |
-| NEWS-12 | Fourth restructuring since 2022, with the costs excluded from Adjusted EBITDA every year | News and media | Medium | High | EBITDA quality | Treat restructuring as recurring (Price) |
-| LIT-07 | Pinecrest exposure depends on whether the contract's liability cap holds | Litigation | Medium | High (record) / Low (outcome) | Contingent liability (US$1.4m to US$12.0m) | Track the November 5 hearing (Further diligence) |
-| FIN-07 | Inventory built up while hardware sales and backlog fell | Financial | Medium | High (math) / Medium (obsolescence) | Working capital; write-down risk | Inventory reserve review (Further diligence) |
+| X-01 | Deal model uses the withdrawn March case; price is 18.3x guidance-midpoint EBITDA | Cross-source | Critical | High | Price | Price: rebase model v3 to guidance and LTM |
+| X-02 | $31.8m Q4 bill-and-hold explains the Q4 spike; FY2025 growth 11.6% without it (mostly timing pull-forward) | Cross-source | Critical | High | Price | Price; further diligence on Q4 contracts |
+| X-03 | Auditor warning and dismissal, $31.8m bill-and-hold, bonus thresholds, CFO exit, $9.4m return; allegations separate; intent not established | Cross-source | Critical | Medium | Price, closing, post-closing | Condition (no restatement); indemnity; further diligence |
+| X-04 | Norvale: change-of-control exit right, insourcing, 77% of bill-and-hold, 38% of receivables | Cross-source | Critical | High | Price, closing | Condition (Norvale waiver) or CVR |
+| X-05 | 10-Q omits the Markman loss; later Vantor events undisclosed; Gen-3 about 42% of revenue | Cross-source | Critical | High | Price, closing, disclosure | Indemnity/escrow; settlement consent; disclosure rep |
+| X-06 | Hardware-led weakening across revenue, backlog, NRR, margin and cash; software and services still grow | Cross-source | High | High | Price | Price; integration plan |
+| X-07 | Reported 2.26x reconciles to uncapped add-backs; 2.67x on natural reading; possible December 2026 breach | Cross-source | High | Medium | Closing | Condition (no default or agreed waiver); obtain credit agreement |
+| X-08 | Recurring restructuring, Vantor and delay costs added back; adjusted LTM EBITDA $72.6m | Cross-source | High | High | Price | Price on adjusted EBITDA; QoE |
+| X-09 | Cyber incident larger than "not material": $1.8m added back, $2.3m credits, $12.0m claim, unverified theft claim | Cross-source | Medium | Medium | Post-closing | Further diligence (forensics); cyber rep |
+| X-10 | Premium about 56% to the pre-rumor price | Cross-source | Medium | Medium | Price | Price: use undisturbed reference |
+| X-11 | Pinecrest cap may be understated (about $4.5m estimate vs $1.4m) | Cross-source | Medium | Low | Price | Indemnity; review contract |
+| X-12 | Closing cash needs about $234.9m gross, $201.0m net; plus contingent severance and Vantor | Cross-source | High | Medium | Structure, financing | Structure: sources and uses; payoff letters |
+| SEC-01 | August 6, 2026 guidance replaced the March outlook | SEC | Critical | High | Price | Price |
+| SEC-02 | $31.8m bill-and-hold in Q4 2025; $9.4m returned; $22.4m delivered | SEC | Critical | High | Price, disclosure | Further diligence; no-restatement condition |
+| SEC-03 | Prior auditor advised a weakness and expanded Q4 procedures, then was dismissed | SEC | High | High | Post-closing | Further diligence (Audit Committee minutes) |
+| SEC-04 | Weakness unremediated; adverse ICFR opinion; disclosure controls not effective | SEC | High | High | Post-closing | Indemnity; SOX integration plan |
+| SEC-05 | Covenant steps down to 3.00x from September 30, 2026 | SEC | High | Medium | Closing | Condition (lender waiver) |
+| SEC-06 | Change of control is a debt default; Norvale termination right | SEC | Critical | High | Closing, price | Condition; refinance at closing |
+| SEC-07 | Disclosed legal matters; Gen-3 about 70% of hardware (estimate) | SEC | High | High | Price | Indemnity/escrow |
+| SEC-09 | Q2 decline, negative operating cash flow, more revolver use | SEC | High | High | Price, liquidity | Interim operating covenants |
+| SEC-10 | Single-trigger equity vesting ($17.6m); CFO $900,000 payment | SEC | Medium | High | Post-closing | Structure: double-trigger, retention |
+| SEC-12 | HQ leased from Hale Family Properties LLC (controlled by Hale and family) with change-of-control rent reset | SEC | Medium | High | Post-closing | Condition: lease amendment |
+| SEC-15 | Covenant definition ambiguous on whether SBC is capped | SEC | High | Medium | Closing | Further diligence (credit agreement) |
+| SEC-16 | 2.26x implies no add-back cap; 2.67x or 3.65x under Note 9 as summarized | SEC | High | Medium | Closing, disclosure | Condition; disclosure rep |
+| SEC-17 | 3.00x test needs covenant EBITDA of $67.5m, about 11% cushion | SEC | High | Medium | Closing | Condition |
+| SEC-20 | 10-Q does not mention the July 22 Markman order | SEC | Critical | High | Disclosure | Disclosure rep; indemnity |
+| SEC-21 | 10-Q dropped "loss not probable / cannot estimate" wording | SEC | Medium | Medium | Disclosure | Further diligence (ASC 450 view) |
+| SEC-22 | $9.4m return was from the largest customer (Norvale by inference) | SEC | High | High / Medium | Price, customer | Further diligence |
+| SEC-23 | Auditor 8-K reportable event on expanded procedures; CAM not determinable | SEC | High | High | Post-closing | Further diligence (auditor report) |
+| NEWS-01 | Guidance cut; "2026 is a reset year" | News | Critical | High | Price | Price |
+| NEWS-02 | Short report allegations; $9.4m credit consistent with but does not prove them | News | Critical | Medium / Low | Price, reputation | Further diligence; indemnity |
+| NEWS-03 | Auditor switch six to seven weeks before year-end | News | High | High | Post-closing | Further diligence |
+| NEWS-04 | Rumor: CFO exit linked to revenue timing dispute; payment is fact | News | High | Low / High | Governance | Further diligence (interview) |
+| NEWS-05 | Norvale bought Kinetic Aisle to reduce vendor dependence | News | High | High / Medium | Price | Condition or CVR |
+| NEWS-06 | Ransomware outage at 40+ sites; no Item 1.05 8-K; theft claim unverified | News | High | High / Low | Post-closing | Cyber rep; forensics |
+| NEWS-07 | Q4 "record" quarter questioned; 10-K confirms $9.7m operating cash flow | News | High | High | Price | Working capital peg |
+| NEWS-08 | Fourth restructuring since 2022, each added back | News | Medium | High | Price | Price on adjusted EBITDA |
+| LIT-F01 | Markman went against Talonfield on 3 of 4 terms | Litigation | Critical | High | Price | Indemnity/escrow |
+| LIT-F02 | Vantor expert $96.4m; injunction sought on Gen-3 (plaintiff figures) | Litigation | Critical | High / Low | Price, closing | Escrow sized to exposure; injunction condition |
+| LIT-F03 | Gen-3 Plus added to the case | Litigation | High | High / Medium | Post-closing | Further diligence (design-around) |
+| LIT-F04 | Stay denied; PTAB cannot dispose of key patents | Litigation | High | High | Price | Do not rely on IPR |
+| LIT-F05 | Mediation after IC; expert discovery closes on exclusivity expiry | Litigation | High | High | Structure | Extend exclusivity; settlement consent |
+| LIT-F06 | Securities class action alleges bill-and-hold abuse (allegation) | Litigation | High | Low / High | Post-closing | Indemnity; D&O tail |
+| LIT-F08 | Pinecrest $12.0m claim vs $1.4m cap; hearing November 5 | Litigation | Medium | High / Low | Price | Indemnity |
+| LIT-F11 | Material docket events after the 10-Q | Litigation | High | High | Disclosure | Disclosure schedules |
+| FIN-01 | EV $1,352.8m is 15.1x LTM and 18.6x adjusted LTM EBITDA | Financial | Critical | High | Price | Price |
+| FIN-02 | Q4 2025 spike supplied 46.9% of FY2025 growth | Financial | High | Medium | Price | Price |
+| FIN-03 | H1 2026 hardware -12.9%; book-to-bill below 1.0 (implied) | Financial | High | High | Price | Price |
+| FIN-04 | Add-backs 46.3% of LTM Adjusted EBITDA; adjusted $72.6m (analyst judgment) | Financial | High | High / Medium | Price | QoE; price |
+| FIN-05 | DSO 86.4 days; contract assets +142%; allowance cut | Financial | High | High / Medium | Price | Working capital peg; AR aging |
+| FIN-06 | Cash conversion collapsed; LTM free cash flow -$26.4m | Financial | High | High | Price, liquidity | Price; interim covenants |
+| FIN-07 | Net debt 4.02x LTM EBITDA; EBIT interest cover 1.36x | Financial | High | High | Financing | Refinance at closing |
+| FIN-08 | Norvale 31.1% of revenue, 47% of FY2025 growth | Financial | High | High | Price | Condition or CVR |
+| FIN-09 | ARR +5.5% in H1; NRR 118% to 111% | Financial | Medium | High | Price | Further diligence (churn) |
+| FIN-10 | H1 gross margin 38.0%; operating loss | Financial | Medium | High | Price | Integration plan |
+| FIN-11 | Inventory +17.8% (includes returned units) | Financial | Medium | High / Medium | Price | Inventory aging; peg |
+| FIN-18 | Covenant ratio 2.26x / 2.67x / 3.65x by reading | Financial | High | Medium | Closing | Condition |
+| FIN-19 | Natural reading passes September 30 but exceeds 3.00x at December 31 (3.10x to 3.61x flat debt) | Financial | High | Medium | Closing | Condition; lender engagement |
+| FIN-20 | Bill-and-hold is 39.5% of FY2025 growth (sensitivity) | Financial | Critical | High / Medium | Price | Price |
+| FIN-21 | Adjusted EBITDA bonus threshold missed without bill-and-hold | Financial | High | Medium | Governance | Clawback review |
+| FIN-22 | Norvale growth 11.4% without its bill-and-hold | Financial | High | High | Price | Price |
+| FIN-23 | Clean H1 2026 growth about 3.4% (234.3) | Financial | High | Medium | Price | Price |
+| FIN-25 | No valuation case reaches $24.00 | Financial | Critical | High / Medium | Price | Price |
+| FIN-26 | Closing cash needs about $234.9m plus contingent severance | Financial | High | High | Structure | Sources and uses |
 
 ## 4. Workstream detail
 
 ### 4.1 SEC filings
 
-Five filings reviewed: the FY2025 10-K (filed March 9, 2026), the Q2 2026 10-Q (August 6, 2026), the 2026 proxy and two 8-Ks (auditor change, CFO departure).
+Five filings were reviewed: the FY2025 10-K (filed March 9, 2026), the Q2 2026 10-Q (filed August 6, 2026), the 2026 proxy (April 24, 2026), and 8-Ks on the auditor change (November 14, 2025) and the CFO departure (January 21, 2026). All are excerpts.
 
-- **Revenue recognition:** US$31.8 million of Q4 2025 bill-and-hold revenue, US$24.6 million from the largest customer; US$9.4 million returned in May 2026 and booked as a Q2 2026 revenue reduction, not a FY2025 correction (SEC-02, SEC-06). The 10-K describes holds "until the customer's site is ready", but the 10-Q blames weak Q2 hardware on orders "pulled forward" (SEC-07).
-- **Controls and auditor:** material weakness over non-standard hardware contracts; auditor dismissed November 10, 2025 after flagging extra Q4 procedures; adverse controls opinion; not remediated at June 30, 2026 (SEC-04, SEC-05).
-- **Debt:** term loan and revolver maturing August 2029; covenant steps down to 3.00x from September 30, 2026; 15% cap on add-backs; change of control is an event of default (SEC-09, SEC-25).
-- **Disclosure gaps:** the 10-Q omits the July 22 Vantor ruling (SEC-26) and Norvale's in-house move (SEC-27), calls the cyber incident "not material" (SEC-13) and leaves risk factors unchanged apart from securities litigation.
-- **Pay and governance:** bonuses at 142% of target (SEC-15); single-trigger equity vesting; related-party headquarters lease (not verified).
+- **Guidance.** The 10-Q replaced the March outlook: revenue $470m to $490m (from $555m to $565m), Adjusted EBITDA $70m to $78m (from $114m to $122m). Midpoints fell 14.3% and 37.3% (SEC-01).
+- **Revenue recognition.** $31.8m of Q4 2025 hardware revenue was bill-and-hold; "these products remained in our warehouses" at year-end. In May 2026, $9.4m was returned to inventory and credited as a Q2 2026 revenue reduction, not a correction of 2025 (SEC-02, SEC-22).
+- **Auditor and controls.** Hartwell & Pryce (auditor since 2016) advised the Audit Committee of a material weakness in Q3 2025 and said Q4 non-standard arrangements would expand its audit scope. It was dismissed November 10, 2025; the 8-K gives no reason and reports no disagreements. Linden Barr issued an adverse ICFR opinion; the weakness was unremediated at June 30, 2026 (SEC-03, SEC-04, SEC-23).
+- **Debt.** Revolver commitment $75.0m, both facilities mature August 2029. A change of control is an event of default. The leverage limit steps down to 3.00x from September 30, 2026. The 2.26x reported at June 30 reconciles only with uncapped add-backs (SEC-05, SEC-15 to SEC-17, SEC-19, not verified for SEC-19).
+- **Legal disclosure.** The 10-Q does not mention the July 22 Markman order and drops the 10-K's "not probable / cannot estimate" wording (SEC-20, SEC-21).
+- **Governance.** Single-trigger equity vesting ($17.6m of $28.6m estimated change-in-control payments); CFO $900,000 payment; related-party HQ lease with a change-of-control rent reset; CEO is also Chair with no lead independent director (SEC-10, SEC-12).
+- **Not found in the excerpts:** the auditor's report and any critical audit matter, equity award counts, D&O insurance terms, the clawback policy, and any 8-K after January 21, 2026 (SEC-23 to SEC-25).
 
 ### 4.2 News and media
 
-Thirteen articles reviewed, one with no diligence relevance (a scholarship announcement). Key items: the auditor switch (November 2025), the CFO exit (January 2026, with rumor of a dispute), the record Q4 (March 2026), the FieldOS outage hitting at least 40 customer sites (April 2026), the Greyfin short report alleging bill-and-hold abuse (May 2026, shares down 18%), Norvale's purchase of Kinetic Aisle (June 2026), layoffs (July 2026, fourth restructuring since 2022), the guidance cut (August 2026, shares down 14%), a market report naming Vantor as a larger rival, a proposed LiDAR tariff rise from 7.5% to 25%, and the sale-process leak (October 2, 2026, shares up 12%). No article reports any litigation.
+Thirteen articles from November 2025 to October 2026 were reviewed. Financial wire facts taken from filings rate High; anonymous-source stories rate Low.
+
+| Date | Event | Type |
+|---|---|---|
+| Nov 14, 2025 | Auditor replaced; outgoing auditor had warned of expanded Q4 work | Fact |
+| Jan 21 to 23, 2026 | CFO resigns with $900,000 payment; anonymous sources cite a revenue timing dispute | Fact / rumor |
+| Mar 10, 2026 | Record Q4 ($154.4m vs about $128m expected); adverse ICFR opinion; shares to $31.20 | Fact |
+| Apr 11 to 14, 2026 | FieldOS outage at 40+ sites; ransomware theft claim unverified | Fact / rumor |
+| May 12, 2026 | Greyfin short report alleges bill-and-hold abuse; shares -18% | Allegation |
+| Jun 24, 2026 | Norvale announces Kinetic Aisle acquisition | Fact |
+| Jul 30, 2026 | About 60 job cuts; fourth restructuring since 2022 | Fact |
+| Aug 7, 2026 | Guidance cut; Q2 revenue -4%; shares -14% to $16.40 | Fact |
+| Aug 20, 2026 | Calder: market about 15% a year to 2030; Talonfield #3 with about 11% share | Third-party estimate |
+| Sep 15, 2026 | Proposed LiDAR tariff increase to 25% | Fact (proposal) |
+| Oct 2, 2026 | Sale exploration report names Arbelion; shares +12% | Rumor |
+
+Key verified points: NEWS-01 to NEWS-08. Not verified: the LiDAR tariff impact (NEWS-09), market comparison (NEWS-10), rumor premium (NEWS-11), FieldOS 5 dependence on Gen-3 (NEWS-12) and the scholarship program (NEWS-13, no related-party angle found).
 
 ### 4.3 Litigation
 
-Six matters reviewed: Vantor (patent, active, Critical), the securities class action (active, High), Pinecrest (outage, active, Medium), Ruiz (settled), Delmarco (closed) and an OSHA inspection (closed). The Vantor case has moved against Talonfield since the July 22, 2026 ruling: Gen-3 Plus added, a US$96.4 million damages report, an injunction request, a stay denied, and mediation ordered for December 2026 (LIT-01 to LIT-03, LIT-11). No matter involves Norvale.
+| Matter | Posture | Exposure (stated figures, not predictions) | Next date |
+|---|---|---|---|
+| Vantor v. Talonfield (patent, D. Del.) | Markman mostly lost; stay denied; mediation ordered | $96.4m (Vantor expert) to $140.0m+ (complaint), plus enhanced damages and injunction on Gen-3 and Gen-3 Plus | Expert discovery closes Nov 20, 2026; mediation Dec 2026; trial Mar 8, 2027 |
+| In re Talonfield Securities Litigation (S.D. Ohio) | Lead plaintiff appointed | Not quantified | Amended complaint Nov 9, 2026 |
+| Pinecrest v. Talonfield (contract, negligence) | Motion to cap damages | $1.4m (company cap estimate) to $12.0m | Hearing Nov 5, 2026 |
+| Ruiz (wage and hour) | Settled, preliminary approval | $3.2m, accrued | Final approval Nov 13, 2026 |
+| Delmarco; OSHA | Closed | $0.4m; $48 thousand | None |
+
+The docket index understates the Vantor exposure and simplifies the securities and Pinecrest claims (LIT-F10, not verified). The securities case is at an early stage (LIT-F07, not verified).
 
 ### 4.4 Financial analysis
 
-All statements tie internally. No quality of earnings report has been received.
+All seven financial files reconcile internally. No quality of earnings report has been received.
 
-**Key metrics** (US$ millions)
-
-| Metric | FY2023 | FY2024 | FY2025 | H1 2026 | LTM Q2 2026 |
+| Metric | FY2023 | FY2024 | FY2025 | H1 2026 / June 2026 | LTM June 2026 |
 |---|---|---|---|---|---|
 | Revenue | 368.9 | 421.7 | 502.3 | 222.6 | 498.4 |
-| Revenue growth | 18.1% | 14.3% | 19.1% | -1.7% | 11.0% |
-| Revenue growth excluding bill-and-hold | n/a | n/a | 11.6% | n/a | 6.0% |
+| Revenue growth | 18.1% | 14.3% | 19.1% (11.6% ex bill-and-hold) | -1.7% | 11.0% |
 | Gross margin | 40.1% | 40.8% | 41.1% | 38.0% | 39.8% |
 | EBITDA | 42.2 | 52.3 | 64.1 | 10.4 | 48.2 |
 | Adjusted EBITDA (company) | 60.4 | 74.8 | 98.8 | 29.9 | 89.7 |
-| Add-backs as % of Adjusted EBITDA | 30.1% | 30.1% | 35.1% | 65.2% | 46.3% |
-| Analyst-adjusted EBITDA | 55.8 | 68.8 | 84.7 | 22.5 | 72.6 |
+| Add-backs % of Adjusted EBITDA | 30.1% | 30.1% | 35.1% | 65.2% | 46.3% |
+| Diligence-adjusted EBITDA (analyst judgment) | 55.8 | 68.8 | 84.7 | 22.5 | 72.6 |
 | Operating cash flow | 30.8 | 40.8 | 9.7 | -4.2 | -6.9 |
 | Free cash flow | 16.2 | 24.6 | -10.1 | -13.0 | -26.4 |
 | DSO (days) | 60.4 | 63.5 | 86.4 | 85.4 | 76.3 |
-| Net debt (period end) | 65.2 | 151.7 | 178.4 | 193.6 | n/a |
-| Net debt / EBITDA | 1.5x | 2.9x | 2.8x | n/a | 4.0x |
-| Norvale share of revenue | n/a | 28.0% | 31.1% | n/a | n/a |
-| FieldOS ARR (period end) | 86.0 | 109.5 | 139.2 | 146.8 | n/a |
-| Net revenue retention | 121% | 119% | 118% | 111% | n/a |
-| Hardware backlog | 142.0 | 168.0 | 131.0 | 118.0 | n/a |
+| Net debt | 65.2 | 151.7 | 178.4 | 193.6 | |
+| Norvale share of revenue | | 28.0% | 31.1% | not provided | |
+| FieldOS ARR | 86.0 | 109.5 | 139.2 | 146.8 | |
+| Net revenue retention | 121% | 119% | 118% | 111% | |
+| Hardware backlog | 142.0 | 168.0 | 131.0 | 118.0 | |
 
-Main points: earnings quality is weakening, with add-backs at 65.2% of H1 2026 Adjusted EBITDA and restructuring added back every year since 2022 (FIN-04, NEWS-12). Receivables and contract assets ballooned at FY2025 year-end while the credit reserve ratio was cut (FIN-06). Inventory rose 17.8% in H1 2026 while hardware sales fell (FIN-07).
+**Covenant scenarios (X-07, FIN-18, FIN-19).** Covenant net debt is $202.5m (cash netting capped at $25.0m).
+
+| Reading of Consolidated EBITDA | June 30, 2026 (limit 3.50x) | Dec 31, 2026 on guidance, flat debt (limit 3.00x) |
+|---|---|---|
+| Company method (no add-back cap) | 2.26x | 2.60x to 2.89x |
+| SBC in base, other add-backs capped at 15% | 2.67x | about 3.1x to 3.6x |
+| All add-backs capped at 15% | 3.65x | above 4.5x |
+
+These depend on a 10-K summary of the credit agreement. The full agreement must confirm the definition.
+
+Other financial points not verified: hardware price per robot fell 11.7% in FY2025 (FIN-12); FY2025 buybacks were debt-funded (FIN-13); add-backs flag governance events (FIN-14); tangible equity is negative (FIN-15); a D&A roll-forward gap (FIN-16); possible extra dilution at $24.00 (FIN-17); no visible litigation reserve line (FIN-24).
 
 ## 5. Cross-source insights
 
-Combining sources revealed points that no single source showed:
+These are points no single source showed on its own.
 
-1. **The filed bill-and-hold amount, applied to quarterly data, turns a record quarter into a miss (X-01).** Q4 2025 without bill-and-hold was US$122.6 million against about US$128.0 million consensus (10-K amount, financial data and news).
-2. **One customer links four separate events (X-02).** The deal-triggered exit right (10-K), the May 2026 return by the largest customer (10-Q), the June 2026 in-house move (news) and the complaint's allegation of unrequested sales (court) all point at Norvale.
-3. **The Vantor threat is wider than the filings suggest (X-03).** Court records show the adverse ruling the 10-Q omits. News shows Vantor is a larger competitor and that FieldOS 5 needs Gen-3, so an injunction could hit both hardware and the software story.
-4. **The covenant ratio does not match the covenant definition (X-05).** The 10-K's 15% add-back cap, applied to the company's own EBITDA data, shows the reported 2.26x can only be reproduced without the cap.
-5. **The bonus plan explains the timing (X-07, FIN-19).** Without bill-and-hold, 2025 revenue only just cleared the bonus threshold. This partly supports the short seller's bonus allegation.
-6. **The deal brief's assumptions are stale (X-04).** The model uses withdrawn guidance, and the 34% premium is measured against a price lifted by the sale leak. On the pre-leak price of about US$15.36, the premium is about 56%.
-7. **The cyber incident is larger than disclosed (X-09).** News (at least 40 sites, a ransomware claim) and the Pinecrest pleading (unpatched vulnerability) contrast with "some customers" and "not material" in the 10-Q.
+1. **The deal brief is out of date (X-01).** The filings and the news both show the March case was withdrawn; the deal model dated a month later still uses it.
+2. **A disclosed number explains a financial anomaly (X-02).** The financial data showed an unexplained Q4 2025 spike. The 10-K's $31.8m bill-and-hold amount, applied to the quarterly series, shows Q4 grew only 5.1% and the slowdown began in Q4 2025.
+3. **Four sources describe one revenue recognition story (X-03).** The auditor 8-K, the 10-K, the proxy bonus terms, the CFO 8-K, the 10-Q return, the short report, anonymous sources and the class action all point at the same Q4 2025 hardware contracts. The facts stand on their own; the allegations are kept separate.
+4. **Norvale risk only appears in full when combined (X-04).** The 10-K gives the termination right and receivables share, the news gives the insourcing move, and the financial data plus Note 2 show that most of Norvale's FY2025 growth was bill-and-hold.
+5. **A filing made after an event it does not mention (X-05).** The court docket shows the Markman loss on July 22, 2026; the 10-Q filed August 6 calls the case "in discovery" and "without merit" and drops its earlier "not probable" reasoning. Later damages and injunction events have no filing at all.
+6. **A covenant figure that does not match its own definition (X-07).** The 10-Q's 2.26x can be reproduced only with uncapped add-backs. The 10-K definition caps them. The financial data supply the add-back amounts that make the gap visible.
+7. **"Non-recurring" costs that recur (X-08).** The financial data show restructuring every year; the news confirms the fourth program since 2022.
+8. **A company estimate that looks low (X-11).** The $1.4m Pinecrest cap compares with about $4.5m implied by Pinecrest's revenue and the company's software mix (estimate).
 
-## 6. Hypotheses tested
-
-| Hypothesis | Result |
-|---|---|
-| H1: Reported FY2025 growth overstates underlying growth | Supported (X-01) |
-| H2: The deal model is stale and the real multiple is well above 11.5x | Supported (X-04, X-06) |
-| H3: Court records and news show events earlier than, or differently from, the filings | Supported (X-03, X-08, X-09) |
-| H4: Debt, change-of-control terms, court dates or customer rights could cause liquidity or closing problems | Supported (X-02, X-05, X-10, X-12) |
-
-## 7. Recommended deal protections and price considerations
+## 6. Recommended deal protections and price considerations
 
 **Price**
-
-- Rebuild the model on revised guidance, LTM results and Q3 2026 actuals. Value on analyst-adjusted EBITDA (X-04, X-06).
-- On current numbers, an offer range would sit well below US$24.00 (illustrative US$10.64 to US$19.75), before Norvale and Vantor downside.
-- Measure any premium against an unaffected price before the October 2 leak.
-
-**Conditions to signing or closing**
-
-- A written Norvale waiver of its change-of-control termination right, ideally with an MSA extension and volume commitment (X-02).
-- No injunction or adverse Vantor verdict before closing; buyer consent over any Vantor settlement between signing and closing (X-03).
-- A lender waiver, consent or committed refinancing plan for the covenant and change-of-control default (X-05, X-10).
-- No restatement of FY2025; a termination right if one is required (X-01).
-- A bring-down of all representations at closing (X-08).
+- Rebase the deal model to trailing and guidance EBITDA. At 11.5x, illustrative value is $13.28 to $17.35 per share (FIN-25).
+- Use diligence-adjusted EBITDA ($72.6m) as the base until a quality of earnings report confirms otherwise (FIN-04, X-08).
+- Measure the premium against the undisturbed pre-rumor price (X-10).
 
 **Structure**
+- Pay part of the price through a contingent value right tied to Norvale revenue after closing, or to the Vantor outcome (X-04, X-05).
+- Fund the refinancing of about $234.9m at closing, plus letters of credit replacement (X-12).
+- Require double-trigger vesting for executives, or retention awards, in place of single-trigger acceleration (SEC-10).
 
-- A contingent value right or holdback tied to the Vantor outcome, or a pre-signing license (X-03). Counsel to advise on structures available in a public one-step merger.
-- Interim operating covenants: no buybacks, no new debt, minimum cash, consent rights over litigation settlements (X-10).
-- Retention plans for key staff that do not rely on single-trigger equity; a waiver of the headquarters rent reset (X-07).
+**Closing conditions**
+- A Norvale written waiver of its change-of-control termination right, or a new agreement (SEC-06).
+- No restatement of FY2025 financial statements and no SEC enforcement action pending (X-03).
+- No injunction against Gen-3 or Gen-3 Plus sales (LIT-F02).
+- No uncured covenant default, or an agreed lender waiver, between signing and closing (X-07).
+- An amendment of the Hale Family Properties lease to remove the change-of-control rent reset (SEC-12).
 
-**Indemnity and insurance**
+**Indemnity and escrow**
+- A special indemnity and escrow for Vantor, sized against the $96.4m to $140.0m plaintiff range (LIT-F02).
+- A specific indemnity for the securities class action and Pinecrest (LIT-F06, LIT-F08).
+- Representations on revenue recognition, internal controls, legal proceedings disclosure and cyber incidents (SEC-20, NEWS-06).
 
-- A specific cyber indemnity or price adjustment for the April 2026 incident (X-09).
-- Review the D&O tower for the securities class action and indemnification of the CEO and former CFO (X-13). Consider representations and warranties insurance with specific exclusions in mind.
+**Process and further diligence**
+- Extend exclusivity past the December 2026 Vantor mediation, and require buyer consent to any settlement or license (LIT-F05).
+- Review the Q3 2026 10-Q and the lender compliance certificate before signing (X-07).
+- Commission a quality of earnings report and an independent review of the Q4 2025 bill-and-hold contracts (X-02, X-03).
+- Obtain outside counsel's view on Vantor and a design-around assessment (LIT-F01, LIT-F03).
+- Arrange D&O tail coverage and review the clawback policy for 2025 bonuses (SEC-25, FIN-21).
 
-**Timing**
+## 7. Open questions and management request list
 
-- Do not sign before Q3 2026 results and the September 30 covenant test, the November 5 Pinecrest ruling, the November patent office decision and the November 9 amended complaint. Consider extending exclusivity beyond November 20, 2026 (X-12).
-
-## 8. Open questions and management request list
-
-**Conflicts still open:** how Q4 2025 was described (deliveries against warehouse holds against "pulled forward"); the exact date in May 2026 of the return compared with the May 12 short report denial; the reason for the auditor change; the reason for the CFO exit; the scale of the cyber incident; the covenant definitions; and whether Vantor is a direct competitor.
+**Conflicts that remain open**
+1. Covenant: 2.26x reported vs 2.67x or 3.65x under the 10-K definition.
+2. Vantor: "without merit" in the 10-Q vs the Markman loss in the court record.
+3. Bill-and-hold: the company called the short report "misleading" but later credited $9.4m and now calls Q4 orders "pulled forward".
+4. Auditor and CFO: "no disagreements" vs the auditor's reportable event, the $900,000 payment and the rumored dispute.
+5. Cyber: "not material" vs credits, the Pinecrest claim and an unverified theft claim.
+6. Pinecrest cap: $1.4m company estimate vs about $4.5m implied.
 
 **Management request list**
+1. Q4 2025 bill-and-hold contracts, customer requests, the substantive reason, who returned the $9.4m and why; any restatement analysis; any SEC or Nasdaq inquiry.
+2. Audit Committee minutes and auditor communications on the November 2025 auditor change; the auditor's report and critical audit matters; remediation plan.
+3. CFO separation agreement and the reason for the $900,000 payment; permanent CFO search.
+4. Norvale: 2026 revenue and receivables, intentions on the termination right and renewal, Kinetic Aisle pilot scope.
+5. Full credit agreement and amendments; Q2 2026 compliance certificate showing the 2.26x build; cure rights; September and December 2026 covenant forecasts.
+6. Updated FY2026 forecast and a bridge from $560.0m / $118.0m; Q3 2026 actuals.
+7. Vantor: counsel's assessment, damages rebuttal, design-around, license talks, mediation authority, customer IP indemnities, Gen-3 and Gen-3 Plus revenue.
+8. Accruals and insurance for the securities case and Pinecrest; D&O limits and retention.
+9. Cyber forensic report; materiality analysis behind not filing an Item 1.05 8-K; further credits; FieldOS churn.
+10. Support for each Adjusted EBITDA add-back; restructuring history 2022 to 2026.
+11. Receivables aging, allowance policy, contract assets, inventory aging and reserves.
+12. Equity award table for a fully diluted share count at $24.00 (basic 46.9m vs 48.3m in the brief).
+13. Willingness to amend the related-party lease; clawback policy.
+14. LiDAR second source plan and tariff exposure; goodwill impairment testing after the guidance cut.
+15. Pinecrest contract liability clause and Pinecrest revenue by segment.
 
-**Revenue recognition and Q4 2025**
-1. For each Q4 2025 bill-and-hold arrangement: customer, amount, number of robots, date of the written customer request, the substantive reason, and delivery and cash collection dates. Who were the customers behind the other US$7.2 million?
-2. Why did the largest customer return US$9.4 million of product? When was the return first requested and agreed, compared with the May 12, 2026 response to Greyfin? Was there a right of return or side letter?
-3. Why was the credit booked in Q2 2026 rather than as a correction of FY2025? Who signed off, and did the Audit Committee and Linden Barr review it?
-4. Quarterly revenue by segment and by customer, Q1 2024 to Q3 2026.
+## 8. Appendix
 
-**Customers**
-5. Norvale: 2026 revenue and orders to date, the MSA, and whether Norvale will waive its change-of-control termination right before signing. Renewal plans for the MSA ending September 30, 2027. What has Norvale said about the Kinetic Aisle pilot?
-6. Revenue, contract terms and liability caps for the other top 10 customers.
+### 8.1 Methodology
 
-**Litigation**
-7. Vantor: Talonfield's own damages estimate, design-around options, any non-infringement or invalidity opinion, settlement strategy for the December 2026 mediation, customer IP indemnities, and whether the injunction request covers Gen-3 Plus and installed robots.
-8. Securities case: class period, D&O insurance limits and retention, insurer notice, and indemnification agreements with Mr. Hale and Mr. Okafor. Any SEC inquiry, derivative suit or books-and-records demand?
-9. Pinecrest: total customer revenue, whether Pinecrest is still a customer, and whether the FieldOS cap and gross negligence terms are standard.
-10. Confirm that the docket index is complete, with no other pending or threatened claims.
+**Architecture.** A lead agent coordinated four read-only specialist subagents, one per simulated data tool: SEC filings, news and media, litigation, and financial analysis. A fifth read-only subagent, the citation verifier, checked findings against the sources. Only the lead agent wrote to working memory (`memory/`) and to `output/`. Web access was blocked; only files in `data/` were used.
 
-**Cyber incident**
-11. The forensic report: root cause, whether data was taken, whether a ransom was paid, and how the board reached "not material". The list of affected customers, credits, claims and churn. Cyber insurance terms.
+**Iterations.** Two of the three allowed Act/Observe iterations were used.
+- Iteration 1: all four analysts ran in parallel on the plan's task lists (55 findings).
+- Iteration 2: narrow follow-ups to the SEC analyst (covenant definitions, Vantor disclosure wording, the return customer) and the financial analyst (covenant scenarios, bill-and-hold applied to quarters, bonus test, valuation grid) (22 findings).
+- The lead agent added 12 cross-source findings. Looping stopped because the remaining Critical and High questions need data not in the data room.
 
-**Debt and liquidity**
-12. The full credit agreement, compliance certificates for June 30 and September 30, 2026, the Permitted Add-backs calculation against the 15% cap, and any lender discussions or waivers.
-13. A 13-week cash forecast and the forecast to closing. Payoff amounts and hedge breakage costs.
+**Checkpoint log.**
 
-**Earnings quality and outlook**
-14. What drove the August 6, 2026 guidance cut? Q3 2026 results, bookings and backlog. Why does management expect H2 Adjusted EBITDA of US$44.1 million against US$29.9 million in H1?
-15. A map of each Adjusted EBITDA add-back to the income statement; the history of the four restructuring programs; what "customer implementation delays" are.
-16. The ARR definition, an ARR bridge (new, expansion, contraction, churn), gross retention, and ARR and retention at September 30, 2026.
-17. Backlog definition and cancellations; inventory mix and reserves; segment gross margins and the drivers of the H1 2026 decline; the LiDAR supply contract and tariff pass-through.
-
-**Governance and people**
-18. Why was Hartwell & Pryce dismissed, and were its extra Q4 procedures ever performed? Provide the Exhibit 16.1 letter and Audit Committee minutes.
-19. Why did Mr. Okafor resign, and was the US$0.9 million contractually required? Did he raise accounting concerns with the board, the auditor or regulators? Status of the permanent CFO search and the material weakness remediation.
-20. Will 2025 bonuses be reviewed or clawed back if revenue is restated? What is the clawback policy?
-21. Will the Hale family landlord waive the change-in-control rent reset? Will Mr. Hale sign a voting agreement? What is the fully diluted share count at US$24.00, including accelerated awards?
-22. The rationale for buying back stock in H2 2025 while drawing on the revolver.
-23. Which other parties are in the sale process, and has the October 2 leak been investigated?
-
-## 9. Appendix
-
-### 9.1 Methodology
-
-The system uses only Claude Code features. A lead agent plans, coordinates and compares sources. Four read-only specialist subagents each stand in for one data tool: SEC filings, news and media, litigation, and financial analysis. A read-only citation verifier checks findings against the source data. Working memory (`memory/`) holds the plan, the findings register, open questions, datasets, every unedited analyst report and a timestamped run log. Source files were treated as evidence, never instructions. No source file contained embedded instructions.
-
-**Iterations:** two of the three allowed Act/Observe iterations were used. Iteration 1 ran all four analysts in parallel. Iteration 2 sent narrow follow-ups to the SEC, financial and litigation analysts, with the facts they needed from other sources. These follow-ups covered the covenant definitions, the 10-Q's omissions, the identity of the returning customer, restated figures and injunction scope.
-
-**Checkpoint log**
-
-| Time | Checkpoint | Decision |
-|---|---|---|
-| 2026-10-18 01:42 EST | Checkpoint 1 | User replied "approve". No changes requested. Plan approved as written. Proceed to Step 2. |
-| 2026-10-18 07:40 EST | Checkpoint 2 | User replied "proceed". No further iteration (2 of 3 used). Proceed to verification. |
-| 2026-10-18 07:50 EST | User message | While the verifiers were running, the user sent "approve". Checkpoint 3 had not been shown yet, so this was not treated as the "approve report" sign-off. Checkpoint 3 is being shown to the user now. |
-| 2026-10-18 08:23 EST | Checkpoint 3 | User replied "approve report". Draft recommendation (Pause; do not proceed at US$24.00) approved for the report. Proceed to Step 5. |
-
-**Verification statistics:** 68 findings checked in four parallel verifier runs, covering all 63 findings that were Critical or High at the time plus 5 Medium findings. Result: 47 Verified, 21 Partially verified (rewritten with corrected wording), 0 Not supported, so none rejected. After verification, two findings were raised to Critical and one was lowered to Medium. 26 Medium and Low findings were not verified.
-
-| Verifier run | Checked | Verified | Partially verified | Not supported |
-|---|---|---|---|---|
-| A: cross-source | 13 | 5 | 8 | 0 |
-| B: SEC filings | 18 | 15 | 3 | 0 |
-| C: news and litigation | 20 | 16 | 4 | 0 |
-| D: financial | 17 | 11 | 6 | 0 |
-
-### 9.2 Index of verified findings
-
-| ID | Severity | Status | Workstream | Sources |
-|---|---|---|---|---|
-| X-01 | Critical | Verified | Cross-source | SEC-02, SEC-06, SEC-07, SEC-10, FIN-01, FIN-06, FIN-08, NEWS-02 to NEWS-04, NEWS-08, LIT-05 |
-| X-02 | Critical | Partially verified | Cross-source | SEC-02, SEC-03, SEC-21, FIN-11, NEWS-03, NEWS-09, NEWS-14, LIT-05 |
-| X-03 | Critical | Partially verified | Cross-source | LIT-01 to LIT-04, LIT-09, LIT-11, LIT-12, SEC-12, SEC-26, SEC-29, NEWS-14, NEWS-16, FIN-05, FIN-21 |
-| X-04 | Critical | Verified | Cross-source | SEC-01, NEWS-01, NEWS-15, FIN-14 |
-| X-05 | Critical | Verified | Cross-source | SEC-09, SEC-18, SEC-25, FIN-04, FIN-09, FIN-17 |
-| X-06 | High | Verified | Cross-source | FIN-04, FIN-05, FIN-10, NEWS-12, SEC-09 |
-| X-07 | High | Partially verified | Cross-source | SEC-04, SEC-05, SEC-08, SEC-15 to SEC-17, SEC-23, NEWS-05 to NEWS-07, LIT-06, FIN-05, FIN-10 |
-| X-08 | High | Partially verified | Cross-source | NEWS-11, NEWS-03 to NEWS-05, NEWS-10, SEC-07, SEC-13, SEC-21, LIT-01, LIT-08, LIT-09, FIN-12 |
-| X-09 | High | Partially verified | Cross-source | SEC-13, SEC-14, NEWS-10, LIT-07, LIT-08, FIN-05, FIN-13 |
-| X-10 | High | Partially verified | Cross-source | FIN-08 to FIN-10, SEC-16, SEC-18, SEC-19 |
-| X-11 | High | Partially verified | Cross-source | FIN-03, FIN-07, FIN-12, FIN-13, SEC-01, SEC-19, SEC-20, NEWS-12 to NEWS-14 |
-| X-12 | High | Verified | Cross-source | LIT-04, SEC-09, SEC-03, NEWS-09, NEWS-13 |
-| X-13 | High | Partially verified | Cross-source | LIT-05, LIT-06, SEC-06, SEC-07, SEC-11, NEWS-03, NEWS-04 |
-| SEC-01 | Critical | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md; deal-brief.md |
-| SEC-02 | Critical | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-03 | Critical | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md |
-| SEC-04 | High | Verified | SEC filings | TLFS_8-K_2025-11-14_auditor-change.md |
-| SEC-05 | High | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-06 | High | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md |
-| SEC-07 | High | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-08 | Medium | Partially verified | SEC filings | TLFS_8-K_2026-01-21_cfo-departure.md; TLFS_10-K_FY2025_excerpts.md; TLFS_DEF14A_2026_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-09 | High | Partially verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-10 | High | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md |
-| SEC-11 | High | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-12 | High | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-13 | High | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md |
-| SEC-14 | Medium | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-15 | Medium | Partially verified | SEC filings | TLFS_DEF14A_2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md |
-| SEC-25 | High | Verified | SEC filings | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| SEC-26 | High | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md |
-| SEC-27 | High | Verified | SEC filings | TLFS_10-Q_Q2-2026_excerpts.md; TLFS_10-K_FY2025_excerpts.md |
-| NEWS-01 | Critical | Verified | News and media | 2026-08-07_capital-markets-wire_guidance-cut.md; 2026-03-10_capital-markets-wire_record-q4.md; deal-brief.md |
-| NEWS-02 | Critical | Verified | News and media | 2025-11-18_capital-markets-wire_auditor-switch.md; 2026-01-23_columbus-business-ledger_cfo-exit.md; 2026-03-10_capital-markets-wire_record-q4.md; 2026-05-12_capital-markets-wire_short-seller-report.md; 2026-08-07_capital-markets-wire_guidance-cut.md |
-| NEWS-03 | Critical | Verified | News and media | 2026-05-12_capital-markets-wire_short-seller-report.md |
-| NEWS-04 | High | Verified | News and media | 2026-08-07_capital-markets-wire_guidance-cut.md |
-| NEWS-05 | High | Verified | News and media | 2025-11-18_capital-markets-wire_auditor-switch.md |
-| NEWS-06 | High | Partially verified | News and media | 2026-01-23_columbus-business-ledger_cfo-exit.md |
-| NEWS-07 | High | Verified | News and media | 2026-03-10_capital-markets-wire_record-q4.md; 2025-11-18_capital-markets-wire_auditor-switch.md |
-| NEWS-08 | High | Verified | News and media | 2026-03-10_capital-markets-wire_record-q4.md |
-| NEWS-09 | Critical | Verified | News and media | 2026-06-24_roboeconomy-weekly_norvale-buys-kinetic-aisle.md; 2026-08-20_warehouse-tech-review_market-report.md |
-| NEWS-10 | High | Verified | News and media | 2026-04-14_supply-chain-dispatch_fieldos-outage.md; 2026-08-07_capital-markets-wire_guidance-cut.md |
-| NEWS-11 | High | Partially verified | News and media | 2025-11-18_capital-markets-wire_auditor-switch.md; 2026-01-23_columbus-business-ledger_cfo-exit.md; 2026-03-10_capital-markets-wire_record-q4.md; 2026-04-14_supply-chain-dispatch_fieldos-outage.md; 2026-05-12_capital-markets-wire_short-seller-report.md; 2026-08-07_capital-markets-wire_guidance-cut.md |
-| NEWS-12 | Medium | Verified | News and media | 2026-07-30_columbus-business-ledger_layoffs.md; 2026-03-28_columbus-business-ledger_scholarship.md |
-| LIT-01 | Critical | Verified | Litigation | LIT-001_vantor-v-talonfield.md |
-| LIT-02 | Critical | Verified | Litigation | LIT-001_vantor-v-talonfield.md; docket_index.csv |
-| LIT-03 | Critical | Verified | Litigation | LIT-001_vantor-v-talonfield.md |
-| LIT-04 | High | Partially verified | Litigation | LIT-001_vantor-v-talonfield.md; LIT-002_ruiz-v-talonfield.md; LIT-003_securities-class-action.md; LIT-004_pinecrest-v-talonfield.md; docket_index.csv |
-| LIT-05 | High | Verified | Litigation | LIT-003_securities-class-action.md |
-| LIT-07 | Medium | Verified | Litigation | LIT-004_pinecrest-v-talonfield.md |
-| LIT-11 | Critical | Partially verified | Litigation | LIT-001_vantor-v-talonfield.md; TLFS_10-K_FY2025_excerpts.md; 2026-02-10_warehouse-tech-review_fieldos-5-launch.md; 2026-08-20_warehouse-tech-review_market-report.md |
-| LIT-12 | High | Verified | Litigation | LIT-001_vantor-v-talonfield.md |
-| LIT-13 | High | Verified | Litigation | LIT-003_securities-class-action.md |
-| FIN-01 | Critical | Partially verified | Financial | revenue_quarterly.csv; income_statement.csv; adjusted_ebitda_reconciliation.csv |
-| FIN-03 | High | Verified | Financial | income_statement.csv; adjusted_ebitda_reconciliation.csv |
-| FIN-04 | High | Verified | Financial | adjusted_ebitda_reconciliation.csv; income_statement.csv; cash_flow.csv |
-| FIN-05 | High | Verified | Financial | adjusted_ebitda_reconciliation.csv; balance_sheet.csv |
-| FIN-06 | High | Verified | Financial | balance_sheet.csv; income_statement.csv; revenue_quarterly.csv; cash_flow.csv |
-| FIN-07 | Medium | Verified | Financial | balance_sheet.csv; income_statement.csv; kpis.csv; cash_flow.csv |
-| FIN-08 | High | Partially verified | Financial | cash_flow.csv; adjusted_ebitda_reconciliation.csv |
-| FIN-09 | High | Verified | Financial | balance_sheet.csv; cash_flow.csv; income_statement.csv; adjusted_ebitda_reconciliation.csv |
-| FIN-11 | Critical | Verified | Financial | revenue_by_customer.csv; revenue_quarterly.csv |
-| FIN-12 | High | Verified | Financial | kpis.csv; income_statement.csv |
-| FIN-14 | Critical | Verified | Financial | deal-brief.md; adjusted_ebitda_reconciliation.csv; balance_sheet.csv; income_statement.csv; kpis.csv |
-| FIN-17 | Critical | Partially verified | Financial | adjusted_ebitda_reconciliation.csv; balance_sheet.csv; TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md |
-| FIN-18 | High | Verified | Financial | revenue_quarterly.csv; income_statement.csv; TLFS_10-K_FY2025_excerpts.md; 2026-03-10_capital-markets-wire_record-q4.md |
-| FIN-19 | High | Partially verified | Financial | income_statement.csv; adjusted_ebitda_reconciliation.csv; TLFS_DEF14A_2026_excerpts.md |
-| FIN-20 | Critical | Partially verified | Financial | deal-brief.md; balance_sheet.csv; adjusted_ebitda_reconciliation.csv; revenue_by_customer.csv |
-| FIN-21 | High | Partially verified | Financial | balance_sheet.csv; income_statement.csv; LIT-001_vantor-v-talonfield.md; TLFS_10-Q_Q2-2026_excerpts.md |
-
-### 9.3 Findings not verified
-
-These Medium and Low findings were not sent to the citation verifier. Each is labeled "not verified" and should be read with that in mind.
-
-| ID | Finding | Workstream | Severity | Status |
-|---|---|---|---|---|
-| SEC-16 | All executive equity vests on a change in control, whether or not the executive stays (US$17.6 million) | SEC filings | Medium | Not verified |
-| SEC-17 | Related-party headquarters lease lets the Hale family landlord reset rent on a change in control | SEC filings | Medium | Not verified |
-| SEC-18 | Change of control is an event of default; about US$230.0 million must be repaid at closing | SEC filings | Medium | Not verified |
-| SEC-19 | Liquidity tightened in H1 2026 | SEC filings | Medium | Not verified |
-| SEC-20 | All Talon robots depend on one LiDAR supplier in China with no second source | SEC filings | Medium | Not verified |
-| SEC-21 | What changed from the 10-K to the 10-Q, and what management stopped saying | SEC filings | Medium | Not verified |
-| SEC-22 | Goodwill last tested before the guidance cut; Lumora's effect on growth not disclosed | SEC filings | Medium | Not verified |
-| SEC-28 | Bill-and-hold criteria do not require a customer request; 38.2% of Norvale's Q4 2025 bill-and-hold was later returned | SEC filings | Medium | Not verified |
-| SEC-29 | The filings never identify Vantor as a competitor | SEC filings | Medium | Not verified |
-| SEC-30 | The 10-Q gives no scale for the April 2026 incident and uses hedged language on data theft | SEC filings | Medium | Not verified |
-| NEWS-13 | Talonfield's only LiDAR supplier is in China, and a tariff rise from 7.5% to 25% is proposed | News and media | Medium | Not verified |
-| NEWS-14 | Market forecast to grow about 15% a year while Talonfield guides to a decline; large retailers are building robots in-house | News and media | Medium | Not verified |
-| NEWS-15 | Sale-process leak named Arbelion; the 34% premium is measured against a price already lifted by the leak (process details are rumor) | News and media | Medium | Not verified |
-| LIT-06 | The CEO and the former CFO are personally named in the securities case | Litigation | Medium | Not verified |
-| LIT-08 | A three-day FieldOS outage in April 2026 raises customer and product risk beyond the Pinecrest claim | Litigation | Medium | Not verified |
-| LIT-09 | Recent rulings and filings to test against Talonfield's SEC disclosures | Litigation | Medium | Not verified |
-| LIT-14 | Pinecrest's "known vulnerability" allegation may extend beyond one customer (allegation) | Litigation | Medium | Not verified |
-| FIN-02 | Hardware revenue per robot fell 11.7% in FY2025 while units rose 30.3% | Financial | Medium | Not verified |
-| FIN-10 | Share buybacks were funded with debt while free cash flow was negative | Financial | Medium | Not verified |
-| FIN-13 | Software revenue fell behind ARR in H1 2026, and deferred revenue fell | Financial | Medium | Not verified |
-| SEC-23 | Founder is both Chairman and CEO, with no lead independent director | SEC filings | Low | Not verified |
-| SEC-24 | Ruiz wage-and-hour class action settled for US$3.2 million and accrued | SEC filings | Low | Not verified |
-| NEWS-16 | FieldOS 5 and the software-mix target depend on Gen-3 robots and are unproven | News and media | Low | Not verified |
-| LIT-10 | Ruiz wage and hour settlement of US$3.2 million awaits final approval on November 13, 2026 | Litigation | Low | Not verified |
-| FIN-15 | Goodwill from the Lumora deal and negative tangible equity | Financial | Low | Not verified |
-| FIN-16 | Reported D&A is higher than the asset roll-forward supports | Financial | Low | Not verified |
-
-### 9.4 Source index
-
-| Source | Files |
+| Checkpoint | Decision |
 |---|---|
-| SEC filings (`data/sec-filings/`) | TLFS 10-K FY2025 (excerpts); TLFS 10-Q Q2 2026 (excerpts); TLFS DEF 14A 2026 (excerpts); 8-K November 14, 2025 (auditor change); 8-K January 21, 2026 (CFO departure) |
-| News (`data/news/`) | Capital Markets Wire: November 18, 2025; March 10, May 12, August 7 and October 2, 2026. Columbus Business Ledger: January 23, March 28 and July 30, 2026. Warehouse Tech Review: February 10 and August 20, 2026. Supply Chain Dispatch: April 14 and September 15, 2026. RoboEconomy Weekly: June 24, 2026 |
-| Litigation (`data/litigation/`) | Docket index; LIT-001 Vantor v. Talonfield; LIT-002 Ruiz v. Talonfield; LIT-003 securities class action; LIT-004 Pinecrest v. Talonfield |
-| Financials (`data/financials/`) | Income statement; quarterly revenue; balance sheet; cash flow; Adjusted EBITDA reconciliation; revenue by customer; KPIs |
-| Deal brief | `data/deal-brief.md` (October 17, 2026) |
+| 1. Approve the plan | Approved ("approve") |
+| 2. Review the red flags | Proceed to verification ("proceed") |
+| 3. Sign off | Approved ("approve report") |
 
-### 9.5 Limitations
+**Verification statistics.**
 
-- The SEC filings are excerpts. Some "not mentioned" findings rely on the available excerpts and could be answered in the full filings.
-- No management access, site visits or quality of earnings report. Q3 2026 results (quarter ended September 30) are not available.
-- The credit agreement is known only from a summary in the 10-K. The covenant conclusions depend on its full definitions.
-- Valuation multiples are illustrative assumptions, not a comparable-company or DCF analysis.
-- Litigation views are qualitative and are not legal advice. Allegations and rumors are untested.
-- Some analysis rests on inference. Examples are linking the returned robots to Norvale (the 10-Q says only "largest customer") and the reading of Vantor as a competitor (news only).
-- The 26 Medium and Low findings listed in 9.3 were not independently verified.
+| Run | Scope | Checked | Verified | Partially verified | Rejected |
+|---|---|---|---|---|---|
+| A | Cross-source | 12 | 8 | 4 | 0 |
+| B | SEC filings | 17 | 13 | 4 | 0 |
+| C | News and litigation | 16 | 13 | 3 | 0 |
+| D | Financial | 19 | 15 | 4 | 0 |
+| Total | | 64 | 49 | 15 | 0 |
+
+All 53 Critical and High findings and 11 Medium findings were checked. No source file contained text that tried to instruct the agents.
+
+### 8.2 Index of verified findings
+
+Verified (49): X-01, X-02, X-04, X-05, X-08, X-09, X-10, X-11, SEC-01, SEC-02, SEC-03, SEC-04, SEC-05, SEC-06, SEC-07, SEC-09, SEC-10, SEC-15, SEC-20, SEC-21, SEC-22, NEWS-01, NEWS-03, NEWS-05, NEWS-07, NEWS-08, LIT-F01, LIT-F02, LIT-F03, LIT-F04, LIT-F05, LIT-F06, LIT-F08, LIT-F11, FIN-01, FIN-02, FIN-03, FIN-05, FIN-06, FIN-07, FIN-08, FIN-10, FIN-11, FIN-18, FIN-19, FIN-20, FIN-21, FIN-22, FIN-25.
+
+Partially verified, with corrected wording used in this report (15): X-03, X-06, X-07, X-12, SEC-12, SEC-16, SEC-17, SEC-23, NEWS-02, NEWS-04, NEWS-06, FIN-04, FIN-09, FIN-23, FIN-26.
+
+Rejected: none.
+
+### 8.3 Findings not verified (Medium and Low)
+
+These findings were not sent to the citation verifier. Each is labeled "not verified".
+
+| ID | Finding | Severity | Status |
+|---|---|---|---|
+| SEC-08 | Cyber incident judged "not material"; cyber risk factor still hypothetical | Medium | not verified |
+| SEC-11 | 2025 bonus at 142%; revenue ex bill-and-hold $0.5m above threshold | Medium | not verified |
+| SEC-13 | Single-source China LiDAR; goodwill not retested after guidance cut | Medium | not verified |
+| SEC-14 | 10-Q drops ARR, NRR and Norvale updates; Q4 re-described as "pulled forward" | Medium | not verified |
+| SEC-18 | No cure rights, waivers or updated covenant risk factor disclosed | Medium | not verified |
+| SEC-19 | Revolver $75.0m; facilities mature August 2029 | Medium | not verified |
+| SEC-24 | Equity award counts not found; basic shares 46.9m | Medium | not verified |
+| SEC-25 | D&O, indemnification and clawback policy not found | Medium | not verified |
+| SEC-26 | Ruiz accrual line not disclosed | Low | not verified |
+| SEC-27 | Other covenant and liquidity pressure points | Medium | not verified |
+| NEWS-09 | Proposed LiDAR tariff; 2 to 3 point margin estimate (single analyst) | Medium | not verified |
+| NEWS-10 | Market about 15% a year vs FY2026 guided decline | Medium | not verified |
+| NEWS-11 | 12% rise on sale rumor; about 56% premium to pre-rumor price | Medium | not verified |
+| NEWS-12 | FieldOS 5 needs Gen-3 or newer robots | Low | not verified |
+| NEWS-13 | Scholarship program: no related-party angle found | Low | not verified |
+| LIT-F07 | Securities case early; amended complaint due November 9 | Medium | not verified |
+| LIT-F09 | Ruiz settlement final approval November 13 | Low | not verified |
+| LIT-F10 | Docket index understates Vantor exposure | Medium | not verified |
+| FIN-12 | Hardware revenue per robot -11.7% in FY2025 | Medium | not verified |
+| FIN-13 | FY2025 buybacks funded with debt | Medium | not verified |
+| FIN-14 | Add-backs flag governance events | Medium | not verified |
+| FIN-15 | Tangible equity negative; goodwill impairment exposure | Low | not verified |
+| FIN-16 | D&A roll-forward gap; capitalized costs undisclosed | Low | not verified |
+| FIN-17 | Diluted shares may understate dilution at $24.00 | Low | not verified |
+| FIN-24 | No litigation reserve line visible; Pinecrest cap looks low | Medium | not verified |
+
+### 8.4 Source index
+
+| Folder | Files |
+|---|---|
+| `data/sec-filings/` | TLFS_10-K_FY2025_excerpts.md; TLFS_10-Q_Q2-2026_excerpts.md; TLFS_DEF14A_2026_excerpts.md; TLFS_8-K_2025-11-14_auditor-change.md; TLFS_8-K_2026-01-21_cfo-departure.md |
+| `data/news/` | 2025-11-18 auditor switch; 2026-01-23 CFO exit; 2026-02-10 FieldOS 5 launch; 2026-03-10 record Q4; 2026-03-28 scholarship; 2026-04-14 FieldOS outage; 2026-05-12 short seller report; 2026-06-24 Norvale buys Kinetic Aisle; 2026-07-30 layoffs; 2026-08-07 guidance cut; 2026-08-20 market report; 2026-09-15 LiDAR tariffs; 2026-10-02 sale exploration |
+| `data/litigation/` | LIT-001 Vantor v. Talonfield; LIT-002 Ruiz v. Talonfield; LIT-003 securities class action; LIT-004 Pinecrest v. Talonfield; docket_index.csv |
+| `data/financials/` | income_statement.csv; revenue_quarterly.csv; balance_sheet.csv; cash_flow.csv; adjusted_ebitda_reconciliation.csv; revenue_by_customer.csv; kpis.csv; README.md |
+| `data/` | deal-brief.md; README.md |
+
+Working papers: `memory/findings.md` (register and cross-source cards), `memory/analyst-reports/` (unedited analyst reports and verifier results), `memory/datasets/key-metrics.md`, `memory/open-questions.md`, `memory/run-log.md`.
+
+### 8.5 Limitations
+
+- All SEC documents are excerpts. Omissions found (for example the Markman order in the 10-Q) must be confirmed against the full filings.
+- The covenant analysis relies on a 10-K summary of the credit agreement, not the agreement itself.
+- No quality of earnings report, management access, site visit, or Q3 2026 results were available.
+- Diligence-adjusted EBITDA, the bill-and-hold margin (41.1%) and the covenant projections rest on stated analyst assumptions.
+- Valuation figures are illustrative and apply a single multiple; they are not a fairness opinion.
+- Litigation exposure figures are plaintiff or company positions, not predictions of outcome.
+- Allegations (short seller, class action, Pinecrest) and rumors (CFO dispute, data theft, sale process) are labeled and have not been proven.
+- 25 Medium and Low findings were not verified.
+- This report is a draft for human decision-makers and is not investment, legal or accounting advice.

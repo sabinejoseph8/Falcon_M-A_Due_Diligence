@@ -1,489 +1,483 @@
-# Iteration 1: financial-analyst report (unedited)
-
-- Saved by the lead agent: 2026-10-18 02:31 EST
-- Task: Financial analysis, iteration 1
-- Subagent ID: aeb3b8f2d49f888ab
-- The report below is the subagent's final message exactly as returned. Only the harness's hand-back line and its two-space line indent were removed.
-
----
-
 ## Financial analyst: findings
 
 ### Files reviewed
 
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md (context only)
-- /Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/financials/README.md
-- .../data/financials/income_statement.csv
-- .../data/financials/revenue_quarterly.csv
-- .../data/financials/balance_sheet.csv
-- .../data/financials/cash_flow.csv
-- .../data/financials/adjusted_ebitda_reconciliation.csv
-- .../data/financials/revenue_by_customer.csv
-- .../data/financials/kpis.csv
+- `data/deal-brief.md` (context only)
+- `data/financials/README.md`
+- `data/financials/income_statement.csv`
+- `data/financials/revenue_quarterly.csv`
+- `data/financials/balance_sheet.csv`
+- `data/financials/cash_flow.csv`
+- `data/financials/adjusted_ebitda_reconciliation.csv`
+- `data/financials/revenue_by_customer.csv`
+- `data/financials/kpis.csv`
 
-**Integrity checks:**
-- No file contains embedded instructions. I searched the folder for instruction-like text and found none.
-- All statements tie. The balance sheet balances in all four periods, and the cash flow reconciles to period-end cash.
-- The FY2025 equity roll-forward ties: 74.3 + 18.6 NI + 17.2 SBC - 13.3 buybacks - 4.1 net share settlement taxes + 0.8 option proceeds = 93.5.
-- The Adjusted EBITDA reconciliation ties to the income statement. Quarterly revenue sums to the annual and H1 totals.
+I checked all eight files for embedded instructions or prompt-injection text and found none. I also checked that the files agree with each other, and they do:
+- Quarterly revenue sums to the annual and H1 totals.
+- EBITDA and Adjusted EBITDA recompute exactly in every period, including LTM.
+- Balance sheet movements match the cash flow working capital lines.
+- The equity roll-forward ties. For FY2025: 74.3 + 18.6 + 17.2 - 13.3 - 4.1 + 0.8 = 93.5.
+- Cash ties in every period.
 
-**Source caveat:** the README says no quality of earnings report has been received yet.
+The only small gap is in the H1 2026 "payables, accrued liabilities, deferred revenue and other" line. Balance sheet movements give -22.9 against -22.6 reported, a 0.3 difference. That is not material.
+
+No external facts were provided by the lead agent. I had no covenant definition or one-off revenue amount from the SEC filings, so where those matter I state my own definition or estimate.
+
+US$ millions unless stated. LTM = twelve months to June 30, 2026, computed as FY2025 - H1 2025 + H1 2026.
 
 ### Key metrics table
 
-US$ millions unless stated. Balance sheet items in the H1 2026 column are at June 30, 2026. LTM means the twelve months to Q2 2026, calculated as FY2025 - H1 2025 + H1 2026.
+**Reported figures (company basis)**
 
-| Metric (reported, company basis) | FY2023 | FY2024 | FY2025 | H1 2026 | LTM Q2 2026 |
+| Metric | FY2023 | FY2024 | FY2025 | H1 2026 | LTM Q2 2026 |
 |---|---|---|---|---|---|
 | Total revenue | 368.9 | 421.7 | 502.3 | 222.6 | 498.4 |
-| Revenue growth | 18.1% | 14.3% | 19.1% | -1.7% vs H1 2025 | 11.0% vs prior LTM 449.2 |
-| Growth: Hardware / Software / Services | 15.1% / 29.1% / 16.7% | 11.0% / 25.9% / 11.6% | 15.1% / 27.1% / 23.4% | -12.9% / 14.6% / 14.4% | n/a |
+| Revenue growth | 18.1% | 14.3% | 19.1% | -1.7% vs H1 2025 | 11.0% vs LTM Q2 2025 (449.2) |
+| Hardware revenue (growth) | 236.0 (15.1%) | 261.9 (11.0%) | 301.4 (15.1%) | 116.9 (-12.9%) | n/a |
+| Software, FieldOS (growth) | 80.4 (29.1%) | 101.2 (25.9%) | 128.6 (27.1%) | 67.5 (14.6%) | n/a |
+| Services (growth) | 52.5 (16.7%) | 58.6 (11.6%) | 72.3 (23.4%) | 38.2 (14.4%) | n/a |
 | Gross margin | 40.1% | 40.8% | 41.1% | 38.0% (H1 2025: 40.8%) | 39.8% |
-| Operating income | 21.3 | 28.8 | 37.3 | -3.7 | 20.3 |
-| Net income | 11.5 | 15.2 | 18.6 | -8.9 | 4.4 |
-| EBITDA (company reconciliation) | 42.2 | 52.3 | 64.1 | 10.4 | 48.2 |
-| EBITDA margin | 11.4% | 12.4% | 12.8% | 4.7% | 9.7% |
-| Adjusted EBITDA (company definition) | 60.4 | 74.8 | 98.8 | 29.9 | 89.7 |
-| Adjusted EBITDA margin (company) | 16.4% | 17.7% | 19.7% | 13.4% (H1 2025: 17.2%) | 18.0% |
+| EBITDA (margin) | 42.2 (11.4%) | 52.3 (12.4%) | 64.1 (12.8%) | 10.4 (4.7%) | 48.2 (9.7%) |
+| Adjusted EBITDA, company (margin) | 60.4 (16.4%) | 74.8 (17.7%) | 98.8 (19.7%) | 29.9 (13.4%) | 89.7 (18.0%) |
 | Add-backs as % of Adjusted EBITDA | 30.1% | 30.1% | 35.1% | 65.2% | 46.3% |
-| Operating cash flow (OCF) | 30.8 | 40.8 | 9.7 | -4.2 | -6.9 |
+| Net income | 11.5 | 15.2 | 18.6 | -8.9 | 4.4 |
+| Operating cash flow | 30.8 | 40.8 | 9.7 | -4.2 | -6.9 |
 | Free cash flow (OCF - capex) | 16.2 | 24.6 | -10.1 | -13.0 | -26.4 |
 | OCF / EBITDA | 73.0% | 78.0% | 15.1% | -40.4% | -14.3% |
-| DSO, net receivables (days) | 60.4 | 63.5 | 86.4 | 85.4 (H1 annualized) | 76.3 |
-| DSO incl. contract assets (days) | 68.4 | 72.4 | 104.3 | 101.4 (H1 annualized) | 90.6 |
-| Allowance as % of gross receivables | 3.9% | 3.8% | 2.1% | 3.2% | n/a |
+| DSO, net AR (days) | 60.4 | 63.5 | 86.4 | 85.4 (H1 annualized) | 76.3 (LTM revenue) |
+| Allowance / gross AR | 3.9% | 3.8% | 2.1% | 3.2% | n/a |
 | Contract assets | 8.1 | 10.2 | 24.7 | 19.5 | n/a |
-| Inventory / days inventory (DIO) | 55.2 / 91.2 | 63.9 / 93.4 | 71.3 / 87.9 | 84.0 / 111.1 (H1 annualized) | DIO 102.2 |
+| Inventory | 55.2 | 63.9 | 71.3 | 84.0 | n/a |
 | Cash | 54.8 | 48.3 | 41.6 | 33.9 | n/a |
-| Revolver drawn | 0.0 | 10.0 | 35.0 | 45.0 | n/a |
 | Total debt (revolver + term loan) | 120.0 | 200.0 | 220.0 | 227.5 | n/a |
 | Net debt | 65.2 | 151.7 | 178.4 | 193.6 | n/a |
-| Net debt / company Adjusted EBITDA | 1.1x | 2.0x | 1.8x | n/a | 2.2x |
-| Net debt / EBITDA | 1.5x | 2.9x | 2.8x | n/a | 4.0x |
-| Total debt / EBITDA | 2.8x | 3.8x | 3.4x | n/a | 4.7x |
-| EBITDA / interest expense | 5.7x | 5.3x | 4.7x | 1.3x | 3.2x |
-| Top customer (Norvale) share | n/a | 28.0% | 31.1% | n/a | n/a |
-| Top 10 customer share | n/a | 59.2% | 61.5% | n/a | n/a |
+| Net debt / Adjusted EBITDA | 1.08x | 2.03x | 1.81x | n/a | 2.16x |
+| Net debt / EBITDA | 1.55x | 2.90x | 2.78x | n/a | 4.02x |
+| Adjusted EBITDA / interest | 8.16x | 7.63x | 7.26x | 3.78x | 6.02x |
+| EBITDA / interest | 5.70x | 5.34x | 4.71x | 1.32x | 3.23x |
 | FieldOS ARR (period end) | 86.0 | 109.5 | 139.2 | 146.8 | n/a |
-| Software net revenue retention | 121% | 119% | 118% | 111% | n/a |
-| Hardware order backlog | 142.0 | 168.0 | 131.0 | 118.0 | n/a |
-| Implied hardware book-to-bill (my calculation) | n/a | 1.10x | 0.88x | 0.89x | n/a |
+| Software NRR (TTM) | 121% | 119% | 118% | 111% | n/a |
+| Hardware backlog | 142.0 | 168.0 | 131.0 | 118.0 | n/a |
+| Hardware book-to-bill (my calculation) | n/a | 1.10 | 0.88 | 0.89 | n/a |
 | Robots shipped (units) | 3,020 | 3,300 | 4,300 | 1,640 | n/a |
-| Hardware revenue per robot shipped (US$ thousand) | 78.1 | 79.4 | 70.1 | 71.3 | n/a |
-| Active customers | 212 | 248 | 276 | 281 | n/a |
-| Full-time employees | 1,180 | 1,390 | 1,452 | 1,405 | n/a |
-| **Analyst-adjusted (my figures, see FIN-04)** | | | | | |
-| Analyst-adjusted EBITDA (SBC still added back) | 55.8 | 68.8 | 84.7 | 22.5 | 72.6 |
-| Analyst-adjusted EBITDA margin | 15.1% | 16.3% | 16.9% | 10.1% | 14.6% |
-| Analyst-adjusted EBITDA after SBC | 44.2 | 54.9 | 67.5 | 13.6 | 54.8 |
-| FY2025 growth without the estimated Q4 2025 excess (FIN-01) | n/a | n/a | 14.0% | n/a | n/a |
+| Employees | 1,180 | 1,390 | 1,452 | 1,405 | n/a |
+| Top customer (Norvale) share | n/a | 28.0% | 31.1% | not provided | n/a |
+| Top 10 share | n/a | 59.2% | 61.5% | not provided | n/a |
+
+**Diligence-adjusted figures (my adjustments, see FIN-04)**
+
+| Metric | FY2023 | FY2024 | FY2025 | H1 2026 | LTM Q2 2026 |
+|---|---|---|---|---|---|
+| Diligence-adjusted EBITDA A (SBC still added back) | 55.8 | 68.8 | 84.7 | 22.5 | 72.6 |
+| Margin | 15.1% | 16.3% | 16.9% | 10.1% | 14.6% |
+| Diligence-adjusted EBITDA B (A less SBC) | 44.2 | 54.9 | 67.5 | 13.6 | 54.8 |
+| Net debt / adjusted EBITDA A | n/a | n/a | 2.11x | n/a | 2.67x |
+
+How the key metrics are calculated:
+- LTM revenue = 502.3 - 226.5 + 222.6 = 498.4.
+- LTM gross profit = 206.3 - 92.4 + 84.6 = 198.5, so LTM gross margin = 198.5 / 498.4 = 39.8%.
+- LTM operating cash flow = 9.7 - 12.4 + (-4.2) = -6.9.
+- LTM capex = 19.8 - 9.1 + 8.8 = 19.5, so LTM free cash flow = -6.9 - 19.5 = -26.4. This matches the free cash flow memo: -10.1 - 3.3 - 13.0 = -26.4.
+- LTM Q2 2025 revenue = 421.7 - (96.2 + 102.8) + 226.5 = 449.2.
+- H1 2026 interest cover: 29.9 / 7.9 = 3.78x on Adjusted EBITDA, and 10.4 / 7.9 = 1.32x on EBITDA.
+- Diligence-adjusted EBITDA B: FY2023 55.8 - 11.6 = 44.2; FY2024 68.8 - 13.9 = 54.9; H1 2026 22.5 - 8.9 = 13.6.
 
 ### Findings
 
-16 findings: 2 Critical (FIN-01, FIN-14), 8 High, 4 Medium, 2 Low.
-
-#### FIN-01: Nearly half of FY2025 growth came from one quarter, and revenue fell in H1 2026
-- **Finding:** Q4 2025 revenue jumped 32.4% year over year. That one quarter delivered 46.9% of FY2025's revenue growth. Revenue then fell in Q2 2026 and H1 2026. Without the Q4 spike, FY2025 growth was about 14.0%, not the reported 19.1%.
+#### FIN-01: The management case behind the deal multiple is stale; the real multiple is about 15x LTM, not 11.5x
+- **Finding:** The deal model's 11.5x multiple depends on FY2026E Adjusted EBITDA of $118.0m. H1 2026 actuals are already far behind that, so the price is about 15.1x LTM company-defined Adjusted EBITDA and 18.6x diligence-adjusted LTM EBITDA.
 - **Evidence:**
-  - Year-over-year growth by quarter:
-    - Q1 2025: 108.9 / 96.2 - 1 = 13.2%
-    - Q2 2025: 117.6 / 102.8 - 1 = 14.4%
-    - Q3 2025: 121.4 / 106.1 - 1 = 14.4%
-    - Q4 2025: 154.4 / 116.6 - 1 = 32.4%
-    - Q1 2026: 109.7 / 108.9 - 1 = 0.7%
-    - Q2 2026: 112.9 / 117.6 - 1 = -4.0%
-  - Q4 versus Q3 uplift: 154.4 / 121.4 - 1 = 27.2% in 2025, against 116.6 / 106.1 - 1 = 9.9% in 2024. Q1 2026 versus Q4 2025: 109.7 / 154.4 - 1 = -29.0%.
-  - Q4 share of the full year: 116.6 / 421.7 = 27.6% in FY2024, against 154.4 / 502.3 = 30.7% in FY2025.
-  - Dependence on Q4: the Q4 increase was 154.4 - 116.6 = 37.8, out of total FY2025 growth of 502.3 - 421.7 = 80.6. 37.8 / 80.6 = 46.9%.
-  - Q1 to Q3 2025 growth: 347.9 / 305.1 - 1 = 14.0%.
-  - Normalized Q4 2025 at that 14.0% rate: 116.6 x 1.140 = 133.0, so the excess is 154.4 - 133.0 = 21.4. A second method uses the 2024 seasonal uplift: 121.4 x 1.099 = 133.4, giving an excess of 21.0.
-  - Normalized FY2025: 502.3 - 21.4 = 480.9. Growth = 480.9 / 421.7 - 1 = 14.0%.
-  - H1 2026 by segment: hardware 116.9 / 134.2 - 1 = -12.9%; software +14.6%; services +14.4%. Total -3.9 = -17.3 hardware + 8.6 software + 4.8 services.
-  - Hardware drove the H2 2025 jump. H2 2025 hardware was 301.4 - 134.2 = 167.2, up 33.0 on H1 2025. That is 66.9% of the 49.3 increase in total revenue from H1 to H2 2025.
-  - The same pattern shows in other data: receivables rose 45.5 and contract assets 14.5 (FIN-06), backlog fell 37.0 (FIN-12), revenue per robot fell (FIN-02), and the "customer implementation delays" add-back was 3.3 in H2 2025 (FIN-04).
-  - Reported versus adjusted: reported FY2025 growth is 19.1%; my normalized figure is 14.0%.
-- **Source:**
-  - `data/financials/revenue_quarterly.csv`, lines 2 to 11
-  - `data/financials/income_statement.csv`, lines 2 to 5 (FY2024, FY2025, H1_2025, H1_2026)
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, line 17
-- **Severity:** Critical
-- **Confidence:** High for the calculations. Medium for reading the 21.4 as a pull-forward or one-off, because the pack has no quarterly segment or customer data.
-- **Deal impact:** Valuation, because it inflates the FY2025 base and the growth path behind the US$560.0 million case. Closing risk if revenue recognition is challenged.
+  - **Price and enterprise value:**
+    - Equity value = 24.00 x 48.3 = 1,159.2.
+    - Net debt at June 30, 2026 = (45.0 + 182.5) - 33.9 = 193.6.
+    - EV = 1,159.2 + 193.6 = 1,352.8.
+  - **Multiples at that EV:**
+    - EV / FY2026E Adjusted EBITDA = 1,352.8 / 118.0 = 11.46x. This confirms the brief's 11.5x.
+    - EV / FY2026E revenue = 1,352.8 / 560.0 = 2.42x.
+    - EV / FY2025 Adjusted EBITDA = 1,352.8 / 98.8 = 13.7x.
+    - EV / LTM Adjusted EBITDA = 1,352.8 / 89.7 = 15.1x.
+    - EV / LTM diligence-adjusted EBITDA A = 1,352.8 / 72.6 = 18.6x.
+    - EV / LTM diligence-adjusted EBITDA B (after SBC) = 1,352.8 / 54.8 = 24.7x.
+    - EV / LTM EBITDA = 1,352.8 / 48.2 = 28.1x.
+    - EV / LTM revenue = 1,352.8 / 498.4 = 2.71x.
+  - **Revenue needed in H2 2026 to reach the management case:**
+    - Required H2 2026 revenue = 560.0 - 222.6 = 337.4.
+    - That is 337.4 / 275.8 = +22.3% on H2 2025 (121.4 + 154.4 = 275.8), and 337.4 / 222.6 = +51.6% on H1 2026.
+    - H1 2026 itself was -1.7% year over year.
+  - **Adjusted EBITDA needed in H2 2026 to reach the management case:**
+    - Required H2 2026 Adjusted EBITDA = 118.0 - 29.9 = 88.1.
+    - That is 88.1 / 59.8 = +47.3% on H2 2025 (98.8 - 39.0 = 59.8).
+    - It implies an H2 margin of 88.1 / 337.4 = 26.1%, against 13.4% in H1 2026 and 19.7% in FY2025.
+  - **My FY2026 run-rate range for revenue:**
+    - Low: H2 2025 excluding the estimated Q4 spike (see FIN-02) is 275.8 - 21.0 = 254.8. At the H1 trend of -1.7% that gives 250.4, so FY2026 = 473.0.
+    - High: H2 2026 flat on H2 2025 gives FY2026 = 498.4.
+    - Shortfall against 560.0 is 61.6 to 87.0, or 11.0% to 15.5%.
+  - **My FY2026 run-rate range for Adjusted EBITDA:**
+    - H1 2026 annualized = 29.9 x 2 = 59.8.
+    - H2 2026 flat on H2 2025 gives FY2026 = 29.9 + 59.8 = 89.7.
+    - Shortfall against 118.0 is 28.3 to 58.2, or 24% to 49%.
+  - **Value at the deal's own 11.5x on actual earnings:**
+    - LTM Adjusted EBITDA: 89.7 x 11.5 = 1,031.6 EV. Less net debt of 193.6 gives equity of 838.0, or $17.35 per share.
+    - Diligence-adjusted EBITDA A: 72.6 x 11.5 = 834.9 EV. Less net debt gives equity of 641.3, or $13.28 per share.
+  - **Market check:**
+    - Unaffected equity = 17.85 x 48.3 = 862.2, plus net debt 193.6 = EV of 1,055.8.
+    - That is 1,055.8 / 89.7 = 11.8x LTM Adjusted EBITDA.
+    - The market already prices Talonfield at about the deal multiple on actual LTM earnings, not on the FY2026E case.
+  - **Synergies:** EV / (LTM Adjusted EBITDA 89.7 + 35.0 synergies) = 1,352.8 / 124.7 = 10.8x. Even fully credited, the synergies do not close the gap to 11.5x on diligence-adjusted EBITDA: 1,352.8 / (72.6 + 35.0) = 12.6x.
+- **Source:** `data/financials/adjusted_ebitda_reconciliation.csv` (Adjusted EBITDA row, all columns); `income_statement.csv` (Total revenue, Diluted shares); `revenue_quarterly.csv` (Q3 2025, Q4 2025); `balance_sheet.csv` (Cash, Revolver, Term loan, Q2_2026); `data/deal-brief.md` (price, shares, management case).
+- **Severity:** Critical. The EBITDA base is overstated by more than 10%. At 11.5x, the implied value gap is 1,352.8 - 1,031.6 = 321.2, or 23.7% of EV, before any diligence adjustments.
+- **Confidence:** High for the recomputed multiples and the H2 gap, which are calculated directly. Medium for the run-rate range, which depends on scenario assumptions.
+- **Deal impact:** Valuation (price), financing (lender sizing on EBITDA).
+- **Cross-check:** Any guidance update or reaffirmation of the $560.0m / $118.0m case since March 2026 in the 10-Q or 8-K filings. Analyst and news commentary on the H1 2026 miss.
+
+#### FIN-02: Reported FY2025 growth depends on one unusual quarter, Q4 2025, which matches the growth at the top customer
+- **Finding:** Q4 2025 revenue jumped 32.4% year over year, against about 14% in each of Q1 to Q3 2025. That one quarter supplied 46.9% of FY2025 revenue growth. The size of the jump is almost the same as Norvale's revenue increase, which suggests a large one-off or pulled-forward Norvale delivery. Excluding the estimated spike, FY2025 growth is about 14.1%, not 19.1%.
+- **Evidence:**
+  - **Year-over-year growth by quarter:**
+    - Q1 2025: 108.9 / 96.2 = +13.2%.
+    - Q2 2025: 117.6 / 102.8 = +14.4%.
+    - Q3 2025: 121.4 / 106.1 = +14.4%.
+    - Q4 2025: 154.4 / 116.6 = +32.4%.
+    - Q1 2026: 109.7 / 108.9 = +0.7%.
+    - Q2 2026: 112.9 / 117.6 = -4.0%.
+  - **Q4 against Q3:** Q4 2025 was +27.2% on Q3 2025 (154.4 / 121.4). The same comparison in 2024 was +9.9% (116.6 / 106.1).
+  - **Q4 share of growth:**
+    - FY2025 increase = 502.3 - 421.7 = 80.6.
+    - Q4 increase = 154.4 - 116.6 = 37.8, which is 46.9% of the total.
+    - Q4 2025 was 30.7% of the year's revenue (154.4 / 502.3), against 27.6% in FY2024 (116.6 / 421.7).
+  - **My estimate of the spike:**
+    - Normal Q4 = Q4 2024 grown at the Q1 to Q3 2025 rate: 116.6 x 1.144 = 133.4. Using the 2024 Q3-to-Q4 pattern gives the same figure: 121.4 x 1.099 = 133.4.
+    - Excess = 154.4 - 133.4 = 21.0.
+    - Underlying FY2025 revenue = 502.3 - 21.0 = 481.3, so underlying growth = 481.3 / 421.7 = +14.1%.
+  - **Link to Norvale:**
+    - Norvale's increase = 156.2 - 118.1 = 38.1. That is 47.3% of FY2025 growth and almost equal to the Q4 increase of 37.8.
+    - Revenue excluding Norvale grew 14.0%: (502.3 - 156.2) / (421.7 - 118.1) = 346.1 / 303.6.
+  - **Supporting signals in the same period:**
+    - Contract assets (unbilled) rose 142%, from 10.2 to 24.7.
+    - The receivables allowance fell (see FIN-05).
+    - Hardware backlog fell 22.0%, from 168.0 to 131.0.
+    - Units shipped rose 30.3% while hardware revenue per unit fell (see FIN-12).
+    - A $4.1m "customer implementation delays" add-back appears in FY2025.
+- **Source:** `revenue_quarterly.csv` (all rows); `revenue_by_customer.csv` (Norvale, Total); `balance_sheet.csv` (Contract assets); `kpis.csv` (Hardware order backlog, Robots shipped).
+- **Severity:** High
+- **Confidence:** Medium. The quarterly growth figures are calculated directly. The size of the one-off ($21.0m) and its link to Norvale are inferences, because no quarterly customer or segment data was provided.
+- **Deal impact:** Valuation (growth narrative and run-rate). Possible revenue recognition and accounting risk.
 - **Cross-check:**
-  - FY2025 10-K MD&A explanation of Q4, and the revenue recognition policy (bill-and-hold, customer acceptance, shipping terms).
-  - Q1 and Q2 2026 10-Q commentary, and Q4 2025 and Q1 2026 earnings 8-Ks.
-  - News of large Q4 2025 orders, especially from Norvale, and of returns or delayed deployments.
-  - Court records for any securities class action or SEC inquiry about revenue timing.
+  - SEC filings: the 10-K or 10-Q revenue recognition note, any disclosed one-off or large Q4 2025 order, bill-and-hold or acceptance terms, and the Norvale contract.
+  - News: Norvale rollout, pull-forward or contract renegotiation.
+  - If the SEC analyst finds a disclosed one-off amount, it should replace my $21.0m estimate.
 
-#### FIN-02: Hardware revenue per robot fell 11.7% in FY2025 while units rose 30.3%
-- **Finding:** FY2025 hardware volume growth appears to have been bought with lower prices or a weaker mix. That fits a year-end volume push.
+#### FIN-03: H1 2026 revenue is falling, led by hardware, and the order book is shrinking
+- **Finding:** H1 2026 revenue fell 1.7%. Hardware fell 12.9%. Hardware orders are running below revenue (book-to-bill below 1.0 for six quarters), so further hardware decline is likely.
 - **Evidence:**
-  - Hardware revenue per robot shipped (US$ thousand): 236.0 / 3,020 = 78.1; 261.9 / 3,300 = 79.4; 301.4 / 4,300 = 70.1; H1 2026 116.9 / 1,640 = 71.3.
-  - FY2025 change: 70.1 / 79.4 - 1 = -11.7%.
-  - Units grew 1,000 / 3,300 = 30.3%, while hardware revenue grew only 15.1%.
-  - Caveat: hardware revenue may include items other than robots, and revenue timing can differ from shipment timing.
-- **Source:** `data/financials/kpis.csv`, line 4; `data/financials/income_statement.csv`, line 2
+  - **Hardware revenue:** H1 2026 vs H1 2025 = 116.9 / 134.2 = -12.9%.
+  - **Hardware book-to-bill:** orders = hardware revenue + change in backlog. This assumes the backlog is hardware only, as labelled.
+    - FY2024: 261.9 + (168.0 - 142.0) = 287.9; book-to-bill 287.9 / 261.9 = 1.10.
+    - FY2025: 301.4 + (131.0 - 168.0) = 264.4; book-to-bill 0.88.
+    - H1 2026: 116.9 + (118.0 - 131.0) = 103.9; book-to-bill 0.89.
+    - H1 2026 orders annualized = 207.8, which is -21.4% against FY2025 orders of 264.4.
+  - **Backlog:** 168.0 at December 2024 to 118.0 at June 2026 = -29.8%.
+  - **Units:** H1 2026 shipments of 1,640 annualize to 3,280, -23.7% against 4,300.
+  - **Active customers:** added only 5 in H1 2026 (276 to 281), against 28 in FY2025.
+- **Source:** `income_statement.csv` (Revenue: Hardware, H1 columns); `kpis.csv` (backlog, robots shipped, active customers); `revenue_quarterly.csv` (Q1 to Q2 2026).
+- **Severity:** High
+- **Confidence:** High for the figures, which are calculated directly. Medium for book-to-bill, which assumes how the backlog is defined.
+- **Deal impact:** Valuation, post-closing performance.
+- **Cross-check:** The backlog definition in the 10-K or 10-Q. Management commentary on order delays. News on lost deals, competitor wins or customer pauses (especially Norvale).
+
+#### FIN-04: Adjusted EBITDA add-backs are large, growing and partly recurring; diligence-adjusted LTM EBITDA is $72.6m against $89.7m reported
+- **Finding:** Add-backs rose from 30.1% of Adjusted EBITDA in FY2023 to 46.3% in LTM and 65.2% in H1 2026. Restructuring has been added back in every period since FY2022. Litigation costs recur. "Customer implementation delays" is a normal operating cost.
+- **Evidence:**
+  - **Add-backs as a share of Adjusted EBITDA** (add-backs = Adjusted EBITDA - EBITDA):
+    - FY2023: 18.2 / 60.4 = 30.1%.
+    - FY2024: 22.5 / 74.8 = 30.1%.
+    - FY2025: 34.7 / 98.8 = 35.1%.
+    - H1 2026: 19.5 / 29.9 = 65.2%.
+    - LTM: 41.5 / 89.7 = 46.3%.
+  - **Restructuring "and other charges":**
+    - 3.1 (FY2022), 4.6, 5.2, 7.9 (FY2025), 4.4 (H1 2026). Cumulative 25.2.
+    - The amount rises every year. I treat it as recurring.
+  - **Vantor patent litigation costs:**
+    - 0.8 (FY2024), 2.1 (FY2025), 3.0 (H1 2026), 4.1 LTM.
+    - The cost is ongoing and rising while the case is live. I treat it as recurring until the case resolves.
+  - **Customer implementation delays:**
+    - 4.1 in FY2025, 3.3 in LTM.
+    - Delivery delays with customers are part of operating cost. I do not accept this add-back.
+  - **Accepted as plausibly one-off** (subject to checking the facts):
+    - Auditor transition 2.3.
+    - Executive search / CFO transition 1.1 (FY2025) and 1.4 (H1 2026).
+    - Cybersecurity incident 1.8.
+    - Lumora deal costs 2.6, ERP 2.0, secondary offering 1.2.
+    - Note that the "one-off" category recurs: a new item appears every year.
+  - **Diligence-adjusted EBITDA A:**
+    - FY2025: 98.8 - 7.9 - 4.1 - 2.1 = 84.7.
+    - LTM: 89.7 - 9.7 - 3.3 - 4.1 = 72.6.
+    - H1 2026: 29.9 - 4.4 - 0.0 - 3.0 = 22.5.
+    - FY2024: 74.8 - 5.2 - 0.8 = 68.8.
+    - FY2023: 60.4 - 4.6 = 55.8.
+  - **Diligence-adjusted EBITDA B (also treating SBC as a real cost):** FY2025 84.7 - 17.2 = 67.5; LTM 72.6 - 17.8 = 54.8.
+  - **Sensitivity:** if the estimated $21.0m Q4 2025 excess revenue (FIN-02) is removed at the FY2025 gross margin of 41.1%, LTM A falls by about 8.6, to about 64.0. This is an estimate and assumes no related operating costs.
+- **Source:** `adjusted_ebitda_reconciliation.csv` (all rows and columns); `income_statement.csv` (Restructuring and other charges, Memo: SBC).
+- **Severity:** High
+- **Confidence:** High for the arithmetic. Medium for which add-backs to reject, which is a judgment call pending a quality of earnings report (none has been received, per `data/financials/README.md`).
+- **Deal impact:** Valuation (the EBITDA base for the multiple). Financing (covenant EBITDA definitions).
+- **Cross-check:**
+  - SEC filings: the non-GAAP reconciliation and how the company explains each item.
+  - Litigation records: Vantor case status and likely duration.
+  - News and SEC filings: the cybersecurity incident, the CFO departure and the auditor change. Was each one disclosed, and when (8-K Item 1.05, 5.02, 4.01)?
+
+#### FIN-05: Receivables and unbilled contract assets jumped in FY2025 while the credit-loss reserve fell
+- **Finding:** DSO rose from 63.5 to 86.4 days in FY2025. Contract assets more than doubled. The allowance for credit losses fell from 3.8% to 2.1% of gross receivables. This pattern fits aggressive revenue recognition or slower collections, and receivables may be under-reserved.
+- **Evidence:**
+  - **DSO** (net AR / revenue x 365):
+    - FY2023: 61.0 / 368.9 x 365 = 60.4.
+    - FY2024: 73.4 / 421.7 x 365 = 63.5.
+    - FY2025: 118.9 / 502.3 x 365 = 86.4.
+    - June 2026: 104.2 / (222.6 x 2) x 365 = 85.4 on H1 annualized, or 76.3 on LTM revenue of 498.4.
+  - **DSO including contract assets:**
+    - FY2024: 83.6 / 421.7 x 365 = 72.4.
+    - FY2025: 143.6 / 502.3 x 365 = 104.3.
+    - June 2026: 123.7 / 445.2 x 365 = 101.4.
+  - **Growth in FY2025:** AR plus contract assets grew 71.8% (83.6 to 143.6), against revenue growth of 19.1%.
+  - **Allowance / gross AR:** FY2023 2.5 / 63.5 = 3.9%; FY2024 2.9 / 76.3 = 3.8%; FY2025 2.6 / 121.5 = 2.1%; June 2026 3.4 / 107.6 = 3.2%.
+    - In FY2025, gross AR rose 59.2% while the allowance fell 10.3%.
+    - Holding the FY2024 rate of 3.8% gives a reserve of 121.5 x 3.8% = 4.6 at FY2025, so the shortfall is about 2.0. At June 2026 the shortfall is 107.6 x 3.8% - 3.4 = 0.7.
+  - **Contract assets:** 10.2 to 24.7 (+142.2%). As a share of revenue, 2.4% to 4.9%.
+  - **Partial reversal in H1 2026:** 14.7 of AR and 5.2 of contract assets were collected or billed. Both are still far above FY2024 levels.
+- **Source:** `balance_sheet.csv` (AR net, Contract assets, Memo: AR gross, Memo: Allowance); `income_statement.csv` (Total revenue); `cash_flow.csv` (Change in AR, Change in contract assets).
+- **Severity:** High
+- **Confidence:** High for the arithmetic. Medium for what it means, because no AR aging or customer-level AR was provided.
+- **Deal impact:** Valuation, closing working capital peg, possible accounting restatement risk.
+- **Cross-check:**
+  - SEC filings: credit-loss policy changes, contract asset disclosures, and any auditor critical audit matter on revenue.
+  - Whether the Norvale balance makes up most of AR.
+  - Whether the auditor change relates to revenue or AR issues.
+
+#### FIN-06: Cash conversion collapsed; free cash flow is negative in FY2025, H1 2026 and LTM
+- **Finding:** Operating cash flow fell from 78% of EBITDA in FY2024 to 15% in FY2025 and turned negative in H1 2026. LTM free cash flow is -$26.4m.
+- **Evidence:**
+  - **OCF / EBITDA:** FY2023 30.8 / 42.2 = 73.0%; FY2024 40.8 / 52.3 = 78.0%; FY2025 9.7 / 64.1 = 15.1%; H1 2026 -4.2 / 10.4 = -40.4%.
+  - **OCF / Adjusted EBITDA:** FY2024 54.5%; FY2025 9.8%; H1 2026 -14.0%.
+  - **OCF / net income:** FY2023 2.68x; FY2024 2.68x; FY2025 9.7 / 18.6 = 0.52x.
+  - **Free cash flow:** 16.2, 24.6, -10.1, then -13.0 in H1 2026 (against +3.3 in H1 2025). LTM -26.4.
+  - **Why H1 2026 OCF was negative even after 19.9 of AR and contract asset inflow:**
+    - Inventory was a 12.7 outflow.
+    - Payables, accruals and deferred revenue were a 22.6 outflow. On the balance sheet: AP 46.2 to 38.6, accrued liabilities 38.5 to 30.5, and total deferred revenue 56.9 to 50.2.
+- **Source:** `cash_flow.csv` (all rows); `adjusted_ebitda_reconciliation.csv` (EBITDA, Adjusted EBITDA); `balance_sheet.csv`.
+- **Severity:** High
+- **Confidence:** High, calculated directly.
+- **Deal impact:** Valuation (cash-based value), financing, post-closing funding need.
+- **Cross-check:** The liquidity discussion in the 10-Q MD&A. Any going-concern or liquidity risk factor language.
+
+#### FIN-07: Debt and revolver use are rising while cash and earnings fall; LTM net debt / EBITDA is 4.0x
+- **Finding:** The revolver went from 0.0 to 45.0 in 30 months. Cash fell to 33.9. Leverage is 2.16x on company-defined Adjusted EBITDA but 4.02x on EBITDA. EBIT covers interest only 1.36x on an LTM basis.
+- **Evidence:**
+  - **Net debt:** FY2023 65.2; FY2024 151.7; FY2025 178.4; June 2026 193.6.
+  - **Leverage at June 2026:**
+    - Net debt / LTM Adjusted EBITDA = 193.6 / 89.7 = 2.16x.
+    - Net debt / LTM EBITDA = 193.6 / 48.2 = 4.02x.
+    - Gross debt / LTM EBITDA = 227.5 / 48.2 = 4.72x.
+    - Net debt / LTM diligence-adjusted EBITDA A = 193.6 / 72.6 = 2.67x.
+    - Gross debt / LTM diligence-adjusted EBITDA A = 227.5 / 72.6 = 3.13x.
+  - **Interest cover (LTM interest 14.9 = 13.6 - 6.6 + 7.9):**
+    - Adjusted EBITDA: 89.7 / 14.9 = 6.02x.
+    - EBITDA: 48.2 / 14.9 = 3.23x.
+    - EBIT: LTM operating income = 37.3 - 13.3 + (-3.7) = 20.3, so 20.3 / 14.9 = 1.36x.
+    - H1 2026 EBIT of -3.7 does not cover interest of 7.9.
+  - **Implied interest rate:** 14.9 / average debt of (220.0 + 227.5) / 2 = 6.7%.
+  - **Interest expense trend:** H1 2026 vs H1 2025 = 7.9 / 6.6 = +19.7%.
+  - **Runway:**
+    - Cash runway: 33.9 / (13.0 / 6) = 15.6 months of H1 2026 free cash flow burn.
+    - Including term loan amortization of 2.5 per half: 33.9 / ((13.0 + 2.5) / 6) = 13.1 months, before any further revolver draws.
+    - Revolver capacity is not in the data, so headroom cannot be computed.
+  - **Covenant ratios:** no covenant definitions were provided. The definitions I used: total debt = revolver + term loan; net debt = total debt - cash; EBITDA as in the company's reconciliation file. Finance lease liabilities may exist (a 0.7 finance lease payment appears in H1 2026) but are not separately shown. If the credit agreement uses company Adjusted EBITDA, the ratio is about 2.2x. On EBITDA it is about 4.0x. The difference is the whole question for covenant headroom.
+- **Source:** `balance_sheet.csv` (Cash, Revolving credit facility, Term loan); `cash_flow.csv` (financing rows, Memo FCF); `income_statement.csv` (Interest expense, Operating income); `adjusted_ebitda_reconciliation.csv`.
+- **Severity:** High
+- **Confidence:** High for the ratios. Low for covenant headroom, because the definition and limits are missing.
+- **Deal impact:** Financing, closing risk (a covenant breach before closing), and debt to repay or assume at closing.
+- **Cross-check:**
+  - SEC filings (10-K debt note and credit agreement exhibit): covenant definition, maximum leverage, revolver size, maturity, change-of-control prepayment and any amendments or waivers in 2026.
+  - The lead agent should send me the covenant definition so I can compute headroom.
+
+#### FIN-08: One customer, Norvale, is 31.1% of revenue and supplied 47% of FY2025 growth
+- **Finding:** Norvale's share rose from 28.0% to 31.1%. The top 10 rose from 59.2% to 61.5%. Excluding Norvale, growth was 14.0%. No 2026 customer data was provided, so any decline at Norvale in H1 2026 cannot be measured.
+- **Evidence:**
+  - **Norvale:** 118.1 to 156.2, +32.3% (156.2 / 118.1).
+  - **Top 10:** FY2024 249.6 / 421.7 = 59.2%; FY2025 308.8 / 502.3 = 61.5%.
+  - **Top 3 in FY2025:** (156.2 + 41.2 + 28.9) / 502.3 = 45.1%.
+  - **Customers ranked 2 to 10:** share fell from 31.2% (131.5) to 30.4% (152.6). Each of them grew in dollars but grew more slowly than Norvale.
+    - Pinecrest grew the least: +7.4% (17.4 / 16.2), with share down from 3.8% to 3.5%.
+    - Quillon: +14.4%, share 8.5% to 8.2%.
+    - Ardent: +14.2%, share 6.0% to 5.8%.
+  - No top-10 customer fell in dollar terms in FY2025.
+- **Source:** `revenue_by_customer.csv` (all rows).
+- **Severity:** High. Critical if other sources show the Norvale relationship is at risk.
+- **Confidence:** High for concentration, calculated directly. Low for any H1 2026 trend (no data).
+- **Deal impact:** Valuation, post-closing (change-of-control clauses), closing condition.
+- **Cross-check:**
+  - SEC filings: the concentration risk factor, whether the Norvale contract has been filed, and its term, renewal and change-of-control terms.
+  - News: Norvale vendor reviews, insourcing or a competitor pilot.
+  - Litigation records: any dispute with Norvale.
+
+#### FIN-09: FieldOS software is still growing, but retention and new ARR are slowing sharply
+- **Finding:** Software is the best part of the business (+14.6% in H1 2026). However, NRR fell 7 points to 111% in six months, and net new ARR in H1 2026 was about half the FY2025 pace. Software does not support a re-acceleration case.
+- **Evidence:**
+  - **ARR growth:** FY2024 109.5 / 86.0 = +27.3%; FY2025 139.2 / 109.5 = +27.1%; H1 2026 146.8 / 139.2 = +5.5%, about 11.2% annualized (1.055 x 1.055 - 1).
+  - **Net new ARR:** FY2024 23.5; FY2025 29.7; H1 2026 7.6, against a half-year pace of 29.7 / 2 = 14.9 (51% of pace).
+  - **NRR:** 121% to 119% to 118% to 111%.
+  - **Software revenue growth:** FY2025 +27.1%; H1 2026 +14.6% (67.5 / 58.9).
+  - **Deferred revenue:** total fell from 56.9 to 50.2 (-11.8%) in H1 2026 while ARR rose. This may be billing seasonality, but no June 2025 balance sheet was provided to test that.
+  - Churn and gross retention are not provided.
+- **Source:** `kpis.csv` (ARR, NRR); `income_statement.csv` (Revenue: Software); `balance_sheet.csv` (Deferred revenue rows).
 - **Severity:** Medium
-- **Confidence:** Medium, because it assumes hardware revenue is mostly robots.
-- **Deal impact:** Valuation, through hardware pricing power and the margin outlook.
-- **Cross-check:** 10-K price and volume discussion. News on price competition or volume deals, for example with Norvale.
+- **Confidence:** High for the figures. Medium for the deferred revenue reading.
+- **Deal impact:** Valuation (the recurring revenue premium).
+- **Cross-check:** ARR and NRR definitions in the filings. News on FieldOS customer losses, pricing or competition.
 
-#### FIN-03: Margins compressed sharply in H1 2026 and the company swung to a loss
-- **Finding:** Gross margin fell 2.8 points in H1 2026. Company Adjusted EBITDA fell 23.3% and EBITDA fell 60.5%. Operating income turned negative.
+#### FIN-10: Margins compressed in H1 2026; operating costs grew while headcount fell
+- **Finding:** Gross margin fell 2.8 points to 38.0%. Operating expenses rose 11.6% on falling revenue, so Talonfield made an operating loss in H1 2026.
 - **Evidence:**
-  - Gross margin: 147.9 / 368.9 = 40.1%; 172.1 / 421.7 = 40.8%; 206.3 / 502.3 = 41.1%; H1 2025 92.4 / 226.5 = 40.8%; H1 2026 84.6 / 222.6 = 38.0%.
-  - Gross margin fell even though the revenue mix moved toward software and services. Their share rose from 92.3 / 226.5 = 40.8% to 105.7 / 222.6 = 47.5%. Segment margins are not in the pack.
-  - Cost of revenue rose 138.0 / 134.1 - 1 = 2.9%, while revenue fell 1.7%.
-  - Operating expenses rose 88.3 / 79.1 - 1 = 11.6%. Within that, G&A rose 19.8 / 16.2 - 1 = 22.2%. G&A had already risen 36.4 / 28.8 - 1 = 26.4% in FY2025.
-  - Operating income went from 13.3 to -3.7. Net income went from 5.3 to -8.9.
-  - Company Adjusted EBITDA: 29.9 / 39.0 - 1 = -23.3%, with the margin down from 17.2% to 13.4%.
-  - EBITDA: 10.4 / 26.3 - 1 = -60.5%, with the margin down from 11.6% to 4.7%.
-- **Source:**
-  - `data/financials/income_statement.csv`, lines 2 to 18
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7, 11 and 12
-- **Severity:** High
-- **Confidence:** High. Calculated directly.
-- **Deal impact:** Valuation and post-closing integration plan.
-- **Cross-check:** Q1 and Q2 2026 10-Q MD&A on gross margin drivers (component costs, tariffs, warranty, pricing, under-absorbed factory costs). News on competitive pricing.
-
-#### FIN-04: Add-backs reached 65.2% of H1 2026 Adjusted EBITDA, and several "non-recurring" items recur
-- **Finding:** Company Adjusted EBITDA depends more and more on add-backs. Restructuring, patent litigation and implementation delay costs recur or look like normal operating costs. On my basis, LTM EBITDA is 72.6, not the company's 89.7, which is 19.1% lower.
-- **Evidence:**
-  - Add-backs (company Adjusted EBITDA minus EBITDA), and their share of company Adjusted EBITDA:
-    - FY2023: 60.4 - 42.2 = 18.2, or 30.1%
-    - FY2024: 74.8 - 52.3 = 22.5, or 30.1%
-    - FY2025: 98.8 - 64.1 = 34.7, or 35.1%
-    - H1 2026: 29.9 - 10.4 = 19.5, or 65.2%
-    - LTM: 89.7 - 48.2 = 41.5, or 46.3%
-  - Restructuring is added back in every period: 3.1, 4.6, 5.2, 7.9, then 4.4 in H1 2026. That totals 25.2 since FY2022.
-  - Vantor patent litigation costs: 0.8 in FY2024, 2.1 in FY2025 and 3.0 in H1 2026. The H1 2026 figure alone is higher than the whole of FY2025.
-  - "Customer implementation delays" was 4.1 in FY2025: 0.8 in H1 and 3.3 in H2. This reads like a delivery cost.
-  - CFO search costs appear in two periods: 1.1 in FY2025 and 1.4 in H1 2026.
-  - Stock-based compensation (SBC): 17.2 in FY2025, which is 17.4% of company Adjusted EBITDA. In H1 2026 it was 8.9, which is 29.8% of company Adjusted EBITDA and 4.0% of revenue. In FY2025 the company spent 13.3 on buybacks and 4.1 on net share settlement taxes, a total of 17.4. That is about the same as SBC, so SBC behaves like a cash cost.
-  - My adjusted EBITDA removes restructuring, implementation delays and Vantor litigation costs. It keeps the SBC add-back and the genuine one-offs (offering costs, ERP, Lumora deal costs, auditor transition, CFO search, cyber response).
-    - FY2025: 98.8 - 7.9 - 4.1 - 2.1 = 84.7
-    - H1 2026: 29.9 - 4.4 - 3.0 = 22.5
-    - LTM: 89.7 - 9.7 - 3.3 - 4.1 = 72.6, a 14.6% margin
-    - Difference from the company's LTM figure: 17.1 / 89.7 = 19.1%
-    - After also treating SBC as a cost: FY2025 67.5; LTM 72.6 - 17.8 = 54.8
-- **Source:**
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7 to 20, all columns
-  - `data/financials/income_statement.csv`, lines 11 and 22
-  - `data/financials/cash_flow.csv`, lines 17 and 18
-- **Severity:** High
-- **Confidence:** Medium. Which items count as ordinary costs is a judgment. The arithmetic is High confidence.
-- **Deal impact:** Valuation (the EBITDA used for the multiple) and financing (lender EBITDA definitions).
-- **Cross-check:**
-  - Non-GAAP reconciliations in 8-K earnings releases, and any SEC comment letters on non-GAAP measures.
-  - The 10-K restructuring note, to see whether these are multi-year programs.
-  - The Vantor court docket.
-  - The credit agreement EBITDA definition and its add-back caps.
-
-#### FIN-05: Add-back labels show an auditor change, a CFO change, a cyber incident and growing patent litigation
-- **Finding:** Within about 18 months the add-backs record four events: an auditor transition (2.3, FY2025), a CFO transition (2.5 across FY2025 and H1 2026), a cybersecurity incident (1.8, H1 2026) and rising Vantor patent litigation (5.9 in total). The auditor and CFO changes overlap with the Q4 2025 revenue and receivables pattern.
-- **Evidence:**
-  - Auditor transition: 2.3 in FY2025.
-  - Executive search and CFO transition: 1.1 + 1.4 = 2.5.
-  - Cybersecurity incident response: 1.8 in H1 2026.
-  - Vantor litigation: 0.8 + 2.1 + 3.0 = 5.9.
-  - The balance sheet has no separate litigation reserve line, and accrued liabilities fell from 38.5 to 30.5. I cannot tell whether any Vantor liability has been accrued.
-- **Source:**
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 16, 18, 19 and 20
-  - `data/financials/balance_sheet.csv`, line 13
-- **Severity:** High
-- **Confidence:** Medium. The costs are in company data, but what they mean is inferred from the labels only.
-- **Deal impact:** Closing risk, post-closing internal controls, indemnity or R&W insurance scope, and valuation if a restatement occurs.
-- **Cross-check:**
-  - SEC 8-K Item 4.01 for the auditor change, including any disagreements or reportable events.
-  - 8-K Item 5.02 for the CFO departure.
-  - 8-K Item 1.05 for the cyber incident, comparing filing timing with the date of discovery.
-  - 10-K Item 9A for any material weakness.
-  - The Vantor docket: damages sought, injunction risk and trial date.
-  - News coverage of the CFO exit and the cyber incident.
-
-#### FIN-06: Receivables and contract assets ballooned at FY2025 year end, while the credit reserve ratio was cut
-- **Finding:** DSO rose from 63.5 to 86.4 days in FY2025, and to 104.3 days including contract assets. The allowance for credit losses fell from 3.8% to 2.1% of gross receivables. Both point to revenue booked ahead of cash. The allowance was raised back to 3.2% in H1 2026.
-- **Evidence:**
-  - DSO (net receivables / revenue x 365):
-    - FY2023: 61.0 / 368.9 x 365 = 60.4
-    - FY2024: 73.4 / 421.7 x 365 = 63.5
-    - FY2025: 118.9 / 502.3 x 365 = 86.4
-    - June 30, 2026: 104.2 / 498.4 (LTM) x 365 = 76.3, or 104.2 / 445.2 (H1 annualized) x 365 = 85.4
-  - The rise is not only a big-Q4 effect. On Q4 annualized revenue, DSO still rose from 73.4 / 466.4 x 365 = 57.4 to 118.9 / 617.6 x 365 = 70.3.
-  - Including contract assets:
-    - FY2023: 69.1 / 368.9 x 365 = 68.4
-    - FY2024: 83.6 / 421.7 x 365 = 72.4
-    - FY2025: 143.6 / 502.3 x 365 = 104.3
-    - LTM: 123.7 / 498.4 x 365 = 90.6
-  - In FY2025, receivables rose 45.5 / 73.4 = 62.0% and contract assets rose 14.5 / 10.2 = 142.2%, against revenue growth of 19.1%. The combined increase of 60.0 is larger than the 37.8 Q4 revenue increase.
-  - Allowance as a share of gross receivables: 2.5 / 63.5 = 3.9%; 2.9 / 76.3 = 3.8%; 2.6 / 121.5 = 2.1%; 3.4 / 107.6 = 3.2%.
-  - At the FY2024 ratio, the FY2025 allowance would have been 121.5 x 3.8% = 4.6, against 2.6 booked. That is about 2.0 less reserve, which could have flattered FY2025 pre-tax income by up to 2.0.
-  - In H1 2026 the allowance rose by 0.8 even though gross receivables fell by 13.9. That suggests specific credit concerns.
-  - H1 2026 collections: receivables fell 14.7 and contract assets fell 5.2.
-- **Source:**
-  - `data/financials/balance_sheet.csv`, lines 3, 4, 22 and 23
-  - `data/financials/income_statement.csv`, line 5
-  - `data/financials/revenue_quarterly.csv`, lines 5 and 9
-  - `data/financials/cash_flow.csv`, lines 6 and 7
-- **Severity:** High
-- **Confidence:** High for the calculations. Medium for the revenue recognition interpretation.
-- **Deal impact:** Valuation (revenue quality), working capital and net debt at closing, and restatement risk.
-- **Cross-check:**
-  - 10-K and 10-Q receivables aging, the allowance roll-forward, contract asset disclosures and any bill-and-hold policy.
-  - Critical audit matters in the new auditor's report.
-  - News on customer distress, and court records of collection suits.
-
-#### FIN-07: Inventory built up while hardware sales and backlog fell
-- **Finding:** Inventory rose 17.8% in H1 2026. Over the same period hardware revenue fell 12.9% and backlog fell 9.9%. Days inventory rose above 100.
-- **Evidence:**
-  - Inventory: 84.0 / 71.3 - 1 = 17.8%.
-  - DIO (inventory / cost of revenue x 365):
-    - FY2023: 55.2 / 221.0 x 365 = 91.2
-    - FY2024: 63.9 / 249.6 x 365 = 93.4
-    - FY2025: 71.3 / 296.0 x 365 = 87.9
-    - June 30, 2026: 84.0 / 299.9 (LTM) x 365 = 102.2, or 84.0 / 276.0 (H1 annualized) x 365 = 111.1
-  - Inventory / backlog: 0.39, 0.38, 0.54 (71.3 / 131.0), then 0.71 (84.0 / 118.0).
-  - No inventory reserve is disclosed.
-- **Source:**
-  - `data/financials/balance_sheet.csv`, line 5
-  - `data/financials/income_statement.csv`, line 6
-  - `data/financials/kpis.csv`, line 6
-  - `data/financials/cash_flow.csv`, line 8
+  - **Gross margin:**
+    - FY2022 39.0%; FY2023 40.1%; FY2024 40.8%; FY2025 41.1%.
+    - H1 2025: 92.4 / 226.5 = 40.8%. H1 2026: 84.6 / 222.6 = 38.0%.
+  - **Operating expenses:** 79.1 to 88.3 = +11.6%.
+    - G&A: 16.2 to 19.8 = +22.2%.
+    - R&D: +6.6%. Sales and marketing: +6.0%.
+    - Headcount fell 3.2% (1,452 to 1,405) over the same period.
+  - **Operating margin:** FY2025 37.3 / 502.3 = 7.4%; H1 2026 -3.7 / 222.6 = -1.7%.
+  - **EBITDA margin:** H1 2025 11.6%; H1 2026 4.7%.
+  - Segment gross margins are not provided, so I cannot tell whether hardware pricing or software mix is driving the decline.
+- **Source:** `income_statement.csv` (all rows); `kpis.csv` (Full-time employees).
 - **Severity:** Medium
-- **Confidence:** High for the calculations. Medium for the obsolescence risk.
-- **Deal impact:** Valuation (possible write-down), working capital peg and cash.
-- **Cross-check:** The 10-Q inventory note (mix and excess and obsolete reserve). News of a new Talon model or supply chain problems.
+- **Confidence:** High
+- **Deal impact:** Valuation, post-closing (synergy base).
+- **Cross-check:** The 10-Q MD&A explanation of gross margin (pricing, warranty, freight, mix). What drives G&A, for example legal, audit, cyber or CFO transition costs.
 
-#### FIN-08: Cash conversion collapsed and free cash flow has been negative for 18 months
-- **Finding:** OCF fell from 78.0% of EBITDA in FY2024 to 15.1% in FY2025, and was negative in H1 2026. LTM free cash flow is -26.4.
+#### FIN-11: Inventory is building while hardware sales and backlog fall
+- **Finding:** Inventory rose 17.8% in H1 2026 to $84.0m, while hardware revenue fell 12.9% and backlog fell 9.9%. Days inventory rose to about 111. This points to obsolescence or write-down risk.
 - **Evidence:**
-  - OCF / net income: 30.8 / 11.5 = 2.68x; 40.8 / 15.2 = 2.68x; 9.7 / 18.6 = 0.52x. H1 2026 OCF was -4.2 on a net loss of 8.9.
-  - OCF / EBITDA: 73.0%, 78.0%, 9.7 / 64.1 = 15.1%. H1 2026: -4.2 / 10.4 = -40.4%. LTM: -6.9 / 48.2 = -14.3%.
-  - OCF / company Adjusted EBITDA: 51.0%, 54.5%, 9.8%. LTM: -6.9 / 89.7 = -7.7%.
-  - Free cash flow: 16.2, 24.6, -10.1. H1 2026: -13.0. LTM: -10.1 - 3.3 + (-13.0) = -26.4.
-  - FY2025 working capital outflow was 51.7, made up of receivables -45.5, contract assets -14.5, inventory -7.4 and payables and other +15.7. Of that, 38.0 fell in H2 2025 (51.7 - 13.7), and H2 2025 OCF was 9.7 - 12.4 = -2.7.
-  - H1 2026 working capital outflow was 15.4. Receivables (+14.7) and contract assets (+5.2) were inflows. Inventory (-12.7) and payables and accruals (-22.6) were outflows.
-- **Source:**
-  - `data/financials/cash_flow.csv`, lines 2 to 12 and 24
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7 and 11
-- **Severity:** High
-- **Confidence:** High. Calculated directly.
-- **Deal impact:** Valuation, financing (Arbelion funds the cash burn) and post-closing.
-- **Cross-check:** The liquidity section and risk factors in the 10-Q. News on supplier payment problems.
-
-#### FIN-09: Leverage is 4.0x to 4.7x on reported EBITDA, interest cover is thin, and the revolver is funding the cash burn
-- **Finding:** Net debt rose to 193.6. Leverage looks moderate on company Adjusted EBITDA (2.2x) but high on EBITDA (4.0x net, 4.7x total). H1 2026 EBITDA covered interest only 1.3x. Cash alone lasts about 11.5 months without more revolver draws.
-- **Evidence:**
-  - Net debt: 120.0 - 54.8 = 65.2; 200.0 - 48.3 = 151.7; 220.0 - 41.6 = 178.4; 227.5 - 33.9 = 193.6.
-  - LTM leverage:
-    - Net debt / company Adjusted EBITDA: 193.6 / 89.7 = 2.2x
-    - Net debt / EBITDA: 193.6 / 48.2 = 4.0x
-    - Total debt / EBITDA: 227.5 / 48.2 = 4.7x
-    - On my adjusted 72.6: 2.7x net, 3.1x total
-  - EBITDA / interest: 5.7x, 5.3x, 4.7x. H1 2026: 10.4 / 7.9 = 1.3x. LTM: 48.2 / 14.9 = 3.2x.
-  - Operating income / interest: LTM 20.3 / 14.9 = 1.4x. H1 2026 was negative.
-  - Implied interest rate: 9.8 / 160.0 = 6.1% in FY2024; 13.6 / 210.0 = 6.5% in FY2025; 15.8 / 223.75 = 7.1% annualized in H1 2026.
-  - The revolver went 0.0, 10.0, 35.0, 45.0. All 25.0 of the FY2025 draw came in H2 2025, because the H1 2025 revolver line is 0.0.
-  - Cash runway: H1 2026 outflows before revolver draws were 13.0 free cash flow + 2.5 term loan + 1.5 share settlement taxes + 0.7 finance lease and other = 17.7, or 2.95 per month. 33.9 / 2.95 = 11.5 months.
-  - Net debt rose 15.2 in H1 2026. If H2 2026 repeats that, net debt reaches about 208.8 by December 31, 2026. Because the offer is a fixed price per share, Arbelion would absorb that through a higher EV.
-- **Source:**
-  - `data/financials/balance_sheet.csv`, lines 2, 16 and 17
-  - `data/financials/cash_flow.csv`, lines 11 to 21
-  - `data/financials/income_statement.csv`, lines 13 and 14
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7 and 11
-- **Severity:** High
-- **Confidence:** High for the ratios. Medium for the runway, which is extrapolated and does not know the revolver size.
-- **Deal impact:** Financing (refinancing at closing, change-of-control clauses), closing risk (a covenant breach before closing) and valuation (net debt at closing).
-- **Cross-check:**
-  - The credit agreement and any amendments or waivers (8-K Items 1.01 and 2.03, plus 10-K exhibits).
-  - Covenant definitions, EBITDA add-back caps, revolver commitment, maturities and pricing grid.
-  - The lead agent should send me the covenant definitions so I can test headroom.
-
-#### FIN-10: Share buybacks were funded with debt while free cash flow was negative
-- **Finding:** Over FY2023 to FY2025 the company spent 65.3 net on buybacks and net share settlement, against free cash flow of 30.7. In H2 2025 it bought back 7.3 of stock while OCF was negative and it drew 25.0 on the revolver.
-- **Evidence:**
-  - Buybacks: 20.0 + 25.0 + 13.3 = 58.3. Plus share settlement taxes of 10.4, less option proceeds of 3.4, gives 65.3 net.
-  - Free cash flow over the same years: 16.2 + 24.6 - 10.1 = 30.7. Shortfall: 34.6.
-  - H2 2025 buybacks: 13.3 - 6.0 = 7.3.
-  - Cash was held almost flat, at 41.5 on June 30, 2025 and 41.6 on December 31, 2025.
-  - Diluted shares still rose from 45.2 to 48.3, an increase of 6.9%.
-- **Source:**
-  - `data/financials/cash_flow.csv`, lines 16 to 19 and 22 to 24
-  - `data/financials/income_statement.csv`, line 19
+  - **Inventory:** 71.3 to 84.0 (84.0 / 71.3 = +17.8%).
+  - **DIO** (inventory / cost of revenue x 365):
+    - FY2023: 55.2 / 221.0 x 365 = 91.2.
+    - FY2024: 63.9 / 249.6 x 365 = 93.4.
+    - FY2025: 71.3 / 296.0 x 365 = 87.9.
+    - June 2026: 84.0 / (138.0 x 2) x 365 = 111.1.
+  - **Backlog:** 131.0 to 118.0.
+  - **Cash effect:** the inventory build was a 12.7 cash outflow in H1 2026.
+- **Source:** `balance_sheet.csv` (Inventory); `income_statement.csv` (Cost of revenue); `kpis.csv` (backlog); `cash_flow.csv` (Change in inventory).
 - **Severity:** Medium
-- **Confidence:** High. Calculated directly.
-- **Deal impact:** Governance (IC question 5) and interim operating covenants (no buybacks before closing).
-- **Cross-check:** Board buyback authorizations (8-K and proxy). Form 4 insider sales during H2 2025.
+- **Confidence:** High for the figures. Medium for the write-down risk, because no inventory aging or reserve was provided.
+- **Deal impact:** Valuation, working capital peg.
+- **Cross-check:** The inventory reserve policy and any write-downs in the 10-Q. Supplier or component news, for example a product transition that would make stock obsolete.
 
-#### FIN-11: Norvale is 31.1% of revenue and explains 47.3% of FY2025 growth
-- **Finding:** Concentration rose, and all of the increase came from Norvale. Revenue excluding Norvale grew 14.0%, the same as the Q1 to Q3 2025 rate. Norvale's 38.1 increase almost equals the 37.8 Q4 spike. That is consistent with Norvale driving Q4 2025, but it does not prove it.
+#### FIN-12: Hardware revenue per robot fell about 12% in FY2025, despite a 30% unit surge
+- **Finding:** FY2025 units rose 30.3%, but hardware revenue rose only 15.1%. This suggests discounting or large-customer pricing, possibly linked to the Norvale rollout and the Q4 spike.
 - **Evidence:**
-  - Norvale share: 118.1 / 421.7 = 28.0% in FY2024; 156.2 / 502.3 = 31.1% in FY2025. Growth: 38.1 / 118.1 = 32.3%.
-  - Norvale's share of total FY2025 growth: 38.1 / 80.6 = 47.3%.
-  - Revenue excluding Norvale: 346.1 / 303.6 - 1 = 14.0%.
-  - Top 10 customers: 249.6, or 59.2%, then 308.8, or 61.5%. Customers 2 to 10 actually fell, from 131.5 / 421.7 = 31.2% to 152.6 / 502.3 = 30.4%. Top 3: 226.3 / 502.3 = 45.1%.
-  - Illustration only: if Norvale carries the average gross margin, losing it would cost about 156.2 x 41.1% = 64.2 of gross profit. That is more than LTM EBITDA of 48.2.
-  - The pack has no H1 2026 customer data.
-- **Source:**
-  - `data/financials/revenue_by_customer.csv`, lines 2 to 13
-  - `data/financials/revenue_quarterly.csv`, lines 2 to 9
-- **Severity:** High. Raise to Critical if news or litigation show the Norvale relationship is at risk.
-- **Confidence:** High for the calculations. Medium for the link to Q4 2025.
-- **Deal impact:** Valuation, post-closing risk, and a possible closing condition (customer consent or change-of-control terms).
-- **Cross-check:**
-  - 10-K major customer disclosures and risk factors.
-  - Norvale contract terms: renewal date, termination for convenience, change of control.
-  - News on Norvale's vendor choices and financial health.
-  - Court records for any Norvale v. Talonfield dispute.
-
-#### FIN-12: Leading indicators contradict the reported growth: backlog, retention, new ARR, customers and headcount all weakened
-- **Finding:** Hardware backlog is down 29.8% from its peak. Implied hardware book-to-bill has been below 1.0x since FY2025. Retention fell 7 points in six months. Net new ARR slowed to about half its FY2025 pace. Customer growth nearly stopped and headcount fell.
-- **Evidence:**
-  - Backlog: 142.0, 168.0, 131.0 (-22.0%), 118.0 (-9.9%). Down 50.0 / 168.0 = 29.8% from the peak.
-  - Implied hardware orders (hardware revenue + change in backlog):
-    - FY2024: 261.9 + 26.0 = 287.9, a 1.10x book-to-bill
-    - FY2025: 301.4 - 37.0 = 264.4, a 0.88x book-to-bill
-    - H1 2026: 116.9 - 13.0 = 103.9, a 0.89x book-to-bill
-    - FY2025 orders fell 8.2% while hardware revenue grew 15.1%.
-  - Net revenue retention: 121%, 119%, 118%, 111%.
-  - Net new ARR: 23.5 in FY2024; 29.7 in FY2025; 7.6 in H1 2026, which annualizes to 15.2, or 51.2% of the FY2025 pace.
-  - Active customers: +17.0%, +11.3%, then +1.8% in H1 2026 (5 / 276).
-  - Employees: +17.8%, +4.5%, then -3.2% in H1 2026 (-47).
-- **Source:** `data/financials/kpis.csv`, lines 2, 3, 6, 7 and 8; `data/financials/income_statement.csv`, line 2
-- **Severity:** High
-- **Confidence:** High for the KPIs. Medium for implied orders, which assume backlog covers hardware only and has no cancellations.
-- **Deal impact:** Valuation (forecast credibility).
-- **Cross-check:** Backlog definition and cancellations in the 10-K and 10-Q. The March 2026 investor day deck. News on lost deals or customers pausing spending. WARN notices for the headcount cuts.
-
-#### FIN-13: Software revenue fell behind ARR in H1 2026, and deferred revenue fell
-- **Finding:** Software revenue used to run about 3.4% to 3.5% above average ARR. In H1 2026 it ran 5.6% below. H1 2026 software revenue was lower than H2 2025, even though ARR rose. Deferred revenue fell 11.8%. ARR may include subscriptions that are contracted but not yet live, or its definition may have changed.
-- **Evidence:**
-  - Software revenue / average ARR:
-    - FY2024: 101.2 / 97.75 = 1.035
-    - FY2025: 128.6 / 124.35 = 1.034
-    - H1 2026: 135.0 (67.5 x 2) / 143.0 = 0.944
-  - H1 2026 software revenue of 67.5 was below H2 2025's 69.7 (128.6 - 58.9), a fall of 3.2%. Over the same period ARR rose 5.5%.
-  - Deferred revenue (current + non-current): 38.1, 48.0, 56.9, then 50.2, down 6.7 / 56.9 = 11.8%.
-  - Caveat: deferred revenue may be seasonal, and the pack has no June 30, 2025 balance sheet to compare against.
-- **Source:**
-  - `data/financials/kpis.csv`, line 2
-  - `data/financials/income_statement.csv`, line 3
-  - `data/financials/balance_sheet.csv`, lines 14 and 15
+  - **Hardware revenue per unit:**
+    - FY2023: 236.0 / 3,020 = $78.1k.
+    - FY2024: 261.9 / 3,300 = $79.4k.
+    - FY2025: 301.4 / 4,300 = $70.1k (-11.7%).
+    - H1 2026: 116.9 / 1,640 = $71.3k.
+  - **Installed base:** reconciles each year (e.g. 13,100 + 4,300 = 17,400). This implies no units retired.
+- **Source:** `kpis.csv` (Robots shipped, Installed base); `income_statement.csv` (Revenue: Hardware).
 - **Severity:** Medium
-- **Confidence:** Medium. The interpretation depends on the ARR definition.
-- **Deal impact:** Valuation, because the software growth story is the core of the premium.
-- **Cross-check:** The ARR definition in the 10-K and investor day deck, and any change to it. SEC comment letters on KPIs.
+- **Confidence:** Medium. Hardware revenue may include items other than robots.
+- **Deal impact:** Valuation (price and margin sustainability).
+- **Cross-check:** Norvale contract pricing terms. Any volume rebates disclosed. News on price competition.
 
-#### FIN-14: The deal model's management case is stale. On current results the offer is 15.1x LTM Adjusted EBITDA, not 11.5x
-- **Finding:** The brief's mechanics recompute correctly, but the inputs no longer hold. Reaching the US$118.0 million case would need H2 2026 Adjusted EBITDA up 47.3% year over year. At the model's own 11.5x on LTM, the shares are worth about US$17.35, below the unaffected price of US$17.85.
+#### FIN-13: Share buybacks were funded with debt while free cash flow was negative
+- **Finding:** In FY2025 Talonfield repurchased $13.3m of stock and paid $4.1m of taxes on net share settlement. Free cash flow was -$10.1m that year, and the revolver was drawn by $25.0m. The FY2024 buyback of $25.0m was made in the same year as $80.0m of new borrowing.
 - **Evidence:**
-  - Brief recompute:
-    - Equity value: 24.00 x 48.3 = 1,159.2
-    - Premium: 24.00 / 17.85 - 1 = 34.5%
-    - Net debt at June 30, 2026: 193.6
-    - EV: 1,352.8
-    - EV / FY2026E Adjusted EBITDA of 118.0: 11.5x
-    - EV / FY2026E revenue of 560.0: 2.4x
-  - EV against actual results:
-    - FY2025 company Adjusted EBITDA (98.8): 13.7x
-    - LTM company Adjusted EBITDA (89.7): 15.1x
-    - H1 2026 annualized Adjusted EBITDA (59.8): 22.6x
-    - LTM analyst-adjusted EBITDA (72.6): 18.6x
-    - LTM EBITDA (48.2): 28.1x
-    - LTM revenue: 2.7x
-  - What the case needs in H2 2026:
-    - Revenue: 560.0 - 222.6 = 337.4. That is up 22.3% on H2 2025 (275.8) and averages 168.7 a quarter, above the record Q4 2025 of 154.4.
-    - Adjusted EBITDA: 118.0 - 29.9 = 88.1. That is up 47.3% on H2 2025 (59.8), at a 26.1% margin, against 21.7% in H2 2025 and 13.4% in H1 2026.
-  - Hardware test. Assumption: software and services grow at their H1 2026 rates for FY2026, giving 147.4 and 82.7. Implied hardware is 329.9, which needs 213.0 in H2 2026, up 27.4% on 167.2. June 30 backlog of 118.0 covers only 55.4% of that.
-  - At 11.5x:
-    - LTM company Adjusted EBITDA: 89.7 x 11.5 = 1,031.6 EV; less 193.6 net debt = 838.0 equity; / 48.3 = US$17.35 per share, 27.7% below the offer.
-    - LTM analyst-adjusted EBITDA: 72.6 x 11.5 = 834.9 EV; 641.3 equity; US$13.28 per share, 44.7% below the offer.
-  - Sensitivity: each 1.0 of EBITDA is worth 11.5 of EV, or US$0.24 per share. The gap from 118.0 to 89.7 is 28.3. 28.3 x 11.5 = 325.5 of EV, or US$6.74 per share, which is 24.1% of the deal EV.
-  - Synergies of 35.0 equal 39.0% of LTM company Adjusted EBITDA and 34.9% of LTM sales, marketing and G&A (100.4). EV / (89.7 + 35.0) = 10.8x, so the price already pays away most of the synergies.
-  - EV bridge gaps:
-    - Net debt excludes finance leases (0.7 paid in H1 2026), any litigation accrual, restructuring accruals, transaction costs and change-of-control payments.
-    - It also excludes the cash burn until closing.
-    - Q3 2026 ended on September 30 but is not in the pack.
-- **Source:**
-  - `data/deal-brief.md`, "The deal" and "Valuation basis"
-  - `data/financials/adjusted_ebitda_reconciliation.csv`, lines 7 and 11
-  - `data/financials/balance_sheet.csv`, lines 2, 16 and 17
-  - `data/financials/income_statement.csv`, lines 2 to 5, 9 and 10
-  - `data/financials/kpis.csv`, line 6
-- **Severity:** Critical. The value gap is above 10% on every measure.
-- **Confidence:** High for the math. Medium for the scenarios and forecasts.
-- **Deal impact:** Valuation and price, and the IC decision.
+  - FY2025 financing: -5.0 + 25.0 - 13.3 - 4.1 + 0.8 = 3.4.
+  - FY2025 cash outflows: free cash flow -10.1 plus buybacks and withholding taxes of 17.4 = 27.5. This was largely funded by the net 20.0 debt increase and a 6.7 fall in cash.
+  - No repurchases were made in H1 2026.
+- **Source:** `cash_flow.csv` (Repurchases, Revolver, Term loan, Memo FCF).
+- **Severity:** Medium
+- **Confidence:** High
+- **Deal impact:** Governance (capital allocation), financing.
+- **Cross-check:** Board buyback authorizations in the filings. Insider share sales around the buybacks (Form 4). Proxy statement compensation metrics tied to EPS.
+
+#### FIN-14: The add-back schedule points to events that need a disclosure check
+- **Finding:** The Adjusted EBITDA detail lists a cybersecurity incident ($1.8m, H1 2026), a CFO transition ($1.1m FY2025 and $1.4m H1 2026), an auditor transition ($2.3m, FY2025) and Vantor patent litigation ($5.9m cumulative). Each is a governance or legal signal, not only a cost item.
+- **Evidence:**
+  - Vantor litigation cumulative: 0.8 + 2.1 + 3.0 = 5.9.
+  - The other amounts are taken directly from the detail rows.
+- **Source:** `adjusted_ebitda_reconciliation.csv` (Detail rows 16 to 20).
+- **Severity:** Medium. This may be raised once the other workstreams report.
+- **Confidence:** High that the costs exist. Low on the underlying facts from this data.
+- **Deal impact:** Closing risk, indemnity, internal controls.
 - **Cross-check:**
-  - The March 2026 investor day deck, and any guidance change in the Q1 and Q2 2026 earnings 8-Ks.
-  - Q3 2026 results.
-  - News on guidance cuts or analyst consensus.
+  - 8-K Item 1.05 (cyber), Item 5.02 (CFO) and Item 4.01 (auditor change, including any reported disagreements or material weakness), and their timing against the events.
+  - Court records for Vantor (claimed damages, injunction risk).
 
-#### FIN-15: Goodwill from the Lumora deal and negative tangible equity
-- **Finding:** Lumora added 57.4 of goodwill, bought for 85.0 cash and largely debt-funded. Tangible equity has been negative since FY2024. The H1 2026 losses raise the risk of a reporting-unit impairment.
+#### FIN-15: Tangible equity is negative, and goodwill from the Lumora deal is exposed to impairment
+- **Finding:** Goodwill plus intangibles of $132.5m exceed equity of $92.0m. The H1 2026 loss and falling backlog raise the risk of a goodwill impairment test. Lumora's revenue contribution to FY2024 and FY2025 growth is not disclosed in the data, so organic growth cannot be isolated.
 - **Evidence:**
-  - Goodwill went from 41.0 to 98.4. Lumora consideration was 85.0, and the term loan rose 70.0.
-  - Tangible equity: 71.3 - 41.0 - 21.1 = 9.2; then -67.5; then -42.1; at June 30, 2026, 92.0 - 98.4 - 34.1 = -40.5.
-  - Market capitalization at US$17.85 is 862.2, well above book equity, so an impairment trigger at company level is unlikely.
-- **Source:**
-  - `data/financials/balance_sheet.csv`, lines 8, 9, 17 and 20
-  - `data/financials/cash_flow.csv`, lines 13 and 15
+  - Goodwill plus intangibles at June 2026 = 98.4 + 34.1 = 132.5. Tangible equity = 92.0 - 132.5 = -40.5.
+  - Lumora was bought for 85.0 in FY2024. Goodwill rose 57.4 that year (41.0 to 98.4).
+- **Source:** `balance_sheet.csv` (Goodwill, Intangibles, Equity); `cash_flow.csv` (Acquisition of Lumora Vision).
 - **Severity:** Low
-- **Confidence:** Medium
-- **Deal impact:** Post-closing (purchase price allocation, impairment).
-- **Cross-check:** The 10-K goodwill note, the Lumora purchase price allocation, and Lumora's performance against its acquisition case.
+- **Confidence:** High for the figures. Low for impairment.
+- **Deal impact:** Accounting and purchase price allocation (PPA). The organic growth picture.
+- **Cross-check:** Lumora purchase price allocation and revenue contribution in the 10-K acquisition note. Impairment testing disclosures.
 
-#### FIN-16: Reported D&A is higher than the asset roll-forward supports
-- **Finding:** D&A exceeds what the fixed asset and intangible movements imply, by 5.7 in FY2025 and 3.3 in H1 2026. If D&A includes amortization of costs that are really operating costs, EBITDA is flattered.
+#### FIN-16: The D&A roll-forward does not reconcile, and capitalized costs are not disclosed
+- **Finding:** Depreciation implied by the PP&E and intangibles movements is about $5.7m less than reported D&A in FY2025, and about $3.3m less in H1 2026. Capitalized software or other assets may sit outside the visible lines. There is no data on capitalized development costs.
 - **Evidence:**
-  - FY2025 implied D&A = capex 19.8 - net change in (PP&E + intangibles) of (4.9 - 6.2) = 21.1, against 26.8 reported.
-  - H1 2026 implied D&A = 8.8 - (1.1 - 3.1) = 10.8, against 14.1 reported.
-  - Possible benign explanations: robots moved from inventory into PP&E, disposals, or amortization of capitalized contract costs.
-- **Source:**
-  - `data/financials/balance_sheet.csv`, lines 7 and 9
-  - `data/financials/cash_flow.csv`, lines 3 and 12
+  - **FY2025:**
+    - Implied PP&E depreciation = 47.1 + 19.8 - 52.0 = 14.9.
+    - Intangible amortization = 43.4 - 37.2 = 6.2.
+    - Sum 21.1 against reported D&A of 26.8, a gap of 5.7.
+  - **H1 2026:**
+    - Implied depreciation = 52.0 + 8.8 - 53.1 = 7.7.
+    - Amortization = 3.1.
+    - Sum 10.8 against reported D&A of 14.1, a gap of 3.3.
+  - **Caveats:** disposals, leases and capitalized items may explain the gap.
+  - **Capex intensity:** stable at about 4% of revenue (FY2025 19.8 / 502.3 = 3.9%).
+- **Source:** `balance_sheet.csv` (PP&E, Intangibles); `cash_flow.csv` (Capex, D&A); `income_statement.csv` (Memo D&A).
 - **Severity:** Low
-- **Confidence:** Low. Directional only, because the pack has no roll-forward.
-- **Deal impact:** Valuation (EBITDA definition).
-- **Cross-check:** The 10-K PP&E and intangibles notes, the D&A breakdown and the capitalization policies.
+- **Confidence:** Medium, because the cause of the gap is unknown.
+- **Deal impact:** Earnings quality (capitalization inflates EBITDA).
+- **Cross-check:** The capitalized software policy and the fixed-asset roll-forward in the 10-K.
+
+#### FIN-17: The 48.3m diluted share count may understate dilution at $24.00
+- **Finding:** H1 2026 diluted shares (48.3m) are reported in a loss period, so they probably exclude dilutive awards. At a $24.00 cash price, in-the-money options and RSUs could add to the equity value. The size is unknown.
+- **Evidence:**
+  - Diluted EPS -8.9 / 48.3 = -0.18, which matches the reported figure.
+  - FY2025 diluted shares were 47.8m. SBC of 17.2 a year suggests a meaningful pool of awards.
+- **Source:** `income_statement.csv` (Diluted shares, Diluted EPS, Memo SBC).
+- **Severity:** Low
+- **Confidence:** Low, directional only.
+- **Deal impact:** Valuation (equity value bridge).
+- **Cross-check:** The equity award table in the 10-K or proxy. Treasury-method dilution at $24.00.
 
 ### Positive or mitigating points
 
-- **The statements are internally consistent.** All periods tie: balance sheet, cash flow, equity roll-forward and the EBITDA reconciliation.
-- **Recurring revenue is still growing.** Software and services were 105.7 in H1 2026 against 92.3 in H1 2025, up 14.5%. Their share of revenue rose to 47.5%. Software alone grew 14.6%.
-- **The software base is intact.** ARR is still growing (146.8) and retention is still above 100% (111%). The installed base grew 9.4% in H1 2026 to 19,040 robots, which supports future software and service revenue.
-- **Some Q4 2025 receivables turned into cash.** Receivables fell 14.7 and contract assets 5.2 in H1 2026. This lowers, but does not remove, the revenue recognition concern. The allowance was also raised to 3.2%.
-- **Leverage on the company's own Adjusted EBITDA is moderate** at 2.2x net. The term loan amortizes slowly (5.0 a year) and Arbelion would likely refinance it at closing.
-- **The deal brief's mechanics are correct:** 1,159.2 equity value, 1,352.8 EV and 11.5x. Only the inputs are stale.
-- **The H1 2026 restructuring may lower the cost base.** Headcount fell by 47.
+- **Software and services are growing.** FieldOS revenue rose 14.6% and services 14.4% in H1 2026. ARR reached $146.8m, and software is now 30.3% of revenue (67.5 / 222.6), up from 26.0% in H1 2025 (58.9 / 226.5).
+- **Recurring revenue base.** Software ARR of $146.8m plus services gives a base that does not depend on hardware orders. NRR of 111% is still above 100%.
+- **Collections started in H1 2026.** AR fell by $14.7m and contract assets by $5.2m from the December 2025 peak.
+- **Leverage is moderate on the company's own measure.** Net debt / LTM Adjusted EBITDA is 2.16x, and the term loan is amortizing (190.0 to 182.5).
+- **The data is internally consistent.** Every statement reconciles (see Files reviewed), and no embedded instructions were found.
+- **Cost action under way.** Headcount fell 47 in H1 2026, which may support H2 margins.
+- **The deal model's net debt figure is current.** My EV of 1,352.8 reproduces the brief's 11.5x. The problem is the EBITDA base, not the debt figure.
 
 ### Gaps and questions for management
 
-1. **Latest results and forecast.** Q3 2026 results, the current FY2026 forecast, and a bridge from the March 2026 investor day case to actual results.
-2. **Q4 2025 revenue.** Quarterly revenue by segment and by customer, Q1 2024 to Q3 2026, including Norvale. The largest Q4 2025 transactions, and any bill-and-hold, side letters, extended terms or acceptance clauses.
-3. **Norvale.** The contract terms (renewal, termination, change of control, volume commitments) and H1 2026 Norvale revenue.
-4. **Receivables.** Receivables and contract asset aging at December 31, 2025 and June 30, 2026, the allowance roll-forward, specific reserves, and collections since June 30.
-5. **Add-backs.**
-   - Map each Adjusted EBITDA add-back to its income statement line.
-   - Confirm there is no double counting between "Restructuring and other charges" and "Other non-recurring items".
-   - Explain what "customer implementation delays" are, and whether any were credits against revenue.
-   - Give the history of the restructuring programs.
-6. **Credit agreement.** Covenant definitions and headroom, compliance certificates, revolver size and availability, maturities, pricing grid, change-of-control clause, and any amendments or waivers.
-7. **Cash forecast.** A 13-week cash forecast and a forecast through closing, plus the minimum operating cash level.
-8. **ARR and retention.**
-   - The ARR definition and any changes to it.
-   - An ARR bridge showing new, expansion, contraction and churn.
-   - Gross retention.
-   - Any ARR that is not yet live.
-   - Whether the installed base counts retired robots. The base equals cumulative shipments exactly, which implies zero retirements.
-9. **Backlog.** The backlog definition, cancellations, aging, and Q3 2026 bookings.
-10. **Inventory.** Inventory mix, the excess and obsolete reserve, and any product transitions.
-11. **Margins.** Segment gross margins and the drivers of the H1 2026 gross margin decline.
-12. **Fixed assets and D&A.** Fixed asset and intangible roll-forwards, the D&A breakdown, capitalized software and contract costs, and any robots moved from inventory into PP&E.
-13. **Governance events.** The reasons for the auditor change and any disagreements, the circumstances of the CFO departure, and the cyber incident's scope, cost, insurance cover and impact on operations.
-14. **Vantor case.** Status, damages claimed, any reserve, possible royalty exposure, and the legal cost forecast.
-15. **Buybacks.** The board's rationale for buying back stock in H2 2025 while drawing on the revolver.
-16. **Share count and EV bridge.** The fully diluted share count at US$24.00, including acceleration on change of control. A list of debt-like items: finance leases, restructuring accruals, bonuses and transaction costs.
-17. **Missing data.** The H1 2025 working capital detail (blank in `cash_flow.csv`, lines 6 to 9) and a June 30, 2025 balance sheet to test seasonality.
-18. **Quality of earnings report.** Not yet received.
-19. **Lumora.** Revenue contribution and goodwill impairment testing.
-20. **Synergies.** The build-up of the US$35.0 million synergy estimate, and any overlap with savings from the H1 2026 restructuring.
+1. Quarterly revenue by segment and by customer for Q4 2025 to Q2 2026. What made up the $154.4m in Q4 2025, and how much was Norvale? Were there any bill-and-hold, early delivery or acceptance-waiver arrangements?
+2. Norvale H1 2026 revenue, the contract term, renewal date, change-of-control and termination clauses, and its AR balance at December 2025 and June 2026.
+3. AR aging at December 2025 and June 2026. What drives contract assets? Why was the allowance cut in FY2025?
+4. The credit agreement: covenant definitions (which EBITDA), maximum leverage and minimum interest cover, revolver commitment and availability, maturities, any 2026 amendments or waivers, and change-of-control terms.
+5. An updated FY2026 forecast against the March 2026 case of $560.0m / $118.0m. What supports H2 revenue of $337.4m (+22.3% year over year)?
+6. Backlog definition, order intake by quarter, and cancellations.
+7. Segment gross margins, and what drove the gross margin fall to 38.0%.
+8. Support for each Adjusted EBITDA add-back. Why are restructuring and "customer implementation delays" treated as non-recurring? What is the budget for Vantor litigation costs until the case ends?
+9. Inventory aging, reserves, and the reason for the H1 2026 build.
+10. ARR, NRR, gross retention and churn definitions, and logo churn by quarter.
+11. Lumora revenue and EBITDA contribution in FY2024 and FY2025 (organic growth).
+12. The capitalized software and development cost policy and amounts, and a fixed-asset and D&A roll-forward.
+13. The June 30, 2025 balance sheet, for year-over-year working capital and deferred revenue comparisons.
+14. The full equity award schedule (options, RSUs, PSUs) for a fully diluted share count at $24.00.
+15. Lease liabilities and other debt-like items (earn-outs, litigation accruals) for the EV bridge.
+16. A quality of earnings report (not yet received, per `data/financials/README.md`).
+
+Source files: all in `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/financials/`, plus `/Users/sabinejoseph/Documents/Claude/M&A/Project-Falcon-handoff/falcon_m-a_due_diligence/data/deal-brief.md`.

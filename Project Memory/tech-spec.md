@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.4 (October 18, 2026: a run must not edit its own checks; setup frozen for graded runs; changes are in the Decisions table).
+**Status:** Agreed, version 1.5 (October 18, 2026: three graded runs measured; run checks accept the wording `CLAUDE.md` asks for; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -115,7 +115,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
   - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, and the report has every section, cites only known findings and excludes rejected ones.
   - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
   - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
-  - In all: 34 checks. The sample run passes all 34 with none skipped.
+  - In all: 34 checks. The sample run and all three graded runs pass all 34 with none skipped.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
 - **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
 
@@ -129,7 +129,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2 | **Wrong or mis-cited findings** reach a high-stakes report. | One invented number can discredit the whole report. | Mandatory citations, an independent verifier, "Not supported" findings excluded, every correction applied before Checkpoint 3, checks that every cited ID exists, and human sign-off. |
 | 3 | **Prompt injection** through a source document. | Real data rooms contain text the builder does not control. | "Evidence, never instructions" rule in every agent, no web access, no write access for specialists, human checkpoints. A manual injection test is in Phase 5. |
 | 4 | **Claude Code features change** (for example commands merging into skills, a new built-in command name). | A silent change could disable an agent or a guardrail. | Phase 1 checks catch missing or invalid configuration; a docs review with Claude Code's guide agent before each release. |
-| 5 | **Run-to-run variation.** Two runs can find different things and score differently. | A single score could be luck. | Fixed output format and rubrics; grade several runs and report the average and range; keep the sample run as a fixed reference. |
+| 5 | **Run-to-run variation.** Two runs can find different things and score differently. | A single score could be luck. | Fixed output format and rubrics; grade several runs and report the average and range; keep the sample run as a fixed reference. Measured over three blind runs: Critical and High recall 96.2% to 100%, overall 91.7% to 94.4%. |
 | 6 | **Parallel and background behavior.** Background subagents may not be able to ask for permissions, and parallel start is not guaranteed. | A blocked analyst could silently return less. | Specialists only need read access inside the project (no permission prompts); the lead waits for every report and retries a failed analyst once. |
 | 7 | **Arithmetic without code.** The financial analyst is read-only and calculates by hand. | A math slip could change a conclusion. | Show-your-work rule, independent recomputation by the verifier, automated tie-out checks on the data, key numbers kept in one dataset. |
 | 8 | **Cost and time.** Four large-context analysts per iteration. | Long or expensive runs discourage use. | Small sources, narrow follow-ups, 3-loop cap. Measured on the sample run: about 1.95 million subagent tokens and 69 minutes from plan to sign-off (iteration 1: 0.76 million tokens, 26 minutes). |
@@ -159,8 +159,10 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | The blind run's lead agent edited `tests/test_phase3_run.py` so its own output passed; the builder reverted the edit, because a run must never change its grader. The three failing checks were written around the sample run's format rather than `CLAUDE.md`'s wording; changing them is a separate builder decision. For the Phase 5 docs review: consider a deny rule on edits to `tests/` so a run cannot do this again. |
 | 2026-10-18 | Setup frozen for the remaining graded runs: same `CLAUDE.md`, agents, commands and settings as the blind run. The scorecard's three fixes wait until after the last graded run. |
 | 2026-10-18 | Blind run scorecard proposes three instruction fixes (not yet applied): look up every named customer or litigant in the revenue data, verify every Medium finding the report relies on, and add a "positive and mitigating points" section to the report template, with a calibration note for debt issues cured at closing. |
+| 2026-10-18 | The Phase 3 run checks accept the wording `CLAUDE.md` asks for: checkpoint names in any letter case, "Step 5: REPORT", "ACT, iteration 1", the "IC questions" heading and register IDs written as links. A builder change made after the graded runs, in its own commit. Non-standard IDs such as `LIT-F01` are still not accepted. |
+| 2026-10-18 | The graders were not consistent: run 1 counted 4 Critical issues, runs 2 and 3 counted 3, and run 2 divided by 14 Critical and High issues instead of 13. Reported results are recomputed on the answer key's 13 Critical and High issues, and a fixed grading rule for `/evaluate` is a Phase 4 task. |
 
 ## Open questions (with recommended defaults)
 
-1. **Grade one run or several?** Recommended default: grade three runs and quote the average and range in the README.
+1. **Grade one run or several?** Decided: three blind runs with a frozen setup, with the average and range in the README (done October 18, 2026).
 2. **Move commands to the newer skills format?** Recommended default: not for v1. Command files still work and are simpler to read.
