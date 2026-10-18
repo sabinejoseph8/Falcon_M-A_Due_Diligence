@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.0 (October 18, 2026: you asked to proceed to the tech spec and progress plan).
+**Status:** Agreed, version 1.1 (October 18, 2026: updated after the first test run; changes are in the Decisions table).
 
 ## Overview
 
@@ -70,13 +70,13 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R6.** Every finding has an ID, a severity (Critical, High, Medium, Low), a confidence level (High, Medium, Low), a source file and section or row, and a status (Open, Verified, Partially verified, Rejected).
 - **R7.** Findings are never deleted. Only their status changes.
 - **R8.** Each specialist's full report is saved unedited before it is summarized.
-- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions.
+- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding.
 - **R10.** The research loop runs at most 3 times. Every extra loop is logged with its reason.
 - **R11.** Checkpoint 2: the run stops and shows a table of Critical and High findings, the main conflicts and what is still open. It waits for "proceed" or "dig deeper on <topic>".
-- **R12.** An independent checker verifies every Critical and High finding and at least three Medium findings, and gives each a verdict.
+- **R12.** An independent checker verifies every Critical and High finding and at least three Medium findings, and gives each a verdict. Every correction for a Partially verified finding is applied to the register before Checkpoint 3.
 - **R13.** Findings judged Not supported are kept in the register but left out of the report.
 - **R14.** Checkpoint 3: the run stops and shows the verification results and the draft recommendation. It waits for approval.
-- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix.
+- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix. The appendix includes an index of verified findings and a list of the findings that were not verified, each labeled "not verified".
 - **R16.** The report is saved as Markdown, as a web page and, when the computer has a PDF tool, as a PDF. Without a PDF tool, the operator is told how to save the web page as a PDF (error state).
 
 **Status, grading and reset**
@@ -91,6 +91,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R23.** If a specialist fails or returns findings without sources, the lead agent asks again once. If that fails, the gap is recorded as an open question (error state).
 - **R24.** If a source file is missing or empty, the specialist reports it under "Files reviewed" and as a gap (error state).
 - **R25.** All outputs use plain English, US$ millions with one decimal place, and no em dashes.
+- **R29.** The agents cannot open the answer key or an earlier run (`examples/`, `runs/`) unless the operator approves, so a new run stays blind.
 
 **Portfolio**
 - **R26.** The project includes a README with the problem, the architecture diagram, how a run works, sample results and how to run it.
@@ -144,9 +145,13 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Three mandatory human checkpoints and a 3-loop limit. |
 | 2026-10-18 | Add an independent citation checker and an answer key with a grading command. |
 | 2026-10-18 | Keep first-person interview notes for the project story. |
+| 2026-10-18 | `interview-notes.md` stays private. A `.gitignore` rule keeps it out of GitHub. |
+| 2026-10-18 | The portfolio lives in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`, plus the one-page case study PDF for applications. |
+| 2026-10-18 | Show results with their limits up front: the scorecard and README say how blind the first test run was. |
+| 2026-10-18 | After the first grading: the report appendix lists findings that were not verified, trend findings are combined, and verifier corrections are applied before Checkpoint 3 (R9, R12, R15). |
+| 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |
 
 ## Open questions (with recommended defaults)
 
-1. **Should `interview-notes.md` be public?** Recommended default: no. Keep it out of the public project, because it is your interview preparation.
-2. **Where will the portfolio live?** Recommended default: a public GitHub repository, plus the one-page case study PDF to attach to applications.
-3. **Which roles is it aimed at?** Recommended default: both AI product roles and M&A or finance roles, with the README leading on the problem and the results.
+1. **Which roles is it aimed at?** Recommended default: both AI product roles and M&A or finance roles, with the README leading on the problem and the results.
+2. **Is 45 minutes the right time target (success criterion 1)?** The first full test run took 69 minutes from the approved plan to sign-off, plus about 10 minutes for the report. Recommended default: change the target to under 90 minutes, and treat faster runs as a later improvement.

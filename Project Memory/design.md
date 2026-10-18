@@ -1,8 +1,8 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.0 (October 18, 2026: you asked to proceed to the tech spec and progress plan).
+**Status:** Agreed, version 1.1 (October 18, 2026: updated with the report and portfolio pieces built since version 1.0).
 
-Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study). This file sets one design language for all three.
+Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
 ## Design principles
 
@@ -71,12 +71,13 @@ Project Falcon has no custom app screen. People experience it in three places: *
 - **Corner radius:** 3 px (inline code), 4 px (callouts, bottom-line box), 6 to 8 px (diagram blocks), fully rounded (checkpoint pills).
 - **Shadows:** none. Flat design prints well and stays calm.
 - **Motion:** none. Documents are static. Progress in the terminal is shown with short text updates.
+- **Page breaks:** headings stay with the text that follows. Small tables (up to 7 rows) stay on one page; longer tables repeat their header row on every page.
 
 ## Main UI components
 
 | Component | Where | States | How it behaves |
 |---|---|---|---|
-| **Command** (`/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`) | Claude Code | Ready, running, waiting for permission, error | One word starts each job. Errors say what to do next (for example "No run yet. Type /diligence first."). |
+| **Command** (`/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`, `/run-tests`) | Claude Code | Ready, running, waiting for permission, error | One word starts each job. Errors say what to do next (for example "No run yet. Type /diligence first."). |
 | **Checkpoint message** | Claude Code | Waiting, approved, changes requested, skipped | Opens with "Checkpoint N of 3: name", gives a short summary and at most one table, and ends with the exact replies to type. Changes requested: the plan or draft is revised and shown again. Skipped only if the user says so, and logged. |
 | **Progress update** (loading state) | Claude Code | Working, partly reported, all reported, analyst failed | Names the specialists that are running. Reports each one as it finishes with its finding count and number of Critical items. A failed analyst is retried once, then recorded as a gap. |
 | **Red-flag table** | Checkpoint 2, report | Populated, empty | Columns: ID, Finding, Severity, Confidence. Critical first. If empty: "No Critical or High findings." |
@@ -85,16 +86,23 @@ Project Falcon has no custom app screen. People experience it in three places: *
 | **Labels** | Everywhere | n/a | Severity: Critical, High, Medium, Low (colored word). Confidence: High, Medium, Low (plain word). Claim type: Fact, Allegation, Rumor. |
 | **Cover page** | Report | n/a | Title, "Draft for Investment Committee discussion", date, "Fictional case study", preparer line. Navy bar on the left. |
 | **Bottom-line box** | Report, executive summary | n/a | Navy box with white text. One recommendation and one sentence of reasoning. |
-| **Risk matrix** | Report | n/a | ID, finding, severity, confidence, deal impact, recommended action. Repeats its header on every page. |
+| **Risk matrix** | Report | n/a | ID, finding, severity, confidence, verification verdict and recommended action, Critical first. With many findings, it shows the consolidated cross-source findings and the appendix index lists every verified finding. Repeats its header on every page. |
 | **Callout** | Report | Note, allegation | Teal border for notes. Cream background with gold border for allegations and rumors. |
 | **Key metrics table** | Report | n/a | Reported and adjusted figures side by side, with the source finding ID. |
 | **Scorecard** | `evaluation/scorecard.md` | No run, graded | Recall summary first, then one row per planted issue: Found, Partially found or Missed. |
+| **Finding ID** | Everywhere | n/a | Never breaks across a line ("SEC-01" stays whole). Ranges are written "LIT-01 to LIT-03". |
+| **Findings index** | Report appendix | Verified, partially verified | One table per workstream: ID, finding (with the corrected wording), severity and verdict. Built from the findings register. |
+| **Not-verified list** | Report appendix | Empty, populated | Medium and Low findings that were not checked, each labeled "not verified", so nothing found is dropped silently. If empty: "Every finding was verified." |
+| **KPI tile** | Case study, README | n/a | One large number with a short label (for example "13 of 13 Critical and High planted issues found"). Teal top border on Mist. |
+| **Caveat note** | Scorecard, README, case study | n/a | Cream background with a gold border. States the limits of a result (for example how blind a test was) right next to the result, never in a footnote. |
 | **Diagram blocks** | Architecture diagram | n/a | Agent Core (navy), Working Memory (teal), Specialist card (white, navy border, Ember agent name), Verifier card (panel gray), Report block (orange, navy text), Checkpoint pill (gold), Controls band (navy). |
 
 ## Screens and layouts
 
 1. **The run in Claude Code** (one scrolling conversation):
    `/diligence` -> plan summary -> **Checkpoint 1** -> progress updates while four specialists work -> red-flag table and conflicts -> **Checkpoint 2** -> verification results and draft recommendation -> **Checkpoint 3** -> "Report saved" with file locations.
-2. **The report** (US Letter, portrait): page 1 cover; page 2 executive summary (bottom-line box, top five red flags, valuation implications); then the answers to the six committee questions, the risk matrix, workstream detail, cross-source insights, deal protections, open questions and appendix.
+2. **The report** (US Letter, portrait): page 1 cover; page 2 executive summary (bottom-line box, top five red flags, valuation implications); then the answers to the six committee questions, the risk matrix, workstream detail, cross-source insights, deal protections, open questions and appendix (methodology, checkpoint log, verification statistics, findings index, sources, limitations). The sample report runs to 15 pages.
 3. **The architecture diagram** (`docs/architecture.png`): follows the layout of your original architecture slide. Agent Core and Working Memory on the left, the four specialist tools in the middle, the verifier and report on the right, the checkpoint lane below, and the controls band at the bottom.
 4. **The README** (GitHub, desktop and phone): one-paragraph summary, diagram, "at a glance" bullets, then detail sections. The most important information is in the first screen.
+5. **The one-page case study** (`docs/case-study.pdf`, US Letter): header band, five KPI tiles, two columns (problem, what was built and key decisions on the left; diagram, conclusion and lessons on the right), a caveat note and a footer.
+6. **The Project Memory website** (claude.ai page, desktop and phone): one tab per planning file (Product Spec, Design Spec, Tech Spec, Plan) with color swatches, diagrams and a plan whose finished tasks are ticked live. Private until shared.

@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.0 (October 18, 2026).
+**Status:** Agreed, version 1.1 (October 18, 2026: updated after publishing to GitHub).
 
 ## Summary
 
 - **Current phase:** Phase 4, Grade and tune (first grading done; the three fixes are in `CLAUDE.md`).
-- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped).
-- **Next action:** run `/diligence` in a fresh Claude Code session (a fully blind run), then `/evaluate` and compare with the sample run's scorecard.
+- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private.
+- **Next action:** run `/diligence` in a fresh Claude Code session (a fully blind run), then `/evaluate` and compare with the sample run's scorecard. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
 
@@ -94,6 +94,8 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Report written as Markdown, HTML and PDF
 - [x] Run saved to `examples/sample-run/`
 
+**Result:** 89 findings; 61 checked by the verifier (44 verified, 17 corrected, 0 rejected); a 15-page report; 69 minutes from the approved plan to sign-off. That misses the 45-minute target in the product spec (see its open questions).
+
 **Automated tests** (`python3 tests/run_all.py --run examples/sample-run --phase 3`):
 1. Every finding in the register has a valid ID, severity, status and source.
 2. The loop never went past 3 iterations, and every analyst's report was saved.
@@ -163,8 +165,9 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] README results section filled in from the scorecard
 - [x] Sample run published under `examples/sample-run/` (report PDF, memory, scorecard)
 - [x] One-page case study PDF for job applications
-- [ ] Publish to GitHub, keeping `interview-notes.md` private
+- [x] Push the project to GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), keeping `interview-notes.md` private
 - [x] Project Memory website with live plan ticks
+- [ ] Make the repository public and share the Project Memory website
 
 **Automated tests** (`python3 tests/run_all.py --phase style`):
 1. No em dashes in any project file.

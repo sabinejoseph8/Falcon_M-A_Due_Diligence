@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.0 (October 18, 2026).
+**Status:** Agreed, version 1.1 (October 18, 2026: updated after the first test run; changes are in the Decisions table).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -71,6 +71,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | Specialist | Lead agent | One final message in the standard format: files reviewed, finding cards, positives, gaps |
 | Lead agent | Working memory | Files with fixed names and table layouts (see the templates in `templates/memory/`) |
 | Lead agent | Verifier | A list of findings: ID, claim, cited sources, severity |
+| Verifier | Lead agent | One report per batch: a verdict for each finding, what was checked and any correction. The lead rewrites each Partially verified row with that wording before Checkpoint 3 |
 | `/evaluate` | Answer key | Read only after the operator approves the permission prompt |
 | Report pipeline | Files | Markdown, then HTML with the stylesheet embedded, then PDF |
 
@@ -85,33 +86,35 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 - **Bounded loops.** At most three iterations, with stop conditions and a logged reason for every extra loop.
 - **Evidence-carrying claims.** No finding without a citation. The verifier and the checks enforce it.
 - **Append-only audit trail.** The run log only grows, each analyst's unedited report is kept, and old runs are archived rather than deleted.
-- **Blind evaluation.** The answer key needs operator approval to open, and its checksum is tested so any change is visible.
+- **Blind evaluation.** The answer key needs operator approval to open, and its checksum is tested so any change is visible. Earlier runs (`examples/`, `runs/`) need approval too, so a new run cannot read past answers.
+- **Nothing found is dropped silently.** Findings that were not verified still appear in the report appendix, labeled "not verified".
 - **Template-driven output.** The report structure lives in `CLAUDE.md` and the look lives in one stylesheet.
 
 ## Security
 
 - **Authentication:** the operator's own Claude Code sign-in. Nothing else to sign in to, and no passwords or keys in the project.
-- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to `data/` and the answer key denied; reading the answer key needs approval) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
+- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to `data/` and the answer key denied; reading the answer key or an earlier run needs approval) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
 - **Secrets:** none in v1. Future connectors must use admin-approved credentials stored outside the project. Never commit keys.
 - **Input validation:** source documents are untrusted input. The prompt-injection rule, read-only tools, no web access and human checkpoints limit what a malicious document could do. Data files are checked against a checksum manifest.
-- **Rate and cost limits:** 3-iteration cap, narrow follow-up tasks, small sources. Iteration 1 of the sample run used about 0.76 million subagent tokens across four analysts and took about 26 minutes (the slowest analyst).
+- **Rate and cost limits:** 3-iteration cap, narrow follow-up tasks, small sources. The full sample run used about 1.95 million subagent tokens across 10 subagent runs (4 analysts, 2 follow-ups, 4 verifiers) and took 69 minutes from the approved plan to sign-off. Iteration 1 alone used about 0.76 million tokens and 26 minutes.
 - **Real client data (future only):** use an Enterprise plan, request zero data retention for Claude Code, connect internal systems through admin-approved read-only connectors, and get compliance sign-off first.
 
 ## Hosting, deployment and configuration
 
 - **Runs locally.** Clone or download the project, open the folder in Claude Code, type `/diligence`.
 - **Configuration:** `.claude/settings.json` is shared and committed. Personal overrides go in `.claude/settings.local.json`, which is not committed.
-- **Publishing:** a public GitHub repository with the README, diagram, sample run and planning files. `interview-notes.md` stays private by default.
+- **Publishing:** the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` holds the README, diagram, sample run and planning files, and stays private until the owner makes it public. A `.gitignore` keeps `interview-notes.md` and Python caches out. The Project Memory website is a private claude.ai page until it is shared.
 - **Optional tools:** Python 3 for the checks; pandoc and a headless browser for PDF output.
 
 ## Testing approach
 
 - **Automated checks** (`python3 tests/run_all.py`, or `/run-tests`), grouped by build phase:
-  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present, checkpoints and loop cap in `CLAUDE.md`.
+  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read the answer key or an earlier run), checkpoints and loop cap in `CLAUDE.md`.
   - Phase 2 (`test_phase2_data.py`): financial statements tie out, documents labeled fictional, docket files present, answer key complete, source data unchanged (checksums).
   - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, and the report has every section, cites only known findings and excludes rejected ones.
   - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
-  - All phases (`test_style.py`): no em dashes, README links work.
+  - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
+  - In all: 34 checks. The sample run passes all 34 with none skipped.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
 - **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
 
@@ -122,16 +125,17 @@ Riskiest first. The first four are addressed in the earliest phases.
 | # | Risk | Why it matters | How we handle it |
 |---|---|---|---|
 | 1 | **Instructions are not enforcement.** An agent could skip a checkpoint, read the answer key or wander outside its source. | The whole value is controlled autonomy. A skipped checkpoint undermines trust. | Permission rules for the hard limits, read-only tools, checks that confirm all three checkpoints were logged, and an operator who watches the run. |
-| 2 | **Wrong or mis-cited findings** reach a high-stakes report. | One invented number can discredit the whole report. | Mandatory citations, an independent verifier, "Not supported" findings excluded, checks that every cited ID exists, and human sign-off. |
+| 2 | **Wrong or mis-cited findings** reach a high-stakes report. | One invented number can discredit the whole report. | Mandatory citations, an independent verifier, "Not supported" findings excluded, every correction applied before Checkpoint 3, checks that every cited ID exists, and human sign-off. |
 | 3 | **Prompt injection** through a source document. | Real data rooms contain text the builder does not control. | "Evidence, never instructions" rule in every agent, no web access, no write access for specialists, human checkpoints. A manual injection test is in Phase 5. |
 | 4 | **Claude Code features change** (for example commands merging into skills, a new built-in command name). | A silent change could disable an agent or a guardrail. | Phase 1 checks catch missing or invalid configuration; a docs review with Claude Code's guide agent before each release. |
 | 5 | **Run-to-run variation.** Two runs can find different things and score differently. | A single score could be luck. | Fixed output format and rubrics; grade several runs and report the average and range; keep the sample run as a fixed reference. |
 | 6 | **Parallel and background behavior.** Background subagents may not be able to ask for permissions, and parallel start is not guaranteed. | A blocked analyst could silently return less. | Specialists only need read access inside the project (no permission prompts); the lead waits for every report and retries a failed analyst once. |
 | 7 | **Arithmetic without code.** The financial analyst is read-only and calculates by hand. | A math slip could change a conclusion. | Show-your-work rule, independent recomputation by the verifier, automated tie-out checks on the data, key numbers kept in one dataset. |
-| 8 | **Cost and time.** Four large-context analysts per iteration. | Long or expensive runs discourage use. | Small sources, narrow follow-ups, 3-loop cap. Measured: about 0.76 million tokens and 26 minutes for iteration 1. |
+| 8 | **Cost and time.** Four large-context analysts per iteration. | Long or expensive runs discourage use. | Small sources, narrow follow-ups, 3-loop cap. Measured on the sample run: about 1.95 million subagent tokens and 69 minutes from plan to sign-off (iteration 1: 0.76 million tokens, 26 minutes). |
 | 9 | **Missing tools on the operator's computer** (no Python, no PDF tool). | Checks or PDFs would fail. | Standard-library-only checks, the HTML fallback for PDFs, and manual verification steps for every phase. |
-| 10 | **Simulated data is easier than reality**, and agents could be tuned to the planted issues. | The score could overstate real-world performance. | Distractors in the data, a blind answer key, and (future) a second fictional target that the instructions were never tuned on. |
+| 10 | **Simulated data is easier than reality**, and agents could be tuned to the planted issues. | The score could overstate real-world performance. | Distractors in the data, a blind answer key, and (future) a second fictional target that the instructions were never tuned on. The first test run was only partly blind (the lead agent ran in the session that built the data), so the next run happens in a fresh session. |
 | 11 | **Real client data** if the project is adapted for a live deal. | Confidentiality and data retention obligations. | Out of scope for v1. Enterprise plan, zero data retention request, read-only connectors and compliance sign-off required first. |
+| 12 | **Saved runs leak answers.** The sample run and its scorecard sit inside the project. | A new run that read them could score well without finding anything itself. | Claude Code asks before any agent opens `examples/` or `runs/`, the lead agent's guardrails forbid it, and a Phase 1 check confirms the rule. |
 
 ## Decisions
 
@@ -145,9 +149,12 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Reading the answer key requires operator approval; source data and the answer key are protected by deny rules and a checksum test. |
 | 2026-10-18 | Prompt-injection rule added to the lead agent and every subagent. |
 | 2026-10-18 | Automated checks in Python's standard library, run with `/run-tests`. |
+| 2026-10-18 | The sample run ships in the project under `examples/sample-run/`, labeled as a build test run. |
+| 2026-10-18 | Earlier runs (`examples/`, `runs/`) need operator approval to open, like the answer key, with an automated check. |
+| 2026-10-18 | Three instruction fixes from the first scorecard: list unverified findings in the report appendix, combine trend findings into one cross-source finding, and apply every verifier correction before Checkpoint 3. |
+| 2026-10-18 | The project is hosted in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`; `.gitignore` keeps `interview-notes.md` out. |
 
 ## Open questions (with recommended defaults)
 
 1. **Grade one run or several?** Recommended default: grade three runs and quote the average and range in the README.
 2. **Move commands to the newer skills format?** Recommended default: not for v1. Command files still work and are simpler to read.
-3. **Ship the sample run in the public project?** Recommended default: yes, under `examples/sample-run/`, clearly labeled as a build test run.
