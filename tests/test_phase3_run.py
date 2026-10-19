@@ -3,9 +3,17 @@ Checks the run folder given with run_all.py --run (default: the project root).""
 import re
 import unittest
 
-from _common import EM_DASH, read, run_dir, table_rows
+import csv
 
-ID = re.compile(r"^(SEC|NEWS|LIT|FIN|X)-\d{2}$")
+from _common import EM_DASH, ROOT, read, run_dir, table_rows
+
+# Finding IDs: two or three digits, with an optional letter after the prefix (SEC-01, SEC-001, LIT-F01).
+ID_BODY = r"(?:SEC|NEWS|LIT|FIN|X)-[A-Z]?\d{2,3}"
+ID = re.compile(rf"^{ID_BODY}$")
+WORKSTREAMS = ["SEC", "NEWS", "LIT", "FIN"]
+# Court case IDs (LIT-001 and so on) name source files, not findings, so a report may cite them.
+with open(ROOT / "data" / "litigation" / "docket_index.csv", newline="") as f:
+    CASE_IDS = {row["case_id"] for row in csv.DictReader(f)}
 SEVERITIES = {"Critical", "High", "Medium", "Low", "Positive", "n/a"}
 STATUSES = {"Open", "Verified", "Partially verified", "Rejected"}
 REPORT_SECTIONS = ["executive summary", ("investment committee", "ic questions"), "risk matrix", "workstream", "cross-source", "protections", "open questions", "appendix"]
@@ -36,6 +44,9 @@ class TestWorkingMemory(unittest.TestCase):
     def test_every_finding_is_complete(self):
         findings = register()
         self.assertGreater(len(findings), 0, "the register is empty")
+        # Guard against IDs in a format this check cannot read: every workstream must be found.
+        for prefix in WORKSTREAMS:
+            self.assertTrue(any(fid.startswith(prefix + "-") for fid in findings), f"no {prefix} findings read from the register (unrecognized ID format?)")
         for fid, (severity, status, cells) in findings.items():
             self.assertIsNotNone(severity, f"{fid}: no valid severity")
             self.assertIn(status, STATUSES, f"{fid}: invalid status '{status}'")
@@ -72,8 +83,8 @@ class TestReport(unittest.TestCase):
 
     def test_report_cites_only_known_findings(self):
         findings = register()
-        cited = set(re.findall(r"\b(?:SEC|NEWS|LIT|FIN|X)-\d{2}\b", self.text))
-        unknown = sorted(cited - set(findings))
+        cited = set(re.findall(rf"\b{ID_BODY}\b", self.text))
+        unknown = sorted(cited - set(findings) - CASE_IDS)
         self.assertFalse(unknown, f"cited in the report but not in the register: {unknown}")
 
     def test_rejected_findings_stay_out_of_the_report(self):
