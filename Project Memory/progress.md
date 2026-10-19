@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.7 (October 18, 2026: Phase 4 done; instruction fixes applied and a fixed grading rule added).
+**Status:** Agreed, version 1.8 (October 18, 2026: graded run 4 measured the fixes from the graded runs: 100% recall).
 
 ## Summary
 
 - **Current phase:** Phase 5, Hardening (Phase 4 is done: three graded runs, the fixes they pointed to, and a fixed grading rule).
-- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. Runs 1 and 2 are archived in `runs/`; run 3 is in `memory/`, `output/` and `evaluation/scorecard.md`. The sample run and all three graded runs pass all 34 checks with none skipped. The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** Phase 5: the prompt-injection test on a copy of the project, and the docs review of the configuration. A graded run with the new fixes would show whether they work. Before sharing the project, make the repository public and share the website (Phase 6).
+- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. Runs 1 to 3 are archived in `runs/`; run 4 is in `memory/`, `output/` and `evaluation/scorecard.md`. The sample run and all four graded runs pass all 34 checks with none skipped (on run 4, the ID checks saw only the 19 cross-source findings, because the analysts used three-digit and `LIT-F` IDs; see the Phase 4 notes). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
+- **Next action:** Phase 5: the prompt-injection test on a copy of the project, and the docs review of the configuration. Optional: three quality fixes from run 4 (severity drift, a self-check of cross-source findings, folding duplicate findings), each needing another blind run to measure. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **How to run the automated checks:** type `/run-tests` in Claude Code, or run `python3 tests/run_all.py` in a terminal in the project folder. Add `--phase 1` (or 2, 3, 4, style) to run one phase, and `--run examples/sample-run` to check a saved run.
 
@@ -124,6 +124,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Grade three runs and record the average and range
 - [x] Apply the three instruction fixes from the graded runs (they take effect from the next run and have not been measured yet)
 - [x] Give `/evaluate` one fixed grading rule: group issues by the answer key's first-listed severity, list the Critical and High group by ID, and show every recall figure as numerator / denominator
+- [x] Graded run 4 with the fixes, and compare it with runs 1 to 3
 
 **Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
 
@@ -144,6 +145,41 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 | Distractors rated Medium or above | 0 of 4 | 0 of 4 | 0 of 4 | 0 | |
 
 All three recommended not proceeding at US$24.00 (run 1 worded it "Pause"). Repeated gaps: goodwill risk (P18) partly found in all three, planted positives (P19) thin in every report, the Pinecrest link (P09) missed in runs 1 and 2, and the supplier and tariff risk (P17) partly found in runs 2 and 3. The graders were not consistent (run 1 counted 4 Critical issues, runs 2 and 3 counted 3, and run 2 divided by 14 Critical and High issues instead of 13), so the table recomputes every run on the answer key's 13.
+
+**Graded run 4, with the fixes (October 18, 2026):**
+
+- **Setup:** a fresh blind session using the instructions as changed in commit `e3b88fb`.
+- **Run:**
+  - 86 analyst findings plus 19 cross-source findings, in 2 of 3 iterations;
+  - 90 findings checked by four verifier runs (60 verified, 30 corrected, 0 rejected);
+  - a 38-page report.
+- **Recommendation:** do not proceed at US$24.00.
+
+| Metric | Run 1 | Run 2 | Run 3 | Run 4 (fixes) |
+|---|---|---|---|---|
+| Recall, the 13 Critical and High planted issues | 96.2% | 96.2% | 100% | 100% |
+| Recall, all 18 planted issues | 94.4% | 91.7% | 94.4% | 100% |
+| Severity within one level of the answer key | 100% | 100% | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 | 0 | 0 |
+| Distractors rated Medium or above | 0 of 4 | 0 of 4 | 0 of 4 | 0 of 4 |
+
+**What the fixes closed:** every repeated gap.
+
+- **P09:** Pinecrest is sized as the #4 customer.
+- **P17:** LiDAR and tariff are combined in a verified cross-source finding.
+- **P18:** goodwill is tied to the share price fall and verified.
+- **P19:** positives have their own executive summary section.
+
+**Limits:**
+- This is one run, so it shows the fixes work but not the run-to-run range.
+- It was graded in the session that produced it.
+
+**What run 4's scorecard suggests next (quality, not recall):**
+1. Hold severity to the evidence. Three High issues were matched at Critical, and the report has 11 Critical labels.
+2. Self-check cross-source findings before verification. The verifier corrected 9 of 19, against 21 of 71 for the analysts.
+3. Fold duplicate findings into a parent finding. The risk matrix has 90 rows.
+
+All 34 checks pass on run 4, but the pass is weaker than it looks. The ID checks match only two-digit IDs (`SEC-01`). Run 4's analysts wrote `SEC-001` and `LIT-F01`, so 86 of its 105 findings were silently left out of the register and citation checks. Fixing the ID format or the checks is a separate builder decision.
 
 **Automated tests** (`python3 tests/run_all.py --run examples/sample-run --phase 4`):
 1. The scorecard reports recall, severity accuracy, unsupported findings and distractors.

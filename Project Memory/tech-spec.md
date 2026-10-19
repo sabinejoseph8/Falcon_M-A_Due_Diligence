@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.6 (October 18, 2026: instruction fixes from the graded runs and a fixed grading rule; changes are in the Decisions table).
+**Status:** Agreed, version 1.7 (October 18, 2026: graded run 4 passes all 34 checks; report-saving and grading notes from run 4).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -115,7 +115,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
   - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, and the report has every section, cites only known findings and excludes rejected ones.
   - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
   - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
-  - In all: 34 checks. The sample run and all three graded runs pass all 34 with none skipped.
+  - In all: 34 checks. The sample run and all four graded runs pass all 34 with none skipped. On run 4 the pass is weaker than it looks: the ID checks only match two-digit IDs (`SEC-01`), and run 4 used three-digit and `LIT-F` IDs (`SEC-001`, `LIT-F01`), so they checked only its 19 `X-` findings.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
 - **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
 
@@ -163,6 +163,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | The graders were not consistent: run 1 counted 4 Critical issues, runs 2 and 3 counted 3, and run 2 divided by 14 Critical and High issues instead of 13. Reported results are recomputed on the answer key's 13 Critical and High issues, and a fixed grading rule for `/evaluate` is a Phase 4 task. |
 | 2026-10-18 | Instruction fixes from the graded runs: the lead agent sizes every named customer, supplier or litigant against `revenue_by_customer.csv`; the verifier also gets every Medium finding an IC answer cites or an `X-` finding is built from; the executive summary lists positive and mitigating points; the financial analyst compares the last goodwill test with share price moves; and a calibration rule rates debt problems cured at closing as High unless they cause a default or liquidity problem first. They take effect from the next run and have not been measured yet. |
 | 2026-10-18 | `/evaluate` follows fixed grading rules: severity group = the answer key's first-listed severity, the Critical and High group listed by ID, every recall figure shown as numerator / denominator, and positives kept out of recall. The rules name no issue IDs or counts, because the lead agent can read the command file. |
+| 2026-10-18 | Graded run 4 (first with the fixes) passes all 34 checks. Its verifier reports are saved as four files, `memory/analyst-reports/verification-<n>_citation-verifier_*.md`, one per parallel run. Gap found: the analysts used three-digit IDs (`SEC-001`) and `LIT-F01`, but the run checks match only two-digit IDs, so 86 of 105 findings were silently left out of the ID checks. Recommended: either fix the ID format in the analyst instructions or widen the checks, as a separate builder change. `/evaluate` was run in the session that produced the run. |
 
 ## Open questions (with recommended defaults)
 

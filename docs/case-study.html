@@ -53,10 +53,10 @@
   </header>
 
   <div class="kpis">
-    <div class="kpi"><b>3</b><span>fully blind graded runs, setup frozen</span></div>
-    <div class="kpi"><b>97.4%</b><span>average recall, 13 Critical and High issues</span></div>
-    <div class="kpi"><b>96 to 100%</b><span>range across the three runs</span></div>
-    <div class="kpi"><b>93.5%</b><span>average recall, all 18 planted issues</span></div>
+    <div class="kpi"><b>4</b><span>fully blind graded runs</span></div>
+    <div class="kpi"><b>97.4%</b><span>Critical and High recall, runs 1 to 3 average</span></div>
+    <div class="kpi"><b>100%</b><span>recall on all 18 after the fixes (run 4)</span></div>
+    <div class="kpi"><b>93.5%</b><span>recall on all 18, runs 1 to 3 average</span></div>
     <div class="kpi"><b>0</b><span>unsupported findings in any report</span></div>
   </div>
 
@@ -95,7 +95,7 @@
       </div>
       <section>
         <h2>What the system concluded</h2>
-        <div class="verdict"><strong>All three blind runs: do not proceed at $24.00 per share.</strong> The committee decides.</div>
+        <div class="verdict"><strong>All four blind runs: do not proceed at $24.00 per share.</strong> The committee decides.</div>
         <ol>
           <li>The valuation used guidance the target had already replaced: about 18.3x on current guidance, not the 11.5x in the deal model.</li>
           <li>A patent case turned against the target in July, with an injunction sought on robots behind about 42% of revenue. The next quarterly filing left the ruling out.</li>
@@ -107,13 +107,13 @@
         <ul class="learn">
           <li>The verifier earned its place: 17 of 61 findings needed corrected wording before the report (one claimed 18 months of negative free cash flow; it was 12).</li>
           <li>The scorecard pointed to three instruction fixes: low-severity findings dropping out, a trend spread over five findings, and corrections applied late. I applied all three.</li>
-          <li>Three runs, not one: the result held and the misses repeated, so they are design gaps, not luck. Comparing runs also exposed inconsistent grading, which I fixed.</li>
+          <li>Three runs, not one: the result held and the misses repeated, so they are design gaps, not luck. I fixed them; a fourth blind run found all 18.</li>
         </ul>
       </section>
     </div>
   </div>
 
-  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. An earlier sample run was only partly blind. Next: fix the repeated misses, then test a second fictional target.</div>
+  <div class="note"><strong>How blind was the test?</strong> Each graded run started in a fresh session that never saw the answer key or an earlier run. An earlier sample run was only partly blind. Run 4 is one run with the fixes, so it shows no range yet. Next: quality fixes, then a second target.</div>
 
   <footer class="foot">
     <div><strong>In the repository:</strong> README, <code>runs/</code> (graded runs with scorecards), <code>examples/sample-run/</code> and <code>Project Memory/</code> (specs and plan).</div>

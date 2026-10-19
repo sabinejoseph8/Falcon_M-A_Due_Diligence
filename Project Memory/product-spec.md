@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.7 (October 18, 2026: fixes from the graded runs and a fixed grading rule; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.8 (October 18, 2026: graded run 4 measured the fixes from the graded runs; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -156,6 +156,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Fully blind run graded. It meets success criteria 2 to 5: all three checkpoints held (an early "approve" was logged but not treated as sign-off), all nine report parts, 96.2% recall on Critical and High issues, 0 unsupported findings, 0 distractors too high, no source file changed. Criterion 1 (under 90 minutes) was not measured fairly: elapsed time was about 7 hours, mostly gaps between operator replies and one stalled turn, so timing needs a cleaner measurement next run. |
 | 2026-10-18 | Three blind graded runs with a frozen setup meet success criterion 4 every time: Critical and High recall 96.2%, 96.2% and 100% (average 97.4%), 0 unsupported findings and 0 distractors too high in each. |
 | 2026-10-18 | Fixes from the graded runs (R9, R12, R15): size every named counterparty against the customer data, verify the Medium findings the report relies on, put positives and mitigating points in the executive summary, and calibrate debt severity. `/evaluate` gets one fixed grading rule (R18). They take effect from the next run and have not been measured yet. |
+| 2026-10-18 | Graded run 4, the first with the fixes, meets success criteria 2 to 5: 100% recall on all 18 planted issues and on the 13 Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Every repeated gap from runs 1 to 3 closed (R9, R12, R15). One run only, so no range yet. Next quality fixes, held for now: severity drift toward Critical, a self-check of cross-source findings, folding duplicate findings. |
 
 ## Open questions (with recommended defaults)
 

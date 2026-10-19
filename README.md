@@ -13,7 +13,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
 
 ## The problem
 
@@ -97,7 +97,40 @@ A complete test run from October 18, 2026 is saved in [`examples/sample-run/`](e
 | Unsupported findings in the report | 0 | 0 | 0 | 0 | |
 | Distractors rated Medium or above | 0 of 4 | 0 of 4 | 0 of 4 | 0 | |
 
-The same gaps showed up more than once: goodwill impairment risk was only partly found in all three runs, the planted positives were thin in every report, and a lawsuit by the #4 customer was not linked to that customer's revenue in two of the three. Those are the next instruction fixes. Run 2's own scorecard reports 96.4% because it counted 14 Critical and High issues; the table recomputes every run on the answer key's 13. Scorecards: [run 1](runs/2026-10-18_0921/evaluation/scorecard.md), [run 2](runs/2026-10-18_1336/evaluation/scorecard.md); run 3's is in `evaluation/scorecard.md`.
+The same gaps showed up more than once: goodwill impairment risk was only partly found in all three runs, the planted positives were thin in every report, and a lawsuit by the #4 customer was not linked to that customer's revenue in two of the three. Those became the next instruction fixes. Run 2's own scorecard reports 96.4% because it counted 14 Critical and High issues; the table recomputes every run on the answer key's 13. Scorecards: [run 1](runs/2026-10-18_0921/evaluation/scorecard.md), [run 2](runs/2026-10-18_1336/evaluation/scorecard.md), [run 3](runs/2026-10-18_1741/evaluation/scorecard.md).
+
+**Run 4: measuring the fixes.** I then applied the fixes the three runs pointed to and gave `/evaluate` a fixed grading rule:
+
+- size every named customer, supplier or litigant against the customer data;
+- verify every Medium finding the report relies on;
+- put the strengths in the executive summary;
+- compare the last goodwill test with the share price since.
+
+Then I ran a fourth blind run in a fresh session.
+
+| Metric | Runs 1 to 3 (average) | Run 4 (with fixes) |
+|---|---|---|
+| Recall, the 13 Critical and High planted issues | 97.4% | 100% |
+| Recall, all 18 planted issues | 93.5% | 100% |
+| Severity within one level of the answer key | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 |
+| Distractors rated Medium or above | 0 | 0 |
+
+All three repeated gaps closed:
+
+- Pinecrest is now sized as the #4 customer ($17.4M).
+- The LiDAR and tariff risk is combined across sources and verified.
+- Goodwill risk is tied to the share price fall and verified.
+- Strengths have their own section in the executive summary.
+
+**Caveats.** This is one run with the fixes, not an average, so it shows the fixes work, not how much the result varies. Run 4 was graded in the session that produced it, which is the same practice as runs 1 to 3.
+
+**The next problems are about quality, not recall:**
+- Severity drift: three High issues were rated Critical.
+- The verifier corrected 9 of the lead agent's 19 cross-source findings.
+- A 90-row risk matrix full of duplicates.
+
+Scorecard: [run 4](evaluation/scorecard.md).
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
