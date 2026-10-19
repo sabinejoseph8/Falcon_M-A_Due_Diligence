@@ -59,7 +59,7 @@ Use this card for each finding:
 
 ## Severity rubric
 
-- **Critical:** could stop the deal, block closing, or change value by more than 10%.
+- **Critical:** could stop the deal, block closing, or change value by more than 10%. Rate a finding Critical only when you can name the test it meets (stop the deal, block closing, or more than 10% of value) and show the fact or number that meets it. If you cannot, rate it High.
 - **High:** material impact on price or terms, or needs a specific protection (indemnity, escrow, closing condition).
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.

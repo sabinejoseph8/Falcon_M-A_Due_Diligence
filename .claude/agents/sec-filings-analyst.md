@@ -58,12 +58,12 @@ Use this card for each finding:
 
 ## Severity rubric
 
-- **Critical:** could stop the deal, block closing, or change value by more than 10%.
+- **Critical:** could stop the deal, block closing, or change value by more than 10%. Rate a finding Critical only when you can name the test it meets (stop the deal, block closing, or more than 10% of value) and show the fact or number that meets it. If you cannot, rate it High.
 - **High:** material impact on price or terms, or needs a specific protection (indemnity, escrow, closing condition).
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
 
-**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
+**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless reported numbers show it already causes a default or a liquidity problem before signing or closing, which makes it Critical. A breach that depends on a projection or on an unresolved legal reading stays High, with the projection or reading stated.
 
 ## Confidence rubric
 

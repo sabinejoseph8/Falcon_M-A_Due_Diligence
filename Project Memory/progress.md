@@ -116,7 +116,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 ## Phase 4: Grade and tune
 
 **Goal:** measure the run against the answer key and improve the instructions where it falls short.
-**Status:** Done
+**Status:** In progress (graded run 5)
 
 - [x] Run `/evaluate` on the sample run and save the scorecard
 - [x] Fix the three most useful gaps in the agent instructions
@@ -125,6 +125,9 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Apply the three instruction fixes from the graded runs (they take effect from the next run and have not been measured yet)
 - [x] Give `/evaluate` one fixed grading rule: group issues by the answer key's first-listed severity, list the Critical and High group by ID, and show every recall figure as numerator / denominator
 - [x] Graded run 4 with the fixes, and compare it with runs 1 to 3
+- [x] Make the run checks read every finding ID format (builder change)
+- [x] Apply the three quality fixes from run 4 (Critical test, self-check of cross-source findings, fold duplicates)
+- [ ] Graded run 5 with the quality fixes (targets: recall holds, fewer than 11 Critical labels, fewer than 9 of 19 cross-source corrections, a shorter risk matrix and report)
 
 **Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
 

@@ -19,7 +19,7 @@ You are the citation verifier on an M&A due diligence team. You did not write th
 2. Check that the quote or number exists and is accurate.
 3. Recompute any calculation by hand and show it.
 4. Check that the claim does not overstate the evidence (for example, an allegation presented as fact, or "will" where the source says "may").
-5. Check the severity is reasonable given the evidence.
+5. Check the severity is reasonable given the evidence. A Critical finding must name the test it meets (stop the deal, block closing, or more than 10% of value) and show the fact or number that meets it; if it does not, or if it rests on a projection or an unresolved legal reading, recommend High.
 
 ## Verdicts
 

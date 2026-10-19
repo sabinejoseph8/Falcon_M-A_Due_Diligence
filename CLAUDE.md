@@ -76,8 +76,16 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
    - numbers that only make sense when combined (for example a one-off revenue amount from a filing applied to quarterly data);
    - stale assumptions in the deal brief;
    - trends: when three or more findings describe the same trend (for example revenue, margins, backlog and retention all weakening), combine them into one `X-` finding that states the headline numbers, so the trend gets one severity and one place in the report;
-   - named parties: for every customer, supplier or litigant named in any source, look it up in `data/financials/revenue_by_customer.csv` (or ask the financial analyst) and state its revenue rank and amount, or that it is not a listed customer.
+   - named parties: for every customer, supplier or litigant named in any source, look it up in `data/financials/revenue_by_customer.csv` (or ask the financial analyst) and state its revenue rank and amount, or that it is not a listed customer;
+   - duplicates: when two or more findings state the same fact (for example the same guidance cut in a filing, an article and the financial data), make one of them the parent (prefer the `X-` finding, then the primary-source finding) and list the others as supporting IDs in the parent's Source(s) cell. Supporting findings stay in the register with their own status; the report shows each fact once.
    Record each insight as an `X-` finding with all sources cited.
+
+   **Self-check each `X-` finding before you record it:**
+   - no absolute or predictive words ("every", "all", "never", "likely") unless a source says so;
+   - every rank, date, duration and count is taken from a cited source, not from memory;
+   - every number is recomputed from the source;
+   - inferences and projections are labeled "(inference)" or "(projection)";
+   - its severity is set by its own combined evidence. The findings it is built from keep their own severity and are not raised to match it.
 4. Update `memory/open-questions.md`.
 5. Decide whether to loop again. Loop only if a Critical or High question can still be answered from the available data. Write the reason in the run log. Respect the 3-iteration budget.
 
@@ -85,7 +93,7 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
 
 Stop. Show the user:
 
-- a table of Critical and High findings (ID, one-line finding, severity, confidence);
+- a table of Critical and High findings (ID, one-line finding, severity, confidence), with the severity test each Critical finding meets (for example "value: 18.3x vs 11.5x");
 - the main conflicts between sources;
 - what is still open and what you propose next.
 
@@ -115,7 +123,7 @@ Write the report to `output/` using the template below:
 1. **Cover:** "Project Falcon: Comprehensive Due Diligence Report", "Draft for Investment Committee discussion", the date, "Fictional case study", and "Prepared by an AI multi-agent diligence system with human review".
 2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, the main positive and mitigating points (with finding IDs), and the valuation implications.
 3. **Answers to the six IC questions:** one short section each, citing finding IDs.
-4. **Risk matrix:** every verified finding: ID, finding, workstream, severity, confidence, deal impact, recommended action (price, structure, condition, indemnity or further diligence).
+4. **Risk matrix:** one row per distinct issue, covering every verified finding: ID (the parent finding, with its supporting IDs in brackets), finding, workstream, severity, confidence, deal impact, recommended action (price, structure, condition, indemnity or further diligence). Do not give the same fact its own row twice. For a Critical row, the finding states the test it meets.
 5. **Workstream detail:** SEC filings, News and media, Litigation, Financial analysis (with a key metrics table).
 6. **Cross-source insights:** what combining sources revealed that no single source showed.
 7. **Recommended deal protections and price considerations.**
@@ -126,12 +134,12 @@ Write the report to `output/` using the template below:
 
 **Severity**
 
-- **Critical:** could stop the deal, block closing, or change value by more than 10%.
+- **Critical:** could stop the deal, block closing, or change value by more than 10%. Rate a finding Critical only when you can name the test it meets (stop the deal, block closing, or more than 10% of value) and show the fact or number that meets it. If you cannot, rate it High.
 - **High:** material impact on price or terms, or needs a specific protection (indemnity, escrow, closing condition).
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
 
-**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
+**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless reported numbers show it already causes a default or a liquidity problem before signing or closing, which makes it Critical. A breach that depends on a projection or on an unresolved legal reading stays High, with the projection or reading stated.
 
 **Confidence**
 
