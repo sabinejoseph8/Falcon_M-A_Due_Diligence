@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.9 (October 18, 2026: graded run 5 measured the quality fixes; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.10 (October 18, 2026: run 5's two remaining suggestions applied, to be measured by graded run 6; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -70,13 +70,13 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 - **R6.** Every finding has an ID, a severity (Critical, High, Medium, Low), a confidence level (High, Medium, Low), a source file and section or row, and a status (Open, Verified, Partially verified, Rejected).
 - **R7.** Findings are never deleted. Only their status changes.
 - **R8.** Each specialist's full report is saved unedited before it is summarized.
-- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding. Every customer, supplier or litigant named in a source is sized against the customer revenue data.
+- **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding. Every customer, supplier or litigant named in a source is sized against the customer revenue data. Each dated accounting judgment in the filings (for example an impairment test or a reserve level) is compared with later news, market or financial data, and the change is stated with numbers.
 - **R10.** The research loop runs at most 3 times. Every extra loop is logged with its reason.
 - **R11.** Checkpoint 2: the run stops and shows a table of Critical and High findings, the main conflicts and what is still open. It waits for "proceed" or "dig deeper on <topic>".
-- **R12.** An independent checker verifies every Critical and High finding and every Medium finding that an IC answer cites or a cross-source finding is built from (at least three Medium findings in all), and gives each a verdict. Every correction for a Partially verified finding is applied to the register before Checkpoint 3.
+- **R12.** An independent checker verifies every Critical and High finding and every Medium finding that appears anywhere in the report, and gives each a verdict. Low findings may stay unverified. Every correction for a Partially verified finding is applied to the register before Checkpoint 3.
 - **R13.** Findings judged Not supported are kept in the register but left out of the report.
 - **R14.** Checkpoint 3: the run stops and shows the verification results and the draft recommendation. It waits for approval.
-- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix. The executive summary includes the main positive and mitigating points. The appendix includes an index of verified findings and a list of the findings that were not verified, each labeled "not verified".
+- **R15.** The report has nine parts: cover, executive summary, answers to the six questions, risk matrix, workstream detail, cross-source insights, deal protections, open questions, appendix. The executive summary includes the main positive and mitigating points. The appendix includes an index of verified findings and a list of the findings that were not verified (Low only), each labeled "not verified".
 - **R16.** The report is saved as Markdown, as a web page and, when the computer has a PDF tool, as a PDF. Without a PDF tool, the operator is told how to save the web page as a PDF (error state).
 
 **Status, grading and reset**
@@ -159,6 +159,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Graded run 4, the first with the fixes, meets success criteria 2 to 5: 100% recall on all 18 planted issues and on the 13 Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Every repeated gap from runs 1 to 3 closed (R9, R12, R15). One run only, so no range yet. Next quality fixes, held for now: severity drift toward Critical, a self-check of cross-source findings, folding duplicate findings. |
 | 2026-10-18 | Quality fixes from run 4 (R9, R11, R12, R15): Critical needs a named test and the number that meets it; the lead agent self-checks its cross-source findings; duplicates are folded into a parent finding so the risk matrix shows each fact once. Not yet measured; graded run 5 will check that recall holds and quality improves. |
 | 2026-10-18 | Graded run 5, with the quality fixes, meets success criteria 3 to 5 and every quality target: 100% recall on the 13 Critical and High issues (97.2% on all 18), 100% severity accuracy, 0 unsupported findings, 0 distractors too high, 3 Critical issues, 5 of 14 cross-source findings corrected, a 14-row risk matrix and a 17-page report. Criterion 2 held only in part: the run stopped at all three checkpoints, but the Checkpoint 1 plan summary was not shown in chat. Fixed after the run (R3, R16): checkpoint content is printed before the question, and the report converter is committed. |
+| 2026-10-18 | Run 5's two remaining suggestions (R9, R12, R15): every Medium finding that appears anywhere in the report is verified, so only Low findings can be listed as "not verified"; and the lead agent checks each dated accounting judgment in the filings (an impairment test, a reserve, a materiality call) against later news, market or financial data and states the change with numbers. Not yet measured; graded run 6 will check them. |
 
 ## Open questions (with recommended defaults)
 

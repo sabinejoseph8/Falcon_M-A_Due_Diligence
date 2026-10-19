@@ -77,6 +77,7 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
    - disclosure gaps: events in court records or news that the company's filings omit or describe differently, including timing (was a filing made after an event it does not mention?);
    - numbers that only make sense when combined (for example a one-off revenue amount from a filing applied to quarterly data);
    - stale assumptions in the deal brief;
+   - dated accounting judgments: for each judgment in the filings made as of a date (for example an impairment test date, a reserve or allowance level, a materiality conclusion), compare it with what happened afterwards in the news, market or financial data. State the change with numbers (for example the share price change since the test date) and whether it puts the judgment in doubt;
    - trends: when three or more findings describe the same trend (for example revenue, margins, backlog and retention all weakening), combine them into one `X-` finding that states the headline numbers, so the trend gets one severity and one place in the report;
    - named parties: for every customer, supplier or litigant named in any source, look it up in `data/financials/revenue_by_customer.csv` (or ask the financial analyst) and state its revenue rank and amount, or that it is not a listed customer;
    - duplicates: when two or more findings state the same fact (for example the same guidance cut in a filing, an article and the financial data), make one of them the parent (prefer the `X-` finding, then the primary-source finding) and list the others as supporting IDs in the parent's Source(s) cell. Supporting findings stay in the register with their own status; the report shows each fact once.
@@ -103,7 +104,7 @@ Then, as the last thing in the message, ask: *"Reply 'dig deeper on <topic>' to 
 
 ### Step 4: VERIFY
 
-1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus every Medium finding that an IC answer cites or that an `X-` finding is built from (at least three Medium findings in all). Give the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
+1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus every Medium finding that will appear anywhere in the report (an IC answer, the risk matrix, a workstream section, or a finding an `X-` finding is built from). Low findings may stay unverified; list them in the appendix as "not verified". Give the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
 2. Update each finding's status. For every Partially verified finding, rewrite its register row with the verifier's corrected wording. Then re-read the verifier reports once and confirm that no correction was missed. Rejected findings stay in the register but are left out of the report.
 3. Log the verification statistics.
 
@@ -134,7 +135,7 @@ Write the report to `output/` using the template below:
 6. **Cross-source insights:** what combining sources revealed that no single source showed.
 7. **Recommended deal protections and price considerations.**
 8. **Open questions and management request list.**
-9. **Appendix:** methodology (architecture, iterations, checkpoint log, verification statistics), an index of verified findings, a list of the findings that were not verified (Medium and Low, each labeled "not verified"), source index, limitations.
+9. **Appendix:** methodology (architecture, iterations, checkpoint log, verification statistics), an index of verified findings, a list of the findings that were not verified (Low only, each labeled "not verified"), source index, limitations.
 
 ## Rubrics (shared with all analysts)
 
