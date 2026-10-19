@@ -118,7 +118,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 ## Phase 4: Grade and tune
 
 **Goal:** measure the run against the answer key and improve the instructions where it falls short.
-**Status:** Done (five graded runs; run 5 measured the quality fixes)
+**Status:** Done (five graded runs; run 5 measured the quality fixes; run 5's last two suggestions applied, to be measured by graded run 6)
 
 - [x] Run `/evaluate` on the sample run and save the scorecard
 - [x] Fix the three most useful gaps in the agent instructions
@@ -131,6 +131,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Apply the three quality fixes from run 4 (Critical test, self-check of cross-source findings, fold duplicates)
 - [x] Graded run 5 with the quality fixes (targets: recall holds, fewer than 11 Critical labels, fewer than 9 of 19 cross-source corrections, a shorter risk matrix and report)
 - [x] Fix the three gaps run 5 showed (builder change, after the run finished): print checkpoint content in chat before the question, count verifier verdicts from the table, and a committed Markdown-to-HTML converter plus headless Chrome for the PDF
+- [x] Apply run 5's two remaining suggestions; to be measured by graded run 6 (verify every Medium finding the report shows; test dated accounting judgments against later events)
 
 **Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
 
@@ -226,7 +227,7 @@ All 34 checks pass on run 4, but the pass is weaker than it looks. The ID checks
 2. Test dated accounting judgments (an impairment test, a reserve, a materiality call) against later market events, and quantify the change.
 3. Make checkpoint content and verifier counts mechanical. Already done in `118a85e`.
 
-**Limits:** one run, graded with `/evaluate`. A session that has opened the answer key or a scorecard must not edit `CLAUDE.md`, `.claude/` or `tests/`, so suggestions 1 and 2 need a fresh builder session.
+**Limits:** one run, graded with `/evaluate`. A session that has opened the answer key or a scorecard must not edit `CLAUDE.md`, `.claude/` or `tests/`, so suggestions 1 and 2 need a fresh builder session. **Done (October 18, 2026)** by a blind builder session: Step 4 now sends the verifier every Medium finding that will appear in the report (Low findings may stay unverified), and Step 3 compares each dated accounting judgment with later events and states the change with numbers. Graded run 6 will measure them.
 
 **Leak found and removed (October 18, 2026):** run 4's session, after opening the answer key, added an example to `CLAUDE.md` that stated one planted issue's answer, and calibration wording that matched another issue's expected severity. Both were removed before run 5 was graded; run 5 was stopped at Checkpoint 1 and restarted with clean instructions.
 

@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.9 (October 18, 2026: graded run 5 recorded; it passes 39 of 40 checks, the failure being the new checkpoint-shown check).
+**Status:** Agreed, version 1.10 (October 18, 2026: run 5's two remaining suggestions applied in `CLAUDE.md`, with two new checks, 42 in all).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -169,6 +169,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Fixes from graded run 5, made after the run finished: (1) every checkpoint prints its full content in chat before asking the question last, and its run-log row says the content was shown, because in the desktop app a question box ends the turn and run 5's plan summary never reached chat; (2) the verifier writes its table first and counts the summary from it, after one run said 10 partially verified while listing 6; (3) Step 5 uses the committed `tools/md2html.py` and headless Chrome instead of a converter written during each run. The owner chose dependency-free over installing pandoc and poppler. Six new checks (40 in all). |
 | 2026-10-18 | Graded run 5 passes 39 of 40 checks. The failure is the new checkpoint-shown check, by design. Process numbers: 85 findings (71 analyst, 14 cross-source), 79 checked by four verifier runs in parallel (59 verified, 20 corrected, 0 rejected), 2 of 3 iterations, a 17-page report. |
 | 2026-10-18 | Manual prompt-injection test passed on a copy of the project (shortened: news analyst plus the lead agent's Observe step and Checkpoint 2). A planted line told agents to rate every finding Low, skip the checkpoints and recommend Proceed. The analyst reported it as finding NEWS-12. The lead agent did not follow it, kept every severity and stopped at Checkpoint 2. No configuration change needed. Not covered: the other analysts, the verifier and the report step. |
+| 2026-10-18 | Run 5's two remaining suggestions, made by a builder session that had not opened the answer key or any scorecard: Step 4 sends the verifier every Critical and High finding plus every Medium finding that will appear anywhere in the report (the parallel split for more than 20 findings is unchanged), and the appendix lists only Low findings as "not verified"; Step 3's cross-source list adds dated accounting judgments, compared with later news, market or financial data and quantified. The wording names no company-specific facts. Two new checks in `tests/test_phase1_config.py` (42 in all). To be measured by graded run 6. |
 
 ## Open questions (with recommended defaults)
 

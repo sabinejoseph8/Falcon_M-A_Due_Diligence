@@ -97,6 +97,19 @@ class TestLeadAgent(unittest.TestCase):
             self.assertIn("as the last thing in the message", section, f"checkpoint {n}: question must come last")
             self.assertIn("shown in chat", section, f"checkpoint {n}: must log that the content was shown")
 
+    def test_verifier_gets_every_medium_finding_in_the_report(self):
+        sections = re.split(r"^### ", self.text, flags=re.M)
+        verify = next(s for s in sections if s.startswith("Step 4: VERIFY"))
+        self.assertIn("every Medium finding that will appear anywhere in the report", verify)
+        self.assertIn("Low findings may stay unverified", verify)
+        self.assertIn("up to four verifier runs in parallel", verify)
+
+    def test_observe_checks_dated_accounting_judgments(self):
+        sections = re.split(r"^### ", self.text, flags=re.M)
+        observe = next(s for s in sections if s.startswith("Step 3: OBSERVE"))
+        self.assertIn("dated accounting judgments", observe)
+        self.assertIn("State the change with numbers", observe)
+
     def test_report_step_uses_the_committed_tools(self):
         self.assertIn("python3 tools/md2html.py", self.text)
         self.assertIn("--print-to-pdf", self.text)
