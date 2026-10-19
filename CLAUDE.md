@@ -36,6 +36,7 @@ Rules:
 
 - Update memory after every step, before moving on.
 - Never delete a finding. Change its status instead: Open, Verified, Partially verified, Rejected.
+- A register status is always exactly one of those four words, with nothing added in the cell. A Low finding that is not sent to the verifier stays "Open". The words "not verified" belong only in the report appendix list, never in the status cell.
 - Before each step, re-read the memory files rather than relying on your recollection.
 - Use finding IDs everywhere: `SEC-`, `NEWS-`, `LIT-`, `FIN-` from the analysts, and `X-` for cross-source findings you create.
 
@@ -56,7 +57,7 @@ Rules:
 
 ### CHECKPOINT 1 (human): approve the plan
 
-Stop. Print a short summary of the plan in chat (questions, hypotheses, assignments). Then, as the last thing in the message, ask: *"Reply 'approve' to start the analysts, or tell me what to change."* Do not continue until the user replies. Log that the summary was shown in chat, and the user's decision.
+Stop. Print the plan summary in chat, as normal text: the six IC questions, each with the analysts assigned to it; the hypotheses to test; and each analyst's assignments, in short. Print it even though it is already in `memory/plan.md`: the user does not see files you write, and a plan that is not in chat cannot be approved. Then, as the last thing in the message, ask: *"Reply 'approve' to start the analysts, or tell me what to change."* The summary and the question go in the same message, summary first. Never send the question without the summary above it. Do not continue until the user replies. Log that the plan summary was shown in chat, and the user's decision.
 
 ### Step 2: ACT
 
@@ -107,8 +108,8 @@ Then, as the last thing in the message, ask: *"Reply 'dig deeper on <topic>' to 
 
 ### Step 4: VERIFY
 
-1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus every Medium finding that will appear anywhere in the report (an IC answer, the risk matrix, a workstream section, or a finding an `X-` finding is built from). Low findings may stay unverified; list them in the appendix as "not verified". Give the target's source folder, `targets/<target>/data/`, and the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
-2. Update each finding's status. For every Partially verified finding, rewrite its register row with the verifier's corrected wording. Then re-read the verifier reports once and confirm that no correction was missed. Rejected findings stay in the register but are left out of the report.
+1. Send the `citation-verifier` every Critical and High finding, including `X-` findings, plus every Medium finding that will appear anywhere in the report (an IC answer, the risk matrix, a workstream section, or a finding an `X-` finding is built from). Low findings may stay unverified; their register status stays "Open", and the report appendix lists them as "not verified". Give the target's source folder, `targets/<target>/data/`, and the ID, claim, cited sources and severity for each. If there are more than 20 findings, split them across up to four verifier runs in parallel (for example by workstream, with the `X-` findings in their own run).
+2. Update the status of each finding the verifier checked to Verified, Partially verified or Rejected (a "Not supported" verdict means Rejected). For every Partially verified finding, rewrite its register row with the verifier's corrected wording. Then re-read the verifier reports once and confirm that no correction was missed. Rejected findings stay in the register but are left out of the report.
 3. Log the verification statistics.
 
 ### CHECKPOINT 3 (human): sign off

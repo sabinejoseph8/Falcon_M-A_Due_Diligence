@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.12 (October 19, 2026: grading rule for severity near-misses chosen; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.13 (October 19, 2026: grading rule written into `/evaluate`, positives graded in their own row, one status per finding, Checkpoint 1 plan printed in chat; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -64,10 +64,10 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 **Running a diligence**
 - **R1.** One command starts a run. If no previous run exists, it begins with the plan. If one exists, it asks whether to continue or start fresh.
 - **R2.** The plan is saved before any research. It maps all six committee questions to specialists, lists 2 to 4 hypotheses, gives each specialist a task list, and states the 3-loop limit.
-- **R3.** Checkpoint 1: the run stops after the plan and does nothing until the operator approves or asks for changes.
+- **R3.** Checkpoint 1: the run stops after the plan and does nothing until the operator approves or asks for changes. The plan summary (questions, hypotheses, assignments) is printed in chat in the same message as the question, before it, and the run log says it was shown.
 - **R4.** Four specialists (SEC filings, news and media, litigation, financial) work in parallel. Each reads only its own source.
 - **R5.** While specialists work, the operator sees which ones are running and is told when each reports (loading state).
-- **R6.** Every finding has an ID, a severity (Critical, High, Medium, Low), a confidence level (High, Medium, Low), a source file and section or row, and a status (Open, Verified, Partially verified, Rejected).
+- **R6.** Every finding has an ID, a severity (Critical, High, Medium, Low), a confidence level (High, Medium, Low), a source file and section or row, and a status that is exactly one of Open, Verified, Partially verified or Rejected. A Low finding that is not verified stays Open; "not verified" appears only in the report appendix.
 - **R7.** Findings are never deleted. Only their status changes.
 - **R8.** Each specialist's full report is saved unedited before it is summarized.
 - **R9.** The lead agent compares sources and records cross-source findings, conflicts, disclosure gaps and stale assumptions. When three or more findings describe the same trend, it combines them into one cross-source finding. Every customer, supplier or litigant named in a source is sized against the customer revenue data. Each dated accounting judgment in the filings (for example an impairment test or a reserve level) is compared with later news, market or financial data, and the change is stated with numbers.
@@ -81,7 +81,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 
 **Status, grading and reset**
 - **R17.** A status command shows the current step, loops used, findings by severity and status, and the top open questions. With no run, it says so (empty state).
-- **R18.** A grading command scores the latest run: recall overall and for Critical and High issues, severity accuracy, unsupported findings and distractors rated too high, using one fixed grading rule so every run is scored the same way. It asks permission before opening the answer key. With no run, it tells the operator to run a diligence first (empty state).
+- **R18.** A grading command scores the latest run: recall overall and for Critical and High issues, severity accuracy, unsupported findings and distractors rated too high, using one fixed grading rule so every run is scored the same way. An issue is found when its main point is in the verified findings, correctly cited, with a severity within one level of one the answer key accepts; severity is reported in two lines, within one level and exact match. The planted positives are graded in their own row (Present, Partly present or Absent), outside recall. It asks permission before opening the answer key. With no run, it tells the operator to run a diligence first (empty state).
 - **R19.** A reset command archives the current run and its scorecard with a date and time, and restores blank working memory. It never changes the sources, the answer key or the setup.
 
 **Safety and quality**
@@ -162,6 +162,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Run 5's two remaining suggestions (R9, R12, R15): every Medium finding that appears anywhere in the report is verified, so only Low findings can be listed as "not verified"; and the lead agent checks each dated accounting judgment in the filings (an impairment test, a reserve, a materiality call) against later news, market or financial data and states the change with numbers. Not yet measured; graded run 6 will check them. |
 | 2026-10-19 | Graded run 6, with run 5's last two suggestions (R9, R12, R15), meets success criteria 2 to 5: all three checkpoints held and were shown in chat, 100% recall on all 18 planted issues and on the 13 Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high, no source file changed. Goodwill (P18) is fully found again. Quality slipped a little: 7 of 13 cross-source findings corrected (5 of 14 in run 5) and an 18-row risk matrix (14). |
 | 2026-10-19 | Grading rule chosen by the owner (option A): an issue counts as found when its main point is in the verified findings, correctly cited, with a severity within one level of a severity the answer key accepts. Exact severity matches are reported separately, so a near-miss on severity is not counted twice. This matches how runs 1 to 6 and Kestrel were graded; under it, Heron's held-out run is 100% recall with 77.8% exact severity matches. To be written into `/evaluate` by a session that has not seen a scorecard (R18). |
+| 2026-10-19 | Option A written into `/evaluate` by a session that had not opened an answer key or scorecard (R18): exact Found, Partially found and Missed definitions, recall unaffected by a one-level severity difference, and severity reported as within one level and exact match. Three recurring process gaps fixed at the same time: the planted-positives row is graded as its own scorecard row (Present, Partly present or Absent) and kept out of recall; a register status is always exactly one of the four values, so an unverified Low finding stays Open (R6); and Checkpoint 1 prints the plan summary in chat before the question, in the same message (R3). Not yet measured; the next blind run will check them. |
 
 ## Open questions (with recommended defaults)
 

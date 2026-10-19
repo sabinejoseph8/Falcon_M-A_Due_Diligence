@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.13 (October 19, 2026: Phase 7 layout, one folder per target in `targets/`).
+**Status:** Agreed, version 1.14 (October 19, 2026: exact grading rule in `/evaluate`, positives row, one status per finding, Checkpoint 1 printed in chat).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -59,9 +59,9 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | **Run log entry** | Time, step, what happened, decision or checkpoint |
 | **Verification verdict** | Finding ID, verdict (Verified, Partially verified, Not supported), what was checked, correction |
 | **Planted issue (answer key)** | ID (`P` + 2 digits), issue, where the evidence is, expected severity, cross-source flag |
-| **Scorecard row** | Planted issue ID, result (Found, Partially found, Missed), matching finding IDs |
+| **Scorecard row** | Planted issue ID, result (Found, Partially found, Missed), matching finding IDs. The planted-positives row: its answer key ID, result (Present, Partly present, Absent), missing positives |
 
-**Allowed values:** severity Critical, High, Medium, Low (plus Positive for strengths); confidence High, Medium, Low; claim type Fact, Allegation, Rumor; status Open, Verified, Partially verified, Rejected.
+**Allowed values:** severity Critical, High, Medium, Low (plus Positive for strengths); confidence High, Medium, Low; claim type Fact, Allegation, Rumor; status exactly one of Open, Verified, Partially verified, Rejected, with nothing added (an unverified Low finding stays Open).
 
 ## Interfaces between parts
 
@@ -114,11 +114,11 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
   - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read a target's `evaluation/` folder or an earlier run, and `/reset-memory` archiving the scorecard and the run's target), `CLAUDE.md`, `/diligence`, `/evaluate` and the subagents naming no single target, checkpoints and loop cap in `CLAUDE.md`, each checkpoint printing its content in chat before the question and logging that it was shown, the verifier counting its summary from its table, and `tools/md2html.py` converting the report's Markdown (raw `<div>` passthrough, nested lists, tables, embedded stylesheet).
   - Phase 2 (`test_phase2_data.py`), for every folder in `targets/` with a `data_manifest.json`: financial statements tie out (quarters against the income statement's years and half-years), documents labeled fictional, deal brief and README present, docket files present, answer key IDs complete with no gaps (exact counts pinned in the optional `checks.json`), source data unchanged (checksums). `python3 tests/run_all.py --write-manifest [--target <name>]` writes each target's manifest.
   - Phase 3 (`test_phase3_run.py`): the run's target (from `memory/target.txt`, or `falcon` for runs saved before Phase 7) exists, a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, each checkpoint's run-log row saying its content was shown in chat, and the report has every section, cites only known findings and excludes rejected ones.
-  - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue in its target's answer key (for Falcon, P01 to P18, as set in `targets/falcon/checks.json`).
+  - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every P row in its target's answer key, which for Kestrel and Heron includes the planted-positives row that `/evaluate` now grades in its own row. Falcon stays pinned to P01 to P18 in `targets/falcon/checks.json`, so its archived scorecards, graded before the positives row had its own row, still pass.
   - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
   - In all: 49 checks (43 before the Phase 7 layout added six target checks). Run 5's last two suggestions added two, and the Phase 5 docs review added one that checks edits to `tests/` are denied. Before the run 5 fixes there were 34, and the sample run and graded runs 1 to 4 passed all 34 with none skipped. The new checkpoint-shown check fails on run 5 by design, and it has not yet been run against the earlier saved runs, whose logs may not use the word "shown". The ID checks accept two- or three-digit IDs with an optional letter (`SEC-01`, `SEC-001`, `LIT-F01`), ignore court case IDs (`LIT-001`), and fail if any workstream's findings cannot be read.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
-- **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
+- **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy within one level and exact match, unsupported findings, distractors, and the planted positives as Present, Partly present or Absent).
 
 ## Critical risks and challenges
 
@@ -175,6 +175,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-19 | Graded run 6 used the final Phase 5 setup (commit `946f0f0`) and passes 42 of 43 checks. The failure: six Low findings carry the status "Open (not verified, Low)" instead of "Open", because the new Step 4 wording lets Low findings stay unverified and the lead agent wrote that into the status. It saved one verification summary instead of the four verifier reports unedited. The checkpoint-shown rule and `tools/md2html.py` with headless Chrome both worked as designed. A usage limit interrupted the iteration 2 financial follow-up; the same agent resumed after the reset. |
 | 2026-10-19 | Phase 7 layout: each fictional target lives in `targets/<target>/` (sources in `data/`, answer key in `evaluation/`, `data_manifest.json`), so a second target can be added without touching the first. `git mv` kept the history. `CLAUDE.md`, the agents and the commands name no single target: `/diligence` and `/evaluate` take the target as an argument (default `falcon`), the run records it in `memory/target.txt`, and `/reset-memory` archives it with the run. The permission rules use `targets/*/`, and the data checks run for every target with a manifest. Saved runs are unchanged and are checked as Falcon runs; every saved run gets the same check results as before. Done by a fresh builder session that had not opened any answer key or scorecard. |
 | 2026-10-19 | Generalization tested on two new targets. Heron, built without seeing the instructions or other targets and graded with the setup frozen: the facts of all 18 planted issues found, 0 unsupported findings, 1 of 4 distractors too high, and Critical and High recall of 88.5% on its grader's strict reading or 100% on the earlier basis, because four severities were one level off. Both readings are reported until `/evaluate` has an exact rule. Rules added afterwards from a target's own scorecard are measured on a new target, not on the same one. |
+| 2026-10-19 | `/evaluate` gets the owner's option A as exact definitions: Found needs the main point in the verified findings, correctly cited, with the highest matching verified severity within one level of an accepted severity; Partially found covers a partial main point, a missing or weak link or citation, or a severity more than one level from every accepted one. Recall uses only these, so a one-level miss never lowers it, and severity accuracy is two lines (within one level, exact match) over the Found and Partially found issues. The positives row is graded in its own `| Pnn |` row, so the Phase 4 check and the command agree for every target. `CLAUDE.md` and the findings template say a status is exactly one of the four values, and Checkpoint 1 lists what to print in chat before the question. The command names no issue IDs or facts. Made by a session that had not opened an answer key or scorecard; no check changed (49 in all). |
 
 ## Open questions (with recommended defaults)
 
