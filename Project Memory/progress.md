@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.2 (October 19, 2026: graded run 6 recorded: 100% recall on all 18 planted issues; Phase 5 done).
+**Status:** Agreed, version 2.3 (October 19, 2026: Phase 6 done; the repository is public and the website is shared).
 
 ## Summary
 
-- **Current phase:** Phase 6, Portfolio packaging (Phases 4 and 5 are done: six graded runs, the fixes they pointed to, the prompt-injection test and the configuration review).
+- **Current phase:** Phase 7, Future (Phases 0 to 6 are done: six graded runs, the hardening checks, and a public repository with a shared website).
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. The sample run passed all 34 checks that existed when it was made. Of today's 43 checks, it and runs 2 to 5 fail only the later "checkpoint content shown in chat" check, which postdates them. Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. A sixth blind run, with run 5's two remaining suggestions, found all 18 planted issues again (100% overall and on Critical and High), with a 13-page report. All six graded runs are archived in `runs/`, each with its scorecard. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there were 40 checks after the run 5 fixes, and run 5 passes 39 of them (the new checkpoint-shown check fails on it by design). There are now 43 checks; run 6 passes 42 (six Low findings carry a non-standard status). Two checks for run 5's last two suggestions and one from the docs review bring the total to 43. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** in the order agreed on October 18, 2026, (1) Phase 5 and (2) run 5's suggestions with graded run 6 are done. (3) Phase 6: make the repository public and share the website. Optional before that: run 6's suggestions (see Phase 4), which would need a blind builder session and another graded run to measure.
+- **Next action:** Phase 7, when wanted. The most useful first step is a second fictional target that the instructions were never tuned on, to test whether the results generalize. Run 6's two small process fixes (keep the status set to the four allowed values; save each verifier report unedited) can be made first in a builder session that has not seen a scorecard.
 
 **Run 5 fixes (October 18, 2026):** run 5 showed three gaps that are not about diligence quality. (1) The lead agent asked the Checkpoint 1 question without printing the plan summary in chat, because in the desktop app a question box ends the turn. `CLAUDE.md` now says to print the full checkpoint content first and ask the question last, and to log that the content was shown. (2) One verifier run's headline said 10 partially verified while its table listed 6. The verifier now writes the table first and counts the summary from it. (3) This Mac has no pandoc, so run 5 wrote a throwaway converter. The owner chose to stay dependency-free: `tools/md2html.py` (Python standard library) converts the report, and headless Chrome prints the PDF. Six new checks cover these (40 in all). Run 5 fails one of them, the checkpoint-shown check, which is the defect it was written to catch.
 
@@ -303,7 +303,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 ## Phase 6: Portfolio packaging
 
 **Goal:** a project a hiring manager understands in two minutes and can inspect in depth.
-**Status:** In progress
+**Status:** Done
 
 - [x] Architecture diagram (PNG, PDF, SVG) matching the original slide, with accessible colors
 - [x] Run guide (`docs/how-to-run.md`)
@@ -314,7 +314,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 - [x] One-page case study PDF for job applications
 - [x] Push the project to GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), keeping `interview-notes.md` private
 - [x] Project Memory website with live plan ticks
-- [ ] Make the repository public and share the Project Memory website
+- [x] Make the repository public and share the Project Memory website
 - [x] README, case study and interview notes aimed at AI product manager roles
 
 **Automated tests** (`python3 tests/run_all.py --phase style`):
