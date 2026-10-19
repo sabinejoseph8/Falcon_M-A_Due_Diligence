@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.8 (October 18, 2026: fixes from graded run 5: checkpoint display, verifier counts, committed report converter; 40 checks).
+**Status:** Agreed, version 1.9 (October 18, 2026: graded run 5 recorded; it passes 39 of 40 checks, the failure being the new checkpoint-shown check).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -167,6 +167,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Quality fixes from run 4's scorecard: a Critical rating must name the test it meets and show the number (in the shared rubric, every analyst, the verifier and the Checkpoint 2 table); a projected or legally uncertain covenant breach stays High; the lead agent self-checks each `X-` finding (no absolute or predictive words, sourced ranks, dates and counts, labeled inferences and projections, no raising the severity of supporting findings); duplicate findings get a parent with supporting IDs, and the risk matrix shows each fact once. To be measured in graded run 5. |
 | 2026-10-18 | Leak removed: after grading run 4, its session (which had opened the answer key) edited the instructions and put one planted issue's answer into `CLAUDE.md` as an example, plus calibration wording that matched the answer key's expected severity for another. The builder removed both and restored the earlier calibration wording. Run 5 had already read them, so it was stopped before Checkpoint 1 and restarted. Lesson: a session that has opened the answer key must not edit `CLAUDE.md`, `.claude/` or `tests/`. |
 | 2026-10-18 | Fixes from graded run 5, made after the run finished: (1) every checkpoint prints its full content in chat before asking the question last, and its run-log row says the content was shown, because in the desktop app a question box ends the turn and run 5's plan summary never reached chat; (2) the verifier writes its table first and counts the summary from it, after one run said 10 partially verified while listing 6; (3) Step 5 uses the committed `tools/md2html.py` and headless Chrome instead of a converter written during each run. The owner chose dependency-free over installing pandoc and poppler. Six new checks (40 in all). |
+| 2026-10-18 | Graded run 5 passes 39 of 40 checks. The failure is the new checkpoint-shown check, by design. Process numbers: 85 findings (71 analyst, 14 cross-source), 79 checked by four verifier runs in parallel (59 verified, 20 corrected, 0 rejected), 2 of 3 iterations, a 17-page report. |
 
 ## Open questions (with recommended defaults)
 

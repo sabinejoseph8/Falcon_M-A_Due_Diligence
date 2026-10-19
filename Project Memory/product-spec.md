@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.8 (October 18, 2026: graded run 4 measured the fixes from the graded runs; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.9 (October 18, 2026: graded run 5 measured the quality fixes; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -158,6 +158,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Fixes from the graded runs (R9, R12, R15): size every named counterparty against the customer data, verify the Medium findings the report relies on, put positives and mitigating points in the executive summary, and calibrate debt severity. `/evaluate` gets one fixed grading rule (R18). They take effect from the next run and have not been measured yet. |
 | 2026-10-18 | Graded run 4, the first with the fixes, meets success criteria 2 to 5: 100% recall on all 18 planted issues and on the 13 Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Every repeated gap from runs 1 to 3 closed (R9, R12, R15). One run only, so no range yet. Next quality fixes, held for now: severity drift toward Critical, a self-check of cross-source findings, folding duplicate findings. |
 | 2026-10-18 | Quality fixes from run 4 (R9, R11, R12, R15): Critical needs a named test and the number that meets it; the lead agent self-checks its cross-source findings; duplicates are folded into a parent finding so the risk matrix shows each fact once. Not yet measured; graded run 5 will check that recall holds and quality improves. |
+| 2026-10-18 | Graded run 5, with the quality fixes, meets success criteria 3 to 5 and every quality target: 100% recall on the 13 Critical and High issues (97.2% on all 18), 100% severity accuracy, 0 unsupported findings, 0 distractors too high, 3 Critical issues, 5 of 14 cross-source findings corrected, a 14-row risk matrix and a 17-page report. Criterion 2 held only in part: the run stopped at all three checkpoints, but the Checkpoint 1 plan summary was not shown in chat. Fixed after the run (R3, R16): checkpoint content is printed before the question, and the report converter is committed. |
 
 ## Open questions (with recommended defaults)
 

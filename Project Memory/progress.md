@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 1.9 (October 18, 2026: three tooling and instruction fixes from graded run 5; 40 automated checks).
+**Status:** Agreed, version 2.0 (October 18, 2026: graded run 5 recorded: every quality target met, 100% Critical and High recall).
 
 ## Summary
 
 - **Current phase:** Phase 5, Hardening (Phase 4 is done: three graded runs, the fixes they pointed to, and a fixed grading rule).
-- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. Runs 1 to 3 are archived in `runs/`; run 4 is in `memory/`, `output/` and `evaluation/scorecard.md`. The sample run and all four graded runs pass all 34 checks with none skipped. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** grade run 5 with `/evaluate`. Its run log fails the new checkpoint-shown check, by design: the Checkpoint 1 plan summary was not shown in chat. Then Phase 5: the prompt-injection test on a copy of the project, and the docs review of the configuration. Optional: three quality fixes from run 4 (severity drift, a self-check of cross-source findings, folding duplicate findings), each needing another blind run to measure. Before sharing the project, make the repository public and share the website (Phase 6).
+- **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. All 34 automated checks pass on the sample run (0 failed, 0 skipped). Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. Runs 1 to 4 are archived in `runs/`; run 5 is in `memory/`, `output/` and `evaluation/scorecard.md`. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there are now 40 checks, and run 5 passes 39 (the new checkpoint-shown check fails on it by design). The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
+- **Next action:** archive run 5 with `/reset-memory`, then add its scorecard link to the README. Then Phase 5: the prompt-injection test on a copy of the project, and the docs review of the configuration. Optional: run 5's two remaining suggestions (verify every Medium finding the report shows; test dated accounting judgments against later market events), made in a fresh builder session and measured by another blind run. Before sharing the project, make the repository public and share the website (Phase 6).
 
 **Run 5 fixes (October 18, 2026):** run 5 showed three gaps that are not about diligence quality. (1) The lead agent asked the Checkpoint 1 question without printing the plan summary in chat, because in the desktop app a question box ends the turn. `CLAUDE.md` now says to print the full checkpoint content first and ask the question last, and to log that the content was shown. (2) One verifier run's headline said 10 partially verified while its table listed 6. The verifier now writes the table first and counts the summary from it. (3) This Mac has no pandoc, so run 5 wrote a throwaway converter. The owner chose to stay dependency-free: `tools/md2html.py` (Python standard library) converts the report, and headless Chrome prints the PDF. Six new checks cover these (40 in all). Run 5 fails one of them, the checkpoint-shown check, which is the defect it was written to catch.
 
@@ -118,7 +118,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 ## Phase 4: Grade and tune
 
 **Goal:** measure the run against the answer key and improve the instructions where it falls short.
-**Status:** In progress (graded run 5)
+**Status:** Done (five graded runs; run 5 measured the quality fixes)
 
 - [x] Run `/evaluate` on the sample run and save the scorecard
 - [x] Fix the three most useful gaps in the agent instructions
@@ -129,7 +129,7 @@ No code in this phase. **Manual verification:** the decisions table in `product-
 - [x] Graded run 4 with the fixes, and compare it with runs 1 to 3
 - [x] Make the run checks read every finding ID format (builder change)
 - [x] Apply the three quality fixes from run 4 (Critical test, self-check of cross-source findings, fold duplicates)
-- [ ] Graded run 5 with the quality fixes (targets: recall holds, fewer than 11 Critical labels, fewer than 9 of 19 cross-source corrections, a shorter risk matrix and report)
+- [x] Graded run 5 with the quality fixes (targets: recall holds, fewer than 11 Critical labels, fewer than 9 of 19 cross-source corrections, a shorter risk matrix and report)
 - [x] Fix the three gaps run 5 showed (builder change, after the run finished): print checkpoint content in chat before the question, count verifier verdicts from the table, and a committed Markdown-to-HTML converter plus headless Chrome for the PDF
 
 **Blind run result (October 18, 2026):** a fresh session that never opened the answer key, earlier runs or the handoff note; the builder acted only as the operator at the three checkpoints. 94 findings (13 cross-source), 2 of 3 iterations, 68 findings checked by four verifier runs (47 verified, 21 corrected, 0 rejected), a 27-page report. Scores: recall 94.4% overall (16 found, 2 partly found: the Pinecrest outage suit was never linked to Pinecrest being the #4 customer, and goodwill risk stayed unverified), 96.2% on Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high. Compared with the sample run: Critical and High recall 96.2% against 100%, overall 94.4% against 97%.
@@ -195,6 +195,38 @@ All 34 checks pass on run 4, but the pass is weaker than it looks. The ID checks
 **Manual verification:**
 1. Type `/evaluate` and approve the prompt to open the answer key. **Expected:** a summary with the four metrics, and `evaluation/scorecard.md` is created.
 2. Pick one "Missed" or "Partially found" issue. **Expected:** you can see which specialist should have caught it, and the scorecard suggests an instruction change.
+
+**Graded run 5, with the quality fixes (October 18, 2026):**
+
+- **Setup:** a fresh blind session using the instructions as of commit `6c72507` (the run 4 quality fixes, with the leak removed). It was stopped before Checkpoint 1 and restarted once, because the first start had read the leaked wording.
+- **Run:**
+  - 71 analyst findings plus 14 cross-source findings, in 2 of 3 iterations;
+  - 79 findings checked by four verifier runs (59 verified, 20 corrected, 0 rejected);
+  - a 17-page report with a 14-row risk matrix.
+- **Recommendation:** do not proceed at US$24.00. At the deal model's own 11.5x multiple, current earnings support $13.61 to $17.35 per share.
+
+| Metric | Run 4 | Run 5 (quality fixes) | Run 5 target |
+|---|---|---|---|
+| Recall, the 13 Critical and High planted issues | 100% | 100% (13.0 / 13) | holds |
+| Recall, all 18 planted issues | 100% | 97.2% (17.5 / 18) | holds |
+| Severity within one level of the answer key | 100% | 100% | |
+| Unsupported findings in the report | 0 | 0 | 0 |
+| Distractors rated Medium or above | 0 of 4 | 0 of 4 | 0 |
+| Critical labels | 11 in the report; 3 High issues matched at Critical | 3 Critical issues in the risk matrix (7 Critical register rows); 1 High issue matched at Critical | fewer than 11 |
+| Cross-source findings the verifier corrected | 9 of 19 | 5 of 14 | fewer than 9 |
+| Risk matrix rows | 90 | 14 (each with its supporting IDs) | shorter |
+| Report length | 38 pages | 17 pages | shorter |
+
+**What the quality fixes did:** every quality target was met, and Critical and High recall held at 100%. The one loss is half a point on goodwill (P18): it was found again (SEC-18, FIN-12), but as a Medium finding that no IC answer cited, so it was never sent to the verifier and appears only as "not verified", and the share price fall since the test date was not quantified. Run 4 had closed this gap, so it is a real regression, though a small one.
+
+**Process gaps run 5 showed (fixed after the run, commit `118a85e`):** the Checkpoint 1 plan summary was not printed in chat before the question; one verifier run's headline said 10 partially verified while its table listed 6; and the run wrote a throwaway Markdown-to-HTML converter. Run 5 passes 39 of 40 checks. The one failure is the new checkpoint-shown check, which was written after the run to catch exactly this.
+
+**What run 5's scorecard suggests next:**
+1. Verify every Medium finding the report shows, not only those an IC answer cites or an `X-` finding is built from (this is what cost P18 half a point).
+2. Test dated accounting judgments (an impairment test, a reserve, a materiality call) against later market events, and quantify the change.
+3. Make checkpoint content and verifier counts mechanical. Already done in `118a85e`.
+
+**Limits:** one run, graded with `/evaluate`. A session that has opened the answer key or a scorecard must not edit `CLAUDE.md`, `.claude/` or `tests/`, so suggestions 1 and 2 need a fresh builder session.
 
 **Leak found and removed (October 18, 2026):** run 4's session, after opening the answer key, added an example to `CLAUDE.md` that stated one planted issue's answer, and calibration wording that matched another issue's expected severity. Both were removed before run 5 was graded; run 5 was stopped at Checkpoint 1 and restarted with clean instructions.
 

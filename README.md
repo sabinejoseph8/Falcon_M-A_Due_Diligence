@@ -13,7 +13,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
 
 ## The problem
 
@@ -131,6 +131,22 @@ All three repeated gaps closed:
 - A 90-row risk matrix full of duplicates.
 
 Scorecard: [run 4](runs/2026-10-18_1909/evaluation/scorecard.md).
+
+**Run 5: measuring the quality fixes.** I made three changes for quality, not recall: a Critical rating must name the test it meets and show the number; the lead agent self-checks each cross-source finding before verification; and duplicate findings are folded into one parent finding, so the risk matrix shows each fact once. Then I ran a fifth blind run in a fresh session.
+
+| Metric | Run 4 | Run 5 (quality fixes) |
+|---|---|---|
+| Recall, the 13 Critical and High planted issues | 100% | 100% |
+| Recall, all 18 planted issues | 100% | 97.2% |
+| Severity within one level of the answer key | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 |
+| Distractors rated Medium or above | 0 | 0 |
+| Critical issues in the report | 11 labels | 3 |
+| Cross-source findings the verifier corrected | 9 of 19 | 5 of 14 |
+| Risk matrix rows | 90 | 14 |
+| Report length | 38 pages | 17 pages |
+
+Every quality target was met, and Critical and High recall held. The cost was half a point on goodwill risk: it was found again, but as a Medium finding that no answer cited, so it was never verified. The run also showed three process gaps, all fixed afterwards: the Checkpoint 1 plan summary was not shown in chat, one verifier's headline count did not match its own table, and the run wrote its own report converter, which is now committed as `tools/md2html.py`.
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
