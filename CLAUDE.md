@@ -130,7 +130,7 @@ Write the report to `output/` using the template below. `<Codename>` is the proj
 ## Report template
 
 1. **Cover:** "Project <Codename>: Comprehensive Due Diligence Report", "Draft for Investment Committee discussion", the date, "Fictional case study", and "Prepared by an AI multi-agent diligence system with human review".
-2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, the main positive and mitigating points (with finding IDs), and the valuation implications.
+2. **Executive summary:** the bottom line (a proposed recommendation: Proceed, Proceed with conditions, Pause, or Do not proceed at the current price; humans make the decision), the top five red flags, the main positive and mitigating points (with finding IDs), and the valuation implications. Before writing the positives, re-read `memory/findings.md` and the analyst reports and check this fixed list of mitigants: debt maturities, customer retention or churn, segments or products still growing, items correctly excluded from adjusted metrics, dismissed, settled or closed litigation, and supply or price protections. Report each one you find, with its finding IDs; skip only those no source supports.
 3. **Answers to the six IC questions:** one short section each, citing finding IDs.
 4. **Risk matrix:** one row per distinct issue, covering every verified finding: ID (the parent finding, with its supporting IDs in brackets), finding, workstream, severity, confidence, deal impact, recommended action (price, structure, condition, indemnity or further diligence). Do not give the same fact its own row twice. For a Critical row, the finding states the test it meets.
 5. **Workstream detail:** SEC filings, News and media, Litigation, Financial analysis (with a key metrics table).
@@ -149,6 +149,10 @@ Write the report to `output/` using the template below. `<Codename>` is the proj
 - **Low:** note for completeness.
 
 **Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
+
+**Neutralized risks:** when a source shows that a risk is neutralized during the forecast period by a contract (for example a counterparty bearing a cost) or by an accounting treatment (for example an item correctly excluded from an adjusted metric), rate it Low and list it under positive or mitigating points. It does not get its own risk matrix row.
+
+**Finding hygiene:** every matter an analyst reviews gets its own finding ID, including Low and closed matters, so it reaches the register. Each finding covers one topic. Never bundle a benign item with a real issue in one finding; split them so each gets its own severity.
 
 **Confidence**
 

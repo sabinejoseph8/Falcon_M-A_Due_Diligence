@@ -332,11 +332,20 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 ## Phase 7: Future (after v1)
 
 **Goal:** move from a demo toward real use.
-**Status:** Not started
+**Status:** In progress
 
 - [ ] Swap one simulated source for a real one (for example SEC EDGAR filings for a real public company)
-- [ ] A second fictional target that the instructions were never tuned on, to test generalization
+- [ ] A second fictional target that the instructions were never tuned on, to test generalization (Kestrel done as a near-transfer test; Heron, the held-out test, still to be run)
 - [ ] Excel data pack for the committee from the key metrics dataset
 - [ ] More specialists (tax, people, IP, ESG) using the same finding format
+
+**Targets (October 19, 2026):** the project now holds several targets under `targets/`. `/diligence <target>` and `/evaluate <target>` take the target name.
+- **Kestrel** (healthcare, private equity take-private) was built by a session that never saw Falcon's answers, but it read the instructions, and about 13 of its 18 planted issues are the same types as Falcon's. It is a near-transfer test. Run 1: 13 of 13 Critical and High found (100%), 97.2% overall, 0 unsupported findings, but 2 of 4 distractors rated too high, the first time any run missed that target.
+- After run 1, a session working from Kestrel's scorecard added instruction rules aimed at those misses (commit `af02fce`). A Kestrel rerun with those rules is therefore an in-sample result, not a generalization result.
+- **Heron** was built by a session that never saw the instructions or the other targets, from issue types neither Falcon nor Kestrel uses. It is the held-out test.
+
+**Setup freeze:** from October 19, 2026, no changes to `CLAUDE.md`, `.claude/`, `tools/` or the report template until a blind Heron run is graded, so Heron measures the setup as it stands (commit `af02fce`).
+
+**Known check gaps (to fix after the Heron run, by a session that has not seen a scorecard):** the run checks expect a `case_id` column in the docket index, but Kestrel's uses `matter_id`, so the Phase 3 checks cannot load on a Kestrel run; and the Phase 4 check now expects the positives row (P19) to be graded, which the Kestrel run 1 scorecard does not do.
 
 Automated tests and manual verification will be added when a phase starts.

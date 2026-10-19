@@ -49,6 +49,8 @@ A table: Date | Event | Outlet | Fact / Allegation / Rumor
 
 ### Findings
 
+Give every matter you review its own NEWS- ID and card, including Low and closed matters, so the lead agent can register it. Each card covers one topic: never bundle a benign item with a real issue in one card. Split them so each gets its own severity.
+
 Use this card for each finding:
 
 #### NEWS-01: <short title>
@@ -73,6 +75,8 @@ Use this card for each finding:
 - **High:** material impact on price or terms, or needs a specific protection (indemnity, escrow, closing condition).
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
+
+**Neutralized risks:** when a source shows that a risk is neutralized during the forecast period by a contract (for example a counterparty bearing a cost) or by an accounting treatment (for example an item correctly excluded from an adjusted metric), rate it Low and also list it under Positive or mitigating points.
 
 ## Confidence rubric
 
