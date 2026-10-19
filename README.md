@@ -13,7 +13,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
 
 ## The problem
 
@@ -149,6 +149,23 @@ Scorecard: [run 4](runs/2026-10-18_1909/evaluation/scorecard.md).
 Every quality target was met, and Critical and High recall held. The cost was half a point on goodwill risk: it was found again, but as a Medium finding that no answer cited, so it was never verified. The run also showed three process gaps, all fixed afterwards: the Checkpoint 1 plan summary was not shown in chat, one verifier's headline count did not match its own table, and the run wrote its own report converter, which is now committed as `tools/md2html.py`.
 
 Scorecard: [run 5](runs/2026-10-18_2316/evaluation/scorecard.md).
+
+**Run 6: closing the last gap.** Run 5 lost half a point on goodwill because a Medium finding that no answer cited was never verified. Two general changes followed: verify every Medium finding the report shows, and compare each dated accounting judgment (an impairment test, a reserve) with what happened afterwards. They were written by a builder session that had never opened the answer key. Then I ran a sixth blind run.
+
+| Metric | Run 5 | Run 6 |
+|---|---|---|
+| Recall, the 13 Critical and High planted issues | 100% | 100% |
+| Recall, all 18 planted issues | 97.2% | 100% |
+| Severity within one level of the answer key | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 |
+| Distractors rated Medium or above | 0 | 0 |
+| Cross-source findings the verifier corrected | 5 of 14 | 7 of 13 |
+| Risk matrix rows | 14 | 18 |
+| Report length | 17 pages | 13 pages |
+
+Goodwill risk was tied to events after the test date and verified, so all 18 issues are found again. The run 5 process fixes held: every checkpoint was shown in chat, and the report used the committed converter. Two small things slipped: the verifier corrected more cross-source findings, and six unverified Low findings got a non-standard status, which one automated check flags.
+
+Scorecard: [run 6](runs/2026-10-19_0903/evaluation/scorecard.md).
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
