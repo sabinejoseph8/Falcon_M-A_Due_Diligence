@@ -148,6 +148,8 @@ Scorecard: [run 4](runs/2026-10-18_1909/evaluation/scorecard.md).
 
 Every quality target was met, and Critical and High recall held. The cost was half a point on goodwill risk: it was found again, but as a Medium finding that no answer cited, so it was never verified. The run also showed three process gaps, all fixed afterwards: the Checkpoint 1 plan summary was not shown in chat, one verifier's headline count did not match its own table, and the run wrote its own report converter, which is now committed as `tools/md2html.py`.
 
+Scorecard: [run 5](runs/2026-10-18_2316/evaluation/scorecard.md).
+
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
 ## Repository structure
