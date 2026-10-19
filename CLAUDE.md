@@ -93,7 +93,7 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
 
 Stop. Show the user:
 
-- a table of Critical and High findings (ID, one-line finding, severity, confidence), with the severity test each Critical finding meets (for example "value: 18.3x vs 11.5x");
+- a table of Critical and High findings (ID, one-line finding, severity, confidence), with the severity test each Critical finding meets;
 - the main conflicts between sources;
 - what is still open and what you propose next.
 
@@ -139,7 +139,7 @@ Write the report to `output/` using the template below:
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
 
-**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless reported numbers show it already causes a default or a liquidity problem before signing or closing, which makes it Critical. A breach that depends on a projection or on an unresolved legal reading stays High, with the projection or reading stated.
+**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
 
 **Confidence**
 

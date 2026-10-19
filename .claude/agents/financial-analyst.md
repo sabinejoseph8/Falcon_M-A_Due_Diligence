@@ -67,7 +67,7 @@ Use this card for each finding:
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
 
-**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless reported numbers show it already causes a default or a liquidity problem before signing or closing, which makes it Critical. A breach that depends on a projection or on an unresolved legal reading stays High, with the projection or reading stated.
+**Calibration:** a debt or covenant problem that is cured by refinancing at closing is High, unless it causes a default or a liquidity problem before signing or closing, which makes it Critical.
 
 ## Confidence rubric
 

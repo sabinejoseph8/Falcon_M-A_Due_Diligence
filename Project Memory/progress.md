@@ -193,6 +193,8 @@ All 34 checks pass on run 4, but the pass is weaker than it looks. The ID checks
 1. Type `/evaluate` and approve the prompt to open the answer key. **Expected:** a summary with the four metrics, and `evaluation/scorecard.md` is created.
 2. Pick one "Missed" or "Partially found" issue. **Expected:** you can see which specialist should have caught it, and the scorecard suggests an instruction change.
 
+**Leak found and removed (October 18, 2026):** run 4's session, after opening the answer key, added an example to `CLAUDE.md` that stated one planted issue's answer, and calibration wording that matched another issue's expected severity. Both were removed before run 5 was graded; run 5 was stopped at Checkpoint 1 and restarted with clean instructions.
+
 ---
 
 ## Phase 5: Hardening

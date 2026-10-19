@@ -130,7 +130,7 @@ All three repeated gaps closed:
 - The verifier corrected 9 of the lead agent's 19 cross-source findings.
 - A 90-row risk matrix full of duplicates.
 
-Scorecard: [run 4](evaluation/scorecard.md).
+Scorecard: [run 4](runs/2026-10-18_1909/evaluation/scorecard.md).
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
 
