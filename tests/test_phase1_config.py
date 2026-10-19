@@ -9,7 +9,19 @@ from _common import ROOT, frontmatter, read
 SUBAGENTS = ["sec-filings-analyst", "news-media-analyst", "litigation-analyst", "financial-analyst", "citation-verifier"]
 READ_ONLY_TOOLS = {"Read", "Grep", "Glob"}
 COMMANDS = ["diligence", "diligence-status", "evaluate", "reset-memory", "run-tests"]
-BUILT_IN_COMMANDS = {"status", "help", "clear", "reset", "config", "agents", "memory", "init", "model", "cost", "compact", "doctor", "review", "permissions", "resume", "context", "exit", "mcp", "hooks", "plugin"}
+# Built-in commands and bundled skills, from the Claude Code commands reference (checked October 18, 2026).
+BUILT_IN_COMMANDS = {
+    "add-dir", "advisor", "agents", "artifacts", "autocompact", "autofix-pr", "background", "batch", "branch", "btw", "bug",
+    "cd", "chrome", "claude-api", "clear", "code-review", "color", "compact", "config", "context", "copy", "cost", "debug",
+    "deep-research", "design", "desktop", "diff", "doctor", "effort", "exit", "export", "fast", "feedback",
+    "fewer-permission-prompts", "focus", "fork", "goal", "help", "hooks", "ide", "import", "init", "insights", "keybindings",
+    "list-agents", "login", "logout", "loop", "mcp", "memory", "mobile", "model", "output-style", "passes", "permissions",
+    "plan", "plugin", "pr-comments", "privacy-settings", "recap", "release-notes", "reload-plugins", "reload-skills",
+    "remote-control", "rename", "reset", "resume", "review", "rewind", "run", "sandbox", "schedule", "security-review",
+    "simplify", "skill-doctor", "skills", "slides", "stats", "status", "statusline", "stop", "subtask", "tasks", "teleport",
+    "terminal-setup", "theme", "ultraplan", "ultrareview", "update-config", "upgrade", "usage", "verify", "vim", "voice",
+    "workflows",
+}
 
 
 class TestSubagents(unittest.TestCase):
@@ -56,6 +68,12 @@ class TestGuardrails(unittest.TestCase):
     def test_source_data_and_answer_key_cannot_be_edited(self):
         for rule in ("Edit(/data/**)", "Edit(./data/**)", "Edit(/evaluation/answer-key.md)", "Edit(./evaluation/answer-key.md)"):
             self.assertIn(rule, self.permissions["deny"])
+
+    def test_tests_cannot_be_edited(self):
+        # A blind run once edited its own grader. Deny rules hold in every permission mode.
+        for rule in ("Edit(/tests/**)", "Edit(./tests/**)"):
+            self.assertIn(rule, self.permissions["deny"])
+        self.assertIn("Never modify files in `data/` or `tests/`", read(ROOT / "CLAUDE.md"))
 
     def test_reading_anything_in_evaluation_needs_approval(self):
         for rule in ("Read(/evaluation/**)", "Read(./evaluation/**)"):

@@ -5,6 +5,8 @@
       "WebSearch",
       "Edit(/data/**)",
       "Edit(./data/**)",
+      "Edit(/tests/**)",
+      "Edit(./tests/**)",
       "Edit(/evaluation/answer-key.md)",
       "Edit(./evaluation/answer-key.md)"
     ],
