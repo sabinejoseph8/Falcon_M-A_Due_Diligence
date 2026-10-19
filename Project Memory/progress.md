@@ -355,13 +355,14 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 | Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) |
 |---|---|---|---|
 | Planted issues whose facts were found | 18 of 18 | 18 of 18 (one only as a note) | 18 of 18 |
-| Recall, the 13 Critical and High issues | 100% | 100% | 88.5% strict; 100% on the earlier basis |
-| Recall, all 18 issues | 100% | 97.2% | 88.9% strict; 100% on the earlier basis |
+| Recall, the 13 Critical and High issues | 100% | 100% | 100% |
+| Recall, all 18 issues | 100% | 97.2% | 100% |
 | Severity within one level of the answer key | 100% | 100% | 100% |
+| Severity, exact match | not measured | not measured | 77.8% (14 of 18) |
 | Unsupported findings in the report | 0 | 0 | 0 |
 | Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 |
 
-**How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Its grader counted four issues as only partly found because their severity was one level away from what the answer key accepts (for example a product-safety issue rated High instead of Critical). Earlier graders counted a one-level difference as found, which gives 100%. Both readings are shown because the grading rule was not exact on this point; making it exact is the next fix to the grading command. What did not carry over cleanly is judgment: severity calibration on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
+**How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Scores use the grading rule the owner chose: an issue counts as found when its main point is verified with a severity within one level of what the answer key accepts, and exact severity matches are reported separately. On that rule Heron is 100% recall, with 14 of 18 severities (77.8%) an exact match; four were one level off (for example a product-safety issue rated High instead of Critical). Heron's original grader used a stricter reading that counted those four as partly found (88.5% on Critical and High issues); the rule was made exact afterwards so every run is graded the same way. What did not carry over cleanly is judgment: exact severity on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
 
 **What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind.
 
