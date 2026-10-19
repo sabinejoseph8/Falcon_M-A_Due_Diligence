@@ -24,7 +24,11 @@ DOCKET = TARGET / "data" / "litigation" / "docket_index.csv"
 CASE_IDS = set()
 if DOCKET.exists():
     with open(DOCKET, newline="") as f:
-        CASE_IDS = {row["case_id"] for row in csv.DictReader(f)}
+        reader = csv.DictReader(f)
+        # Targets name the ID column differently (case_id, matter_id); fall back to the first column.
+        fields = reader.fieldnames or []
+        key = next((c for c in ("case_id", "matter_id") if c in fields), fields[0] if fields else None)
+        CASE_IDS = {row[key] for row in reader} if key else set()
 # The report is named after the deal's codename, for example Project-Falcon-Due-Diligence-Report.md.
 REPORT = next(iter(sorted((RUN / "output").glob("Project-*-Due-Diligence-Report.md"))), RUN / "output" / "Project-Falcon-Due-Diligence-Report.md")
 LOG = RUN / "memory" / "run-log.md"
