@@ -66,6 +66,10 @@ Use this card for each finding:
 - **Medium:** manageable, but needs follow-up or an integration plan.
 - **Low:** note for completeness.
 
+**Remedy sought:** when a regulator or claimant formally seeks a specific remedy (for example a recall with refunds, or a stated damages claim) and its full cost can be computed from figures in the sources, that cost is the number for the more-than-10%-of-value test. If it is above 10% of value, rate the finding Critical and label the amount as an upper bound. Do not discount it by an uptake or success rate that no source gives. Rate it High only if a source shows the remedy is unlikely. A statutory maximum or penalty ceiling is not a remedy sought.
+
+**Timing alone:** a finding that rests only on how close two dated events are, with no source alleging misconduct or a link between them, is Low. Insider share sales under a trading plan adopted before the relevant events are a mitigant, not a red flag.
+
 **Neutralized risks:** when a source shows that a risk is neutralized during the forecast period by a contract (for example a counterparty bearing a cost) or by an accounting treatment (for example an item correctly excluded from an adjusted metric), rate it Low and say in the card that it is a mitigant.
 
 ## Confidence rubric
