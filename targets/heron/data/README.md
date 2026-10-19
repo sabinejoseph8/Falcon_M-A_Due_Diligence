@@ -2,11 +2,11 @@
 
 # Project Heron data room
 
-Target: **Corvane Home Systems, Inc.** (NASDAQ: CVHS). Proposed acquirer: **Meridale Capital Partners Fund IV** (take-private). Start with `deal-brief.md`.
+Target: **Delmora Home Systems, Inc.** (NASDAQ: DLHS). Proposed acquirer: **Meridale Capital Partners Fund IV** (take-private). Start with `deal-brief.md`.
 
 | Folder | What it holds | Files |
 |---|---|---|
-| `sec-filings/` | Excerpts of Corvane's SEC filings | FY2025 Form 10-K, Q2 2026 Form 10-Q, two Form 8-K reports (May 14, 2026 and July 28, 2026), 2026 proxy statement (DEF 14A) |
+| `sec-filings/` | Excerpts of Delmora's SEC filings | FY2025 Form 10-K, Q2 2026 Form 10-Q, two Form 8-K reports (May 14, 2026 and July 28, 2026), 2026 proxy statement (DEF 14A) |
 | `news/` | Press, trade and online coverage, January to October 2026. Quality varies: some pieces rely on anonymous sources or come from parties with an interest | 14 articles, named `<date>_<outlet>_<topic>.md` |
 | `litigation/` | Court and regulatory docket | `docket_index.csv` (7 matters) and 4 case files `LIT-00n_<short-name>.md` |
 | `financials/` | Company financial data, US$ millions | See `financials/README.md` |

@@ -1,6 +1,6 @@
-> **FICTIONAL DATA.** Invented for a training exercise. Corvane Home Systems, Inc. does not exist.
+> **FICTIONAL DATA.** Invented for a training exercise. Delmora Home Systems, Inc. does not exist.
 
-# Corvane Home Systems: financial data pack
+# Delmora Home Systems: financial data pack
 
 Source: company management accounts, reconciled to the FY2025 Form 10-K and Q2 2026 Form 10-Q. Unaudited for H1 periods. US$ millions unless stated.
 
@@ -21,4 +21,4 @@ Notes from management:
 - Days metrics use period-end balances and 365 days (181 days for H1 2026). Days payable and days inventory use cost of revenue.
 - "Change in fair value of contingent consideration" in the cash flow is the non-cash gain on remeasuring the Nimbus earn-out, booked in other income.
 - Warranty claim rate is claims received as a percentage of units under warranty, annualized.
-- Corvane Insights revenue is reported inside the Subscriptions & Services segment.
+- Delmora Insights revenue is reported inside the Subscriptions & Services segment.

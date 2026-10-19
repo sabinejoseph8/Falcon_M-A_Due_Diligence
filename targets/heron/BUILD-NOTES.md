@@ -4,7 +4,7 @@ Heron is the third fictional diligence target. Its job is to be a stricter gener
 
 ## What it is
 
-- **Deal:** Meridale Capital Partners Fund IV, a private equity fund, proposes to take private Corvane Home Systems, Inc. (NASDAQ: CVHS), a US maker of connected home climate devices (smart thermostats, air quality monitors, hubs) with a subscription and data business and a utility programs business. US$24.50 per share; enterprise value US$1,543.4 million; 11.8x LTM Adjusted EBITDA.
+- **Deal:** Meridale Capital Partners Fund IV, a private equity fund, proposes to take private Delmora Home Systems, Inc. (NASDAQ: DLHS), a US maker of connected home climate devices (smart thermostats, air quality monitors, hubs) with a subscription and data business and a utility programs business. US$24.50 per share; enterprise value US$1,543.4 million; 11.8x LTM Adjusted EBITDA.
 - **Industry and deal type:** consumer connected devices and data, sponsor take-private with a leveraged financing. Falcon and Kestrel are strategic acquisitions in other sectors.
 - **Data room:** deal brief with six Investment Committee questions and a README; five SEC filing excerpts (10-K FY2025, 10-Q Q2 2026, two 8-Ks, DEF 14A); 14 news articles, including an anonymous-source piece, an activist letter, an interested-party blog, a forum post and unrelated noise; a docket index of 7 matters with 4 case files; and the eight financial files with the same names and column headers as Falcon's.
 - **Answer key:** `evaluation/answer-key.md`, with 18 planted issues (4 Critical, 9 High, 4 Medium, 1 Low by first-listed severity), one planted-positives row (P19) and four distractors. Twelve of the planted issues need more than one source to find or size properly.

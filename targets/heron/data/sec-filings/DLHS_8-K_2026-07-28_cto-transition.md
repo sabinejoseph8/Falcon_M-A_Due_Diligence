@@ -1,16 +1,16 @@
-> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Corvane Home Systems, Inc. is not a real company.
+> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Delmora Home Systems, Inc. is not a real company.
 
-# Corvane Home Systems, Inc. Current Report on Form 8-K
+# Delmora Home Systems, Inc. Current Report on Form 8-K
 
 **Date of report (date of earliest event reported):** July 27, 2026
 **Filed with the SEC:** July 28, 2026
-**Ticker:** CVHS
+**Ticker:** DLHS
 
 ---
 
 ## Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers
 
-On July 27, 2026, Dr. Anselm Reyes-Barrow, co-founder, Chief Technology Officer and a director of Corvane Home Systems, Inc. (the "Company"), notified the Company of the decision to step down as Chief Technology Officer and to resign from the board of directors, each effective September 30, 2026. Dr. Reyes-Barrow's decision is not the result of any disagreement with the Company on any matter relating to the Company's operations, policies or practices.
+On July 27, 2026, Dr. Anselm Reyes-Barrow, co-founder, Chief Technology Officer and a director of Delmora Home Systems, Inc. (the "Company"), notified the Company of the decision to step down as Chief Technology Officer and to resign from the board of directors, each effective September 30, 2026. Dr. Reyes-Barrow's decision is not the result of any disagreement with the Company on any matter relating to the Company's operations, policies or practices.
 
 The Company and Dr. Reyes-Barrow entered into a consulting agreement under which Dr. Reyes-Barrow will advise the Company on the transition of technology leadership from October 1, 2026 to March 31, 2027, for a fee of US$40,000 per month. Either party may end the consulting agreement on 30 days' notice. Unvested equity awards held by Dr. Reyes-Barrow will be forfeited on September 30, 2026.
 
@@ -28,5 +28,5 @@ The Company's press release announcing the transition is furnished as Exhibit 99
 
 ---
 
-**Signature.** Corvane Home Systems, Inc.
+**Signature.** Delmora Home Systems, Inc.
 By: /s/ Priyanka Solberg, General Counsel and Corporate Secretary

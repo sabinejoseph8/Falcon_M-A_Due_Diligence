@@ -1,10 +1,10 @@
-> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Corvane Home Systems, Inc. is not a real company.
+> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Delmora Home Systems, Inc. is not a real company.
 
-# Corvane Home Systems, Inc. Definitive Proxy Statement (Schedule 14A) for the 2026 Annual Meeting (excerpts)
+# Delmora Home Systems, Inc. Definitive Proxy Statement (Schedule 14A) for the 2026 Annual Meeting (excerpts)
 
 **Filed with the SEC:** April 17, 2026
 **Annual meeting:** June 4, 2026
-**Ticker:** CVHS
+**Ticker:** DLHS
 
 ---
 
@@ -20,9 +20,9 @@
 | Elena Vasari (independent) | 49 | 2022 | Audit; Nominating and Governance |
 | Howard Lindgren (independent) | 61 | 2023 | Compensation; Strategic Review |
 
-**Dr. Anselm Reyes-Barrow** co-founded Corvane in 2018 and has served as Chief Technology Officer since then. Before Corvane, Dr. Reyes-Barrow was a **postdoctoral research fellow at the Building Energy Laboratory of the Calder Institute of Technology from September 2014 to June 2017**, where the research focused on machine learning models of residential heating and cooling. From July 2017 to the founding of Corvane, Dr. Reyes-Barrow was an independent consultant. Dr. Reyes-Barrow is the named inventor on all six US patents in the AdaptiveComfort family.
+**Dr. Anselm Reyes-Barrow** co-founded Delmora in 2018 and has served as Chief Technology Officer since then. Before Delmora, Dr. Reyes-Barrow was a **postdoctoral research fellow at the Building Energy Laboratory of the Calder Institute of Technology from September 2014 to June 2017**, where the research focused on machine learning models of residential heating and cooling. From July 2017 to the founding of Delmora, Dr. Reyes-Barrow was an independent consultant. Dr. Reyes-Barrow is the named inventor on all six US patents in the AdaptiveComfort family.
 
-**Dana Whitcombe** co-founded Corvane in 2018 and has been Chief Executive Officer since then. Before Corvane, Dana Whitcombe led the connected products division of a consumer electronics company.
+**Dana Whitcombe** co-founded Delmora in 2018 and has been Chief Executive Officer since then. Before Delmora, Dana Whitcombe led the connected products division of a consumer electronics company.
 
 ## Board meetings and committees
 
@@ -62,7 +62,7 @@ On **November 12, 2025**, Martin Okafor, Chief Financial Officer, adopted a Rule
 
 ## Certain relationships and related person transactions
 
-**Nimbus earn-out.** Leona Farkas, our Chief Data Officer, was a securityholder of Nimbus Air Analytics, which we acquired in April 2024, and is entitled to about 34% of any earn-out payment under the Nimbus merger agreement. The earn-out is up to US$90.0 million, based on Corvane Insights annual recurring revenue at December 31, 2027. The Audit Committee reviews any amendment to the earn-out terms.
+**Nimbus earn-out.** Leona Farkas, our Chief Data Officer, was a securityholder of Nimbus Air Analytics, which we acquired in April 2024, and is entitled to about 34% of any earn-out payment under the Nimbus merger agreement. The earn-out is up to US$90.0 million, based on Delmora Insights annual recurring revenue at December 31, 2027. The Audit Committee reviews any amendment to the earn-out terms.
 
 **Ensamble Norte.** We own 49% of Ensamble Norte, our main contract manufacturer. Howard Lindgren, a director, served on the board of Grupo Industrial Arceo, the 51% owner of Ensamble Norte, until 2022. The board determined that this past relationship does not affect Howard Lindgren's independence.
 

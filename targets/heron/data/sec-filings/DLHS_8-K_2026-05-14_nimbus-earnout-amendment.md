@@ -1,18 +1,18 @@
-> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Corvane Home Systems, Inc. is not a real company.
+> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Delmora Home Systems, Inc. is not a real company.
 
-# Corvane Home Systems, Inc. Current Report on Form 8-K
+# Delmora Home Systems, Inc. Current Report on Form 8-K
 
 **Date of report (date of earliest event reported):** May 12, 2026
 **Filed with the SEC:** May 14, 2026
-**Ticker:** CVHS
+**Ticker:** DLHS
 
 ---
 
 ## Item 1.01 Entry into a Material Definitive Agreement
 
-On May 12, 2026, Corvane Home Systems, Inc. (the "Company") entered into Amendment No. 2 (the "Amendment") to the Agreement and Plan of Merger dated March 1, 2024 among the Company, Nimbus Air Analytics, Inc. and the representative of the former Nimbus securityholders (the "Merger Agreement").
+On May 12, 2026, Delmora Home Systems, Inc. (the "Company") entered into Amendment No. 2 (the "Amendment") to the Agreement and Plan of Merger dated March 1, 2024 among the Company, Nimbus Air Analytics, Inc. and the representative of the former Nimbus securityholders (the "Merger Agreement").
 
-The Merger Agreement provides for contingent consideration (the "Earn-out Payment") of up to US$90.0 million, based on annual recurring revenue of the Company's Corvane Insights product at December 31, 2027.
+The Merger Agreement provides for contingent consideration (the "Earn-out Payment") of up to US$90.0 million, based on annual recurring revenue of the Company's Delmora Insights product at December 31, 2027.
 
 The Amendment makes the following principal changes:
 
@@ -32,5 +32,5 @@ The foregoing description is qualified by reference to the full text of the Amen
 
 **Signature.** Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.
 
-Corvane Home Systems, Inc.
+Delmora Home Systems, Inc.
 By: /s/ Priyanka Solberg, General Counsel and Corporate Secretary

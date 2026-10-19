@@ -1,9 +1,9 @@
-> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Corvane Home Systems, Inc. is not a real company.
+> **FICTIONAL DOCUMENT.** This is an invented filing for a training exercise. Delmora Home Systems, Inc. is not a real company.
 
-# Corvane Home Systems, Inc. Quarterly Report on Form 10-Q for the quarter ended June 30, 2026 (excerpts)
+# Delmora Home Systems, Inc. Quarterly Report on Form 10-Q for the quarter ended June 30, 2026 (excerpts)
 
 **Filed with the SEC:** August 6, 2026
-**Ticker:** CVHS
+**Ticker:** DLHS
 
 ---
 
@@ -30,11 +30,11 @@
 
 #### Note 3. Revenue
 
-Subscriptions & Services revenue rose 23.5% to US$84.0 million in H1 2026. It included **Corvane Insights revenue of US$11.8 million** (H1 2025: nil). At June 30, 2026, 2.3 million households were enrolled in Insights. In the first quarter of 2026 we expanded the Insights product to give partners **household-level occupancy and comfort indices, aggregated at the ZIP+4 level**, updated daily. Insights partners include Bellmark Mutual Insurance and two real-estate analytics firms.
+Subscriptions & Services revenue rose 23.5% to US$84.0 million in H1 2026. It included **Delmora Insights revenue of US$11.8 million** (H1 2025: nil). At June 30, 2026, 2.3 million households were enrolled in Insights. In the first quarter of 2026 we expanded the Insights product to give partners **household-level occupancy and comfort indices, aggregated at the ZIP+4 level**, updated daily. Insights partners include Bellmark Mutual Insurance and two real-estate analytics firms.
 
 #### Note 6. Product field action
 
-On April 21, 2026, after an independent engineering review, we announced a voluntary field action for about **1.62 million Corvane Aura thermostats** (models AT-200 and AT-210, manufactured from 2021 to 2023). The backup lithium coin battery in these units can overheat if the thermostat is wired to certain older heating systems. Under the field action we mail affected customers a free battery isolation kit. We estimate the cost of the program at about US$3.70 per unit, including shipping and customer support, and recorded a **reserve of US$6.0 million** in general and administrative expense. We used US$0.9 million in the second quarter, leaving a reserve of US$5.1 million at June 30, 2026.
+On April 21, 2026, after an independent engineering review, we announced a voluntary field action for about **1.62 million Delmora Aura thermostats** (models AT-200 and AT-210, manufactured from 2021 to 2023). The backup lithium coin battery in these units can overheat if the thermostat is wired to certain older heating systems. Under the field action we mail affected customers a free battery isolation kit. We estimate the cost of the program at about US$3.70 per unit, including shipping and customer support, and recorded a **reserve of US$6.0 million** in general and administrative expense. We used US$0.9 million in the second quarter, leaving a reserve of US$5.1 million at June 30, 2026.
 
 As of June 30, 2026 we had received 214 reports of battery overheating in affected units, including 37 reports of fires, most confined to the thermostat, and 9 reports of minor burn injuries. We are in discussions with the staff of the CPSC about the field action. The CPSC staff may seek a different or broader remedy. We cannot currently estimate any additional costs.
 
@@ -48,9 +48,9 @@ The fair value of the Nimbus earn-out was US$8.0 million at June 30, 2026, uncha
 
 #### Note 10. Income taxes
 
-In May 2026 the IRS issued a Notice of Proposed Adjustment ("NOPA") for tax years 2019 through 2021. The IRS proposes to increase the value of the AdaptiveComfort rights transferred to Corvane Technologies Ireland Limited in 2019 from US$64.0 million to US$476.0 million. The resulting adjustment to taxable income of **US$412.0 million** would lead to additional federal tax of about **US$86.5 million**, plus a proposed 40% gross valuation misstatement penalty of about **US$34.6 million**, plus interest. We disagree with the NOPA and have filed a protest with the IRS Independent Office of Appeals. We believe it is more likely than not that our position will be sustained. Our liability for uncertain tax positions was US$14.2 million at June 30, 2026.
+In May 2026 the IRS issued a Notice of Proposed Adjustment ("NOPA") for tax years 2019 through 2021. The IRS proposes to increase the value of the AdaptiveComfort rights transferred to Delmora Technologies Ireland Limited in 2019 from US$64.0 million to US$476.0 million. The resulting adjustment to taxable income of **US$412.0 million** would lead to additional federal tax of about **US$86.5 million**, plus a proposed 40% gross valuation misstatement penalty of about **US$34.6 million**, plus interest. We disagree with the NOPA and have filed a protest with the IRS Independent Office of Appeals. We believe it is more likely than not that our position will be sustained. Our liability for uncertain tax positions was US$14.2 million at June 30, 2026.
 
-**Sales taxes.** We have entered into voluntary disclosure agreements with six states for sales tax not collected on Corvane Care subscriptions from 2021 to 2025. We accrued **US$1.4 million** for this matter in the second quarter.
+**Sales taxes.** We have entered into voluntary disclosure agreements with six states for sales tax not collected on Delmora Care subscriptions from 2021 to 2025. We accrued **US$1.4 million** for this matter in the second quarter.
 
 #### Note 12. Commitments and contingencies
 
@@ -58,8 +58,8 @@ In May 2026 the IRS issued a Notice of Proposed Adjustment ("NOPA") for tax year
 
 **Legal proceedings.**
 
-- *Calder Institute of Technology.* On April 9, 2026, Calder Institute of Technology sued Corvane and Dr. Anselm Reyes-Barrow in Massachusetts Superior Court. Calder claims that inventions underlying the AdaptiveComfort patents belong to Calder under its intellectual property policy, and seeks a declaration of ownership, assignment of the patents and damages. We believe the claims are without merit and will defend ourselves vigorously.
-- *European Commission.* On June 30, 2026, the European Commission sent a Statement of Objections to Corvane Europe B.V. and Corvane Home Systems, Inc. The Commission alleges that from 2019 to 2025 we restricted our EEA distributors from making sales to customers in other member states. The Commission may impose fines of up to 10% of worldwide annual turnover. We will respond. We have not recorded an accrual because we cannot reasonably estimate a loss.
+- *Calder Institute of Technology.* On April 9, 2026, Calder Institute of Technology sued Delmora and Dr. Anselm Reyes-Barrow in Massachusetts Superior Court. Calder claims that inventions underlying the AdaptiveComfort patents belong to Calder under its intellectual property policy, and seeks a declaration of ownership, assignment of the patents and damages. We believe the claims are without merit and will defend ourselves vigorously.
+- *European Commission.* On June 30, 2026, the European Commission sent a Statement of Objections to Delmora Europe B.V. and Delmora Home Systems, Inc. The Commission alleges that from 2019 to 2025 we restricted our EEA distributors from making sales to customers in other member states. The Commission may impose fines of up to 10% of worldwide annual turnover. We will respond. We have not recorded an accrual because we cannot reasonably estimate a loss.
 - *Bureau of Industry and Security.* On June 24, 2026, we received an administrative subpoena from the US Department of Commerce, Bureau of Industry and Security ("BIS"), requesting documents about shipments to a distributor in the United Arab Emirates. In June 2026 we suspended shipments to that distributor. We are cooperating with BIS. We cannot predict the outcome or estimate any loss.
 - *Aura class action.* On July 15, 2026, a putative class action was filed against us in the US District Court for the Northern District of Illinois about the Aura thermostats covered by the field action. See Note 15.
 

@@ -1,6 +1,6 @@
 > **FICTIONAL ARTICLE.** Invented for a training exercise. The outlet, people, companies and events do not exist.
 
-# "Corvane CFO dumping shares before bad news?"
+# "Delmora CFO dumping shares before bad news?"
 
 **StockTalk (online investor forum, user post)** | October 9, 2026
 
