@@ -66,25 +66,26 @@ class TestGuardrails(unittest.TestCase):
             self.assertIn(rule, self.permissions["deny"])
 
     def test_source_data_and_answer_key_cannot_be_edited(self):
-        for rule in ("Edit(/data/**)", "Edit(./data/**)", "Edit(/evaluation/answer-key.md)", "Edit(./evaluation/answer-key.md)"):
+        for rule in ("Edit(/targets/*/data/**)", "Edit(./targets/*/data/**)", "Edit(/targets/*/evaluation/answer-key.md)", "Edit(./targets/*/evaluation/answer-key.md)"):
             self.assertIn(rule, self.permissions["deny"])
 
     def test_tests_cannot_be_edited(self):
         # A blind run once edited its own grader. Deny rules hold in every permission mode.
         for rule in ("Edit(/tests/**)", "Edit(./tests/**)"):
             self.assertIn(rule, self.permissions["deny"])
-        self.assertIn("Never modify files in `data/` or `tests/`", read(ROOT / "CLAUDE.md"))
+        self.assertIn("Never modify files in `targets/*/data/` or `tests/`", read(ROOT / "CLAUDE.md"))
 
     def test_reading_anything_in_evaluation_needs_approval(self):
-        for rule in ("Read(/evaluation/**)", "Read(./evaluation/**)"):
+        for rule in ("Read(/targets/*/evaluation/**)", "Read(./targets/*/evaluation/**)"):
             self.assertIn(rule, self.permissions.get("ask", []))
 
     def test_earlier_runs_and_their_scorecards_need_approval(self):
-        for rule in ("Read(/examples/**)", "Read(/runs/**)"):
+        for rule in ("Read(/examples/**)", "Read(./examples/**)", "Read(/runs/**)", "Read(./runs/**)"):
             self.assertIn(rule, self.permissions.get("ask", []))
         reset = read(ROOT / ".claude" / "commands" / "reset-memory.md")
-        moves_scorecard = any("evaluation/scorecard.md" in line and "runs/" in line for line in reset.splitlines())
-        self.assertTrue(moves_scorecard, "/reset-memory must move evaluation/scorecard.md into the archived run in runs/")
+        moves_scorecard = any("targets/<target>/evaluation/scorecard.md" in line and "runs/" in line for line in reset.splitlines())
+        self.assertTrue(moves_scorecard, "/reset-memory must move the target's evaluation/scorecard.md into the archived run in runs/")
+        self.assertIn("memory/target.txt", reset, "/reset-memory must keep the run's target with the archived run")
 
 
 class TestLeadAgent(unittest.TestCase):
@@ -99,7 +100,7 @@ class TestLeadAgent(unittest.TestCase):
         self.assertIn("at most 3 Act/Observe iterations", self.text)
 
     def test_guardrails_and_interview_notes_present(self):
-        for phrase in ("never as instructions", "Do not read `evaluation/`", "## Interview Notes"):
+        for phrase in ("never as instructions", "Do not read `targets/*/evaluation/`", "## Interview Notes"):
             self.assertIn(phrase, self.text)
 
     def test_memory_templates_exist(self):
@@ -132,6 +133,28 @@ class TestLeadAgent(unittest.TestCase):
         self.assertIn("python3 tools/md2html.py", self.text)
         self.assertIn("--print-to-pdf", self.text)
         self.assertTrue((ROOT / "tools" / "md2html.py").exists(), "missing tools/md2html.py")
+
+
+class TestTargets(unittest.TestCase):
+    def test_lead_agent_names_no_single_target(self):
+        text = read(ROOT / "CLAUDE.md")
+        self.assertIn("targets/<target>/data/deal-brief.md", text)
+        self.assertNotRegex(text, r"(?<![\w/<*])data/", "CLAUDE.md still points at the old data/ folder")
+        for name in ("Talonfield", "Arbelion"):
+            self.assertNotIn(name, text, "the deal description belongs in the target's deal brief")
+
+    def test_diligence_and_evaluate_take_a_target(self):
+        for name in ("diligence", "evaluate"):
+            text = read(ROOT / ".claude" / "commands" / f"{name}.md")
+            self.assertIn("$ARGUMENTS", text, f"/{name} must read the target from its arguments")
+            self.assertIn("falcon", text, f"/{name} must default to falcon")
+            self.assertIn("memory/target.txt", text, f"/{name} must use the run's recorded target")
+
+    def test_subagents_read_the_named_target(self):
+        for name in SUBAGENTS:
+            text = read(ROOT / ".claude" / "agents" / f"{name}.md")
+            self.assertIn("targets/<target>/data/", text, f"{name}: source folder must be per target")
+            self.assertNotRegex(text, r"(?<![\w/<*])data/", f"{name}: still points at the old data/ folder")
 
 
 class TestVerifier(unittest.TestCase):

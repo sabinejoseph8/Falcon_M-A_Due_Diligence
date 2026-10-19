@@ -5,15 +5,12 @@ import unittest
 
 import csv
 
-from _common import EM_DASH, ROOT, read, run_dir, table_rows
+from _common import EM_DASH, ROOT, TARGETS, read, run_dir, run_target, table_rows
 
 # Finding IDs: two or three digits, with an optional letter after the prefix (SEC-01, SEC-001, LIT-F01).
 ID_BODY = r"(?:SEC|NEWS|LIT|FIN|X)-[A-Z]?\d{2,3}"
 ID = re.compile(rf"^{ID_BODY}$")
 WORKSTREAMS = ["SEC", "NEWS", "LIT", "FIN"]
-# Court case IDs (LIT-001 and so on) name source files, not findings, so a report may cite them.
-with open(ROOT / "data" / "litigation" / "docket_index.csv", newline="") as f:
-    CASE_IDS = {row["case_id"] for row in csv.DictReader(f)}
 SEVERITIES = {"Critical", "High", "Medium", "Low", "Positive", "n/a"}
 STATUSES = {"Open", "Verified", "Partially verified", "Rejected"}
 REPORT_SECTIONS = ["executive summary", ("investment committee", "ic questions"), "risk matrix", "workstream", "cross-source", "protections", "open questions", "appendix"]
@@ -21,7 +18,15 @@ LINKED_ID = re.compile(r"^\[([^\]]+)\]\([^)]*\)$")
 ANALYSTS = ["sec-filings-analyst", "news-media-analyst", "litigation-analyst", "financial-analyst"]
 
 RUN = run_dir()
-REPORT = RUN / "output" / "Project-Falcon-Due-Diligence-Report.md"
+TARGET = TARGETS / run_target(RUN)
+# Court case IDs (LIT-001 and so on) name source files, not findings, so a report may cite them.
+DOCKET = TARGET / "data" / "litigation" / "docket_index.csv"
+CASE_IDS = set()
+if DOCKET.exists():
+    with open(DOCKET, newline="") as f:
+        CASE_IDS = {row["case_id"] for row in csv.DictReader(f)}
+# The report is named after the deal's codename, for example Project-Falcon-Due-Diligence-Report.md.
+REPORT = next(iter(sorted((RUN / "output").glob("Project-*-Due-Diligence-Report.md"))), RUN / "output" / "Project-Falcon-Due-Diligence-Report.md")
 LOG = RUN / "memory" / "run-log.md"
 HAS_RUN = LOG.exists() and re.search(r"checkpoint 1", read(LOG), re.I) is not None
 RUN_COMPLETE = HAS_RUN and re.search(r"(?:step )?5[.:]? report", read(LOG), re.I) is not None
@@ -41,6 +46,9 @@ def register():
 
 @unittest.skipUnless(HAS_RUN, f"no diligence run found in {RUN}")
 class TestWorkingMemory(unittest.TestCase):
+    def test_run_names_a_known_target(self):
+        self.assertTrue((TARGET / "data").is_dir(), f"the run's target has no data folder: {TARGET.relative_to(ROOT)}")
+
     def test_every_finding_is_complete(self):
         findings = register()
         self.assertGreater(len(findings), 0, "the register is empty")
@@ -100,11 +108,11 @@ class TestReport(unittest.TestCase):
         self.assertFalse(leaked, f"rejected findings in the report: {leaked}")
 
     def test_report_files_exist_and_have_no_em_dashes(self):
-        html = RUN / "output" / "Project-Falcon-Due-Diligence-Report.html"
+        html = REPORT.with_suffix(".html")
         self.assertTrue(html.exists(), "missing HTML report")
         self.assertIn("<style", read(html), "HTML report does not embed its stylesheet")
         self.assertNotIn(EM_DASH, self.text)
-        if not (RUN / "output" / "Project-Falcon-Due-Diligence-Report.pdf").exists():
+        if not REPORT.with_suffix(".pdf").exists():
             self.skipTest("no PDF (allowed when no PDF tool is installed)")
 
 

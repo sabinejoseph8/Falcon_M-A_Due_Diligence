@@ -1,93 +1,147 @@
-"""Phase 2: the simulated sources are complete, consistent and unchanged."""
+"""Phase 2: each target's simulated sources are complete, consistent and unchanged.
+Runs for every folder in targets/ that has a data_manifest.json."""
 import csv
 import json
 import re
 import unittest
 
-from _common import MANIFEST, ROOT, checksums, read
+from _common import MANIFEST_NAME, checksums, read, target_checks, targets
 
-FIN = ROOT / "data" / "financials"
+TARGETS = targets()
 
 
-def load(name):
-    with open(FIN / name, encoding="utf-8") as fh:
+def load(fin, name):
+    with open(fin / name, encoding="utf-8") as fh:
         rows = list(csv.reader(fh))
-    return rows[0][1:], {r[0]: r[1:] for r in rows[1:]}
+    return rows[0][1:], {r[0]: r[1:] for r in rows[1:]}, [r[0] for r in rows[1:]]
 
 
 def num(value):
     return float(value.replace("%", "")) if value not in ("", None) else 0.0
 
 
+def between(labels, start, end):
+    """Row labels after `start` (or from the top when None) and before `end`."""
+    first = labels.index(start) + 1 if start else 0
+    return labels[first:labels.index(end)]
+
+
+class TestTargetsExist(unittest.TestCase):
+    def test_at_least_one_target_has_a_manifest(self):
+        self.assertTrue(TARGETS, f"no targets/<name>/{MANIFEST_NAME}: run tests/run_all.py --write-manifest once")
+
+
 class TestFinancialsTieOut(unittest.TestCase):
+    def each(self):
+        for target in TARGETS:
+            fin = target / "data" / "financials"
+            if fin.is_dir():
+                with self.subTest(target=target.name):
+                    yield target.name, fin
+
     def test_balance_sheets_balance(self):
-        cols, bs = load("balance_sheet.csv")
-        assets = ["Cash and cash equivalents", "Accounts receivable net", "Contract assets (unbilled receivables)", "Inventory", "Prepaid expenses and other current assets", "Property and equipment net", "Goodwill", "Intangible assets net", "Other non-current assets"]
-        liabilities = ["Accounts payable", "Accrued liabilities", "Deferred revenue (current)", "Deferred revenue (non-current)", "Revolving credit facility", "Term loan", "Other liabilities"]
-        for i, col in enumerate(cols):
-            a = sum(num(bs[k][i]) for k in assets)
-            l = sum(num(bs[k][i]) for k in liabilities)
-            self.assertAlmostEqual(a, num(bs["Total assets"][i]), places=1, msg=f"assets {col}")
-            self.assertAlmostEqual(a, l + num(bs["Total stockholders' equity"][i]), places=1, msg=f"balance {col}")
+        for name, fin in self.each():
+            cols, bs, labels = load(fin, "balance_sheet.csv")
+            assets = between(labels, None, "Total assets")
+            liabilities = between(labels, "Total assets", "Total liabilities")
+            for i, col in enumerate(cols):
+                a = sum(num(bs[k][i]) for k in assets)
+                l = sum(num(bs[k][i]) for k in liabilities)
+                self.assertAlmostEqual(a, num(bs["Total assets"][i]), places=1, msg=f"{name} assets {col}")
+                self.assertAlmostEqual(a, l + num(bs["Total stockholders' equity"][i]), places=1, msg=f"{name} balance {col}")
 
     def test_income_statement_adds_up(self):
-        cols, inc = load("income_statement.csv")
-        for i, col in enumerate(cols):
-            g = lambda k: num(inc[k][i])
-            self.assertAlmostEqual(g("Revenue: Hardware") + g("Revenue: Software (FieldOS)") + g("Revenue: Services"), g("Total revenue"), places=1, msg=col)
-            self.assertAlmostEqual(g("Total revenue") - g("Cost of revenue"), g("Gross profit"), places=1, msg=col)
-            pretax = g("Operating income (loss)") - g("Interest expense") + g("Other income (expense) net")
-            self.assertAlmostEqual(pretax - g("Income tax expense (benefit)"), g("Net income (loss)"), places=1, msg=col)
+        for name, fin in self.each():
+            cols, inc, labels = load(fin, "income_statement.csv")
+            revenue_lines = [k for k in labels if k.startswith("Revenue:")]
+            self.assertTrue(revenue_lines, f"{name}: no 'Revenue: <segment>' rows")
+            for i, col in enumerate(cols):
+                g = lambda k: num(inc[k][i])
+                self.assertAlmostEqual(sum(g(k) for k in revenue_lines), g("Total revenue"), places=1, msg=f"{name} {col}")
+                self.assertAlmostEqual(g("Total revenue") - g("Cost of revenue"), g("Gross profit"), places=1, msg=f"{name} {col}")
+                pretax = g("Operating income (loss)") - g("Interest expense") + g("Other income (expense) net")
+                self.assertAlmostEqual(pretax - g("Income tax expense (benefit)"), g("Net income (loss)"), places=1, msg=f"{name} {col}")
 
     def test_cash_flow_ties_to_change_in_cash(self):
-        cols, cf = load("cash_flow.csv")
-        for i, col in enumerate(cols):
-            g = lambda k: num(cf[k][i])
-            total = g("Net cash from operating activities") + g("Net cash used in investing activities") + g("Net cash from (used in) financing activities")
-            self.assertAlmostEqual(total, g("Net change in cash"), places=1, msg=col)
+        for name, fin in self.each():
+            cols, cf, _ = load(fin, "cash_flow.csv")
+            for i, col in enumerate(cols):
+                g = lambda k: num(cf[k][i])
+                total = g("Net cash from operating activities") + g("Net cash used in investing activities") + g("Net cash from (used in) financing activities")
+                self.assertAlmostEqual(total, g("Net change in cash"), places=1, msg=f"{name} {col}")
 
     def test_adjusted_ebitda_reconciles(self):
-        cols, eb = load("adjusted_ebitda_reconciliation.csv")
-        for i, col in enumerate(cols):
-            g = lambda k: num(eb[k][i])
-            adjusted = g("EBITDA") + g("Add: Stock-based compensation") + g("Add: Restructuring and other charges") + g("Add: Other non-recurring items (detail below)")
-            self.assertAlmostEqual(adjusted, g("Adjusted EBITDA (company definition)"), places=1, msg=col)
-            detail = sum(num(eb[k][i]) for k in eb if k.startswith("Detail:"))
-            self.assertAlmostEqual(detail, g("Add: Other non-recurring items (detail below)"), places=1, msg=f"detail {col}")
+        for name, fin in self.each():
+            cols, eb, labels = load(fin, "adjusted_ebitda_reconciliation.csv")
+            for i, col in enumerate(cols):
+                g = lambda k: num(eb[k][i])
+                adjusted = g("EBITDA") + sum(g(k) for k in labels if k.startswith("Add:"))
+                self.assertAlmostEqual(adjusted, g("Adjusted EBITDA (company definition)"), places=1, msg=f"{name} {col}")
+                detail = sum(num(eb[k][i]) for k in labels if k.startswith("Detail:"))
+                self.assertAlmostEqual(detail, g("Add: Other non-recurring items (detail below)"), places=1, msg=f"{name} detail {col}")
 
     def test_quarters_sum_to_years(self):
-        with open(FIN / "revenue_quarterly.csv", encoding="utf-8") as fh:
-            q = {r["quarter"]: float(r["total_revenue"]) for r in csv.DictReader(fh)}
-        self.assertAlmostEqual(sum(v for k, v in q.items() if k.endswith("2025")), 502.3, places=1)
-        self.assertAlmostEqual(q["Q1 2026"] + q["Q2 2026"], 222.6, places=1)
+        for name, fin in self.each():
+            cols, inc, _ = load(fin, "income_statement.csv")
+            with open(fin / "revenue_quarterly.csv", encoding="utf-8") as fh:
+                q = {r["quarter"]: float(r["total_revenue"]) for r in csv.DictReader(fh)}
+            checked = 0
+            for i, col in enumerate(cols):
+                match = re.fullmatch(r"(FY|H1_)(\d{4})", col)
+                quarters = [f"Q{n} {match.group(2)}" for n in ((1, 2, 3, 4) if match.group(1) == "FY" else (1, 2))] if match else []
+                if quarters and all(k in q for k in quarters):
+                    self.assertAlmostEqual(sum(q[k] for k in quarters), num(inc["Total revenue"][i]), places=1, msg=f"{name} {col}")
+                    checked += 1
+            self.assertGreater(checked, 0, f"{name}: no year or half-year has all its quarters in revenue_quarterly.csv")
 
 
 class TestSourcesComplete(unittest.TestCase):
     def test_every_document_is_labeled_fictional(self):
-        for path in (ROOT / "data").rglob("*.md"):
-            self.assertIn("FICTIONAL", read(path).upper(), f"{path.name} is not labeled fictional")
+        for target in TARGETS:
+            for path in (target / "data").rglob("*.md"):
+                self.assertIn("FICTIONAL", read(path).upper(), f"{target.name}: {path.name} is not labeled fictional")
+
+    def test_deal_brief_and_readme_exist(self):
+        for target in TARGETS:
+            for name in ("deal-brief.md", "README.md"):
+                self.assertTrue((target / "data" / name).exists(), f"{target.name}: missing data/{name}")
 
     def test_docket_detail_files_exist(self):
-        with open(ROOT / "data" / "litigation" / "docket_index.csv", encoding="utf-8") as fh:
-            for row in csv.DictReader(fh):
-                if row["detail_file"]:
-                    self.assertTrue((ROOT / "data" / "litigation" / row["detail_file"]).exists(), row["detail_file"])
+        for target in TARGETS:
+            index = target / "data" / "litigation" / "docket_index.csv"
+            if not index.exists():
+                continue
+            with open(index, encoding="utf-8") as fh:
+                for row in csv.DictReader(fh):
+                    if row["detail_file"]:
+                        self.assertTrue((index.parent / row["detail_file"]).exists(), f"{target.name}: {row['detail_file']}")
 
     def test_answer_key_lists_all_planted_items(self):
-        ids = re.findall(r"^\| (P\d{2}|D\d) \|", read(ROOT / "evaluation" / "answer-key.md"), re.M)
-        self.assertEqual(len([i for i in ids if i.startswith("P")]), 19)
-        self.assertEqual(len([i for i in ids if i.startswith("D")]), 4)
+        for target in TARGETS:
+            key = target / "evaluation" / "answer-key.md"
+            self.assertTrue(key.exists(), f"{target.name}: missing evaluation/answer-key.md")
+            ids = re.findall(r"^\| (P\d{2}|D\d) \|", read(key), re.M)
+            planted = sorted({i for i in ids if i.startswith("P")})
+            distractors = sorted({i for i in ids if i.startswith("D")})
+            self.assertEqual(planted, [f"P{n:02d}" for n in range(1, len(planted) + 1)], f"{target.name}: planted IDs must run P01, P02, ... with no gaps")
+            self.assertEqual(distractors, [f"D{n}" for n in range(1, len(distractors) + 1)], f"{target.name}: distractor IDs must run D1, D2, ... with no gaps")
+            self.assertTrue(planted and distractors, f"{target.name}: the answer key needs planted issues and distractors")
+            expected = target_checks(target).get("answer_key", {})
+            if "planted_issues" in expected:
+                self.assertEqual(len([i for i in ids if i.startswith("P")]), expected["planted_issues"], target.name)
+            if "distractors" in expected:
+                self.assertEqual(len([i for i in ids if i.startswith("D")]), expected["distractors"], target.name)
 
 
 class TestSourcesUnchanged(unittest.TestCase):
     def test_protected_files_match_the_manifest(self):
-        self.assertTrue(MANIFEST.exists(), "no manifest: run tests/run_all.py --write-manifest once")
-        expected = json.loads(MANIFEST.read_text(encoding="utf-8"))
-        actual = checksums()
-        changed = sorted(k for k in expected if actual.get(k) != expected[k])
-        added = sorted(set(actual) - set(expected))
-        self.assertFalse(changed, f"changed since the manifest was written: {changed}")
-        self.assertFalse(added, f"new files not in the manifest: {added}")
+        for target in TARGETS:
+            expected = json.loads(read(target / MANIFEST_NAME))
+            actual = checksums(target)
+            changed = sorted(k for k in expected if actual.get(k) != expected[k])
+            added = sorted(set(actual) - set(expected))
+            self.assertFalse(changed, f"{target.name}: changed since the manifest was written: {changed}")
+            self.assertFalse(added, f"{target.name}: new files not in the manifest: {added}")
 
 
 if __name__ == "__main__":
