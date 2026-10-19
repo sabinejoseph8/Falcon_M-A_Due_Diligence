@@ -1,10 +1,13 @@
 ---
-description: Grade the latest diligence run against the answer key of planted issues
+description: Grade the latest diligence run against the target's answer key of planted issues
+argument-hint: "[target, default falcon]"
 ---
 
-You are grading this system's latest diligence run. This is the only command allowed to read `evaluation/answer-key.md`.
+You are grading this system's latest diligence run. This is the only command allowed to read a target's `evaluation/answer-key.md`.
 
-1. Read `evaluation/answer-key.md` (Claude Code will ask the user to approve this, by design), `memory/findings.md`, and the report in `output/`.
+**Target:** the target is "$ARGUMENTS" if that names a folder in `targets/`; if it is empty, use the name in `memory/target.txt`, or `falcon` if that file does not exist. If `memory/target.txt` names a different target from the one given, tell the user and stop: a run can only be graded against its own answer key. Below, `<target>` means that name.
+
+1. Read `targets/<target>/evaluation/answer-key.md` (Claude Code will ask the user to approve this, by design), `memory/findings.md`, and the report in `output/`.
 2. For each planted issue in the answer key, decide whether the run found it:
    - **Found:** the main point is in the verified findings, with a correct citation.
    - **Partially found:** some of it was found, or it was found but with the wrong severity, a missing cross-source link or a weak citation.
@@ -12,7 +15,7 @@ You are grading this system's latest diligence run. This is the only command all
    Use the fixed grading rules below for every number.
 3. For each distractor in the answer key, check whether the run wrongly rated it Medium or above.
 4. Check for false findings: any finding in the report that the sources do not support (use the verifier results in memory).
-5. Write `evaluation/scorecard.md` with:
+5. Write `targets/<target>/evaluation/scorecard.md` with:
    - recall overall, for the Critical and High group, and for each severity group, with the IDs in each group listed;
    - severity accuracy;
    - unsupported findings that reached the report (target: zero);
