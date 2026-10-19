@@ -146,7 +146,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Add an independent citation checker and an answer key with a grading command. |
 | 2026-10-18 | Keep first-person interview notes for the project story. |
 | 2026-10-18 | `interview-notes.md` stays private. A `.gitignore` rule keeps it out of GitHub. |
-| 2026-10-18 | The portfolio lives in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence`, plus the one-page case study PDF for applications. |
+| 2026-10-18 | The portfolio lives in the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` (renamed `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` on October 19, 2026), plus the one-page case study PDF for applications. |
 | 2026-10-18 | Show results with their limits up front: the scorecard and README say how blind the first test run was. |
 | 2026-10-18 | After the first grading: the report appendix lists findings that were not verified, trend findings are combined, and verifier corrections are applied before Checkpoint 3 (R9, R12, R15). |
 | 2026-10-18 | Earlier runs are protected like the answer key, so a new run stays blind (R29). |

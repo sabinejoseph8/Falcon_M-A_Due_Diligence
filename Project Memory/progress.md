@@ -314,7 +314,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 - [x] README results section filled in from the scorecard
 - [x] Sample run published under `examples/sample-run/` (report PDF, memory, scorecard)
 - [x] One-page case study PDF for job applications
-- [x] Push the project to GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), keeping `interview-notes.md` private
+- [x] Push the project to GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`, renamed `sabinejoseph8/Mergers_and_Acquisitions_due_diligence` on October 19, 2026), keeping `interview-notes.md` private
 - [x] Project Memory website with live plan ticks
 - [x] Make the repository public and share the Project Memory website
 - [x] README, case study and interview notes aimed at AI product manager roles
