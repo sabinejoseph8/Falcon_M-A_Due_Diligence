@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.12 (October 19, 2026: graded run 6 recorded; it passes 42 of 43 checks).
+**Status:** Agreed, version 1.13 (October 19, 2026: Phase 7 layout, one folder per target in `targets/`).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -14,10 +14,10 @@ Project Falcon runs inside Claude Code on the operator's computer. There is no s
 | **Specialist subagents** | Four source specialists plus a citation verifier, each with its own instructions and tool list | `.claude/agents/*.md` |
 | **Commands** | One-word entry points for the operator | `.claude/commands/*.md` |
 | **Guardrails** | Permission rules that Claude Code enforces (not just instructions) | `.claude/settings.json` |
-| **Sources ("tools")** | One folder per source type, standing in for SEC search, a news feed, a litigation database and financial data | `data/` |
+| **Targets** | One folder per fictional target. Each holds its sources (one folder per source type, standing in for SEC search, a news feed, a litigation database and financial data), its answer key and a checksum manifest | `targets/<target>/data/`, `targets/<target>/evaluation/`, `targets/<target>/data_manifest.json` |
 | **Working memory** | Plan, findings register, open questions, key metrics, run log, unedited analyst reports | `memory/` |
 | **Report pipeline** | Markdown report, converted to a styled web page and a PDF | `output/`, `templates/report-style.css` |
-| **Evaluation** | Answer key of planted issues and a grading command | `evaluation/`, `/evaluate` |
+| **Evaluation** | Answer key of planted issues per target and a grading command | `targets/<target>/evaluation/`, `/evaluate` |
 | **Automated checks** | Tests for each build phase, plus a run checker | `tests/`, `/run-tests` |
 | **Archive** | Past runs and their scorecards, moved aside by `/reset-memory` | `runs/` |
 | **Portfolio** | README, diagram, run guide, sample run, case study, planning files | `README.md`, `docs/`, `examples/`, `Project Memory/` |
@@ -55,6 +55,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 | **Cross-source finding** | ID (`X-` + 2 digits), the finding, the IDs it is built from, severity, confidence, status, recommended action |
 | **Conflict** | ID (`C` + number), side A, side B, status |
 | **Follow-up** | ID (`F` + number), assigned specialist, question, reason |
+| **Run target** | The target folder name, one line in `memory/target.txt`, written by `/diligence` and archived with the run |
 | **Run log entry** | Time, step, what happened, decision or checkpoint |
 | **Verification verdict** | Finding ID, verdict (Verified, Partially verified, Not supported), what was checked, correction |
 | **Planted issue (answer key)** | ID (`P` + 2 digits), issue, where the evidence is, expected severity, cross-source flag |
@@ -66,14 +67,14 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 
 | From | To | Interface |
 |---|---|---|
-| Operator | Lead agent | Commands (`/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`, `/run-tests`) and checkpoint replies ("approve", "dig deeper on <topic>", "proceed", "approve report") |
-| Lead agent | Specialist | A task message: deal context, task list, facts from other sources with their citations, and a reminder of the output format |
+| Operator | Lead agent | Commands (`/diligence [target]`, `/diligence-status`, `/evaluate [target]`, `/reset-memory`, `/run-tests`; the target defaults to `falcon`) and checkpoint replies ("approve", "dig deeper on <topic>", "proceed", "approve report") |
+| Lead agent | Specialist | A task message: deal context, the target's source folder, task list, facts from other sources with their citations, and a reminder of the output format |
 | Specialist | Lead agent | One final message in the standard format: files reviewed, finding cards, positives, gaps |
 | Lead agent | Working memory | Files with fixed names and table layouts (see the templates in `templates/memory/`) |
-| Lead agent | Verifier | A list of findings: ID, claim, cited sources, severity |
+| Lead agent | Verifier | The target's source folder and a list of findings: ID, claim, cited sources, severity |
 | Verifier | Lead agent | One report per batch: a verdict for each finding, what was checked and any correction. The lead rewrites each Partially verified row with that wording before Checkpoint 3 |
 | `/evaluate` | Answer key | Read only after the operator approves the permission prompt |
-| `/reset-memory` | Archive | Moves `memory/`, `output/` and `evaluation/scorecard.md` into a dated `runs/` folder, then restores the blank templates |
+| `/reset-memory` | Archive | Moves `memory/` (including `target.txt`), `output/` and the target's `evaluation/scorecard.md` into a dated `runs/` folder, then restores the blank templates |
 | Report pipeline | Files | Markdown, then HTML with the stylesheet embedded, then PDF |
 
 ## System patterns (secure and extensible)
@@ -87,14 +88,14 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 - **Bounded loops.** At most three iterations, with stop conditions and a logged reason for every extra loop.
 - **Evidence-carrying claims.** No finding without a citation. The verifier and the checks enforce it.
 - **Append-only audit trail.** The run log only grows, each analyst's unedited report is kept, and old runs are archived rather than deleted.
-- **Blind evaluation.** Everything in `evaluation/` (the answer key and the latest scorecard) needs operator approval to open, and the answer key's checksum is tested so any change is visible. `/reset-memory` moves each scorecard into its archived run, and earlier runs (`examples/`, `runs/`) need approval too, so a new run cannot read past answers.
+- **Blind evaluation.** Everything in a target's `evaluation/` folder (the answer key and the latest scorecard) needs operator approval to open, and the answer key's checksum is tested so any change is visible. `/reset-memory` moves each scorecard into its archived run, and earlier runs (`examples/`, `runs/`) need approval too, so a new run cannot read past answers.
 - **Nothing found is dropped silently.** Findings that were not verified still appear in the report appendix, labeled "not verified".
 - **Template-driven output.** The report structure lives in `CLAUDE.md` and the look lives in one stylesheet.
 
 ## Security
 
 - **Authentication:** the operator's own Claude Code sign-in. Nothing else to sign in to, and no passwords or keys in the project.
-- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to `data/` and the answer key denied; reading anything in `evaluation/` or an earlier run needs approval) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
+- **Authorization:** permission rules in `.claude/settings.json` (web tools denied; edits to every target's `data/` and answer key, and to `tests/`, denied; reading anything in a target's `evaluation/` folder or an earlier run needs approval; each rule is written for `targets/*/` so a new target is covered automatically) and a read-only tool list for every subagent. Subagents inherit the project's permission rules.
 - **Secrets:** none in v1. Future connectors must use admin-approved credentials stored outside the project. Never commit keys.
 - **Input validation:** source documents are untrusted input. The prompt-injection rule, read-only tools, no web access and human checkpoints limit what a malicious document could do. Data files are checked against a checksum manifest.
 - **Rate and cost limits:** 3-iteration cap, narrow follow-up tasks, small sources. The full sample run used about 1.95 million subagent tokens across 10 subagent runs (4 analysts, 2 follow-ups, 4 verifiers) and took 69 minutes from the approved plan to sign-off. Iteration 1 alone used about 0.76 million tokens and 26 minutes.
@@ -102,7 +103,7 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 
 ## Hosting, deployment and configuration
 
-- **Runs locally.** Clone or download the project, open the folder in Claude Code, type `/diligence`.
+- **Runs locally.** Clone or download the project, open the folder in Claude Code, type `/diligence` (or `/diligence <target>`).
 - **Configuration:** `.claude/settings.json` is shared and committed. Personal overrides go in `.claude/settings.local.json`, which is not committed.
 - **Publishing:** the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` holds the README, diagram, sample run and planning files, and stays private until the owner makes it public. A `.gitignore` keeps `interview-notes.md` and Python caches out. The Project Memory website is a private claude.ai page until it is shared.
 - **Optional tools:** Python 3 for the checks and for `tools/md2html.py`, the report converter (standard library only); Google Chrome in headless mode (`--headless=new --print-to-pdf`) for the PDF. No pandoc or other installs needed, by the owner's choice.
@@ -110,12 +111,12 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 ## Testing approach
 
 - **Automated checks** (`python3 tests/run_all.py`, or `/run-tests`), grouped by build phase:
-  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read `evaluation/` or an earlier run, and `/reset-memory` archiving the scorecard), checkpoints and loop cap in `CLAUDE.md`, each checkpoint printing its content in chat before the question and logging that it was shown, the verifier counting its summary from its table, and `tools/md2html.py` converting the report's Markdown (raw `<div>` passthrough, nested lists, tables, embedded stylesheet).
-  - Phase 2 (`test_phase2_data.py`): financial statements tie out, documents labeled fictional, docket files present, answer key complete, source data unchanged (checksums).
-  - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, each checkpoint's run-log row saying its content was shown in chat, and the report has every section, cites only known findings and excludes rejected ones.
-  - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
+  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read a target's `evaluation/` folder or an earlier run, and `/reset-memory` archiving the scorecard and the run's target), `CLAUDE.md`, `/diligence`, `/evaluate` and the subagents naming no single target, checkpoints and loop cap in `CLAUDE.md`, each checkpoint printing its content in chat before the question and logging that it was shown, the verifier counting its summary from its table, and `tools/md2html.py` converting the report's Markdown (raw `<div>` passthrough, nested lists, tables, embedded stylesheet).
+  - Phase 2 (`test_phase2_data.py`), for every folder in `targets/` with a `data_manifest.json`: financial statements tie out (quarters against the income statement's years and half-years), documents labeled fictional, deal brief and README present, docket files present, answer key IDs complete with no gaps (exact counts pinned in the optional `checks.json`), source data unchanged (checksums). `python3 tests/run_all.py --write-manifest [--target <name>]` writes each target's manifest.
+  - Phase 3 (`test_phase3_run.py`): the run's target (from `memory/target.txt`, or `falcon` for runs saved before Phase 7) exists, a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, each checkpoint's run-log row saying its content was shown in chat, and the report has every section, cites only known findings and excludes rejected ones.
+  - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue in its target's answer key (for Falcon, P01 to P18, as set in `targets/falcon/checks.json`).
   - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
-  - In all: 43 checks. Run 5's last two suggestions added two, and the Phase 5 docs review added one that checks edits to `tests/` are denied. Before the run 5 fixes there were 34, and the sample run and graded runs 1 to 4 passed all 34 with none skipped. The new checkpoint-shown check fails on run 5 by design, and it has not yet been run against the earlier saved runs, whose logs may not use the word "shown". The ID checks accept two- or three-digit IDs with an optional letter (`SEC-01`, `SEC-001`, `LIT-F01`), ignore court case IDs (`LIT-001`), and fail if any workstream's findings cannot be read.
+  - In all: 49 checks (43 before the Phase 7 layout added six target checks). Run 5's last two suggestions added two, and the Phase 5 docs review added one that checks edits to `tests/` are denied. Before the run 5 fixes there were 34, and the sample run and graded runs 1 to 4 passed all 34 with none skipped. The new checkpoint-shown check fails on run 5 by design, and it has not yet been run against the earlier saved runs, whose logs may not use the word "shown". The ID checks accept two- or three-digit IDs with an optional letter (`SEC-01`, `SEC-001`, `LIT-F01`), ignore court case IDs (`LIT-001`), and fail if any workstream's findings cannot be read.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
 - **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
 
@@ -172,6 +173,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Run 5's two remaining suggestions, made by a builder session that had not opened the answer key or any scorecard: Step 4 sends the verifier every Critical and High finding plus every Medium finding that will appear anywhere in the report (the parallel split for more than 20 findings is unchanged), and the appendix lists only Low findings as "not verified"; Step 3's cross-source list adds dated accounting judgments, compared with later news, market or financial data and quantified. The wording names no company-specific facts. Two new checks in `tests/test_phase1_config.py` (42 in all). To be measured by graded run 6. |
 | 2026-10-18 | Phase 5 docs review: the configuration matches the current Claude Code docs. Edits to `tests/` are now denied (`Edit(/tests/**)` and `Edit(./tests/**)`), with one new check (43 in all), because a blind run once edited its own grader. Deny was chosen over ask because a deny rule holds in every permission mode and cannot be clicked through. Tradeoff: Claude sessions can no longer edit the checks either, so a builder change to `tests/` is made by hand, or by removing the two rules for that session and restoring them before the commit; the Phase 1 check fails if they are missing. Known limit, recorded in `CLAUDE.md`: the rules stop Claude's file tools and shell file commands such as `sed`, but not a script that opens files itself, or `curl`. |
 | 2026-10-19 | Graded run 6 used the final Phase 5 setup (commit `946f0f0`) and passes 42 of 43 checks. The failure: six Low findings carry the status "Open (not verified, Low)" instead of "Open", because the new Step 4 wording lets Low findings stay unverified and the lead agent wrote that into the status. It saved one verification summary instead of the four verifier reports unedited. The checkpoint-shown rule and `tools/md2html.py` with headless Chrome both worked as designed. A usage limit interrupted the iteration 2 financial follow-up; the same agent resumed after the reset. |
+| 2026-10-19 | Phase 7 layout: each fictional target lives in `targets/<target>/` (sources in `data/`, answer key in `evaluation/`, `data_manifest.json`), so a second target can be added without touching the first. `git mv` kept the history. `CLAUDE.md`, the agents and the commands name no single target: `/diligence` and `/evaluate` take the target as an argument (default `falcon`), the run records it in `memory/target.txt`, and `/reset-memory` archives it with the run. The permission rules use `targets/*/`, and the data checks run for every target with a manifest. Saved runs are unchanged and are checked as Falcon runs; every saved run gets the same check results as before. Done by a fresh builder session that had not opened any answer key or scorecard. |
 
 ## Open questions (with recommended defaults)
 

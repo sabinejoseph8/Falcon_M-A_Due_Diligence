@@ -3,16 +3,16 @@
     "deny": [
       "WebFetch",
       "WebSearch",
-      "Edit(/data/**)",
-      "Edit(./data/**)",
+      "Edit(/targets/*/data/**)",
+      "Edit(./targets/*/data/**)",
       "Edit(/tests/**)",
       "Edit(./tests/**)",
-      "Edit(/evaluation/answer-key.md)",
-      "Edit(./evaluation/answer-key.md)"
+      "Edit(/targets/*/evaluation/answer-key.md)",
+      "Edit(./targets/*/evaluation/answer-key.md)"
     ],
     "ask": [
-      "Read(/evaluation/**)",
-      "Read(./evaluation/**)",
+      "Read(/targets/*/evaluation/**)",
+      "Read(./targets/*/evaluation/**)",
       "Read(/examples/**)",
       "Read(./examples/**)",
       "Read(/runs/**)",
