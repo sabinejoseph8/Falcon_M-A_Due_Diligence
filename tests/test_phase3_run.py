@@ -68,6 +68,13 @@ class TestCompletedRun(unittest.TestCase):
         for n in (1, 2, 3):
             self.assertRegex(log, re.compile(f"checkpoint {n}", re.I), f"checkpoint {n} missing from the run log")
 
+    def test_checkpoint_rows_record_that_content_was_shown(self):
+        rows = [" | ".join(r) for r in table_rows(read(LOG))]
+        for n in (1, 2, 3):
+            row = next((r for r in rows if re.search(rf"\|\s*checkpoint {n}\b", "| " + r, re.I)), "")
+            shown = re.search(r"\bshown\b", row, re.I) and not re.search(r"\bnot (?:shown|printed)\b", row, re.I)
+            self.assertTrue(shown, f"checkpoint {n}: the run-log row must say the content was shown in chat: {row!r}")
+
 
 @unittest.skipUnless(HAS_RUN and REPORT.exists(), f"no report found in {RUN / 'output'}")
 class TestReport(unittest.TestCase):

@@ -40,6 +40,8 @@ Rules:
 
 ## The loop
 
+**How to show a checkpoint.** At each of the three checkpoints, print the full checkpoint content in chat first, as normal text. Then ask the checkpoint question as the last thing in the same message. Never put the content only in a file or only in a question box: in the desktop app a question box ends the turn, so the user would see the question without the content. In the checkpoint's row in `memory/run-log.md`, write that the content was shown in chat (for example "Plan summary shown in chat"), then the user's decision.
+
 ### Step 1: PLAN
 
 1. Read `data/deal-brief.md` and `data/README.md`. Do not read the source files yet.
@@ -53,7 +55,7 @@ Rules:
 
 ### CHECKPOINT 1 (human): approve the plan
 
-Stop. Show the user a short summary of the plan (questions, hypotheses, assignments). Ask: *"Reply 'approve' to start the analysts, or tell me what to change."* Do not continue until the user replies. Log their decision.
+Stop. Print a short summary of the plan in chat (questions, hypotheses, assignments). Then, as the last thing in the message, ask: *"Reply 'approve' to start the analysts, or tell me what to change."* Do not continue until the user replies. Log that the summary was shown in chat, and the user's decision.
 
 ### Step 2: ACT
 
@@ -91,13 +93,13 @@ In later iterations, send only narrow follow-up tasks to the analysts who can an
 
 ### CHECKPOINT 2 (human): review the red flags
 
-Stop. Show the user:
+Stop. Print in chat:
 
 - a table of Critical and High findings (ID, one-line finding, severity, confidence), with the severity test each Critical finding meets;
 - the main conflicts between sources;
 - what is still open and what you propose next.
 
-Ask: *"Reply 'dig deeper on <topic>' to run another iteration, or 'proceed' to start verification."* Log their decision.
+Then, as the last thing in the message, ask: *"Reply 'dig deeper on <topic>' to run another iteration, or 'proceed' to start verification."* Log that the red flags were shown in chat, and the user's decision.
 
 ### Step 4: VERIFY
 
@@ -107,15 +109,19 @@ Ask: *"Reply 'dig deeper on <topic>' to run another iteration, or 'proceed' to s
 
 ### CHECKPOINT 3 (human): sign off
 
-Stop. Show the verification results and your draft recommendation. Ask: *"Reply 'approve report' to write the final report, or tell me what to change."* Log their decision.
+Stop. Print the verification results and your draft recommendation in chat. Then, as the last thing in the message, ask: *"Reply 'approve report' to write the final report, or tell me what to change."* Log that the results were shown in chat, and the user's decision.
 
 ### Step 5: REPORT
 
 Write the report to `output/` using the template below:
 
 1. Write `output/Project-Falcon-Due-Diligence-Report.md`.
-2. Convert it to a self-contained, print-friendly HTML file, `output/Project-Falcon-Due-Diligence-Report.html`, using the stylesheet in `templates/report-style.css` (embed the CSS in the HTML file). For the cover page, wrap the cover content in a `<div class="cover">`.
-3. Make a PDF if a tool is already available on this computer (for example pandoc with a PDF engine, or a headless browser). Do not install software without asking. If no tool is available, tell the user to open the HTML file in a browser and use Print, then Save as PDF.
+2. Convert it to a self-contained, print-friendly HTML file, `output/Project-Falcon-Due-Diligence-Report.html`. For the cover page, wrap the cover content in a `<div class="cover">` in the Markdown. Use the project's converter, which needs only Python and embeds `templates/report-style.css`:
+   `python3 tools/md2html.py output/Project-Falcon-Due-Diligence-Report.md output/Project-Falcon-Due-Diligence-Report.html`
+   Do not write a new converter.
+3. Make the PDF with headless Google Chrome, if it is installed:
+   `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --no-pdf-header-footer --print-to-pdf=output/Project-Falcon-Due-Diligence-Report.pdf output/Project-Falcon-Due-Diligence-Report.html`
+   Do not install software without asking. If Chrome is not available, tell the user to open the HTML file in a browser and use Print, then Save as PDF.
 4. Log the step and tell the user where the files are.
 
 ## Report template

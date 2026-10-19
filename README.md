@@ -29,7 +29,7 @@ During M&A due diligence, teams must research target companies across multiple d
 | **Litigation Database** | Subagent + simulated court dockets | `.claude/agents/litigation-analyst.md`, `data/litigation/` |
 | **Financial Analysis** | Subagent + financial data | `.claude/agents/financial-analyst.md`, `data/financials/` |
 | **Working Memory** (findings, datasets) | A folder of Markdown files | `memory/` |
-| **Comprehensive Due Diligence Report** | Report step with a print stylesheet | `output/`, `templates/report-style.css` |
+| **Comprehensive Due Diligence Report** | Report step with a print stylesheet, a committed converter and headless Chrome for the PDF | `output/`, `templates/report-style.css`, `tools/md2html.py` |
 | **Human-in-the-loop checkpoints** | Three mandatory stops | `CLAUDE.md` |
 | Added: quality control | Independent citation verifier | `.claude/agents/citation-verifier.md` |
 | Added: guardrails | Permission rules (no web, read-only data) | `.claude/settings.json` |
@@ -56,7 +56,7 @@ During M&A due diligence, teams must research target companies across multiple d
 ## How it was planned and tested
 
 - **Project Memory:** the [product spec](Project%20Memory/product-spec.md) (28 requirements), [design spec](Project%20Memory/design.md), [tech spec](Project%20Memory/tech-spec.md) (architecture, data model and 11 critical risks) and the phased [plan](Project%20Memory/progress.md), each agreed before building. They are also published as a [website](https://claude.ai/artifact/CmFqn6PUnPvRse4GxpLrDW) with live plan ticks.
-- **Automated checks:** 34 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed, complete runs and reports, graded scorecards and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
+- **Automated checks:** 40 checks using only Python's standard library, for every phase: read-only agents and guardrails, data that ties out and has not changed, complete runs and reports, graded scorecards and house style. Type `/run-tests`, or run `python3 tests/run_all.py`. Add `--run examples/sample-run` to check the saved run.
 - **One-page case study:** [docs/case-study.pdf](docs/case-study.pdf).
 
 ## Sample run
@@ -145,10 +145,11 @@ CLAUDE.md                  Lead agent: the Plan -> Act -> Observe loop, checkpoi
 data/                      Simulated sources (fictional): filings, news, dockets, financials, deal brief
 memory/                    Working memory (blank, ready for your run)
 templates/                 Blank memory files and the report stylesheet
+tools/md2html.py           Report converter: Markdown to self-contained HTML (Python standard library)
 output/                    Where the report is written
 evaluation/                Answer key of planted issues (+ scorecard after /evaluate)
 examples/sample-run/       A complete test run: memory, report (PDF) and scorecard
-tests/                     34 automated checks (Python standard library), run with /run-tests
+tests/                     40 automated checks (Python standard library), run with /run-tests
 Project Memory/            Product spec, design spec, tech spec and phased plan
 docs/                      Architecture diagram, run guide, one-page case study
 ```

@@ -1,6 +1,6 @@
 # Design: Project Falcon
 
-**Status:** Agreed, version 1.5 (October 18, 2026: the mitigating-points section is built and shown in graded run 4; report length noted).
+**Status:** Agreed, version 1.6 (October 18, 2026: checkpoint content is printed in chat before the question, after graded run 5).
 
 Project Falcon has no custom app screen. People experience it in three places: **the Claude Code conversation** (commands, progress messages and checkpoints), **the documents it produces** (report, findings register, scorecard), and **the portfolio materials** (README, architecture diagram, case study, Project Memory website). This file sets one design language for all three.
 
@@ -78,7 +78,7 @@ Project Falcon has no custom app screen. People experience it in three places: *
 | Component | Where | States | How it behaves |
 |---|---|---|---|
 | **Command** (`/diligence`, `/diligence-status`, `/evaluate`, `/reset-memory`, `/run-tests`) | Claude Code | Ready, running, waiting for permission, error | One word starts each job. Errors say what to do next (for example "No run yet. Type /diligence first."). |
-| **Checkpoint message** | Claude Code | Waiting, approved, changes requested, skipped | Opens with "Checkpoint N of 3: name", gives a short summary and at most one table, and ends with the exact replies to type. Changes requested: the plan or draft is revised and shown again. Skipped only if the user says so, and logged. |
+| **Checkpoint message** | Claude Code | Waiting, approved, changes requested, skipped | Opens with "Checkpoint N of 3: name", gives a short summary and at most one table, and ends with the exact replies to type. The content is printed as chat text first and the question is the last thing in the message, never only in a question box, which ends the turn in the desktop app. Changes requested: the plan or draft is revised and shown again. Skipped only if the user says so, and logged. |
 | **Progress update** (loading state) | Claude Code | Working, partly reported, all reported, analyst failed | Names the specialists that are running. Reports each one as it finishes with its finding count and number of Critical items. A failed analyst is retried once, then recorded as a gap. |
 | **Red-flag table** | Checkpoint 2, report | Populated, empty | Columns: ID, Finding, Severity, Confidence. Critical first. If empty: "No Critical or High findings." |
 | **Finding card** | Analyst reports | Open, Verified, Partially verified, Rejected | Fixed field order: Finding, Evidence, Source, Severity, Confidence, Deal impact, Cross-check. Never deleted. |

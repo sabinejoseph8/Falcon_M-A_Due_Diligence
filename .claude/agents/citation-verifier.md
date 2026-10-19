@@ -35,4 +35,6 @@ Start with `## Citation verifier: results`, then:
 2. A table: ID | Verdict | What I checked | Correction (if any) | Severity comment
 3. A short list of the most important corrections.
 
+**Count from the table.** Write the results table first, in your draft. Then count the rows in the table by verdict, and write the summary line from that count. Check before you finish: A + B + C must equal X, X must equal the number of rows in the table, and each count must match the number of rows with that verdict. If they do not match, fix the summary line, not the table. Never write the summary line from memory.
+
 Be strict and specific. Never use em dashes.

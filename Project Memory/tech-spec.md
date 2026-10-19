@@ -1,6 +1,6 @@
 # Tech Spec: Project Falcon
 
-**Status:** Agreed, version 1.7 (October 18, 2026: graded run 4 passes all 34 checks; report-saving and grading notes from run 4).
+**Status:** Agreed, version 1.8 (October 18, 2026: fixes from graded run 5: checkpoint display, verifier counts, committed report converter; 40 checks).
 
 This file holds the technical decisions and system patterns. It describes the system as built so far, and flags the risks that matter most.
 
@@ -105,17 +105,17 @@ Operator --/diligence--> Lead agent (CLAUDE.md) --task--> 4 specialists in paral
 - **Runs locally.** Clone or download the project, open the folder in Claude Code, type `/diligence`.
 - **Configuration:** `.claude/settings.json` is shared and committed. Personal overrides go in `.claude/settings.local.json`, which is not committed.
 - **Publishing:** the GitHub repository `sabinejoseph8/Falcon_M-A_Due_Diligence` holds the README, diagram, sample run and planning files, and stays private until the owner makes it public. A `.gitignore` keeps `interview-notes.md` and Python caches out. The Project Memory website is a private claude.ai page until it is shared.
-- **Optional tools:** Python 3 for the checks; pandoc and a headless browser for PDF output.
+- **Optional tools:** Python 3 for the checks and for `tools/md2html.py`, the report converter (standard library only); Google Chrome in headless mode (`--headless=new --print-to-pdf`) for the PDF. No pandoc or other installs needed, by the owner's choice.
 
 ## Testing approach
 
 - **Automated checks** (`python3 tests/run_all.py`, or `/run-tests`), grouped by build phase:
-  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read `evaluation/` or an earlier run, and `/reset-memory` archiving the scorecard), checkpoints and loop cap in `CLAUDE.md`.
+  - Phase 1 (`test_phase1_config.py`): agents valid and read-only, commands present and not shadowing built-ins, guardrail rules present (including approval to read `evaluation/` or an earlier run, and `/reset-memory` archiving the scorecard), checkpoints and loop cap in `CLAUDE.md`, each checkpoint printing its content in chat before the question and logging that it was shown, the verifier counting its summary from its table, and `tools/md2html.py` converting the report's Markdown (raw `<div>` passthrough, nested lists, tables, embedded stylesheet).
   - Phase 2 (`test_phase2_data.py`): financial statements tie out, documents labeled fictional, docket files present, answer key complete, source data unchanged (checksums).
-  - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, and the report has every section, cites only known findings and excludes rejected ones.
+  - Phase 3 (`test_phase3_run.py`): a run's findings are complete, the loop cap held, all analyst reports saved, all three checkpoints logged, each checkpoint's run-log row saying its content was shown in chat, and the report has every section, cites only known findings and excludes rejected ones.
   - Phase 4 (`test_phase4_evaluation.py`): the scorecard reports all four metrics and grades every planted issue.
   - All phases (`test_style.py`): no em dashes, README links work (including encoded paths such as `Project%20Memory/`).
-  - In all: 34 checks. The sample run and all four graded runs pass all 34 with none skipped. The ID checks accept two- or three-digit IDs with an optional letter (`SEC-01`, `SEC-001`, `LIT-F01`), ignore court case IDs (`LIT-001`), and fail if any workstream's findings cannot be read.
+  - In all: 40 checks. Before the run 5 fixes there were 34, and the sample run and graded runs 1 to 4 passed all 34 with none skipped. The new checkpoint-shown check fails on run 5 by design, and it has not yet been run against the earlier saved runs, whose logs may not use the word "shown". The ID checks accept two- or three-digit IDs with an optional letter (`SEC-01`, `SEC-001`, `LIT-F01`), ignore court case IDs (`LIT-001`), and fail if any workstream's findings cannot be read.
 - **Manual verification:** step-by-step checks for each phase in `progress.md`.
 - **Quality score:** `/evaluate` grades each run against the answer key (recall, severity accuracy, unsupported findings, distractors).
 
@@ -166,6 +166,7 @@ Riskiest first. The first four are addressed in the earliest phases.
 | 2026-10-18 | Graded run 4 (first with the fixes) passes all 34 checks. Its verifier reports are saved as four files, `memory/analyst-reports/verification-<n>_citation-verifier_*.md`, one per parallel run. Gap found: the analysts used three-digit IDs (`SEC-001`) and `LIT-F01`, but the run checks match only two-digit IDs, so 86 of 105 findings were silently left out of the ID checks. Fixed in a separate builder commit: the checks were widened, court case IDs are ignored, and a guard fails if any workstream's findings cannot be read. `/evaluate` was run in the session that produced the run. |
 | 2026-10-18 | Quality fixes from run 4's scorecard: a Critical rating must name the test it meets and show the number (in the shared rubric, every analyst, the verifier and the Checkpoint 2 table); a projected or legally uncertain covenant breach stays High; the lead agent self-checks each `X-` finding (no absolute or predictive words, sourced ranks, dates and counts, labeled inferences and projections, no raising the severity of supporting findings); duplicate findings get a parent with supporting IDs, and the risk matrix shows each fact once. To be measured in graded run 5. |
 | 2026-10-18 | Leak removed: after grading run 4, its session (which had opened the answer key) edited the instructions and put one planted issue's answer into `CLAUDE.md` as an example, plus calibration wording that matched the answer key's expected severity for another. The builder removed both and restored the earlier calibration wording. Run 5 had already read them, so it was stopped before Checkpoint 1 and restarted. Lesson: a session that has opened the answer key must not edit `CLAUDE.md`, `.claude/` or `tests/`. |
+| 2026-10-18 | Fixes from graded run 5, made after the run finished: (1) every checkpoint prints its full content in chat before asking the question last, and its run-log row says the content was shown, because in the desktop app a question box ends the turn and run 5's plan summary never reached chat; (2) the verifier writes its table first and counts the summary from it, after one run said 10 partially verified while listing 6; (3) Step 5 uses the committed `tools/md2html.py` and headless Chrome instead of a converter written during each run. The owner chose dependency-free over installing pandoc and poppler. Six new checks (40 in all). |
 
 ## Open questions (with recommended defaults)
 

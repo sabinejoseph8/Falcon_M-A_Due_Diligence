@@ -1,5 +1,7 @@
 """Phase 1: the agents, commands, guardrails and lead-agent instructions are set up correctly."""
+import importlib.util
 import json
+import re
 import unittest
 
 from _common import ROOT, frontmatter, read
@@ -85,6 +87,53 @@ class TestLeadAgent(unittest.TestCase):
     def test_memory_templates_exist(self):
         for name in ("plan.md", "findings.md", "open-questions.md", "run-log.md", "datasets/README.md", "analyst-reports/README.md"):
             self.assertTrue((ROOT / "templates" / "memory" / name).exists(), f"missing template {name}")
+
+    def test_checkpoints_print_content_before_the_question(self):
+        self.assertIn("**How to show a checkpoint.**", self.text)
+        self.assertIn("print the full checkpoint content in chat first", self.text)
+        sections = re.split(r"^### ", self.text, flags=re.M)
+        for n in (1, 2, 3):
+            section = next(s for s in sections if s.startswith(f"CHECKPOINT {n} (human)"))
+            self.assertIn("as the last thing in the message", section, f"checkpoint {n}: question must come last")
+            self.assertIn("shown in chat", section, f"checkpoint {n}: must log that the content was shown")
+
+    def test_report_step_uses_the_committed_tools(self):
+        self.assertIn("python3 tools/md2html.py", self.text)
+        self.assertIn("--print-to-pdf", self.text)
+        self.assertTrue((ROOT / "tools" / "md2html.py").exists(), "missing tools/md2html.py")
+
+
+class TestVerifier(unittest.TestCase):
+    def test_summary_counts_come_from_the_table(self):
+        text = read(ROOT / ".claude" / "agents" / "citation-verifier.md")
+        self.assertIn("Write the results table first", text)
+        self.assertIn("A + B + C must equal X", text)
+
+
+class TestReportConverter(unittest.TestCase):
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location("md2html", ROOT / "tools" / "md2html.py")
+        self.md2html = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.md2html)
+
+    def test_converts_the_report_markdown(self):
+        sample = "\n".join([
+            '<div class="cover">', "", "# Title", "", '<p class="sub">Draft</p>', "", "</div>", "",
+            "> A **bold** note with `code`.", "",
+            "- one", "  - nested", "    1. deeper", "- two", "",
+            "| ID | Severity |", "|---|---|", "| X-01 | Critical |",
+        ])
+        out = self.md2html.convert(sample)
+        for fragment in ('<div class="cover">', '<h1 id="title">Title</h1>', '<p class="sub">Draft</p>', "</div>",
+                         "<blockquote>", "<strong>bold</strong>", "<code>code</code>",
+                         "<li>one\n<ul>\n<li>nested\n<ol>\n<li>deeper</li>", "<table>", "<th>ID</th>", "<td>X-01</td>"):
+            self.assertIn(fragment, out)
+
+    def test_page_embeds_the_stylesheet(self):
+        page = self.md2html.page("# Title")
+        self.assertIn("<style>", page)
+        self.assertIn(".cover", page)
+        self.assertNotIn('<link rel="stylesheet"', page)
 
 
 if __name__ == "__main__":
