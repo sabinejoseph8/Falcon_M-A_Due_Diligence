@@ -1,6 +1,6 @@
 # Product Spec: Project Falcon
 
-**Status:** Agreed, version 1.11 (October 19, 2026: graded run 6 measured run 5's last two suggestions; changes since version 1.0 are in the Decisions table).
+**Status:** Agreed, version 1.12 (October 19, 2026: grading rule for severity near-misses chosen; changes since version 1.0 are in the Decisions table).
 
 ## Overview
 
@@ -161,6 +161,7 @@ It is also a portfolio piece. It shows that someone who does not write code can 
 | 2026-10-18 | Graded run 5, with the quality fixes, meets success criteria 3 to 5 and every quality target: 100% recall on the 13 Critical and High issues (97.2% on all 18), 100% severity accuracy, 0 unsupported findings, 0 distractors too high, 3 Critical issues, 5 of 14 cross-source findings corrected, a 14-row risk matrix and a 17-page report. Criterion 2 held only in part: the run stopped at all three checkpoints, but the Checkpoint 1 plan summary was not shown in chat. Fixed after the run (R3, R16): checkpoint content is printed before the question, and the report converter is committed. |
 | 2026-10-18 | Run 5's two remaining suggestions (R9, R12, R15): every Medium finding that appears anywhere in the report is verified, so only Low findings can be listed as "not verified"; and the lead agent checks each dated accounting judgment in the filings (an impairment test, a reserve, a materiality call) against later news, market or financial data and states the change with numbers. Not yet measured; graded run 6 will check them. |
 | 2026-10-19 | Graded run 6, with run 5's last two suggestions (R9, R12, R15), meets success criteria 2 to 5: all three checkpoints held and were shown in chat, 100% recall on all 18 planted issues and on the 13 Critical and High issues, 100% severity accuracy, 0 unsupported findings, 0 distractors too high, no source file changed. Goodwill (P18) is fully found again. Quality slipped a little: 7 of 13 cross-source findings corrected (5 of 14 in run 5) and an 18-row risk matrix (14). |
+| 2026-10-19 | Grading rule chosen by the owner (option A): an issue counts as found when its main point is in the verified findings, correctly cited, with a severity within one level of a severity the answer key accepts. Exact severity matches are reported separately, so a near-miss on severity is not counted twice. This matches how runs 1 to 6 and Kestrel were graded; under it, Heron's held-out run is 100% recall with 77.8% exact severity matches. To be written into `/evaluate` by a session that has not seen a scorecard (R18). |
 
 ## Open questions (with recommended defaults)
 
