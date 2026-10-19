@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Kestrel: Comprehensive Due Diligence Report</title>
+<style>
+/* Print-friendly style for the due diligence report. Used when converting the report to HTML and PDF. */
+@page { size: Letter; margin: 0.65in 0.7in 0.7in 0.7in; }
+:root { --navy: #0B1F5C; --teal: #00B3C8; --orange: #E07B4F; --ember: #B5491F; --ink: #1F2430; --muted: #5B6170; --line: #D9DDE5; --soft: #F3F5F8; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45; max-width: 7.2in; margin: 0 auto; background: #FFFFFF; }
+h1, h2, h3, h4 { color: var(--navy); line-height: 1.2; break-after: avoid; }
+h1 { font-size: 20pt; margin: 0 0 6pt; }
+h2 { font-size: 14.5pt; margin: 20pt 0 6pt; padding-bottom: 4pt; border-bottom: 2px solid var(--navy); }
+h3 { font-size: 11.5pt; margin: 14pt 0 4pt; }
+h4 { font-size: 10.5pt; margin: 10pt 0 3pt; }
+p { margin: 4pt 0 7pt; }
+ul, ol { margin: 3pt 0 8pt; padding-left: 18pt; }
+li { margin: 2pt 0; }
+a { color: var(--navy); }
+code { font-family: Menlo, Consolas, monospace; font-size: 9pt; background: var(--soft); padding: 0 3px; border-radius: 3px; }
+table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 8.8pt; break-inside: auto; }
+thead { display: table-header-group; }
+tr { break-inside: avoid; }
+th { background: var(--navy); color: #FFFFFF; text-align: left; font-weight: 600; padding: 4pt 5pt; }
+td { border-bottom: 1px solid var(--line); padding: 3.5pt 5pt; vertical-align: top; }
+tbody tr:nth-child(even) td { background: var(--soft); }
+blockquote { margin: 8pt 0; padding: 7pt 10pt; background: #FFF8E6; border-left: 4px solid #E5B53C; }
+blockquote p { margin: 2pt 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 14pt 0; }
+.cover { min-height: 8.6in; display: flex; flex-direction: column; justify-content: center; break-after: page; border-left: 10px solid var(--navy); padding-left: 24pt; }
+.cover h1 { font-size: 28pt; margin-bottom: 4pt; border: 0; }
+.cover .sub, .cover .sub p { font-size: 14pt; color: var(--ember); font-weight: 600; margin-bottom: 18pt; }
+.cover p { color: var(--muted); margin: 2pt 0; }
+.cover .flag, .cover .flag p { margin-top: 24pt; color: var(--navy); font-weight: 600; }
+.callout { background: var(--soft); border-left: 4px solid var(--teal); padding: 7pt 10pt; margin: 8pt 0; }
+.bottom-line { background: var(--navy); color: #FFFFFF; padding: 9pt 12pt; border-radius: 4px; margin: 8pt 0 10pt; }
+.bottom-line p, .bottom-line strong { color: #FFFFFF; }
+.page-break { break-before: page; }
+.id { white-space: nowrap; }
+table.keep { break-inside: avoid; }
+.small { font-size: 8.5pt; color: var(--muted); }
+.sev-critical { color: #B42318; font-weight: 700; }
+.sev-high { color: #B5491F; font-weight: 700; }
+.sev-medium { color: #8A5A00; font-weight: 600; }
+.sev-low { color: #5B6170; font-weight: 600; }
+.claim { font-size: 8pt; font-weight: 700; letter-spacing: 0.3px; color: var(--navy); background: #FFF8E6; border: 1px solid #E5B53C; border-radius: 3px; padding: 0 3px; }
+@media screen and (max-width: 700px) { body { font-size: 11pt; padding: 0 16px; } table { display: block; overflow-x: auto; } .cover { min-height: auto; padding: 24px 0 24px 16px; } }
+
+</style>
+</head>
+<body>
+<div class="cover">
+<h1 id="project-kestrel-comprehensive-due-diligence-report">Project Kestrel: Comprehensive Due Diligence Report</h1>
+<p><strong>Draft for Investment Committee discussion</strong></p>
+<p>October 19, 2026</p>
+<p>Target: Corvane Diagnostics, Inc. (NASDAQ: CRVD). Buyer: Halvard Ridge Capital Partners Fund IV.</p>
+<p>Fictional case study</p>
+<p>Prepared by an AI multi-agent diligence system with human review</p>
+</div>
+<blockquote>
+<p>This report is a draft for human decision-makers. It is not investment, legal or accounting advice. All companies, people and figures are fictional. Amounts are in US$ millions unless stated. Finding IDs refer to the findings register (<code>memory/findings.md</code>). "(projection)" and "(inference)" mark numbers and conclusions that are not stated in a source.</p>
+</blockquote>
+<h2 id="1-executive-summary">1. Executive summary</h2>
+<h3 id="bottom-line">Bottom line</h3>
+<p><strong>Proposed recommendation: Do not proceed at the current price.</strong> The Investment Committee makes the decision.</p>
+<p>US$24.00 per share is not supported by Corvane's current earnings. The committed financing would not fund on the company's own guidance, and a covenant default is projected before signing. Re-engagement could make sense only at a re-based price, with re-cut financing and specific protections for the government case and the patent case.</p>
+<h3 id="top-five-red-flags">Top five red flags</h3>
+<ol>
+<li><strong>The price rests on a base that no longer exists (X-019, X-012).</strong> FY2025 Adjusted EBITDA of US$125.3m includes a one-off US$14.2m. Corvane's Aug 5, 2026 guidance midpoint is US$103.0m. On that guidance alone, 13.2x supports US$18.39 per share, 23.4% below the offer. Adding the 2027 Medicare cut gives US$11.09 (projection). The offer is an 83.2% premium to the undisturbed price of US$13.10 (Oct 2, 2026), not the 32.6% in the brief.</li>
+<li><strong>The financing condition and the covenant are both at risk (X-003, X-017).</strong> The term loan needs LTM Adjusted EBITDA of at least US$110.0m at closing. Even the top of guidance (US$106m) is below it. A Q2 2027 closing LTM projects to US$72.9m to 106.0m (projection). The existing covenant steps down to 4.00x at Sep 30, 2026. Estimated net leverage is about 4.83x (projection, on an excerpted definition). The compliance certificate is due about Nov 14, 2026, before signing.</li>
+<li><strong>Reported earnings overstate recurring earnings (X-001, X-015, X-014).</strong> The US$14.2m Q4 2025 estimate change made up 11.3% of FY2025 Adjusted EBITDA. Add-backs that recur every year (denial write-offs, billing transition, lab start-up) add another US$18.9m. The estimate sits under an unremediated material weakness, while denials rise and collections fall.</li>
+<li><strong>The flagship product's Medicare price is cut 30% from Jan 1, 2027 (X-004, X-010).</strong> CMS cut the OncoTrace rate from US$2,150 to US$1,505. That is about US$29.0m a year of revenue and EBITDA (projection), 28.2% of the FY2026 guidance midpoint. Guidance excludes it, and the model assumes flat rates.</li>
+<li><strong>The government has intervened in a False Claims Act case on the same product (X-005, X-006).</strong> DOJ intervened on Aug 18, 2026 on medical-necessity and kickback counts for Medicare OncoTrace claims. The relator alleges US$96.4m of single damages, US$289.2m trebled (allegation). The FY2025 10-K did not mention the DOJ demand served 22 days before it was filed.</li>
+</ol>
+<p>Also Critical: the loss of the Veltrane ATLAS-3 work (X-011) and the earnings trend (X-002). Also High: the Genaro patent trial before closing (X-009), cyber disclosure and exposure (X-007, X-008), and incentives and the related-party lease (X-016).</p>
+<h3 id="positive-and-mitigating-points">Positive and mitigating points</h3>
+<ul>
+<li><strong>Debt maturities:</strong> none before closing. The revolver matures October 2028 and the term loan October 2029 (SEC-010). Net debt of US$391.0m ties to the brief (SEC-011, FIN-020).</li>
+<li><strong>Customer retention:</strong> lab informatics gross revenue retention is steady at 95% to 96% (FIN-040).</li>
+<li><strong>Segments still growing:</strong> biopharma services revenue grew 2.7% in H1 2026 (SEC-037, FIN-003). This was before Veltrane halted ATLAS-3, and book-to-bill is 0.7.</li>
+<li><strong>Items correctly excluded from adjusted metrics:</strong> the US$6.8m sale-leaseback gain (SEC-029, FIN-015), transaction costs (FIN-013), the first-time US$6.1m cyber response cost (FIN-012), and about US$4.0m of cyber lost revenue, which is not added back (FIN-072).</li>
+<li><strong>Litigation dismissed or closed:</strong> the Hollis wage case (US$2.4m claimed) was dismissed with prejudice, with no appeal and no payment (LIT-013, SEC-027, FIN-071). The NC DEQ waste matter is settled at US$0.18m with corrective action complete (LIT-012). The government declined the relator's retaliation count (LIT-004).</li>
+<li><strong>Supply and price protection:</strong> Helixor fixes reagent prices, including tariffs it bears, through Dec 31, 2028. This neutralizes the 25% reagent tariff to 2028. The model runs to 2030, so 2029 and 2030 are a renewal gap (SEC-028, NEWS-020, FIN-070).</li>
+<li><strong>Not Corvane:</strong> the September 2026 FDA warning letter concerns an unaffiliated Australian company with a similar name (NEWS-021).</li>
+<li><strong>Process:</strong> a special committee of independent directors has reportedly been formed (NEWS-018, rumor).</li>
+</ul>
+<h3 id="valuation-implications">Valuation implications</h3>
+<table>
+<thead><tr><th>Earnings base (net debt 395.9, 52.4m shares)</th><th>EBITDA</th><th>Price at 13.2x</th><th>Price at 11.0x</th></tr></thead>
+<tbody>
+<tr><td>FY2025 company Adjusted EBITDA</td><td>125.3</td><td>24.01</td><td>18.75</td></tr>
+<tr><td>Less the Q4 2025 estimate change (X-001)</td><td>111.1</td><td>20.43</td><td>15.77</td></tr>
+<tr><td>FY2026 guidance midpoint (X-002)</td><td>103.0</td><td>18.39</td><td>14.07</td></tr>
+<tr><td>Plus annual 0419U Medicare cut (X-004, projection)</td><td>74.0</td><td>11.09</td><td>7.98</td></tr>
+<tr><td>Plus loss of all Veltrane revenue (X-011, projection)</td><td>60.6 to 54.8</td><td>7.71 to 6.25</td><td>5.17 to 3.95</td></tr>
+</tbody>
+</table>
+<p>Source: FIN-065 (each step applied once, no double counting). The projection rows assume no mitigation: no CMS reconsideration, no replacement biopharma work and no cost actions. Genaro royalty and damages exposure (X-009) and the recurring add-backs (X-015) are not included. Treat them as escrow, indemnity or price items.</p>
+<h2 id="2-answers-to-the-investment-committee-s-questions">2. Answers to the Investment Committee's questions</h2>
+<h3 id="q1-quality-of-earnings">Q1. Quality of earnings</h3>
+<p><strong>No. Revenue and Adjusted EBITDA are partly non-recurring, and current earnings are well below the base used for the price and the 6.0x loan.</strong></p>
+<ul>
+<li>The Q4 2025 change in the implicit price concession estimate added US$14.2m to revenue and EBITDA (X-001, SEC-001). Without it, FY2025 Adjusted EBITDA is US$111.1m and revenue growth is 8.0%, not 11.7% (FIN-049, FIN-050). The 8.0% still includes the Pell Ridge acquisition, whose revenue is not disclosed (SEC-021, FIN-045).</li>
+<li>Add-backs reached 30.2% of FY2025 and 44.8% of LTM Adjusted EBITDA. Denial write-offs (US$10.6m), billing transition (US$4.4m) and lab start-up costs (US$3.9m) recur every period (X-015, FIN-006 to FIN-009, NEWS-022).</li>
+<li>Cash conversion is weak. Operating cash flow was 22.7% of Adjusted EBITDA in FY2025 and 14.4% in H1 2026, and free cash flow is negative (FIN-023). DSO rose from 62.7 to 79.0 days (FIN-024).</li>
+<li>The trend has turned. Guidance was cut to US$100m to 106m, H1 2026 revenue fell 0.9% and gross margin fell to 38.0% (X-002).</li>
+<li>On guidance, the US$750.0m term loan is 7.3x Adjusted EBITDA, not 6.0x (X-003, FIN-066).</li>
+</ul>
+<h3 id="q2-reimbursement-and-compliance">Q2. Reimbursement and compliance</h3>
+<p><strong>Exposure is high and concentrated on one product.</strong></p>
+<ul>
+<li>Medicare fee-for-service is the largest payer: rank 1, US$104.3m, 24.2% of FY2025 revenue (SEC-018, FIN-030).</li>
+<li>The 0419U OncoTrace rate falls 30% on Jan 1, 2027. About 40% of non-Medicare OncoTrace revenue is priced off that rate (10-K). The effect is about US$29.0m a year, or 23.2% of EV at 13.2x (projection) (X-004, FIN-058). Management did not quantify it (NEWS-005).</li>
+<li>Payer behavior is worsening. The initial denial rate rose from 8.9% (FY2023) to 16.2% (H1 2026), and two commercial payers added prior authorization (SEC-025, FIN-037).</li>
+<li>Fraud and abuse: DOJ has intervened in the Whitcomb qui tam on Medicare OncoTrace billing and speaker fees (X-005). Potential outcomes include treble damages, per-claim penalties, Medicare exclusion and a Corporate Integrity Agreement (LIT-002). Legal and regulatory costs added back rose to US$4.8m in H1 2026 (FIN-010).</li>
+<li>OncoTrace (US$138.5m, 32.1% of revenue) carries the rate cut, the qui tam and the patent case at the same time (X-010).</li>
+</ul>
+<h3 id="q3-legal-and-regulatory">Q3. Legal and regulatory</h3>
+<p><strong>Three matters need specific protection, and two have key dates before closing.</strong></p>
+<table>
+<thead><tr><th>Matter</th><th>Status</th><th>Key date</th><th>Exposure</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td>US ex rel. Whitcomb (FCA qui tam)</td><td>Government intervened Aug 18, 2026</td><td>Complaint-in-intervention due Oct 30, 2026</td><td>US$96.4m single damages alleged; US$289.2m trebled (allegation)</td><td>X-005, LIT-001</td></tr>
+<tr><td>Genaro v. Corvane (patent)</td><td>PTAB denied IPR institution; Markman for Genaro Aug 12, 2026</td><td>Jury trial Feb 8, 2027, before closing</td><td>Injunction on OncoTrace sought; 9% royalty and US$68.0m past damages claimed</td><td>X-009, LIT-005, LIT-006</td></tr>
+<tr><td>Data security class action</td><td>Consolidated complaint Sep 28, 2026</td><td>Motion to dismiss due Nov 30, 2026</td><td>About 412,300 notified; statutory damages sought; insurance limit US$10.0m</td><td>X-008, LIT-008</td></tr>
+<tr><td>HHS OCR HIPAA review</td><td>Data request outstanding</td><td>Response due Oct 30, 2026</td><td>Not stated</td><td>LIT-011</td></tr>
+<tr><td>NC DEQ waste violation</td><td>Penalty agreed</td><td>Payment due Nov 15, 2026</td><td>US$0.18m</td><td>LIT-012</td></tr>
+<tr><td>Hollis wage case</td><td>Dismissed with prejudice; closed</td><td>None</td><td>None</td><td>LIT-013</td></tr>
+</tbody>
+</table>
+<p>The Genaro trial could produce a verdict between signing and closing. The redesigned OncoTrace v3 is expected in mid-2027, subject to New York State approval (LIT-007). A possible injunction would put US$102.4m to 131.4m of annual revenue at risk (FIN-060). Most adverse docket events came after the Aug 5, 2026 10-Q and after the model date (LIT-014).</p>
+<h3 id="q4-capital-structure">Q4. Capital structure</h3>
+<p><strong>Not stable. A covenant default is projected before signing.</strong></p>
+<ul>
+<li>The maximum net leverage ratio stepped down from 4.50x to 4.00x at Sep 30, 2026. Covenant EBITDA caps restructuring and non-recurring add-backs at 15% (SEC-007, SEC-008).</li>
+<li>On the financial analyst's estimate, net leverage was about 4.39x at Jun 30, 2026. That passes 4.50x, but only because of the US$14.2m (5.36x without it). The Sep 30 central estimate is about 4.83x against 4.00x (projection) (X-017, FIN-055 to FIN-057). The same method gives 4.89x at Dec 2023, which does not reconcile, so actual headroom may be larger. The CFO declined to give a leverage figure (NEWS-003).</li>
+<li>A breach is an event of default. Lenders could stop revolver draws (US$65.0m undrawn of US$100.0m) and accelerate the US$424.7m outstanding. Cash was US$28.8m at Jun 30, 2026 (SEC-011, FIN-022).</li>
+<li>A change of control is itself an event of default. The deal cures it by repaying US$424.7m at closing (SEC-009, FIN-020). No maturities fall before 2028 (SEC-010).</li>
+<li>Possible debt-like items sit outside net debt: the sale-leaseback lease liability, and an unexplained US$14.6m fall in other liabilities (FIN-021, FIN-047). Net working capital rose 80% in FY2025, so a normalized peg is needed (FIN-028).</li>
+</ul>
+<h3 id="q5-disclosure-controls-and-governance">Q5. Disclosure, controls and governance</h3>
+<p><strong>Not reliable enough to rely on without specific representations.</strong></p>
+<ul>
+<li>The FY2025 10-K (Mar 5, 2026) said Corvane was "not aware of any pending government investigation that we expect to be material". That was 22 days after the DOJ demand (X-006, SEC-013). The 10-K also described the Chief Compliance Officer role in the present tense after the CCO had left (SEC-014, NEWS-008).</li>
+<li>The Apr 27, 2026 8-K described a "network disruption" with "no evidence at this time" of exfiltration. A ransomware group had publicly claimed theft six days earlier. Plaintiffs allege forensic findings three days earlier (allegation) (X-007, SEC-015, LIT-009).</li>
+<li>Controls: management concluded internal control over financial reporting was not effective, the auditor gave an adverse ICFR opinion, and the weakness was not remediated at Jun 30, 2026 (SEC-002, X-014).</li>
+<li>Incentives: bonuses are 100% Adjusted EBITDA. The Compensation Committee kept the US$14.2m in, and the bonus paid at 150%. Without it, the payout would have been about 57% (inference) (X-016, SEC-031).</li>
+<li>Related parties: the founder CEO is also Chair. His family entity leases the HQ to Corvane at US$4.8m a year against a US$3.6m appraised market rent, extended to 2040 (SEC-030, FIN-067).</li>
+<li>Change-in-control pay: CEO equity vests on a single trigger (US$31.4m), and the CEO has a US$3.5m 280G gross-up. Total change-in-control benefits are US$56.4m, including double-trigger items (SEC-032 to SEC-034).</li>
+<li>The Oct 1, 2025 goodwill test (14% headroom) is stale. The share price has fallen 52.9% since the test date (X-013).</li>
+</ul>
+<h3 id="q6-price-and-structure">Q6. Price and structure</h3>
+<p><strong>US$24.00 does not make sense on current information.</strong> Company guidance alone supports US$18.39 at 13.2x, and the projections go lower (X-019). The deal brief's assumptions are out of date (X-012). If the Committee wants to stay engaged, the minimum package is:</p>
+<ol>
+<li>Re-base the price on post-guidance earnings, including the 2027 Medicare cut and the Veltrane outcome.</li>
+<li>Re-cut the financing so the closing condition and sizing match current earnings. Define LTM Adjusted EBITDA and permitted add-backs in the agreement.</li>
+<li>Make a waiver or amendment of the existing covenant, or evidence of Sep 30 compliance, a pre-signing requirement.</li>
+<li>Put in place a special indemnity and escrow for Whitcomb and Genaro, and a specific indemnity for cyber.</li>
+<li>Require Orvia's change-of-control consent as a closing condition.</li>
+<li>Fix the related-party lease and redesign incentives.</li>
+</ol>
+<p>Section 7 has details.</p>
+<h2 id="3-risk-matrix">3. Risk matrix</h2>
+<p>Each row is one distinct issue. The parent finding is listed first; supporting findings are in brackets. Mitigants and neutralized items have no row (see Section 1).</p>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Workstream</th><th>Severity</th><th>Confidence</th><th>Deal impact</th><th>Recommended action</th></tr></thead>
+<tbody>
+<tr><td>X-019 [FIN-065, FIN-043]</td><td>Re-based earnings support US$18.39 per share on guidance, and US$11.09 to 6.25 with the Medicare cut and the Veltrane loss (projection). Critical test: more than 10% of value, since guidance alone cuts value 23.4%</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation</td><td>Price: re-base the offer</td></tr>
+<tr><td>X-001 [SEC-001, FIN-049, FIN-050, FIN-051, NEWS-014]</td><td>US$14.2m one-off Q4 2025 estimate change in FY2025 revenue and Adjusted EBITDA. Critical test: more than 10% of value, 11.4% of EV at 13.2x</td><td>Cross-source</td><td>Critical</td><td>High</td><td>Valuation, financing</td><td>Price; exclude it in the financing definition</td></tr>
+<tr><td>X-002 [SEC-005, NEWS-001, FIN-018, FIN-064, SEC-037, FIN-002, SEC-038, FIN-004, FIN-005, FIN-036, SEC-024, FIN-038, FIN-023, FIN-003]</td><td>Guidance cut 24.8% to a US$103.0m midpoint, with revenue, margin, backlog and cash conversion all weaker. Critical test: more than 10% of value, 17.5% of EV at 13.2x</td><td>Cross-source</td><td>Critical</td><td>High</td><td>Valuation</td><td>Price; obtain Q3 2026 results before signing</td></tr>
+<tr><td>X-003 [FIN-054, SEC-006, NEWS-002, FIN-017, FIN-066]</td><td>LTM Adjusted EBITDA at a Q2 2027 closing is below the US$110.0m loan condition in every scenario (projection). Critical test: block closing</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Closing, financing</td><td>Structure: re-cut financing and condition</td></tr>
+<tr><td>X-017 [FIN-057, FIN-055, FIN-056, SEC-007, SEC-008, NEWS-003, FIN-019, FIN-022]</td><td>Projected breach of the 4.00x covenant at Sep 30, 2026 (about 4.83x, estimate), certificate due before signing. Critical test: a default before signing (calibration rule)</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Liquidity, closing</td><td>Condition: covenant waiver or proof of compliance before signing</td></tr>
+<tr><td>X-004 [FIN-058, NEWS-004, SEC-017, NEWS-005, FIN-042, SEC-018, FIN-030]</td><td>30% cut to the OncoTrace Medicare rate from Jan 1, 2027, about US$29.0m a year (projection). Critical test: more than 10% of value, 23.2% of EV</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation</td><td>Price; diligence of the CMS reconsideration request</td></tr>
+<tr><td>X-005 [LIT-001, LIT-002, LIT-004, SEC-012, NEWS-007, NEWS-009, NEWS-012, NEWS-013, NEWS-016, FIN-010]</td><td>DOJ intervened in the Whitcomb FCA qui tam on Medicare OncoTrace claims; US$96.4m single damages alleged. Critical test: more than 10% of value, since trebled alleged damages of US$289.2m are 17.5% of EV (allegation)</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation, post-closing</td><td>Indemnity and escrow; further diligence after the Oct 30 government complaint</td></tr>
+<tr><td>X-011 [SEC-023, NEWS-006, FIN-031, FIN-062, FIN-063]</td><td>Veltrane (rank 2, US$50.5m) halted ATLAS-3; US$61.0m of VLT-220 backlog can be cancelled on 90 days' notice. Critical test: more than 10% of value, 15.4% of EV in the central case (projection)</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation</td><td>Price; confirm work-order status before signing</td></tr>
+<tr><td>X-015 [FIN-006, FIN-007, FIN-008, FIN-009, FIN-011, NEWS-022, SEC-004]</td><td>Recurring add-backs (denials, billing, start-up) are US$18.9m of FY2025 Adjusted EBITDA. Critical test: more than 10% of value, 15.1% of EV</td><td>Cross-source</td><td>Critical</td><td>Medium</td><td>Valuation, financing</td><td>Price; define add-backs in the agreement</td></tr>
+<tr><td>X-009 [LIT-005, LIT-006, LIT-007, SEC-026, FIN-059, FIN-060, FIN-061]</td><td>Genaro patent case: adverse rulings, trial Feb 8, 2027 before closing, injunction sought on OncoTrace, no accrual</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Closing, valuation</td><td>Special indemnity and escrow; MAE allocation for the verdict</td></tr>
+<tr><td>X-010 [SEC-025, FIN-037]</td><td>Four separate risks fall on OncoTrace at once (rate cut, qui tam, patent case, prior-authorization denials)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation</td><td>Further diligence: OncoTrace payer and coverage review</td></tr>
+<tr><td>X-006 [SEC-013, LIT-003, SEC-014, NEWS-008]</td><td>The 10-K omitted a DOJ demand served 22 days before filing</td><td>Cross-source</td><td>High</td><td>High</td><td>Disclosure</td><td>Specific disclosure representation and indemnity</td></tr>
+<tr><td>X-007 [SEC-015, LIT-009, NEWS-011]</td><td>The April 8-K understated the cyber incident ("network disruption", "no evidence at this time" of exfiltration)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Disclosure, securities risk</td><td>Representation; review of the forensic timeline</td></tr>
+<tr><td>X-008 [SEC-016, LIT-008, LIT-010, LIT-011, NEWS-010, FIN-072]</td><td>Cyber exposure may exceed the US$10.0m insurance limit (inference); class action and OCR review open</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Post-closing</td><td>Specific indemnity or escrow</td></tr>
+<tr><td>X-014 [SEC-002, SEC-003, FIN-025, FIN-052, FIN-024, NEWS-015]</td><td>The reserve and the Q4 estimate change sit under an unremediated material weakness while denials rise</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Valuation, restatement risk</td><td>Quality of earnings review; specific representation</td></tr>
+<tr><td>X-013 [SEC-019, FIN-044, FIN-068, SEC-020]</td><td>The Oct 1, 2025 goodwill test is stale (share price -52.9% since)</td><td>Cross-source</td><td>High</td><td>Medium</td><td>Disclosure</td><td>Further diligence: interim impairment review</td></tr>
+<tr><td>X-016 [SEC-031, FIN-053, FIN-046, SEC-030, FIN-067, SEC-032, SEC-033, SEC-034]</td><td>Bonus paid at 150% on the unadjusted metric; related-party lease 33% above market to 2040; single-trigger vesting and 280G gross-up</td><td>Cross-source</td><td>High</td><td>High</td><td>Governance, cost</td><td>Condition: lease amended to market; redesign pay post-closing</td></tr>
+<tr><td>X-012 [NEWS-019, LIT-014]</td><td>The deal brief uses a Jun 30 model and the Jul 31 price; US$24.00 is an 83.2% premium to the Oct 2 price</td><td>Cross-source</td><td>High</td><td>High</td><td>Valuation</td><td>Rebuild the model</td></tr>
+<tr><td>SEC-022 [FIN-069, FIN-032]</td><td>Orvia (rank 3, US$48.7m) may terminate on 60 days' notice after a change of control</td><td>SEC</td><td>High</td><td>High</td><td>Closing, valuation</td><td>Closing condition: Orvia consent</td></tr>
+<tr><td>SEC-009 [SEC-011, FIN-020]</td><td>A change of control is an event of default under the existing credit agreement; cured by repayment at closing</td><td>SEC</td><td>High</td><td>High</td><td>Closing mechanics</td><td>Payoff letter; confirm prepayment fees</td></tr>
+<tr><td>SEC-021 [FIN-045]</td><td>FY2025 growth includes the Pell Ridge acquisition; organic growth not disclosed</td><td>SEC</td><td>Medium</td><td>Medium</td><td>Valuation</td><td>Further diligence</td></tr>
+<tr><td>FIN-021 [FIN-047]</td><td>Possible debt-like items outside net debt; other liabilities fell US$14.6m unexplained</td><td>Financial</td><td>Medium</td><td>Low</td><td>Valuation</td><td>Debt-like adjustments in price</td></tr>
+<tr><td>FIN-028 [FIN-026]</td><td>Net working capital rose 80% in FY2025; contract assets growing faster than biopharma revenue</td><td>Financial</td><td>Medium</td><td>High</td><td>Valuation</td><td>Normalized working capital peg</td></tr>
+<tr><td>SEC-039</td><td>The excerpted Aug 5 earnings 8-K did not mention the CID, the covenant step-down or the material weakness</td><td>SEC</td><td>Medium</td><td>High</td><td>Disclosure</td><td>Representation</td></tr>
+<tr><td>NEWS-018</td><td>Take-private talks leaked at about US$24 a share (rumor)</td><td>News</td><td>Medium</td><td>Medium</td><td>Process</td><td>Manage the public anchor in any re-price</td></tr>
+<tr><td>LIT-012</td><td>NC DEQ medical waste penalty of US$0.18m due Nov 15, 2026</td><td>Litigation</td><td>Low</td><td>Medium</td><td>None material</td><td>Confirm payment</td></tr>
+<tr><td>X-018 [FIN-034]</td><td>Named parties checked against the customer list (Medicare rank 1, Veltrane rank 2, Orvia rank 3; Genaro not a customer)</td><td>Cross-source</td><td>Low</td><td>High</td><td>Information</td><td>None</td></tr>
+</tbody>
+</table>
+<h2 id="4-workstream-detail">4. Workstream detail</h2>
+<h3 id="4-1-sec-filings">4.1 SEC filings</h3>
+<p>Five filings were reviewed: the FY2025 10-K (filed Mar 5, 2026), the 2026 proxy (Apr 10), the Apr 27 8-K, the Q2 2026 10-Q and the Aug 5 8-K. The Q1 2026 10-Q is not in the data room.</p>
+<ul>
+<li><strong>Earnings quality:</strong> the US$14.2m Q4 2025 change in estimate (SEC-001). The reserve rose US$10.0m (+46.9%) to US$31.3m (SEC-003). The filings do not give the Adjusted EBITDA definition. The company reconciliation explains most of the H1 2026 rise in add-backs (SEC-004).</li>
+<li><strong>Guidance:</strong> cut on Aug 5, 2026 to revenue of US$405m to 415m and Adjusted EBITDA of US$100m to 106m, excluding the 2027 0419U rate (SEC-005, SEC-006, SEC-017).</li>
+<li><strong>Credit agreement:</strong> 4.00x step-down at Sep 30, 2026; 15% add-back cap; change of control is an event of default; no maturities before October 2028 (SEC-007 to SEC-011).</li>
+<li><strong>Legal disclosure:</strong> the DOJ demand was first disclosed in the available filings in the Q2 10-Q. The 10-K, filed after it, did not mention it (SEC-012, SEC-013). Genaro is disclosed with no accrual (SEC-026). Hollis was dismissed (SEC-027).</li>
+<li><strong>Cyber:</strong> the 8-K said "network disruption" and the 10-Q says ransomware. Costs were US$6.1m, lost revenue about US$4.0m, and the insurance limit is US$10.0m (SEC-015, SEC-016).</li>
+<li><strong>Controls and judgments:</strong> material weakness and adverse ICFR opinion (SEC-002). The goodwill test of Oct 1, 2025 is in doubt, and Pell Ridge goodwill timing is unclear (SEC-019, SEC-020).</li>
+<li><strong>Concentration and contracts:</strong> Medicare 24.2% (SEC-018). The Orvia change-of-control right (SEC-022). Veltrane's 90-day termination right (SEC-023). Backlog fell 5.9% (SEC-024). Denials rose (SEC-025). The Helixor tariff protection (SEC-028).</li>
+<li><strong>Proxy:</strong> bonus metric (SEC-031), related-party lease (SEC-030), single-trigger vesting (SEC-032), 280G gross-up, whose tax treatment is to be confirmed by tax advisers (SEC-033), double-trigger severance (SEC-034).</li>
+<li><strong>Results:</strong> H1 2026 revenue -0.9% and gross margin 38.0% (SEC-037, SEC-038). The excerpted earnings 8-K omitted key items (SEC-039).</li>
+</ul>
+<h3 id="4-2-news-and-media">4.2 News and media</h3>
+<p>Thirteen articles were reviewed and rated for reliability. No article contained text aimed at the agents.</p>
+<table>
+<thead><tr><th>Date</th><th>Event</th><th>Reliability</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td>Jan 15, 2026</td><td>CCO leaves; reported speaker program concerns (rumor)</td><td>Medium / Low</td><td>NEWS-008, NEWS-009</td></tr>
+<tr><td>Feb 20, 2026</td><td>DOJ demand reported (anonymous; later confirmed by 10-Q and docket)</td><td>Low at the time</td><td>NEWS-007</td></tr>
+<tr><td>Mar 6, 2026</td><td>Record FY2025; CFO cites "refinement of our collection estimates"</td><td>High</td><td>NEWS-014</td></tr>
+<tr><td>Apr 22, 2026</td><td>Labs unable to process most samples; criminal claim of 1.1 TB stolen</td><td>Medium / Low</td><td>NEWS-010, NEWS-011</td></tr>
+<tr><td>May 19, 2026</td><td>Bearhaven short report: speaker fees, test stacking, Q4 estimate, receivables (allegations); shares -11.2%</td><td>Low for claims</td><td>NEWS-012 to NEWS-015</td></tr>
+<tr><td>Jul 30, 2026</td><td>CMS cuts 0419U by 30% from Jan 1, 2027</td><td>High</td><td>NEWS-004</td></tr>
+<tr><td>Aug 6, 2026</td><td>Guidance cut; shares -31.2% to US$12.45; CFO declines to give leverage</td><td>High</td><td>NEWS-001 to NEWS-003, NEWS-005</td></tr>
+<tr><td>Aug 27, 2026</td><td>Veltrane halts ATLAS-3; will wind down vendor contracts</td><td>High (about Veltrane)</td><td>NEWS-006</td></tr>
+<tr><td>Sep 3, 2026</td><td>FDA letter to an unaffiliated Australian company</td><td>High</td><td>NEWS-021</td></tr>
+<tr><td>Sep 17, 2026</td><td>25% reagent tariff; Helixor contract protects Corvane</td><td>Medium</td><td>NEWS-020</td></tr>
+<tr><td>Oct 5, 2026</td><td>Take-private talks leaked; shares +9.2% to US$14.30 from US$13.10</td><td>Medium</td><td>NEWS-018, NEWS-019</td></tr>
+</tbody>
+</table>
+<p>The speaker program concern appeared in three separate outlets before any court record confirmed the subject matter (NEWS-016). Bearhaven's US$40,000-a-year average does not match the relator's US$3.2m to 61 physicians over about seven years, which is roughly US$7,500 per physician a year. The Durham lab article confirms start-up costs are excluded from Adjusted EBITDA "as it has done for earlier lab openings" (NEWS-022).</p>
+<h3 id="4-3-litigation">4.3 Litigation</h3>
+<p>Six matters are on the docket index. All are covered (LIT-001 to LIT-014). See the table in Section 2, Q3.</p>
+<ul>
+<li><strong>Whitcomb:</strong> six seal extensions, then the DOJ demand (Feb 11, 2026) and intervention (Aug 18, 2026) on Counts I and II. The relator is a former Regional Sales Director (2017 to 2023). Count III (retaliation) was declined by the government; the amount is not stated (LIT-001 to LIT-004).</li>
+<li><strong>Genaro:</strong> filed Apr 2, 2025 in D. Del. PTAB denied institution of Corvane's IPR petition (Dec 15, 2025). The Markman order went to Genaro (Aug 12, 2026). Expert damages of US$68.0m were served Sep 25, 2026. Trial is Feb 8, 2027. Genaro's US$68.0m implies a royalty base of US$755.6m, above the US$427.9m of OncoTrace revenue from FY2023 to H1 2026 in the data pack (FIN-061), so the claim's base or period needs review (LIT-005 to LIT-007).</li>
+<li><strong>Data security:</strong> seven cases were consolidated. Plaintiffs allege genetic test results were taken and that preliminary exfiltration findings came before the 8-K (allegations). Notices were sent 55 days after the attack (LIT-008 to LIT-011).</li>
+<li><strong>Closed or small:</strong> Hollis dismissed with prejudice (LIT-013). NC DEQ penalty of US$0.18m (LIT-012).</li>
+</ul>
+<h3 id="4-4-financial-analysis">4.4 Financial analysis</h3>
+<table>
+<thead><tr><th>Metric</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>H1 2026</th><th>LTM Q2 2026</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td>348.0</td><td>386.0</td><td>431.0</td><td>203.4</td><td>429.2</td></tr>
+<tr><td>Revenue growth</td><td>11.4%</td><td>10.9%</td><td>11.7% (8.0% excl. US$14.2m)</td><td>-0.9%</td><td></td></tr>
+<tr><td>Gross margin</td><td>42.0%</td><td>42.5%</td><td>43.9% (42.0% normalized)</td><td>38.0%</td><td>41.5%</td></tr>
+<tr><td>EBITDA (reported)</td><td>59.6</td><td>71.7</td><td>87.5</td><td>19.6</td><td>68.1</td></tr>
+<tr><td>Adjusted EBITDA (company)</td><td>82.4</td><td>99.9</td><td>125.3</td><td>54.1</td><td>123.4</td></tr>
+<tr><td>Adjusted EBITDA excl. US$14.2m</td><td>82.4</td><td>99.9</td><td>111.1</td><td>54.1</td><td>109.2</td></tr>
+<tr><td>Add-backs as % of Adjusted EBITDA</td><td>27.7%</td><td>28.2%</td><td>30.2%</td><td>63.8%</td><td>44.8%</td></tr>
+<tr><td>Adjusted EBITDA excl. recurring add-backs (FIN-006)</td><td>71.0</td><td>85.5</td><td>106.4</td><td>41.9</td><td>101.1</td></tr>
+<tr><td>OCF / Adjusted EBITDA</td><td>33.4%</td><td>32.1%</td><td>22.7%</td><td>14.4%</td><td>18.2%</td></tr>
+<tr><td>Free cash flow</td><td>3.5</td><td>5.1</td><td>-5.1</td><td>-4.3</td><td>-8.2</td></tr>
+<tr><td>DSO (days)</td><td>58.5</td><td>62.7</td><td>79.0</td><td>80.9 (annualized)</td><td>76.7</td></tr>
+<tr><td>Initial denial rate</td><td>8.9%</td><td>10.7%</td><td>13.4%</td><td>16.2%</td><td></td></tr>
+<tr><td>Biopharma backlog</td><td>182.0</td><td>214.5</td><td>246.0</td><td>231.4</td><td></td></tr>
+<tr><td>Book-to-bill</td><td>1.3</td><td>1.4</td><td>1.3</td><td>0.7</td><td></td></tr>
+<tr><td>Net debt</td><td>375.0</td><td>371.4</td><td>391.0</td><td>395.9</td><td></td></tr>
+<tr><td>Informatics gross revenue retention</td><td>95%</td><td>96%</td><td>96%</td><td>95%</td><td></td></tr>
+</tbody>
+</table>
+<p>Sources: <code>financials/</code> CSVs, 10-K, 10-Q; FIN key metrics tables (iteration 1 values as corrected by the analyst).</p>
+<ul>
+<li><strong>Concentration:</strong> Medicare FFS rank 1 (US$104.3m, 24.2%); Veltrane rank 2 (US$50.5m, 11.7%); Orvia rank 3 (US$48.7m, 11.3%). The top 10 make up 70.2% (FIN-030 to FIN-032, X-018).</li>
+<li><strong>OncoTrace:</strong> US$138.5m in FY2025, 44% of clinical revenue. US$76.2m of that is Medicare (FIN-042).</li>
+<li><strong>Guidance gap:</strong> implied H2 2026 Adjusted EBITDA of US$48.9m against a normalized US$55.1m in H2 2025 (FIN-064).</li>
+<li><strong>Leverage:</strong> the term loan is 6.1x to 7.4x current or normalized Adjusted EBITDA, and 7.3x the guidance midpoint (FIN-017, FIN-066). Existing net debt is 5.81x LTM reported EBITDA (FIN-019).</li>
+<li><strong>Working capital and liquidity:</strong> NWC 53.7 at FY2025, up 80% (FIN-028). Free cash flow is negative and the revolver is being drawn (FIN-022). Contract assets are growing (FIN-026).</li>
+<li><strong>Related-party rent:</strong> paying market rent would add US$1.2m of EBITDA (FIN-067).</li>
+</ul>
+<h2 id="5-cross-source-insights">5. Cross-source insights</h2>
+<p>These points appear only when sources are combined:</p>
+<ol>
+<li><strong>The "record" year was built on a one-off that later analysis exposes (X-001, X-014).</strong> The 10-K quantifies the US$14.2m. The newswire shows the CFO calling it a "refinement". The financial data show DSO up 16 days and denials up. The proxy shows it lifted the bonus to 150% (X-016). No single source shows all four.</li>
+<li><strong>The financing fails on the company's own numbers (X-003, X-017).</strong> Combining the 8-K guidance, the deal brief's loan condition and the 10-K covenant definition shows that the closing condition fails and the covenant is projected to breach before signing.</li>
+<li><strong>A trade newsletter sized the Medicare cut that the company left unquantified (X-004).</strong> The 10-Q says only "evaluating the effect". The policy article gives the rate (US$2,150 to US$1,505), the 10-K gives the 40% linkage, and the KPI file gives the Medicare share. Together they size the cut at about US$29.0m a year.</li>
+<li><strong>A customer's trial halt is a Corvane revenue event (X-011).</strong> The Veltrane article does not name Corvane. The 10-K says most Veltrane revenue is from ATLAS-3, and the 10-Q puts US$61.0m of backlog on that program.</li>
+<li><strong>Rumors became court records (X-005, X-006).</strong> The January CCO story, the February CID report and the May short report all pointed to the speaker program. The docket now shows a CID served before the 10-K and government intervention. The 10-K said Corvane was not aware of a material investigation.</li>
+<li><strong>The cyber 8-K came after public evidence of theft (X-007).</strong> The newsletter, the 8-K and the class complaint, read together, give the timeline: attack detected Apr 18, theft claim Apr 21, alleged forensic findings Apr 24, 8-K Apr 27.</li>
+<li><strong>One product carries four risks (X-010).</strong> The rate cut, the qui tam, the patent case and prior-authorization denials all fall on OncoTrace.</li>
+<li><strong>Dated judgments look stale (X-013, X-014).</strong> The goodwill test (share price US$27.80 at the test date, US$13.10 on Oct 2, 2026) and the reserve level (denials up 2.8 points since Dec 31, 2025) were set before the events that put them in doubt.</li>
+<li><strong>Every named party was checked against the customer list (X-018).</strong> Genaro, the patent plaintiff, is not a listed customer. Helixor is a supplier. The two landlords (Tidewater and Ellery Property Holdings) are not customers.</li>
+</ol>
+<h2 id="6-recommended-deal-protections-and-price-considerations">6. Recommended deal protections and price considerations</h2>
+<p><strong>Price</strong></p>
+<ul>
+<li>Re-base on post-guidance earnings: US$103.0m guidance midpoint less the 2027 0419U effect (about US$29.0m, projection), with the Veltrane outcome confirmed (X-019).</li>
+<li>Treat recurring add-backs (US$18.9m, X-015) and debt-like items (FIN-021) as price adjustments, not as accepted add-backs.</li>
+<li>Manage the leaked US$24 anchor (NEWS-018).</li>
+</ul>
+<p><strong>Financing and capital structure</strong></p>
+<ul>
+<li>Re-cut the term loan sizing and the LTM Adjusted EBITDA condition. Define the measure in the commitment letter, excluding changes in estimates and capping add-backs (X-003, X-001).</li>
+<li>Before signing, obtain the Sep 30, 2026 compliance certificate, or a lender waiver or amendment (X-017).</li>
+<li>Obtain a payoff letter for the US$424.7m, including any prepayment fees (SEC-009).</li>
+</ul>
+<p><strong>Special indemnities and escrow</strong></p>
+<ul>
+<li>Whitcomb qui tam: special indemnity and escrow sized after the government's Oct 30 complaint. Cover any Corporate Integrity Agreement costs (X-005, LIT-002).</li>
+<li>Genaro: special indemnity and escrow for past damages (US$68.0m claimed) and royalty to the v3 launch. Allocate the risk of a verdict between signing and closing (X-009).</li>
+<li>Cyber: specific indemnity above the US$10.0m insurance limit (X-008).</li>
+</ul>
+<p><strong>Closing conditions</strong></p>
+<ul>
+<li>Orvia change-of-control consent or waiver (SEC-022).</li>
+<li>Written status of Veltrane work orders (X-011).</li>
+<li>Related-party HQ lease amended to market rent (X-016, SEC-030).</li>
+</ul>
+<p><strong>Representations</strong></p>
+<ul>
+<li>Disclosure of government investigations, including the DOJ demand (X-006).</li>
+<li>Cybersecurity incident facts and forensic timeline (X-007).</li>
+<li>Revenue recognition estimates and the reserve (X-014), with remediation of the material weakness.</li>
+</ul>
+<p><strong>Further diligence</strong></p>
+<ul>
+<li>Quality of earnings review: reserve roll-forward, cohort collections and the add-back definition (X-014, X-015).</li>
+<li>OncoTrace payer and coverage review, including the CMS reconsideration request (X-004, X-010).</li>
+<li>Interim goodwill review (X-013). Pell Ridge organic growth (SEC-021). Normalized working capital peg (FIN-028).</li>
+<li>Post-closing: pay redesign (X-016); compliance program and permanent CCO (SEC-014).</li>
+</ul>
+<h2 id="7-open-questions-and-management-request-list">7. Open questions and management request list</h2>
+<ol>
+<li>Whitcomb: the government's damages figure (Oct 30 complaint), per-claim penalties, any settlement or tolling talks, any reserve. Why did the 10-K not mention the Feb 11 CID? Did the Q1 2026 10-Q?</li>
+<li>Covenant: the actual Jun 30 and Sep 30, 2026 net leverage ratios, the full Consolidated EBITDA definition, equity cure rights and any waiver discussions.</li>
+<li>Q3 2026 results, and whether FY2026 guidance still stands after the Veltrane halt.</li>
+<li>Commitment letter: the LTM test date, the definition, and treatment of changes in estimates.</li>
+<li>Q4 2025 estimate change: reserve roll-forward, cohort collections since Q4 2025, whether any of the US$14.2m has reversed, and remediation status.</li>
+<li>Adjusted EBITDA: full definition; where denial write-offs are booked; end dates for billing transition and start-up costs.</li>
+<li>CMS 0419U: the 2027 effect including Medicare-linked commercial contracts; reconsideration status; whether the Medicare share includes Medicare Advantage.</li>
+<li>Veltrane: termination notices, wind-down revenue, receivables and unbilled balances, termination fees; backlog definition and cancellable share.</li>
+<li>Genaro: damages base and period; willfulness; rebuttal report; licensing talks; v3 validation and New York State approval.</li>
+<li>Cyber: forensic timeline (Apr 24 findings); why Item 8.01 and not 1.05; ransom; insurance claims and retention; OCR response; remediation costs.</li>
+<li>Orvia: consent to the change of control; whether Orvia is one of the two payers that added prior authorization.</li>
+<li>Governance: reason for the CCO's departure and any separation payment; permanent CCO hire; lease renegotiation; whether single-trigger awards are in the 52.4m diluted shares; whether the 280G gross-up and severance are in the US$47.7m of fees.</li>
+<li>Pell Ridge: FY2025 revenue and EBITDA; why its goodwill was "added after" the Oct 1, 2025 test when the acquisition closed in May 2025.</li>
+<li>Other liabilities: the US$14.6m fall in H1 2026; the sale-leaseback lease liability; any earn-outs.</li>
+<li>Oct 1, 2026 goodwill test result and any interim triggering-event review.</li>
+</ol>
+<h2 id="8-appendix">8. Appendix</h2>
+<h3 id="8-1-methodology">8.1 Methodology</h3>
+<ul>
+<li><strong>Architecture:</strong> a lead agent coordinated four read-only specialist subagents: SEC filings, news and media, litigation, and financial analysis. A citation verifier checked their work. The system ran on Claude Code with working memory in <code>memory/</code> and used only the files in <code>targets/kestrel/data/</code>.</li>
+<li><strong>Iterations:</strong> 2 of a budget of 3. Iteration 1 sent all four analysts in parallel. Iteration 2 was a narrow financial follow-up using facts from the 10-K, 10-Q, 8-K, news and litigation files: the US$14.2m one-off, covenant terms, the CMS rate, the Genaro royalty and the Veltrane backlog. A third iteration was not run because the remaining gaps are not in the data room.</li>
+<li><strong>Findings:</strong> 151 analyst findings (SEC 40, NEWS 24, LIT 14, FIN 73) and 19 cross-source findings.</li>
+</ul>
+<p><strong>Checkpoint log</strong></p>
+<table>
+<thead><tr><th>Checkpoint</th><th>What was shown in chat</th><th>Decision</th></tr></thead>
+<tbody>
+<tr><td>1. Approve the plan</td><td>Six IC questions mapped to analysts, four hypotheses, task lists, budget</td><td>"approve"</td></tr>
+<tr><td>2. Red flags</td><td>Critical and High table with severity tests, conflicts, open items</td><td>"proceed"</td></tr>
+<tr><td>3. Sign off</td><td>Verification results and draft recommendation</td><td>"approve report"</td></tr>
+</tbody>
+</table>
+<p><strong>Verification statistics</strong></p>
+<table>
+<thead><tr><th>Batch</th><th>Checked</th><th>Verified</th><th>Partially verified</th><th>Rejected</th></tr></thead>
+<tbody>
+<tr><td>SEC filings</td><td>37</td><td>31</td><td>6</td><td>0</td></tr>
+<tr><td>News and litigation</td><td>35</td><td>31</td><td>4</td><td>0</td></tr>
+<tr><td>Financial</td><td>64</td><td>47</td><td>17</td><td>0</td></tr>
+<tr><td>Cross-source</td><td>19</td><td>9</td><td>10</td><td>0</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>155</strong></td><td><strong>118 (76.1%)</strong></td><td><strong>37 (23.9%)</strong></td><td><strong>0</strong></td></tr>
+</tbody>
+</table>
+<p>All Critical, High and Medium findings were verified, plus 22 Low findings used as mitigants or closed matters. Partially verified findings appear here with the verifier's corrected wording. Severity changes after verification: X-009 moved from Critical to High. NEWS-009, NEWS-010 and FIN-036 moved from High to Medium. SEC-020 moved from Low to Medium. FIN-001 and FIN-016 were superseded by FIN-049 and FIN-054 and are not used in this report.</p>
+<h3 id="8-2-index-of-verified-findings">8.2 Index of verified findings</h3>
+<ul>
+<li><strong>Verified (118):</strong> X-001, X-004, X-005, X-007, X-010, X-013, X-014, X-016, X-019; SEC-001, SEC-002, SEC-005, SEC-006, SEC-008 to SEC-022, SEC-024 to SEC-030, SEC-032 to SEC-034, SEC-037, SEC-038; NEWS-001 to NEWS-004, NEWS-006 to NEWS-016, NEWS-018 to NEWS-022; LIT-001 to LIT-006, LIT-009 to LIT-013; FIN-002 to FIN-006, FIN-008, FIN-011 to FIN-013, FIN-015, FIN-017 to FIN-026, FIN-030 to FIN-032, FIN-034, FIN-037, FIN-038, FIN-040, FIN-042 to FIN-047, FIN-049, FIN-051, FIN-053 to FIN-055, FIN-058, FIN-060, FIN-061, FIN-063, FIN-064, FIN-067, FIN-069 to FIN-071.</li>
+<li><strong>Partially verified (37):</strong> X-002, X-003, X-006, X-008, X-009, X-011, X-012, X-015, X-017, X-018; SEC-003, SEC-004, SEC-007, SEC-023, SEC-031, SEC-039; NEWS-005; LIT-007, LIT-008, LIT-014; FIN-001, FIN-007, FIN-009, FIN-010, FIN-016, FIN-028, FIN-036, FIN-050, FIN-052, FIN-056, FIN-057, FIN-059, FIN-062, FIN-065, FIN-066, FIN-068, FIN-072.</li>
+<li><strong>Rejected:</strong> none.</li>
+</ul>
+<h3 id="8-3-findings-not-verified-low-only">8.3 Findings not verified (Low only)</h3>
+<table>
+<thead><tr><th>ID</th><th>Finding</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>SEC-035</td><td>Founder CEO is also Chair; 5 of 7 directors independent</td><td>not verified</td></tr>
+<tr><td>SEC-036</td><td>No auditor change (Brannock &amp; Lyle since 2019)</td><td>not verified</td></tr>
+<tr><td>SEC-040</td><td>No embedded instructions in SEC files</td><td>not verified</td></tr>
+<tr><td>NEWS-017</td><td>Reported FY2025 results match the deal brief baseline</td><td>not verified</td></tr>
+<tr><td>NEWS-023</td><td>Durham lab adds capacity and 120 jobs; US$0.6m tax grant</td><td>not verified</td></tr>
+<tr><td>NEWS-024</td><td>Corvane Hope 5K charity event (no relevance)</td><td>not verified</td></tr>
+<tr><td>FIN-014</td><td>Stock-based compensation add-back (US$9.8m FY2025)</td><td>not verified</td></tr>
+<tr><td>FIN-027</td><td>Inventory days stable</td><td>not verified</td></tr>
+<tr><td>FIN-029</td><td>Capex above D&amp;A</td><td>not verified</td></tr>
+<tr><td>FIN-033</td><td>Customer ranks 4 to 10 each 7.0% or less</td><td>not verified</td></tr>
+<tr><td>FIN-035</td><td>Top 10 concentration about 70%</td><td>not verified</td></tr>
+<tr><td>FIN-039</td><td>Informatics ARR dipped 2.3%</td><td>not verified</td></tr>
+<tr><td>FIN-041</td><td>Headcount fell 2.8% in H1 2026</td><td>not verified</td></tr>
+<tr><td>FIN-048</td><td>Data pack reconciles internally; no embedded instructions</td><td>not verified</td></tr>
+<tr><td>FIN-073</td><td>Corrections to iteration 2 input facts</td><td>not verified</td></tr>
+</tbody>
+</table>
+<h3 id="8-4-source-index">8.4 Source index</h3>
+<table>
+<thead><tr><th>Folder</th><th>Files</th></tr></thead>
+<tbody>
+<tr><td><code>sec-filings/</code></td><td>CRVD_10-K_FY2025_excerpts.md; CRVD_10-Q_Q2-2026_excerpts.md; CRVD_8-K_2026-04-27_network-disruption.md; CRVD_8-K_2026-08-05_q2-results-guidance.md; CRVD_DEF14A_2026_excerpts.md</td></tr>
+<tr><td><code>news/</code></td><td>13 articles from Nov 6, 2025 to Oct 5, 2026 (Durham lab, compliance chief exit, DOJ probe, FY2025 results, ransomware, Bearhaven short report, charity 5K, CMS fee schedule, guidance cut, Veltrane ATLAS-3 halt, FDA enforcement roundup, reagent tariffs, take-private talks)</td></tr>
+<tr><td><code>litigation/</code></td><td>docket_index.csv; LIT-001 Whitcomb; LIT-002 Genaro; LIT-003 data security incident litigation; LIT-004 Hollis (matters LIT-005 OCR and LIT-006 NC DEQ are index rows only)</td></tr>
+<tr><td><code>financials/</code></td><td>income_statement.csv; balance_sheet.csv; cash_flow.csv; adjusted_ebitda_reconciliation.csv; revenue_quarterly.csv; revenue_by_customer.csv; kpis.csv; README.md</td></tr>
+<tr><td>Deal brief</td><td>deal-brief.md (Oct 12, 2026)</td></tr>
+</tbody>
+</table>
+<p>No source file contained text that tried to instruct the agents (SEC-040, FIN-048 and the verifier reports).</p>
+<h3 id="8-5-limitations">8.5 Limitations</h3>
+<ul>
+<li>The SEC filings are excerpts. The Q1 2026 10-Q, any 8-K after Aug 5, 2026, the full credit agreement and the commitment letter are not in the data room.</li>
+<li>The covenant estimates rest on an excerpted definition. The method does not reconcile at Dec 2023, so actual headroom may be larger than estimated.</li>
+<li>The closing LTM, the Medicare cut effect, the Veltrane loss and the re-based prices are projections. They assume constant volume, full flow-through and no mitigation.</li>
+<li>Litigation outcomes are uncertain. The damages figures are plaintiff and relator claims, not judgments.</li>
+<li>News items rated Low reliability are rumors or allegations unless a primary source confirms them.</li>
+<li>Q3 2026 actual results were not available.</li>
+</ul>
+</body>
+</html>

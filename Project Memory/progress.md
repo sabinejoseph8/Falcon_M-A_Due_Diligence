@@ -1,12 +1,12 @@
 # Progress: Project Falcon
 
-**Status:** Agreed, version 2.3 (October 19, 2026: Phase 6 done; the repository is public and the website is shared).
+**Status:** Agreed, version 2.4 (October 19, 2026: generalization tested on two new targets, Kestrel and Heron).
 
 ## Summary
 
-- **Current phase:** Phase 7, Future (Phases 0 to 6 are done: six graded runs, the hardening checks, and a public repository with a shared website).
+- **Current phase:** Phase 7, Future (generalization tested: Kestrel as a near-transfer test and Heron as the held-out test, both graded).
 - **Overall status:** Phases 0 to 3 are done. The first test run is saved in `examples/sample-run/` and scored 97% recall (13 of 13 Critical and High issues), 0 unsupported findings and 0 distractors rated too high. The sample run passed all 34 checks that existed when it was made. Of today's 43 checks, it and runs 2 to 5 fail only the later "checkpoint content shown in chat" check, which postdates them. Three fully blind graded runs, each in a fresh session with the setup frozen, averaged 97.4% recall on the 13 Critical and High issues (range 96.2% to 100%) and 93.5% overall (91.7% to 94.4%), with 100% severity accuracy, 0 unsupported findings and 0 distractors rated too high in every run. A fourth blind run, the first with the fixes from the graded runs, found all 18 planted issues (100% recall overall and on Critical and High), with 100% severity accuracy, 0 unsupported findings and 0 distractors too high. A fifth blind run, with the quality fixes, held 100% Critical and High recall (97.2% overall) and met every quality target: 3 Critical issues instead of 11 Critical labels, 5 of 14 cross-source findings corrected instead of 9 of 19, a 14-row risk matrix instead of 90, and a 17-page report instead of 38. A sixth blind run, with run 5's two remaining suggestions, found all 18 planted issues again (100% overall and on Critical and High), with a 13-page report. All six graded runs are archived in `runs/`, each with its scorecard. The sample run and graded runs 1 to 4 passed all 34 checks that existed then, with none skipped; there were 40 checks after the run 5 fixes, and run 5 passes 39 of them (the new checkpoint-shown check fails on it by design). There are now 43 checks; run 6 passes 42 (six Low findings carry a non-standard status). Two checks for run 5's last two suggestions and one from the docs review bring the total to 43. The ID checks now read every finding ID format the runs use (`SEC-01`, `SEC-001`, `LIT-F01`). The project is on GitHub (`sabinejoseph8/Falcon_M-A_Due_Diligence`), with `interview-notes.md` kept private. The README and case study are aimed at AI product manager roles.
-- **Next action:** Phase 7, when wanted. The most useful first step is a second fictional target that the instructions were never tuned on, to test whether the results generalize. Run 6's two small process fixes (keep the status set to the four allowed values; save each verifier report unedited) can be made first in a builder session that has not seen a scorecard.
+- **Next action:** give `/evaluate` an exact rule for whether a one-level severity difference counts as found, made by a session that has not seen a scorecard; then, when wanted, a fourth target built blind to test the rules added after Kestrel and Heron.
 
 **Run 5 fixes (October 18, 2026):** run 5 showed three gaps that are not about diligence quality. (1) The lead agent asked the Checkpoint 1 question without printing the plan summary in chat, because in the desktop app a question box ends the turn. `CLAUDE.md` now says to print the full checkpoint content first and ask the question last, and to log that the content was shown. (2) One verifier run's headline said 10 partially verified while its table listed 6. The verifier now writes the table first and counts the summary from it. (3) This Mac has no pandoc, so run 5 wrote a throwaway converter. The owner chose to stay dependency-free: `tools/md2html.py` (Python standard library) converts the report, and headless Chrome prints the PDF. Six new checks cover these (40 in all). Run 5 fails one of them, the checkpoint-shown check, which is the defect it was written to catch.
 
@@ -335,7 +335,7 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 **Status:** In progress
 
 - [ ] Swap one simulated source for a real one (for example SEC EDGAR filings for a real public company)
-- [ ] A second fictional target that the instructions were never tuned on, to test generalization (Kestrel done as a near-transfer test; Heron, the held-out test, still to be run)
+- [x] A second fictional target that the instructions were never tuned on, to test generalization (Kestrel, a near-transfer test, and Heron, the held-out test, both graded; see below)
 - [ ] Excel data pack for the committee from the key metrics dataset
 - [ ] More specialists (tax, people, IP, ESG) using the same finding format
 
@@ -347,5 +347,24 @@ Two process fixes from this review, not from the scorecard: keep the status set 
 **Setup freeze:** from October 19, 2026, no changes to `CLAUDE.md`, `.claude/`, `tools/` or the report template until a blind Heron run is graded, so Heron measures the setup as it stands (commit `af02fce`).
 
 **Known check gaps (to fix after the Heron run, by a session that has not seen a scorecard):** the run checks expect a `case_id` column in the docket index, but Kestrel's uses `matter_id`, so the Phase 3 checks cannot load on a Kestrel run; and the Phase 4 check now expects the positives row (P19) to be graded, which the Kestrel run 1 scorecard does not do.
+
+**Generalization results (October 19, 2026):**
+
+| Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) |
+|---|---|---|---|
+| Planted issues whose facts were found | 18 of 18 | 18 of 18 (one only as a note) | 18 of 18 |
+| Recall, the 13 Critical and High issues | 100% | 100% | 88.5% strict; 100% on the earlier basis |
+| Recall, all 18 issues | 100% | 97.2% | 88.9% strict; 100% on the earlier basis |
+| Severity within one level of the answer key | 100% | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 | 0 |
+| Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 |
+
+**How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Its grader counted four issues as only partly found because their severity was one level away from what the answer key accepts (for example a product-safety issue rated High instead of Critical). Earlier graders counted a one-level difference as found, which gives 100%. Both readings are shown because the grading rule was not exact on this point; making it exact is the next fix to the grading command. What did not carry over cleanly is judgment: severity calibration on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
+
+**What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind.
+
+The freeze ended when Heron was graded. The `case_id` check gap is fixed (commit `cf17f9b`); the Phase 4 check that expects the positives row (P19) to be graded is still open.
+
+**Process gaps in the Heron run (none change its scores):** it fails 3 of 49 checks. It did not print the Checkpoint 1 plan in chat (it logged this itself); it gives Low findings the non-standard status "Not verified (Low)", as Kestrel run 1 and Falcon run 6 did; and its scorecard does not grade P19. All three are process fixes for a session that has not seen a scorecard.
 
 Automated tests and manual verification will be added when a phase starts.

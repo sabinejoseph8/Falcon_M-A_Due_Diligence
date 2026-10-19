@@ -13,7 +13,7 @@
 - **The controls:** three mandatory human checkpoints, read-only specialists, an independent citation verifier, an iteration cap and blocked web access.
 - **The proof:** the fictional data contains 18 planted red flags. A built-in answer key and an `/evaluate` command grade how many the system finds.
 - **Built like a product:** a product spec, design spec, tech spec and phased plan, each agreed before building, with automated checks for every phase.
-- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md).
+- **Results:** across three fully blind graded runs, each in a fresh session that never saw the answer key, the system averaged 97.4% recall on the 13 Critical and High planted issues (range 96.2% to 100%) and 93.5% on all 18, with no unsupported finding in any report and no distractor rated too high. A fourth blind run, after fixing the gaps those three exposed, found all 18 (100%). A fifth, after quality fixes, kept 100% on Critical and High issues while cutting the report from 38 pages to 17 and the risk matrix from 90 rows to 14. A sixth found all 18 again, in a 13-page report. An earlier, partly blind test run is kept as a [sample](examples/sample-run/evaluation/scorecard.md). On two new fictional targets it still found every planted issue's facts and put nothing unsupported in a report; on the one built blind, severity judgment was the gap (see [Does it generalize?](#does-it-generalize-two-new-targets)).
 
 ## The problem
 
@@ -168,6 +168,28 @@ Goodwill risk was tied to events after the test date and verified, so all 18 iss
 Scorecard: [run 6](runs/2026-10-19_0903/evaluation/scorecard.md).
 
 Inside the run: the [findings register](examples/sample-run/memory/findings.md), the [run log](examples/sample-run/memory/run-log.md) with all three checkpoints, every analyst's [unedited report](examples/sample-run/memory/analyst-reports/), the [verifier reports](examples/sample-run/memory/verification/) and the [scorecard](examples/sample-run/evaluation/scorecard.md).
+
+## Does it generalize? Two new targets
+
+Six runs on one dataset can overstate how good a system is, because its instructions were tuned on that data. So I tested it on two new fictional targets, each in its own folder under `targets/`, graded the same way.
+
+- **Kestrel** (a clinical-lab company in a private equity take-private) was built by a session that never saw Falcon's answers. But it could read the system's instructions, and most of its planted issues turned out to be the same types as Falcon's, so it is a near-transfer test.
+- **Heron** (a smart-home company) was built by a session that never saw the instructions or the other targets, from issue types neither of the others uses: product safety, a pension cash call on change of control, a privacy order, disputed patent ownership, sanctions, transfer pricing and more. It is the held-out test, and the setup was frozen until it was graded.
+
+| Metric | Falcon run 6 (tuned) | Kestrel run 1 (near transfer) | Heron (held out) |
+|---|---|---|---|
+| Planted issues whose facts were found | 18 of 18 | 18 of 18 (one only as a note) | 18 of 18 |
+| Recall, the 13 Critical and High issues | 100% | 100% | 88.5% strict; 100% on the earlier basis |
+| Recall, all 18 issues | 100% | 97.2% | 88.9% strict; 100% on the earlier basis |
+| Severity within one level of the answer key | 100% | 100% | 100% |
+| Unsupported findings in the report | 0 | 0 | 0 |
+| Distractors rated Medium or above | 0 of 4 | 2 of 4 | 1 of 4 |
+
+**How to read Heron's score.** The system found the facts of every planted issue on a target it had never seen, and put nothing unsupported in the report. Its grader counted four issues as only partly found because their severity was one level away from what the answer key accepts (for example a product-safety issue rated High instead of Critical). Earlier graders counted a one-level difference as found, which gives 100%. Both readings are shown because the grading rule was not exact on this point; making it exact is the next fix to the grading command. What did not carry over cleanly is judgment: severity calibration on unfamiliar issue types, and one distractor (pre-planned share sales by the CFO) rated as a red flag.
+
+**What happened after each grade.** After Kestrel run 1 and after Heron, new rules were added from their scorecards (commits `af02fce` and `78827d5`). A Kestrel rerun with those rules scored 100% with 0 distractors too high, but that is an in-sample result, measured on the target the rules came from, so it does not count as generalization. The honest test of the new rules is a fourth target built blind.
+
+Scorecards: [Kestrel run 1](runs/2026-10-19_1449/evaluation/scorecard.md), [Kestrel rerun, in-sample](runs/2026-10-19_1614/evaluation/scorecard.md), [Heron](runs/2026-10-19_1711/evaluation/scorecard.md).
 
 ## Repository structure
 
