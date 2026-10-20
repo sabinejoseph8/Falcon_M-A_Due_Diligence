@@ -241,5 +241,4 @@ For a truly blind test, start a fresh Claude Code session in the folder, run `/d
 - **AI product management:** framing the problem and the users, product, design and tech specs, a phased plan with acceptance tests, success metrics set up front, and product changes driven by measured results.
 - **Evaluation:** planted ground truth (18 issues and 4 distractors), a blind answer key, recall and severity scoring, an independent verifier, and honest reporting of the test's limits.
 - **Agentic workflow design:** multi-agent orchestration, bounded autonomy, human-in-the-loop checkpoints, least-privilege guardrails and prompt-injection defense.
-- **Domain depth (M&A due diligence):** revenue quality, cash conversion, EBITDA add-backs, covenant analysis, litigation exposure, disclosure gaps, governance and deal protections.
 - **Communication:** an Investment Committee-ready report, a one-page case study and a clear audit trail.
