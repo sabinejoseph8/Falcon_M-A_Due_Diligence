@@ -2,7 +2,7 @@
 
 **Project Falcon:** a multi-agent M&A due diligence system, built in Claude Code.
 
-> **Portfolio case study.** An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report. Built entirely with Claude Code features. No application code and no Agent SDK.
+> **Portfolio case study.** An AI "diligence team" that researches an acquisition target across SEC filings, news, litigation records and financial data, then writes an Investment Committee report.
 >
 > All companies, people, court cases, articles and numbers are **fictional**.
 
